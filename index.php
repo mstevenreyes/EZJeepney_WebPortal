@@ -30,14 +30,14 @@
           <div class="col-md-7">
             <h3>Welcome to <strong>Majetsco</strong></h3>
             <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-            <form action="test.php" method="post">
+            <form action="admin_login.inc.php" method="post">
               <div class="form-group first">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                <input name="username" type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
               </div>
               <div class="form-group last mb-3">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Your Password" id="password">
+                <input name="password" type="password" class="form-control" placeholder="Your Password" id="password">
               </div>
               
               <div class="d-flex mb-5 align-items-center">
@@ -48,7 +48,7 @@
                 <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
               </div>
 
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+              <input name="submit" type="submit" value="Log In" class="btn btn-block btn-primary">
 
             </form>
           </div>
