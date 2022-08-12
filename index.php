@@ -33,7 +33,7 @@
             <form action="admin_login.inc.php" method="post">
               <div class="form-group first">
                 <label for="username">Username</label>
-                <input name="username" type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                <input name="username" type="text" class="form-control" autocomplete="url" placeholder="your-email@gmail.com" id="username">
               </div>
               <div class="form-group last mb-3">
                 <label for="password">Password</label>

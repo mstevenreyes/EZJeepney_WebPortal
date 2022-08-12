@@ -36,7 +36,7 @@ function loginFaculty($conn, $username, $pwd){
         session_start();
         $_SESSION['FacultyID'] = $uidExists['FacultyID'];
         $_SESSION['FacultyPwd'] = $uidExists['FacultyPwd'];
-        header('location: test.php');
+        header('location: ./admin/dashboard.php');
         exit();
     }else{
     
