@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords"
         content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
     <meta name="description"
@@ -151,13 +151,13 @@
                                 <span class="hide-menu">Add Jeepney</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                            aria-expanded="false">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span class="hide-menu">Log Out</span>
-                        </a>
-                    </li>
+                        </li><li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="hide-menu">Log Out</span>
+                            </a>
+                        </li>
                     </ul>
 
                 </nav>
@@ -178,7 +178,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">PAO Attendance</h4>
+                        <h4 class="page-title">Add New Jeepney</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -193,71 +193,49 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <!-- Row -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Attendance Record</h3> <br>
-
-                            <div class="table-responsive">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
-                                            <th class="border-top-0">Time-In</th>
-                                            <th class="border-top-0">Time-Out</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>admin</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>developer</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Roshan</td>
-                                            <td>Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td>supporter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Joshi</td>
-                                            <td>Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Nigam</td>
-                                            <td>Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td>supporter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/large/orig_bg.jpg">
                             </div>
                         </div>
                     </div>
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Plate Number</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text" placeholder="084JK"
+                                                class="form-control p-0 border-0"> </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Route</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text" placeholder="Start Location..."
+                                                class="form-control p-0 border-0"> 
+                                        </div>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text" placeholder="End Location..."
+                                                class="form-control p-0 border-0"> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success">Add Jeepney</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
                 </div>
+                <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -275,7 +253,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> ©2022  EZ JEEPNEY </footer>
+            <footer class="footer text-center"> ©2022 EZ JEEPNEY </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
