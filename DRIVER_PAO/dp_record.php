@@ -103,20 +103,20 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dp_dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dp_dashboard.php"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li><li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dp_attendance.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dp_attendance.php"
                                 aria-expanded="false">
                                 <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                                 <span class="hide-menu">Attendance Record</span>
                             </a>
                         </li>
                     </li><li class="sidebar-item pt-2">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dp_record.html"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dp_record.php"
                             aria-expanded="false">
                             <i class="fa fa-table" aria-hidden="true"></i>
                             <span class="hide-menu">Personal Report</span>
@@ -148,7 +148,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Attendance Record</h4>
+                        <h4 class="page-title">Personal Report</h4>
                     </div> 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -166,34 +166,59 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Attendance Table</h3> <br>
+                            <h3 class="box-title">Absences/Leaves Record</h3> <br>
 
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">Time-In</th>
-                                            <th class="border-top-0">Time-Out</th>
+                                            <th class="border-top-0">Absences</th>
+                                            <th class="border-top-0">Leaves Taken</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>September 1, 2021</td>
-                                            <td>12:00</td>
-                                            <td>2:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>December 1 , 2021</td>
-                                            <td>12:00</td>
-                                            <td>2:00</td>
-                                        </tr>
+                                         <!-- Fetching Records from Database -->
+                                         <?php include_once 'dbh_inc.php';
+
+                                        //Getting Tickets according to driver name
+                                        $sql1 = "SELECT absences from absences";
+                                        $sql2 = "SELECT date from leaves";
+                                        $result1 = mysqli_query($conn, $sql1);
+                                        $result2 = mysqli_query($conn, $sql2);
+
+                                        // Storing records/rows into array
+                                        if (mysqli_num_rows($result2) > 0) {
+                                            while($row1 = mysqli_fetch_assoc($result2)) {
+                                                if (mysqli_num_rows($result1) > 0) { 
+                                                    while($row2 = mysqli_fetch_assoc($result1)) {
+                                        ?> 
+                                                <tr>
+                                                <td><?php echo date("m/d/Y", strtotime($row2['absences']));?></td>
+                                        <?php   
+                                                    }
+                                        ?>       
+                                                <td><?php echo date("m/d/Y", strtotime($row1['date']));?></td>
+                                                <?php
+                                                }
+                                            }
+                                        }
+                                        ?> 
+            
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Initial Salary</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li class="ms-auto"><span class="counter text-success">₱0.00</span></li>
+                            </ul>
+                        </div>
+                    </div>
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
