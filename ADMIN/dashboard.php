@@ -46,7 +46,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -95,49 +95,49 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_driver.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_driver.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Search Driver</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_pao.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_pao.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Search PAO</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="d_table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="d_table.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Driver Attendance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="p_table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="p_table.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">PAO Attendance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vehicle_report.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vehicle_report.php"
                                 aria-expanded="false">
                                 <i class="fas fa-car" aria-hidden="true"></i>
                                 <span class="hide-menu">Vehicle Maintenance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.php"
                                 aria-expanded="false">
                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">Add Jeepney</span>
@@ -195,22 +195,37 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
+                            <!-- Fetching Records from Database -->
+                            <?php include_once 'dbh_inc.php';
+                            $sql = "SELECT count(date) AS total FROM attendances WHERE DAY(date)=DAY(now())
+                            AND YEAR(date)=YEAR(now()) AND type = 'D'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_assoc($result)
+                            ?>
                             <h3 class="box-title">Present Drivers</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-success">45</span></li>
+                                <li class="ms-auto"><span class="counter text-success"><?php echo $row['total'];?></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
+                            <!-- Fetching Records from Database -->
+                            <?php include_once 'dbh_inc.php';
+                            $sql = "SELECT count(date) AS total FROM attendances WHERE MONTH(date)=MONTH(now())
+                            AND YEAR(date)=YEAR(now()) AND type = 'P'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_assoc($result)
+                            ?>
                             <h3 class="box-title">Present PAOs</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-purple">43</span></li>
+                                <li class="ms-auto"><span class="counter text-purple"><?php echo $row['total'];?></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
+                            // wala pa code dito kasi hindi pa alam pano yung sa input hehe
                             <h3 class="box-title">Jeepneys On-route</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li class="ms-auto"><span class="counter text-info">45</span>

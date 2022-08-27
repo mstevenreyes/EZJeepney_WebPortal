@@ -165,17 +165,31 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
+                            <!-- Fetching Records from Database -->
+                            <?php include_once 'dbh_inc.php';
+                            $sql = "SELECT count(absences) as total from absences WHERE MONTH(absences)=MONTH(now())
+                            and YEAR(absences)=YEAR(now())";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_assoc($result)
+                            ?>
                             <h3 class="box-title">Total Absences</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-success">45</span></li>
+                                <li class="ms-auto"><span class="counter text-success"><?php echo $row['total']?></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
+                             <!-- Fetching Records from Database -->
+                            <?php $sql = "SELECT count(date) as total from leaves WHERE MONTH(date)=MONTH(now())
+                                            and YEAR(date)=YEAR(now());";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_assoc($result);
+                                $leaves = 12 - $row['total'];
+                            ?>
                             <h3 class="box-title">Leaves Taken</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-purple">43</span></li>
+                                <li class="ms-auto"><span class="counter text-purple"><?php echo $row['total']?></span></li>
                             </ul>
                         </div>
                     </div>
@@ -183,37 +197,13 @@
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Leaves Available</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-info">45</span>
+                                <li class="ms-auto"><span class="counter text-info"><?php echo $leaves?></span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- ATTENDANCE GRAPH -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Daily Attedance Graph</h3>
-                            <div class="d-md-flex">
-                                <ul class="list-inline d-flex ms-auto">
-                                    <li class="ps-3">
-                                        <h5><i class="fa fa-circle me-1 text-info"></i>Drivers</h5>
-                                    </li>
-                                    <li class="ps-3">
-                                        <h5><i class="fa fa-circle me-1 text-inverse"></i>PAOs</h5>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="ct-visits" style="height: 405px;">
-                                <div class="chartist-tooltip" style="top: -17px; left: -12px;"><span
-                                        class="chartist-tooltip-value">6</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->

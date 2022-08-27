@@ -49,7 +49,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -103,49 +103,49 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_driver.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_driver.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Search Driver</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_pao.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_pao.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Search PAO</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="d_table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="d_table.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Driver Attendance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="p_table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="p_table.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">PAO Attendance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vehicle_report.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vehicle_report.php"
                                 aria-expanded="false">
                                 <i class="fas fa-car" aria-hidden="true"></i>
                                 <span class="hide-menu">Vehicle Maintenance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.php"
                                 aria-expanded="false">
                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">Add Jeepney</span>
@@ -203,55 +203,33 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
+                                            <th class="border-top-0">Full Name</th>
                                             <th class="border-top-0">Time-In</th>
                                             <th class="border-top-0">Time-Out</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>admin</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>developer</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Roshan</td>
-                                            <td>Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td>supporter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Joshi</td>
-                                            <td>Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Nigam</td>
-                                            <td>Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td>supporter</td>
-                                        </tr>
+                                       <!-- Fetching Records from Database -->
+                                       <?php include_once 'dbh_inc.php';
+
+                                        //Getting Tickets according to driver name
+                                        $sql = "SELECT date, employeeName, time_in, time_out FROM attendances WHERE type = 'P'";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        // Storing records/rows into array
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {  
+                                        ?>
+                                            <tr>   
+                                                <td><?php echo date("m/d/Y", strtotime($row['date']));?></td>
+                                                <td><?php echo $row['employeeName'];?></td>
+                                                <td><?php echo $row['time_in'];?></td>
+                                                <td><?php echo $row['time_out'];?></td>
+                                            </tr>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

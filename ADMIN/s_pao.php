@@ -49,7 +49,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -115,49 +115,49 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_driver.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_driver.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Search Driver</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_pao.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="s_pao.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Search PAO</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="d_table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="d_table.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Driver Attendance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="p_table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="p_table.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">PAO Attendance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vehicle_report.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vehicle_report.php"
                                 aria-expanded="false">
                                 <i class="fas fa-car" aria-hidden="true"></i>
                                 <span class="hide-menu">Vehicle Maintenance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.php"
                                 aria-expanded="false">
                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">Add Jeepney</span>
