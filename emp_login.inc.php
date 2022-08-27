@@ -4,7 +4,7 @@ function uIDExists($conn, $username){
     $sql = 'SELECT * FROM `admin` WHERE username = ?;';
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header('location: admin_login.php?error=stmtfailed');
+        header('location: emp_login.php?error=stmtfailed');
         exit();
     }
 
@@ -25,7 +25,7 @@ function uIDExists($conn, $username){
 function loginFaculty($conn, $username, $pwd){
     $uidExists = uidExists($conn, $username);
     if($uidExists === false){
-        header('location: admin_login.php?error=usernotexists');
+        header('location: emp_login.php?error=usernotexists');
         exit();
     }
     $pwdHashed = $uidExists['pword'];
@@ -36,11 +36,10 @@ function loginFaculty($conn, $username, $pwd){
         session_start();
         $_SESSION['FacultyID'] = $uidExists['FacultyID'];
         $_SESSION['FacultyPwd'] = $uidExists['FacultyPwd'];
-        header('location: ./admin/dashboard.php');
+        header('location: ./DRIVER_PAO/dp_dashboard.php');
         exit();
     }else{
-    
-        header('location: admin_login.php?error=wronglogin');
+        header('location: emp_login.php?error=wronglogin');
         exit();
     }
 }
@@ -51,5 +50,5 @@ if(isset($_POST['submit'])){
     require 'dbh.inc.php';
     loginFaculty($conn, $username, $pwd);
 }else{
-    header('location: admin_login.php?error=invalidentry');
+    header('location: emp_login.php?error=invalidentry');
 }
