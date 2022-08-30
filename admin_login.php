@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login < Majetsco Admin</title>
+  <title>Admin Login - MAJETSCO</title>
   <link rel="stylesheet" href="login_style.css">
 </head>
 <body>
@@ -39,18 +39,6 @@
       </div>
     </form>
   </div>
-  <div class='success'>
-    <h2>Authentication Success</h2>
-    <p>Welcome back</p>
-  </div>
-  <div class='disclaimer'>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper laoreet placerat. Nullam semper auctor justo, rutrum posuere odio vulputate nec.</p>
-  </div>
-</div>
-<div class='authent'>
-  <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/puff.svg'>
-  <p>Authenticating...</p>
-</div>
 <script src="login.js"></script>
 </body>
 </html>

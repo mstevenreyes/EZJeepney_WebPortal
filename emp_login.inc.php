@@ -1,7 +1,7 @@
 <?php 
 
 function uIDExists($conn, $username){
-    $sql = 'SELECT * FROM `admin` WHERE username = ?;';
+    $sql = 'SELECT * FROM `tb_employee` WHERE emp_id = ?;';
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header('location: emp_login.php?error=stmtfailed');
@@ -28,17 +28,18 @@ function loginFaculty($conn, $username, $pwd){
         header('location: emp_login.php?error=usernotexists');
         exit();
     }
-    $pwdHashed = $uidExists['pword'];
+    $pwdHashed = $uidExists['emp_pword'];
 
     $pwd_check = password_verify($pwd, $pwdHashed);
 
     if($pwd_check){
         session_start();
-        $_SESSION['FacultyID'] = $uidExists['FacultyID'];
-        $_SESSION['FacultyPwd'] = $uidExists['FacultyPwd'];
-        header('location: ./DRIVER_PAO/dp_dashboard.php');
+        $_SESSION['admin-id'] = $uidExists['emp_id'];
+        $_SESSION['admin-pword'] = $uidExists['emp_pword'];
+        header('location: ./employee/dp_dashboard.php');
         exit();
     }else{
+    
         header('location: emp_login.php?error=wronglogin');
         exit();
     }
