@@ -200,7 +200,7 @@
 
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
-                                    <thead>
+
                                         <tr>
                                             <th class="border-top-0">Issued Date</th>
                                             <th class="border-top-0">Plate Number</th>
@@ -210,6 +210,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!-- Fetching Records from Database -->
+                                        <?php include_once 'DRIVER_PAO\dbh_inc.php';
+                                        //Getting Tickets according to driver name
+                                        $sql = "SELECT date, time_in, time_out, plate_no from attendances";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        // Storing records/rows into array
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                        ?>
                                         <tr>
                                             <td>1</td>
                                             <td>Deshmukh</td>
@@ -217,41 +227,7 @@
                                             <td>@Genelia</td>
                                             <td>admin</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>developer</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Roshan</td>
-                                            <td>Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td>supporter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Joshi</td>
-                                            <td>Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Nigam</td>
-                                            <td>Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td>supporter</td>
-                                        </tr>
+                                    <?php } } ?>
                                     </tbody>
                                 </table>
                             </div>
