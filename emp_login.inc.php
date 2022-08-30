@@ -32,6 +32,7 @@ function loginFaculty($conn, $username, $pwd){
 
     $pwd_check = password_verify($pwd, $pwdHashed);
 
+    
     if($pwd_check){
         session_start();
         $_SESSION['admin-id'] = $uidExists['emp_id'];

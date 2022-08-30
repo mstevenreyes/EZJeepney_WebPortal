@@ -36,6 +36,7 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Date</th>
+                                            <th class="border-top-0">Employee ID</th>
                                             <th class="border-top-0">First Name</th>
                                             <th class="border-top-0">Last Name</th>
                                             <th class="border-top-0">Time-In</th>
@@ -43,48 +44,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>admin</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>developer</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Roshan</td>
-                                            <td>Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td>supporter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Joshi</td>
-                                            <td>Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Nigam</td>
-                                            <td>Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td>supporter</td>
-                                        </tr>
+                                    <?php
+                                        require_once '../dbh.inc.php';  
+                                        $statement = "SELECT att.emp_id, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
+                                        FROM `tb_attendance_sheet` as att
+                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id;";
+                                        $dt = mysqli_query($conn, $statement);
+                                        while ($result = mysqli_fetch_array($dt)){
+                                            $result = "<tr><td>"  . $result['attendance_date'] . "</td>" .
+                                            "<td>"  . $result['emp_id'] . "</td>" .
+                                            "<td>"  . $result['emp_surname'] . "</td>" .
+                                            "<td>"  . $result['emp_firstname'] . "</td>" .
+                                            "<td>"  . $result['time_in'] . "</td>" .
+                                            "<td>"  . $result['time_out'] . "</td></tr>";
+                                            echo $result;
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
