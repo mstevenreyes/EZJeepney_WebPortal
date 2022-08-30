@@ -185,21 +185,25 @@
                                         $sql2 = "SELECT date from leaves";
                                         $result1 = mysqli_query($conn, $sql1);
                                         $result2 = mysqli_query($conn, $sql2);
+                                        $counter = 1;
+                                        $scounter = 1;
 
                                         // Storing records/rows into array
                                         if (mysqli_num_rows($result2) > 0) {
                                             while($row1 = mysqli_fetch_assoc($result2)) {
                                                 if (mysqli_num_rows($result1) > 0) { 
                                                     while($row2 = mysqli_fetch_assoc($result1)) {
-                                        ?> 
-                                                <tr>
+                                        ?>      <tr>
                                                 <td><?php echo date("m/d/Y", strtotime($row2['absences']));?></td>
                                         <?php   
+                                                    ++$counter;
+                                                    if ($counter > $scounter){break;}
                                                     }
                                         ?>       
-                                                <td><?php echo date("m/d/Y", strtotime($row1['date']));?></td>
+                                                <td><?php echo date("m/d/Y", strtotime($row1['date']));?></td></tr>
                                                 <?php
                                                 }
+                                                ++$scounter;
                                             }
                                         }
                                         ?> 

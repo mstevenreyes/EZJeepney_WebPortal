@@ -43,6 +43,16 @@ if (mysqli_num_rows($result2) > 0) {
         ++$scounter;
     }
 }
+
+    $sql = "SELECT count(absences) as total from absences WHERE MONTH(absences)=MONTH(now())
+    and YEAR(absences)=YEAR(now()) ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result)
+    ?>
+    <h3 class="box-title">Total Absences</h3>
+    <ul class="list-inline two-part d-flex align-items-center mb-0">
+        <li class="ms-auto"><span class="counter text-success"><?php echo $row['total'] ?></span></li>
+    </ul>
 ?>   
 </tbody>
 </table>
