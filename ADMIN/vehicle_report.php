@@ -145,7 +145,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_j.php"
                                 aria-expanded="false">
                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">Add Jeepney</span>

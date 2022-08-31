@@ -145,7 +145,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_jeepney.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="add_j.php"
                                 aria-expanded="false">
                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">Add Jeepney</span>
@@ -206,27 +206,27 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material">
+                                <form action = "add_j_inc.php" method="POST" class="form-horizontal form-material">
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Plate Number</label>
+                                        <label class="col-md-12 p-0" >Plate Number</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="084JK"
+                                            <input type="text" name="plateNum" id="plateNum" placeholder="AB123"
                                                 class="form-control p-0 border-0"> </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Route</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Start Location..."
+                                            <input type="text" name="sRoute" id="sRoute" placeholder="Start Location..."
                                                 class="form-control p-0 border-0"> 
                                         </div>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="End Location..."
+                                        <div class="col-md-12 border-bottom p-0" >
+                                            <input type="text" name="eRoute" id="eRoute" placeholder="End Location..."
                                                 class="form-control p-0 border-0"> 
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success">Add Jeepney</button>
+                                            <button type='submit' name="submit" class="btn btn-success" value="Add Jeepney">Add Jeepney</button>
                                         </div>
                                     </div>
                                 </form>
