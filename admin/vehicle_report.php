@@ -1,5 +1,5 @@
 <?php
-    include_once('sidebar.php');
+    include('sidebar.php');
 ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -35,56 +35,29 @@
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Issued Date</th>
+                                            <th class="border-top-0">Date Issued</th>
                                             <th class="border-top-0">Plate Number</th>
+                                            <th class="border-top-0">Defective Part(s)</th>
                                             <th class="border-top-0">Description</th>
                                             <th class="border-top-0">Date Fixed</th>
                                             <th class="border-top-0">Maintenance Cost</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>admin</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>developer</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Roshan</td>
-                                            <td>Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td>supporter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Joshi</td>
-                                            <td>Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Nigam</td>
-                                            <td>Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td>supporter</td>
-                                        </tr>
+                                        <?php
+                                            require_once '../dbh.inc.php';  
+                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $dt = mysqli_query($conn, $statement);
+                                            while ($result = mysqli_fetch_array($dt)){
+                                                $result = "<tr><td>"  . $result['date_issued'] . "</td>" .
+                                                "<td>"  . $result['plate_number'] . "</td>" .
+                                                "<td>"  . $result['defective_part'] . "</td>" .
+                                                "<td>"  . $result['description'] . "</td>" .
+                                                "<td>"  . $result['date_fixed'] . "</td>" .
+                                                "<td>"  . $result['maintenance_cost'] . "</td></tr>";
+                                                echo $result;
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -94,7 +67,16 @@
                             <div class="white-box analytics-info">
                                 <h3 class="box-title">Total Maintenance Expense</h3>
                                 <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-danger">₱0.00</span></li>
+                                <li class="ms-auto"><span class="counter text-danger">₱<?php
+                                        require_once '../dbh.inc.php';  
+                                        $statement = "SELECT maintenance_cost FROM tb_maintenance;";
+                                        $dt = mysqli_query($conn, $statement);
+                                        $maintenance_cost = 0;
+                                        while ($result = mysqli_fetch_array($dt)){
+                                            $maintenance_cost += $result['maintenance_cost']; 
+                                        }
+                                        echo $maintenance_cost;
+                                ?></span></li>
                                 </ul>
                                 </div>
                         </div>
@@ -102,74 +84,63 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="white-box"> 
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Date Issued<br>
-                                    <div class="col-sm-12 border-bottom">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>London</option>
-                                            <option>India</option>
-                                            <option>Usa</option>
-                                            <option>Canada</option>
-                                            <option>Thailand</option>
-                                        </select>
+                            <form id="maintenance-form" action="vehicle_report.inc.php" method="POST">
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12">Date Issued<br>
+                                        <div class="col-sm-12 border-bottom">
+                                            <input class="shadow-none p-0 border-0 form-control" type="text" name="date-issued" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Plate Number<br>
-                                    <div class="col-sm-12 border-bottom">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>London</option>
-                                            <option>India</option>
-                                            <option>Usa</option>
-                                            <option>Canada</option>
-                                            <option>Thailand</option>
-                                        </select>
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12">Plate Number<br>
+                                        <div class="col-sm-12 border-bottom">
+                                            <select class="form-select shadow-none p-0 border-0 form-control" name="plate-number" required>
+                                                <?php
+                                                    require_once '../dbh.inc.php';
+                                                    $statement = "SELECT plate_number from tb_jeepney;";
+                                                    $dt = mysqli_query($conn, $statement);
+                                                    while ($result = mysqli_fetch_array($dt)){
+                                                        $result = "<option value='"  . $result['plate_number'] . "'>" . $result['plate_number'] . "</option>";
+                                                        echo $result; 
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Defective Part<br>
-                                    <div class="col-sm-12 border-bottom">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>London</option>
-                                            <option>India</option>
-                                            <option>Usa</option>
-                                            <option>Canada</option>
-                                            <option>Thailand</option>
-                                        </select>
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12" >Defective Part<br>
+                                        <div class="col-sm-12 border-bottom">
+                                            <input class=" shadow-none p-0 border-0 form-control" name="defective-part" type="text" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Reason for Maintenance<br>
-                                    <div class="col-md-12 border-bottom p-0">
-                                        <textarea rows="5" class="form-control p-0 border-0"></textarea>
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12">Reason for Maintenance<br>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <textarea rows="5" class="form-control p-0 border-0"  name="description" required></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Date Fixed<br>
-                                    <div class="col-sm-12 border-bottom">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>London</option>
-                                            <option>India</option>
-                                            <option>Usa</option>
-                                            <option>Canada</option>
-                                            <option>Thailand</option>
-                                        </select>
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12">Date Fixed<br>
+                                        <div class="col-sm-12 border-bottom">
+                                            <input class="shadow-none p-0 border-0 form-control" type="text" name="date-fixed" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Maintenance Cost<br>
-                                    <div class="col-md-12 border-bottom p-0">
-                                        <input type="text" class="form-control p-0 border-0"> 
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12">Maintenance Cost<br>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text" class="form-control p-0 border-0"  name="maintenance-cost" required> 
+                                        </div>
                                     </div>
                                 </div>
+                                <input class="btn btn-success" style="color: white " type="submit" value="Submit Report">
+                            
                             </div>
-                            <button class="btn btn-success" style="color: white ">Submit Maintenance Report</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -214,6 +185,23 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <!-- Custom Javascript for datepicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $('input[name="date-issued"]').datepicker({
+                dateFormat: 'yy-dd-mm'
+            });
+            $('input[name="date-fixed"]').datepicker({
+                dateFormat: 'yy-dd-mm'
+            });
+
+        });
+</script>
 </body>
 
 </html>
