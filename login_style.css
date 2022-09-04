@@ -5,14 +5,14 @@ body {
   margin: 0;
   overflow: hidden;
   font-family: "Gudea", sans-serif;
-  background: #54b3ea;
+  background-image: url('images/bg2.jpg');
   /* Old browsers */
   /* FF3.6+ */
   /* Chrome,Safari4+ */
   /* Chrome10+,Safari5.1+ */
   /* Opera 11.10+ */
   /* IE10+ */
-  background: linear-gradient(135deg, #54bbea 0%, #cec6d3 100%);
+  /* background: linear-gradient(135deg, #54bbea 0%, #cec6d3 100%); */
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#EA5C54 ", endColorstr="#bb6dec",GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
