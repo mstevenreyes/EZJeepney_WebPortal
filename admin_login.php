@@ -8,13 +8,9 @@
   <link rel="stylesheet" href="login_style.css">
 </head>
 <body>
-<div class='brand'>
-  <a href='https://www.jamiecoulter.co.uk' target='_blank'>
-    <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/logo.png'>
-  </a>
-</div>
 <div class='login'>
   <div class='login_title'>
+    <p><img src="images/majetsco-logo.png" alt="logo"></p>
     <span>Login to your account</span>
   </div>
   <div class='login_fields'>
