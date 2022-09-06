@@ -37,26 +37,30 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                             <!-- Fetching Records from Database -->
-                            <?php include_once 'dbh_inc.php';
-                            $sql = "SELECT count(absences) as total from absences WHERE MONTH(absences)=MONTH(now())
-                            and YEAR(absences)=YEAR(now())";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result)
+                            <?php 
+                            // include_once 'dbh_inc.php';
+                            // $sql = "SELECT count(absences) as total from absences WHERE MONTH(absences)=MONTH(now())
+                            // and YEAR(absences)=YEAR(now())";
+                            // $result = mysqli_query($conn, $sql);
+                            // $row = mysqli_fetch_assoc($result)
                             ?>
                             <h3 class="box-title">Total Absences</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-success"><?php echo $row['total']?></span></li>
+                                <li class="ms-auto"><span class="counter text-success"><?php 
+                                // echo $row['total'];
+                                ?></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                              <!-- Fetching Records from Database -->
-                            <?php $sql = "SELECT count(date) as total from leaves WHERE MONTH(date)=MONTH(now())
-                                            and YEAR(date)=YEAR(now());";
-                                $result = mysqli_query($conn, $sql);
-                                $row = mysqli_fetch_assoc($result);
-                                $leaves = 12 - $row['total'];
+                            <?php 
+                            // $sql = "SELECT count(date) as total from leaves WHERE MONTH(date)=MONTH(now())
+                            //                 and YEAR(date)=YEAR(now());";
+                            //     $result = mysqli_query($conn, $sql);
+                            //     $row = mysqli_fetch_assoc($result);
+                            //     $leaves = 12 - $row['total'];
                             ?>
                             <h3 class="box-title">Leaves Taken</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
