@@ -126,7 +126,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                <span class="hide-menu">Log Out</span>
+                                <span class="hide-menu">Log Out!</span>
                             </a>
                         </li>
                     </ul>
