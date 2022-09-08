@@ -34,13 +34,13 @@
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
-                            <img src="plugins/images/majetsco_logo.png" alt="homepage" />
+                            <img style="height: 50px;" src="images/majetsco-logo.png" alt="homepage" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <h1>MAJETSCO</h1>
+                            <h2>MAJETSCO</h2>
                         </span>
                     </a>
                     <!-- ============================================================== -->

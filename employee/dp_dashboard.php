@@ -46,7 +46,7 @@
                             ?>
                             <h3 class="box-title">Total Absences</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-success"><?php 
+                                <li class="ms-auto"><span class="counter text-success">3<?php 
                                 // echo $row['total'];
                                 ?></span></li>
                             </ul>
@@ -64,7 +64,9 @@
                             ?>
                             <h3 class="box-title">Leaves Taken</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-purple"><?php echo $row['total']?></span></li>
+                                <li class="ms-auto"><span class="counter text-purple">3<?php 
+                                // echo $row['total']
+                                ?></span></li>
                             </ul>
                         </div>
                     </div>
@@ -72,13 +74,14 @@
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Leaves Available</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-info"><?php echo $leaves?></span>
+                                <li class="ms-auto"><span class="counter text-info">5<?php
+                                //  echo $leaves
+                                 ?></span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->

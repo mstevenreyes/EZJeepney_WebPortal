@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -149,7 +148,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Attendance Record</h4>
+                        <h4 class="page-title">Personal Report</h4>
                     </div> 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -167,37 +166,63 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Attendance Table</h3> <br>
+                            <h3 class="box-title">Absences/Leaves Record</h3> <br>
 
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">Time-In</th>
-                                            <th class="border-top-0">Time-Out</th>
-                                            <th class="border-top-0">Plate No.</th>
+                                            <th class="border-top-0">Absences</th>
+                                            <th class="border-top-0">Leaves Taken</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                          <!-- Fetching Records from Database -->
-                                        <?php include_once '../dbh.inc.php';
+                                         <?php include_once 'dbh_inc.php';
 
                                         //Getting Tickets according to driver name
-                                        // $sql = "SELECT date, time_in, time_out, plate_no from attendances";
-                                        // $result = mysqli_query($conn, $sql);
+                                        $sql1 = "SELECT absences from absences";
+                                        $sql2 = "SELECT date from leaves";
+                                        $result1 = mysqli_query($conn, $sql1);
+                                        $result2 = mysqli_query($conn, $sql2);
+                                        $counter = 1;
+                                        $scounter = 1;
 
-                                        // // Storing records/rows into array
-                                        // if (mysqli_num_rows($result) > 0) {
-                                        //     while($row = mysqli_fetch_assoc($result)) {  
-                                        ?>
+                                        // Storing records/rows into array
+                                        if (mysqli_num_rows($result2) > 0) {
+                                            while($row1 = mysqli_fetch_assoc($result2)) {
+                                                if (mysqli_num_rows($result1) > 0) { 
+                                                    while($row2 = mysqli_fetch_assoc($result1)) {
+                                        ?>      <tr>
+                                                <td><?php echo date("m/d/Y", strtotime($row2['absences']));?></td>
+                                        <?php   
+                                                    ++$counter;
+                                                    if ($counter > $scounter){break;}
+                                                    }
+                                        ?>       
+                                                <td><?php echo date("m/d/Y", strtotime($row1['date']));?></td></tr>
+                                                <?php
+                                                }
+                                                ++$scounter;
+                                            }
+                                        }
+                                        ?> 
+            
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Initial Salary</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li class="ms-auto"><span class="counter text-success">₱0.00</span></li>
+                            </ul>
+                        </div>
+                    </div>
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->

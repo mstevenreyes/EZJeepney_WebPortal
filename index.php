@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="Landing.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - MAJETSCO</title>
+  <link rel="stylesheet" href="login_style.css">
 </head>
-
-<header>
-    <h1>MAJETSCO</h1>
-  </header>
-  <main>
-    <div class="content">
-        <a class="button-admin" href="admin_login.php"><button>Admin</button></a>
-        <a class="button-emp" href="emp_login.php"><button>Employee</button></a>
-    </div>
-  </main>
-  
+<body>
+<div class='login'>
+  <div class='login_fields'>
+    <form action="admin_login.php" method="POST">
+      <div class='login_fields__submit'>
+        <input type='submit' name="submit" value='Employee'>
+        <input type='submit' name="submit" value='Admin'>
+      </div>
+    </form>
+  </div>
+<script src="login.js"></script>
+</body>
 </html>

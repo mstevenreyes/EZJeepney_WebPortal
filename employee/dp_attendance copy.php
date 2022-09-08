@@ -192,6 +192,16 @@
                                         // if (mysqli_num_rows($result) > 0) {
                                         //     while($row = mysqli_fetch_assoc($result)) {  
                                         ?>
+                                            <tr>   
+                                                <td><?php echo date("m/d/Y", strtotime($row['date']));?></td>
+                                                <td><?php echo $row['time_in'];?></td>
+                                                <td><?php echo $row['time_out'];?></td>
+                                                <td><?php echo $row['plate_no'];?></td>
+                                            </tr>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
