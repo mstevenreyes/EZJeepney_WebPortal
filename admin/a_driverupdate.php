@@ -73,7 +73,8 @@
                                         <label class="col-md-12 p-0">Full Name</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="text" placeholder="Johnathan Doe"
-                                                class="form-control p-0 border-0"> </div>
+                                                class="form-control p-0 border-0"> 
+                                        </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label for="example-email" class="col-md-12 p-0">Email</label>
