@@ -114,17 +114,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_jeep_report.php"
                                 aria-expanded="false">
                                 <i class="fas fa-car" aria-hidden="true"></i>
-                                <span class="hide-menu">Vehicle Report</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_inventory.php"
-                                aria-expanded="false">
-                                <i class="fas fa-car" aria-hidden="true"></i>
-                                <span class="hide-menu">Inventory</span>
+                                <span class="hide-menu">Vehicle Maintenance</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
