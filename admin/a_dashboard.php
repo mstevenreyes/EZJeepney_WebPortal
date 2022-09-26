@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Dashboard - Admin</title>
+    <title>Dashboard - Majetsco</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Welcome, Admin!</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -117,11 +117,33 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Salary Reports Graph</h3>
+                            <div class="d-md-flex">
+                                <ul class="list-inline d-flex ms-auto">
+                                    <li class="ps-3">
+                                        <h5><i class="fa fa-circle me-1 text-info"></i>Expenses</h5>
+                                    </li>
+                                    <li class="ps-3">
+                                        <h5><i class="fa fa-circle me-1 text-inverse"></i>Income</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="ct-visits" style="height: 405px;">
+                                <div class="chartist-tooltip" style="top: -17px; left: -12px;"><span
+                                        class="chartist-tooltip-value">6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> ©2022 EZ JEEPNEY </footer>
+          
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

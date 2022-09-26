@@ -30,7 +30,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.php">
+                    <a class="navbar-brand" href="a_dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -89,14 +89,14 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_driverupdate.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Search Driver</span>
+                                <span class="hide-menu">Driver List</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_paoupdate.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Search PAO</span>
+                                <span class="hide-menu">PAO List</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -137,7 +137,7 @@
                         </li><li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout.inc.php"
                                 aria-expanded="false">
-                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <i class="fa fa-power-off fa-2x" aria-hidden="true"></i>
                                 <span class="hide-menu">Log Out</span>
                             </a>
                         </li>

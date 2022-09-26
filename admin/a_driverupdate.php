@@ -27,6 +27,8 @@
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- Steven Custom CSS -->
+    <link rel="stylesheet" href="css/steven_style.css">
 </head>
 
 <body>
@@ -43,7 +45,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profile page</h4>
+                        <h3 class="page-title">Employees - Driver</h3>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -59,9 +61,27 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <div class="row">
-
-                    
+                <div class="emp-row">
+                    <div class="emp-container">
+                        <img src="../employee/employee_profiles/DR-0001/dr-0001.jfif" alt="image">
+                        <h4 class="emp-profile-names"><strong>Rudolfo Manansala</strong></h4>
+                        <h5><strong>Driver (DR-0001)</strong></h5>
+                    </div>
+                    <div class="emp-container">
+                        <img src="../employee/employee_profiles/DR-0002/dr-0002.png" alt="image">
+                        <h4 class="emp-profile-names"><strong>Aglipay Palatpat</strong></h4>
+                        <h5><strong>Driver (DR-0002)</strong></h5>
+                    </div>
+                    <div class="emp-container">
+                        <img src="../employee/employee_profiles/DR-0003/dr-0003.png" alt="image">
+                        <h4 class="emp-profile-names"><strong>Indy Pinaglaban</strong></h4>
+                        <h5><strong>Driver (DR-0003)</strong></h5>
+                    </div>
+                    <div class="emp-container">
+                        <img src="../employee/employee_profiles/DR-0003/dr-0003.png" alt="image">
+                        <h4 class="emp-profile-names"><strong>Indy Pinaglaban</strong></h4>
+                        <h5><strong>Driver (DR-0003)</strong></h5>
+                    </div>
                 </div>
                 <div class="row">
                     <!-- Column -->
@@ -111,31 +131,7 @@
                 <div class="col-lg-8 col-xlg-9 col-md-12">
                     <div class="card">
                             <div class="white-box">
-                                <h3 class="box-title">Record Leave</h3> <br>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Select Driver<br>
-                                        <div class="col-sm-12 border-bottom">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>Cardo</option>
-                                                <option>India</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Date of Leave<br>
-                                        <div class="col-sm-12 border-bottom">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>London</option>
-                                                <option>India</option>
-                                                <option>Usa</option>
-                                                <option>Canada</option>
-                                                <option>Thailand</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-success" style="color: white ">Record Leave</button>
+                
                             </div>
                     </div>
                 </div>

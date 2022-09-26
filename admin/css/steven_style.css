@@ -1,0 +1,29 @@
+/*============ STEVEN CUSTOM CSS======== */
+
+.emp-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.emp-container{
+    flex-basis: 32%;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%);
+    text-align: center;
+  }
+  
+.emp-container img{
+    width: 200px;
+    border-radius: 100px;
+}
+
+.emp-profile-names{
+    margin-top: 20px;
+}
+
+  /* ====================================== */
+   
