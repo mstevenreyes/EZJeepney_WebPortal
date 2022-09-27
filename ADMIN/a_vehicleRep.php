@@ -71,10 +71,25 @@
                                             <th class="border-top-0">Start of Maintenance</th>
                                             <th class="border-top-0">End of Maintenance</th>
                                             <th class="border-top-0">Reason of Report</th>
-                                            <th class="border-top-0">Vehicle Status</th>
                                             <th class="border-top-0">Maintenance Cost</th>
+                                            <th class="border-top-0">Vehicle Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <?php
+                                            require_once '../dbh.inc.php';  
+                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $dt = mysqli_query($conn, $statement);
+                                            while ($result = mysqli_fetch_array($dt)){
+                                                $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
+                                                "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>" .
+                                                "<td>"  . date("F d, Y", strtotime($result['date_fixed']))  . "</td>" .
+                                                "<td>"  . $result['description'] . "</td>" .
+                                                "<td>"  . $result['maintenance_cost'] . "</td></tr>";
+                                                echo $result;
+                                            }
+                                        ?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -89,6 +104,18 @@
                                             <th class="border-top-0">Vehicle Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <?php
+                                            require_once '../dbh.inc.php';  
+                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $dt = mysqli_query($conn, $statement);
+                                            while ($result = mysqli_fetch_array($dt)){
+                                                $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
+                                                "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>";
+                                                echo $result;
+                                            }
+                                        ?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -99,7 +126,17 @@
                             <div class="white-box analytics-info">
                                 <h3 class="box-title">Total Maintenance Expense</h3>
                                 <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-danger">₱0.00</span></li>
+                                    <?php
+                                        require_once '../dbh.inc.php';  
+                                        $statement = "SELECT maintenance_cost FROM tb_maintenance;";
+                                        $dt = mysqli_query($conn, $statement);
+                                        $maintenance_cost = 0;
+                                        while ($result = mysqli_fetch_array($dt)){
+                                            $maintenance_cost += $result['maintenance_cost']; 
+                                        }
+                                        // echo $maintenance_cost;
+                                    ?>
+                                <li class="ms-auto"><span class="counter text-danger">₱<?php echo $maintenance_cost ?></span></li>
                                 </ul>
                             </div>
                         </div>
