@@ -98,38 +98,30 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_driverlist.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_attendance.php"
                                 aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Driver Attendance</span>
+                                <i class="fas fa-clock"></i>
+                                <span class="hide-menu">Attendance</span>
                             </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_paolist.php"
-                                aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">PAO Attendance</span>
-                            </a>
-                        </li>
-                       
+                        </li>        
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"
                                 aria-expanded="false">
-                                <i class="fas fa-car" aria-hidden="true"></i>
+                                <i class="fas fa-book"></i>
                                 <span class="hide-menu">Vehicle Report</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_inventory.php"
                                 aria-expanded="false">
-                                <i class="fas fa-car" aria-hidden="true"></i>
+                                <i class="fas fa-warehouse"></i>
                                 <span class="hide-menu">Inventory</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_jeepney.php"
                                 aria-expanded="false">
-                                <i class="fas fa-plus" aria-hidden="true"></i>
+                                <i class="fas fa-bus"></i>
                                 <span class="hide-menu">Add Jeepney</span>
                             </a>
                         </li>
