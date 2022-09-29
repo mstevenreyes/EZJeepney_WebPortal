@@ -5,15 +5,12 @@
         //     header('location: ../index.php?invalid');
         // }
 ?>
+
+
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
-    </div>
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -28,7 +25,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="a_dashboard.php">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -84,17 +81,17 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_emp_list.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_driverupdate.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Employees</span>
+                                <span class="hide-menu">Search Driver</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_scheduling.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_paoupdate.php"
                                 aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Scheduling/Shift</span>
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Search PAO</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -111,7 +108,6 @@
                                 <span class="hide-menu">PAO Attendance</span>
                             </a>
                         </li>
-                       
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"
                                 aria-expanded="false">
@@ -136,7 +132,7 @@
                         </li><li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout.inc.php"
                                 aria-expanded="false">
-                                <i class="fa fa-power-off fa-2x" aria-hidden="true"></i>
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span class="hide-menu">Log Out</span>
                             </a>
                         </li>

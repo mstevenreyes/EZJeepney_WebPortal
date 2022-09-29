@@ -6,7 +6,6 @@ File: scss
 /*******************************/
 /*******************************/
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
-@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Source+Sans+Pro&display=swap');
 /*Theme Colors*/
 /*Topbar Colors*/
 /*Sidebar Colors*/
@@ -125,16 +124,6 @@ body {
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
-
-/* MAJETSCO CUSTOM CSS */
-
-.logo-text{
-  font-family: 'Raleway', sans-serif !important;
-
-}
-
-
-/*  */
 
 hr {
   -webkit-box-sizing: content-box;
@@ -907,7 +896,8 @@ pre {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
-    max-width: 100%; }
+    max-width: 100%; 
+  }
   .order-sm-first {
     -webkit-box-ordinal-group: 0;
     -ms-flex-order: -1;
