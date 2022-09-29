@@ -62,7 +62,6 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Attendance Record</h3> <br>
-
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
