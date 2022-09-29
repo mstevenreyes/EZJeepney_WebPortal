@@ -13,6 +13,10 @@
 
     if(isset($submitBtn)){
         $sql = "INSERT INTO $tablename(emp_type, emp_pword, emp_surname, emp_firstname) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_stmt_init($conn, $sql);
+        if(!mysqli_stmt_prepare($stmt)){
+            die("Error")
+        }
     }
 
   
