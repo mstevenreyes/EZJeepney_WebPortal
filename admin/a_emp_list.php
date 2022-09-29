@@ -130,20 +130,27 @@
                 <div class="form-popup">
                     <div class="container form-wrapper">
                         <button class="btn close-form">Close</button>
-                        <form action="inc.insert_employee.php" id="my-form" novalidate="novalidate">
+                        <form action="inc.insert_employee.php" method="POST" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h1 class="form-title">Add new Employee</h1>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-sm-12">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                <div class="form-group col-sm-6">
+                                    <label for="name">First Name</label>
+                                    <input type="text" class="form-control" id="name" name="emp-firstName" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="name">Surname</label>
+                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Employee Type</label>
-                                    <select name="emp-type" id="emp-type" required></select>
+                                    <select name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                        <option value="Driver">Driver</option>
+                                        <option value="PAO">Public Assistance Officer</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="name">Date of Birth</label>
@@ -164,7 +171,7 @@
                                 <label>
                                 </label>
                             </div>
-                            <button type="submit" class="btn send-form">Add Employee</button>
+                            <input type="submit" class="btn send-form" value="Add Employee">
                         </form>
                     </div>
                 </div>
