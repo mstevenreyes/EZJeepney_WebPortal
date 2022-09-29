@@ -86,17 +86,17 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_driverupdate.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_emp_list.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Driver List</span>
+                                <span class="hide-menu">Employees</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_paoupdate.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_scheduling.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">PAO List</span>
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Scheduling/Shift</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -113,6 +113,7 @@
                                 <span class="hide-menu">PAO Attendance</span>
                             </a>
                         </li>
+                       
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"
                                 aria-expanded="false">
