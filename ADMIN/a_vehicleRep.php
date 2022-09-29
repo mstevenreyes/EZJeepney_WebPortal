@@ -30,8 +30,8 @@
 </head>
 
 <body>
-<?php
-        include 'sidebar.php';
+    <?php
+        include_once 'sidebar.php';
     ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
