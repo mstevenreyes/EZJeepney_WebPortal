@@ -345,8 +345,46 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <script>
 
 </script>
+    <script>
+
+        // DATEPICKER
+          $(function() {
+            $('input[name="birthdate"]').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy-dd-mm'
+            });
+            // $('input[name="date-fixed"]').datepicker({
+            //     dateFormat: 'yy-dd-mm'
+            // });
+
+        });
+
+        $(document).ready(function() {
+        // FUNCTION FOR FORM
+        $('.open-form').click(function() {
+            $('.form-popup').show();
+        });
+        $('.close-form').click(function() {
+            $('.form-popup').hide();
+   
+        });
+
+        $(document).mouseup(function(e) {
+            var container = $(".form-wrapper");
+            var form = $(".form-popup");
+
+            // if (!container.is(e.target) && container.has(e.target).length === 0) {
+            //     form.hide();
+            // }
+        });
+
+
+        });
+    </script>
 
 </body>
 
