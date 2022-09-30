@@ -27,6 +27,7 @@
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="css/steven_style.css">
 </head>
 
 <body>
@@ -43,8 +44,9 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Inventory Tables</h4>
+                        <h3 class="page-title">Inventory Tables</h3>
                     </div>
+                    <button class="btn-add-supply btn open-form">Add New Supplies/Spare Part</button>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -64,7 +66,7 @@
                             <h3 class="box-title">Vehicles List</h3> <br>
 
                             <div class="table-responsive">
-                                <table class="table text-nowrap">
+                                <table class="table text-nowrap schedule-table" >
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Plate Number:</th>
@@ -74,6 +76,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!-- SAMPLE DATA ONLY -->
+                                        <tr>
+                                            <td class="border-top-0">123AB</td>
+                                            <td class="border-top-0">September 12, 2020</td>
+                                            <td class="border-top-0">On-route</td>
+                                            <td class="border-top-0">October 6, 2022</td>
+                                        </tr>
+                                        <!-- END OF SAMPLE DATA -->
                                     <!-- <?php
                                         // require_once '../dbh.inc.php';  
                                         // $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
@@ -96,143 +106,214 @@
                         </div>
                     </div>
                 </div>
-                    <div class="row">
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Supplies/Spare Parts List</h3> <br>
 
-                            <div class="table-responsive">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Supplies Description:</th>
-                                            <th class="border-top-0">Stocks Available:</th>
-                                        </tr>
-                                </table>
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title">Supplies/Spare Parts List</h3> <br>
+
+                        <div class="table-responsive">
+                            <table class="table text-nowrap schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th class="table-align">Supply:</th>
+                                        <th class="border-top-0">Supplies Description:</th>
+                                        <th class="border-top-0">Stocks Available:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td class="border-top-0"><img src="../employee/employee_profiles/DR-00001/DR-00001.png" class="schedule-emp-img" alt="image"></td>
+                                    <td class="border-top-0"><br>Testing 1</td>
+                                    <td class="border-top-0"><br>150</td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-breadcrumb bg-white">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                            <h4 class="page-title">Inventory Settings</h4>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="col-lg-8 col-xlg-9 col-md-12"><br>
+                    <div class="card">
+                        <form class="white-box">
+                            <h4 class="box-title">Update Vehicles List:</h4> <br>
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Select Plate Number<br>
+                                    <div class="table-responsive">
+                                        <select class="form-select shadow-none p-0 border-0 form-control">
+                                            <option>Test1</option>
+                                            <option>Test2</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="page-breadcrumb bg-white">
-                        <div class="row align-items-center">
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                                <h4 class="page-title">Inventory Settings</h4>
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Update Date Acquired:<br>
+                                    <div class="table-responsive">
+                                        <select class="form-select shadow-none p-0 border-0 form-control">
+                                            <option>Test1</option>
+                                            <option>Test2</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.col-lg-12 -->
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Update Status:<br>
+                                    <div class="table-responsive">
+                                        <select class="form-select shadow-none p-0 border-0 form-control">
+                                            <option>Test1</option>
+                                            <option>Test2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Schedule Maintenance:<br>
+                                    <div class="table-responsive">
+                                        <select class="form-select shadow-none p-0 border-0 form-control">
+                                            <option>Test1</option>
+                                            <option>Test2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" style="color:white">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-lg-8 col-xlg-9 col-md-12"><br>
-                        <div class="card">
-                            <form class="white-box">
-                                <h4 class="box-title">Update Vehicles List:</h4> <br>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Select Plate Number<br>
-                                        <div class="table-responsive">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>Test1</option>
-                                                <option>Test2</option>
-                                            </select>
-                                        </div>
+                </div>
+
+                <div class="col-lg-8 col-xlg-9 col-md-12"><br>
+                    <div class="card">
+                        <form class="white-box">
+                            <h4 class="box-title">Update Supplies/Spare Parts List:</h4> <br>
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Select Supplies Description:<br>
+                                    <div class="table-responsive">
+                                        <select class="form-select shadow-none p-0 border-0 form-control">
+                                            <option>Test1</option>
+                                            <option>Test2</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Update Date Acquired:<br>
-                                        <div class="table-responsive">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>Test1</option>
-                                                <option>Test2</option>
-                                            </select>
-                                        </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Update Stocks Available:<br>
+                                    <div class="table-responsive">
+                                        <select class="form-select shadow-none p-0 border-0 form-control">
+                                            <option>Test1</option>
+                                            <option>Test2</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Update Status:<br>
-                                        <div class="table-responsive">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>Test1</option>
-                                                <option>Test2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Schedule Maintenance:<br>
-                                        <div class="table-responsive">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>Test1</option>
-                                                <option>Test2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <button class="btn btn-success" style="color:white">Submit</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" style="color:white">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-lg-8 col-xlg-9 col-md-12"><br>
-                        <div class="card">
-                            <form class="white-box">
-                                <h4 class="box-title">Update Supplies/Spare Parts List:</h4> <br>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Select Supplies Description:<br>
-                                        <div class="table-responsive">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>Test1</option>
-                                                <option>Test2</option>
-                                            </select>
+                </div>
+
+                <div class="col-lg-8 col-xlg-9 col-md-12"><br>
+                    <div class="card">
+                        <form class="white-box">
+                            <h4 class="box-title">Add New Supplies:</h4> <br>
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Supplies Name:<br>
+                                    <div class="table-responsive">
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text" placeholder="Enter name..."
+                                                class="form-control p-0 border-0"> 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Update Stocks Available:<br>
-                                        <div class="table-responsive">
-                                            <select class="form-select shadow-none p-0 border-0 form-control">
-                                                <option>Test1</option>
-                                                <option>Test2</option>
-                                            </select>
+                            </div>
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12">Stocks Available:<br>
+                                    <div class="table-responsive">
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text" placeholder="123 456 7890"
+                                                class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <button class="btn btn-success" style="color:white">Submit</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" style="color:white">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-lg-8 col-xlg-9 col-md-12"><br>
-                        <div class="card">
-                            <form class="white-box">
-                                <h4 class="box-title">Add New Supplies:</h4> <br>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Supplies Name:<br>
-                                        <div class="table-responsive">
-                                            <div class="col-md-12 border-bottom p-0">
-                                                <input type="text" placeholder="Enter name..."
-                                                    class="form-control p-0 border-0"> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">Stocks Available:<br>
-                                        <div class="table-responsive">
-                                            <div class="col-md-12 border-bottom p-0">
-                                                <input type="text" placeholder="123 456 7890"
-                                                    class="form-control p-0 border-0">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <button class="btn btn-success" style="color:white">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                </div>
+
             <divclass="container-fluid">
-            </div>                             
+            </div>     
+
+             </div>
+                <div class="col-lg-8 col-xlg-9 col-md-12">
+                    <div class="card">
+                            <div class="white-box">              
+                            </div>
+                    </div>
+                </div>
+            
+            <div class="form-popup">
+                    <div class="container form-wrapper">
+                        <button class="btn close-form">Close</button>
+                        <form action="inc.insert_employee.php" method="POST" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h1 class="form-title">Add new Employee</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label for="name">First Name</label>
+                                    <input type="text" class="form-control" id="name" name="emp-firstName" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="name">Surname</label>
+                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="name">Employee Type</label>
+                                    <select name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                        <option value="Driver">Driver</option>
+                                        <option value="PAO">Public Assistance Officer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="name">Date of Birth</label>
+                                    <input type="text" class="form-control" id="birthdate" name="birthdate" required="">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="email">Contact Number</label>
+                                    <input type="text" class="form-control" id="email" name="email" required="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="something">Address</label>
+                                    <textarea name="something" class="form-control" id=""></textarea>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <label>
+                                </label>
+                            </div>
+                            <input type="submit" class="btn send-form" value="Add Employee">
+                        </form>
+                    </div>
+                </div>
+
         </div>
+
+       
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -264,6 +345,9 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+
+</script>
+
 </body>
 
 </html>

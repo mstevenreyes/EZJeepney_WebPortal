@@ -35,6 +35,16 @@
     border-radius: 10px;
 }
 
+.btn-add-supply{
+    width: 305px; 
+    position: relative; 
+    left:800px;
+    bottom: 25px;
+    border-style: none;
+    background-color: rgb(41, 157, 192);
+    border-radius: 10px;
+    font-weight: bolder
+}
 
 /* FOR THE BUTTONS */
 
@@ -153,4 +163,3 @@ img.schedule-emp-img{
 
 
   /* ====================================== */
-   
