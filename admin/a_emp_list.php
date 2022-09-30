@@ -8,7 +8,7 @@
     <meta name="keywords"
         content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
     <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+        content="">
     <meta name="robots" content="noindex,nofollow">
     <title>Driver Profile - Majetsco</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,9 +76,9 @@
                     </div>
                     <?php } ?>
                 </div>
-                <div class="row">
+                <!-- <div class="row"> -->
                     <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-12">
+                    <!-- <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <form class="form-horizontal form-material">
@@ -117,33 +117,32 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Column -->
-                </div>
-                <div class="col-lg-8 col-xlg-9 col-md-12">
-                    <div class="card">
-                            <div class="white-box">              
-                            </div>
-                    </div>
-                </div>
+                <!-- </div>  -->
+               
                 <!-- FORM POP-UP -->
-                <div class="form-popup">
-                    <div class="container form-wrapper">
-                        <button class="btn close-form">Close</button>
+                <div class="form-popup" >
+                    <div class="container form-wrapper" style="border-radius: 20px;">
+                        <button class="btn close-form" style="border-radius: 20px;">Close</button>
                         <form action="inc.insert_employee.php" method="POST" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h1 class="form-title">Add new Employee</h1>
+                                    <h1 class="form-title" >Add new Employee</h1>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-sm-6">
-                                    <label for="name">First Name</label>
+                                    <label for="emp-firstname">First Name</label>
                                     <input type="text" class="form-control" id="name" name="emp-firstName" required>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="name">Surname</label>
+                                    <label for="emp-surname">Surname</label>
                                     <input type="text" class="form-control" id="emp-surname" name="emp-surname" required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Employee Type</label>
@@ -158,7 +157,7 @@
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="email">Contact Number</label>
-                                    <input type="text" class="form-control" id="email" name="email" required="">
+                                    <input type="text" class="form-control" id="contact-number" name="contact-number" required="">
                                 </div>
                             </div>
                             <div class="row">
@@ -171,7 +170,7 @@
                                 <label>
                                 </label>
                             </div>
-                            <input type="submit" class="btn send-form" value="Add Employee">
+                            <input type="submit" class="btn send-form" value="Add Employee" style="border-radius: 20px;">
                         </form>
                     </div>
                 </div>
@@ -218,6 +217,7 @@
             $('input[name="birthdate"]').datepicker({
                 changeMonth: true,
                 changeYear: true,
+                yearRange: '-70:+0',
                 dateFormat: 'yy-dd-mm'
             });
             // $('input[name="date-fixed"]').datepicker({
