@@ -268,45 +268,24 @@
                         <form action="inc.insert_employee.php" method="POST" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h1 class="form-title">Add new Employee</h1>
+                                    <h1 class="form-title">Add Spare Part/s</h1>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-sm-6">
-                                    <label for="name">First Name</label>
+                                    <label for="name">Parts to be Added</label>
                                     <input type="text" class="form-control" id="name" name="emp-firstName" required>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="name">Surname</label>
+                                    <label for="name">Quantity</label>
                                     <input type="text" class="form-control" id="emp-surname" name="emp-surname" required>
-                                </div>
-                                <div class="form-group col-sm-12">
-                                    <label for="name">Employee Type</label>
-                                    <select name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
-                                        <option value="Driver">Driver</option>
-                                        <option value="PAO">Public Assistance Officer</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="name">Date of Birth</label>
-                                    <input type="text" class="form-control" id="birthdate" name="birthdate" required="">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="email">Contact Number</label>
-                                    <input type="text" class="form-control" id="email" name="email" required="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="something">Address</label>
-                                    <textarea name="something" class="form-control" id=""></textarea>
                                 </div>
                             </div>
                             <div class="form-check">
                                 <label>
                                 </label>
                             </div>
-                            <input type="submit" class="btn send-form" value="Add Employee">
+                            <input type="submit" class="btn send-form" value="Add Part/s">
                         </form>
                     </div>
                 </div>
@@ -377,9 +356,9 @@
             var container = $(".form-wrapper");
             var form = $(".form-popup");
 
-            // if (!container.is(e.target) && container.has(e.target).length === 0) {
-            //     form.hide();
-            // }
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                form.hide();
+            }
         });
 
 
