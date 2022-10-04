@@ -118,12 +118,14 @@
                                         <th class="table-align">Supply:</th>
                                         <th class="border-top-0">Supplies Description:</th>
                                         <th class="border-top-0">Stocks Available:</th>
+                                        <th class="border-top-0">Edit Details:</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <td class="border-top-0"><img src="../employee/employee_profiles/DR-00001/DR-00001.png" class="schedule-emp-img" alt="image"></td>
                                     <td class="border-top-0"><br>Testing 1</td>
                                     <td class="border-top-0"><br>150</td>
+                                    <td class="border-top-0"><button class="col-sm-6 col-md-6 col-lg-3 f-icon"><i class="fas fa-pencil-alt"></i></button></td>
                                 </tbody>
                             </table>
                         </div>
