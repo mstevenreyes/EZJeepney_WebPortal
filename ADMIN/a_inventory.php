@@ -115,183 +115,83 @@
                             <table class="table text-nowrap schedule-table">
                                 <thead>
                                     <tr>
-                                        <th class="table-align">Supply:</th>
-                                        <th class="border-top-0">Supplies Description:</th>
+                                        <th class="border-top-0">Item Name:</th>
                                         <th class="border-top-0">Stocks Available:</th>
                                         <th class="border-top-0">Edit Details:</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <td class="border-top-0"><img src="../employee/employee_profiles/DR-00001/DR-00001.png" class="schedule-emp-img" alt="image"></td>
                                     <td class="border-top-0"><br>Testing 1</td>
                                     <td class="border-top-0"><br>150</td>
-                                    <td class="border-top-0"><button class="col-sm-6 col-md-6 col-lg-3 f-icon"><i class="fas fa-pencil-alt"></i></button></td>
+                                    <td class="border-top-0"><button class="col-sm-6 col-md-6 col-lg-3 f-icon btn-edit edit-form"><i class="fas fa-pencil-alt"></i></button></td>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
-
-                <div class="page-breadcrumb bg-white">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Inventory Settings</h4>
-                        </div>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <div class="col-lg-8 col-xlg-9 col-md-12"><br>
-                    <div class="card">
-                        <form class="white-box">
-                            <h4 class="box-title">Update Vehicles List:</h4> <br>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Select Plate Number<br>
-                                    <div class="table-responsive">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>Test1</option>
-                                            <option>Test2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Update Date Acquired:<br>
-                                    <div class="table-responsive">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>Test1</option>
-                                            <option>Test2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Update Status:<br>
-                                    <div class="table-responsive">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>Test1</option>
-                                            <option>Test2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Schedule Maintenance:<br>
-                                    <div class="table-responsive">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>Test1</option>
-                                            <option>Test2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <button class="btn btn-success" style="color:white">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-lg-8 col-xlg-9 col-md-12"><br>
-                    <div class="card">
-                        <form class="white-box">
-                            <h4 class="box-title">Update Supplies/Spare Parts List:</h4> <br>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Select Supplies Description:<br>
-                                    <div class="table-responsive">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>Test1</option>
-                                            <option>Test2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Update Stocks Available:<br>
-                                    <div class="table-responsive">
-                                        <select class="form-select shadow-none p-0 border-0 form-control">
-                                            <option>Test1</option>
-                                            <option>Test2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <button class="btn btn-success" style="color:white">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-lg-8 col-xlg-9 col-md-12"><br>
-                    <div class="card">
-                        <form class="white-box">
-                            <h4 class="box-title">Add New Supplies:</h4> <br>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Supplies Name:<br>
-                                    <div class="table-responsive">
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Enter name..."
-                                                class="form-control p-0 border-0"> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">Stocks Available:<br>
-                                    <div class="table-responsive">
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="123 456 7890"
-                                                class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <button class="btn btn-success" style="color:white">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            <divclass="container-fluid">
-            </div>     
-
-             </div>
-                <div class="col-lg-8 col-xlg-9 col-md-12">
-                    <div class="card">
-                            <div class="white-box">              
-                            </div>
-                    </div>
-                </div>
+                </div>  
             
+            <!-- ADD NEW PARTS OR SUPPLIES -->
             <div class="form-popup">
-                    <div class="container form-wrapper">
-                        <button class="btn close-form">Close</button>
-                        <form action="inc.insert_employee.php" method="POST" novalidate="novalidate">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <h1 class="form-title">Add Spare Part/s</h1>
-                                </div>
+                <div class="container form-wrapper">
+                    <button class="btn close-form">Close</button>
+                    <form action="" method="POST" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h1 class="form-title">Add New Spare Part/s</h1>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <label for="name">Parts to be Added</label>
-                                    <input type="text" class="form-control" id="name" name="emp-firstName" required>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="name">Quantity</label>
-                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" required>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label for="name">Part/s to be Added:</label>
+                                <input type="text" class="form-control" id="spareParts" name="spare_parts" required>
                             </div>
-                            <div class="form-check">
-                                <label>
-                                </label>
+                            <div class="form-group col-sm-6">
+                                <label for="name">Quantity:</label>
+                                <input type="text" class="form-control" id="qty" name="quantity" required>
                             </div>
-                            <input type="submit" class="btn send-form" value="Add Part/s">
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-check">
+                            <label></label>
+                        </div>
+                        <input type="submit" class="btn send-form" value="Confirm">
+                    </form>
                 </div>
+            </div>
 
+            <!-- EDIT CURRENT INVENTORY -->
+            <div class="eform-popup">
+                <div class="eform-wrapper">
+                    <button class="btn eclose-form">Close</button>
+                    <form action="" method="POST" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="eform-check">
+                                    <label></label>
+                                </div>
+                                <h1 class="form-title">Edit Inventory Details:</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="eform-check">
+                            <label></label>
+                        </div>
+                            <div class="form-group col-sm-6">
+                                <label for="name">Edit Item Name:</label>
+                                <input type="text" class="eform-control" id="spareParts" name="spare_parts" required>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="name">Quantity:</label>
+                                <input type="text" class="eform-control" id="qty" name="quantity" required>
+                            </div>
+                        </div>
+                        <div class="eform-check">
+                            <label></label>
+                        </div>
+                        <input type="submit" class="btn esend-form" value="Confirm">
+                    </form>
+                </div>
+            </div>
+            <!-- EDIT CURRENT INVENTORY -->
         </div>
 
        
@@ -331,39 +231,56 @@
 </script>
     <script>
 
-        // DATEPICKER
-          $(function() {
-            $('input[name="birthdate"]').datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'yy-dd-mm'
-            });
-            // $('input[name="date-fixed"]').datepicker({
-            //     dateFormat: 'yy-dd-mm'
-            // });
+        // // DATEPICKER
+        //   $(function() {
+        //     $('input[name="birthdate"]').datepicker({
+        //         changeMonth: true,
+        //         changeYear: true,
+        //         dateFormat: 'yy-dd-mm'
+        //     });
+        //     // $('input[name="date-fixed"]').datepicker({
+        //     //     dateFormat: 'yy-dd-mm'
+        //     // });
 
+        // });
+
+        // FUNCTION FOR OPEN-FORM //
+        $(document).ready(function() {
+            $('.open-form').click(function() {
+                $('.form-popup').show();
+            });
+            $('.close-form').click(function() {
+                $('.form-popup').hide();
+    
+            });
+
+            $(document).mouseup(function(e) {
+                var container = $(".form-wrapper");
+                var form = $(".form-popup");
+
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    form.hide();
+                }
+            });
         });
 
         $(document).ready(function() {
-        // FUNCTION FOR FORM
-        $('.open-form').click(function() {
-            $('.form-popup').show();
-        });
-        $('.close-form').click(function() {
-            $('.form-popup').hide();
-   
-        });
+            $('.edit-form').click(function() {
+                $('.eform-popup').show();
+            });
+            $('.eclose-form').click(function() {
+                $('.eform-popup').hide();
+    
+            });
 
-        $(document).mouseup(function(e) {
-            var container = $(".form-wrapper");
-            var form = $(".form-popup");
+            $(document).mouseup(function(e) {
+                var econtainer = $(".eform-wrapper");
+                var eform = $(".eform-popup");
 
-            if (!container.is(e.target) && container.has(e.target).length === 0) {
-                form.hide();
-            }
-        });
-
-
+                if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
+                    eform.hide();
+                }
+            });
         });
     </script>
 
