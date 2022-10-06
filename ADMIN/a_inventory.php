@@ -33,6 +33,7 @@
 <body>
 <?php
         include 'sidebar.php';
+        include '../dbh.inc.php';
     ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -76,31 +77,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- SAMPLE DATA ONLY -->
-                                        <tr>
-                                            <td class="border-top-0">123AB</td>
-                                            <td class="border-top-0">September 12, 2020</td>
-                                            <td class="border-top-0">On-route</td>
-                                            <td class="border-top-0">October 6, 2022</td>
-                                        </tr>
-                                        <!-- END OF SAMPLE DATA -->
-                                    <!-- <?php
-                                        // require_once '../dbh.inc.php';  
-                                        // $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
-                                        // FROM `tb_attendance_sheet` as att
-                                        // INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='pao';";
-                                        // $dt = mysqli_query($conn, $statement);
-                                        // while ($result = mysqli_fetch_array($dt)){
-                                        //     $result = "<tr><td>"  . $result['attendance_date'] . "</td>" .
-                                        //     "<td>"  . $result['emp_id'] . "</td>" .
-                                        //     "<td>"  . $result['emp_surname'] . "</td>" .
-                                        //     "<td>"  . $result['emp_firstname'] . "</td>" .
-                                        //     "<td>"  . $result['time_in'] . "</td>" .
-                                        //     "<td>"  . $result['time_out'] . "</td></tr>";
-                                        //     echo $result;
-                                        // }
-                                    ?> -->
-                                    </tbody>
+                                        <!-- GET VEHICLES LIST DATA FROM DB -->
+                                        <?php
+                                            require_once '../dbh.inc.php';  
+                                            $statement = "SELECT plate_number, date_acquired, date_issued, date_fixed FROM tb_jeepney";
+                                            $dt = mysqli_query($conn, $statement);
+                                            while ($result = mysqli_fetch_array($dt)){
+
+                                                // To check if date_acquired and date_issued is null, defuault is 1-11967 //
+                                                $date_acquired = empty($result['date_acquired']) ? "" : date("F d, Y", strtotime($result['date_acquired']));
+                                                $sched = empty($result['date_issued']) ? "" : date("F d, Y", strtotime($result['date_issued']));
+
+                                                if(empty($result['date_issued']) && empty($result['date_fixed'])){
+                                                    $status = "No Data";
+                                                } 
+                                                else if(empty($result['date_issued']) || empty($result['date_fixed'])){
+                                                    $status = "Maintenance";
+                                                }
+                                                else{
+                                                    $status = "Functioning";
+                                                }
+
+                                                $result = "<tr><td>"  . $result['plate_number'] . "</td>".
+                                                "<td>"  . $date_acquired . "</td>" .
+                                                "<td>"  . $status . "</td>" .
+                                                "<td>"  . $sched . "</td>";
+                                                // "<td>"  . $result['time_in'] . "</td>" .
+                                                // "<td>"  . $result['time_out'] . "</td></tr>";
+                                                echo $result;
+                                            }
+                                        ?>
+                                        </tbody>
                                 </table>
                             </div>
                         </div>
@@ -121,9 +128,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <td class="border-top-0"><br>Testing 1</td>
-                                    <td class="border-top-0"><br>150</td>
-                                    <td class="border-top-0"><button class="col-sm-6 col-md-6 col-lg-3 f-icon btn-edit edit-form"><i class="fas fa-pencil-alt"></i></button></td>
+                                    <!-- GET SUPPLIES/PARTS DATA FROM DB -->
+                                    <?php
+                                        require_once '../dbh.inc.php';  
+                                        $statement = "SELECT item, quantity FROM tb_inventory";
+                                        $dt = mysqli_query($conn, $statement);
+                                        while ($result = mysqli_fetch_array($dt)){
+                                        $result = "<tr><td>"  . $result['item'] . "</td>" .
+                                        "<td>"  . $result['quantity'] . "</td>";
+                                        echo $result;
+                                    ?>
+                                        <td class="border-top-0"><button class="col-sm-6 col-md-6 col-lg-3 f-icon btn-edit edit-form"><i class="fas fa-pencil-alt"></i></button></td>
+                                    <?php
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -134,7 +152,7 @@
             <div class="form-popup">
                 <div class="container form-wrapper">
                     <button class="btn close-form">Close</button>
-                    <form action="" method="POST" novalidate="novalidate">
+                    <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <h1 class="form-title">Add New Spare Part/s</h1>
@@ -143,7 +161,7 @@
                         <div class="row">
                             <div class="form-group col-sm-6">
                                 <label for="name">Part/s to be Added:</label>
-                                <input type="text" class="form-control" id="spareParts" name="spare_parts" required>
+                                <input type="text" class="form-control" id="item" name="item" required>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="name">Quantity:</label>
@@ -153,7 +171,7 @@
                         <div class="form-check">
                             <label></label>
                         </div>
-                        <input type="submit" class="btn send-form" value="Confirm">
+                        <input type="submit" name="submit" class="btn send-form" value="Confirm">
                     </form>
                 </div>
             </div>
@@ -162,7 +180,7 @@
             <div class="eform-popup">
                 <div class="eform-wrapper">
                     <button class="btn eclose-form">Close</button>
-                    <form action="" method="POST" novalidate="novalidate">
+                    <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <div class="eform-check">
@@ -177,7 +195,7 @@
                         </div>
                             <div class="form-group col-sm-6">
                                 <label for="name">Edit Item Name:</label>
-                                <input type="text" class="eform-control" id="spareParts" name="spare_parts" required>
+                                <input type="text" class="eform-control" id="item" name="item" required>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="name">Quantity:</label>
@@ -187,7 +205,7 @@
                         <div class="eform-check">
                             <label></label>
                         </div>
-                        <input type="submit" class="btn esend-form" value="Confirm">
+                        <input type="submit" name="update" class="btn esend-form" value="Confirm">
                     </form>
                 </div>
             </div>
