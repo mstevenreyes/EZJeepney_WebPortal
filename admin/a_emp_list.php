@@ -125,29 +125,33 @@
                 <div class="form-popup" >
                     <div class="container form-wrapper" style="border-radius: 20px;">
                         <button class="btn close-form" style="border-radius: 20px;">Close</button>
-                        <form action="inc.insert_employee.php" method="POST" novalidate="novalidate">
+                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h1 class="form-title" >Add new Employee</h1>
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label for="emp-image">Upload Employee Image</label>
+                                    <input type="file" class="form-control" id="emp-image" name="emp-image" accept="image/png" required>
+                                </div>
                                 <div class="form-group col-sm-6">
                                     <label for="emp-firstname">First Name</label>
-                                    <input type="text" class="form-control" id="name" name="emp-firstName" required>
+                                    <input type="text" class="form-control" id="name" name="emp-firstname" required>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="emp-surname">Surname</label>
-                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" required>
+                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" autocomplete="nope">
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <input type="password" class="form-control" id="password" name="password" autocomplete="nope" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Employee Type</label>
-                                    <select name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
-                                        <option value="Driver">Driver</option>
+                                    <select class="form-control" name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                        <option value="DRIVER">Driver</option>
                                         <option value="PAO">Public Assistance Officer</option>
                                     </select>
                                 </div>
@@ -170,7 +174,7 @@
                                 <label>
                                 </label>
                             </div>
-                            <input type="submit" class="btn send-form" value="Add Employee" style="border-radius: 20px;">
+                            <input type="submit" class="btn send-form" name="submit" value="Add Employee" style="border-radius: 20px;">
                         </form>
                     </div>
                 </div>
@@ -227,12 +231,12 @@
         });
 
         $(document).ready(function() {
-        // FUNCTION FOR FORM
-        $('.open-form').click(function() {
-            $('.form-popup').show();
-        });
-        $('.close-form').click(function() {
-            $('.form-popup').hide();
+            // FUNCTION FOR FORM
+            $('.open-form').click(function() {
+                $('.form-popup').show();
+            });
+            $('.close-form').click(function() {
+                $('.form-popup').hide();
    
         });
 
