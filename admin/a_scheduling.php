@@ -28,6 +28,7 @@
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="css/steven_style.css">
 </head>
 
 <body>
@@ -46,7 +47,9 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <h4 class="page-title">Daily Scheduling - Majetsco</h4>
                         <p>Employee Scheduling</p>
-            
+                        <div style="display:flex">
+                            <button class="btn-add-driver btn open-form">Add Schedule</button>
+                        </div>
                     </div> 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -64,49 +67,76 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
+                        <input type="text" name="daterange" id="schedule-range">
                         <div style="display:flex">
-                            
-                            <h3 class="box-title">Attendance Record</h3>
-                            <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button>
+                            <button class="btn-schedule-go" id="btn-schedule-go">Go</button>
                         </div>
                             <div class="table-responsive">
-                                <table class="table text-nowrap" id="project">
+                                <table class="table text-nowrap" id="schedule-table">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0" style="color:blue">Employee ID</th>
-                                            <th class="border-top-0">September 27</th>
-                                            <th class="border-top-0">September 28</th>
-                                            <th class="border-top-0">September 29</th>
-                                            <th class="border-top-0">September 30</th>
-                                            <th class="border-top-0">October 1</th>
-                                            <th class="border-top-0">October 2</th>
+                                            <th class="border-top-0">Employee</th>
+                                            <th class="border-top-0" >Day 1</th>
+                                            <th class="border-top-0">Day 2</th>
+                                            <th class="border-top-0">Day 3</th>
+                                            <th class="border-top-0" >Day 4</th>
+                                            <th class="border-top-0" >Day 5</th>
+                                            <th class="border-top-0" >Day 6</th>
+                                            <th class="border-top-0" >Day 7</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="border-top-0" style="color:blue;"><img src="../employee/employee_profiles/DR-00001/DR-00001.png" class="schedule-emp-img" alt="image"><br>DR-000001<p></p></td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="border-top-0" style="color:blue;"><img src="../employee/employee_profiles/PAO-00001/PAO-00001.png" class="schedule-emp-img" alt="image"><br><p>PAO-000001</p></td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                            <td class="border-top-0">8:00AM-5:00PM</td>
-                                        </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- ===================== FORM POP-UP =========================== -->
+                <div class="form-popup" >
+                    <div class="container form-wrapper" style="border-radius: 20px;">
+                        <button class="btn close-form" style="border-radius: 20px;">Close</button>
+                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h1 class="form-title" >Add Schedule</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="form-group col-sm-12">
+                                    <label for="driver">Select Driver</label>
+                                    <select class="form-control" name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                        <option value="DR-00001">DR-00001</option>
+                                        <option value="DR-00002">DR-00002</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="pao">Select PAO</label>
+                                    <select class="form-control" name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                        <option value="PAO-00001">PAO-00001</option>
+                                        <option value="PAO-00001">DR-00002</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="name">Select Jeepney Unit</label>
+                                    <select class="form-control" name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                        <option value="ABZ-2312">ABZ-2312</option>
+                                        <option value="ACB-1122">ACB-1122</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="name">Schedule Date</label>
+                                    <select class="form-control" name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                        
+                                    </select>
+                                </div>
+                            <div class="form-check">
+                                <label>
+                                </label>
+                            </div>
+                            <input type="submit" class="btn send-form" name="submit" value="Add Schedule" style="border-radius: 20px;">
+                        </form>
+                    </div>
+                </div>
+                <!-- ============================================================= -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -151,19 +181,14 @@
     <script src="js/custom.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-        // For initializing data table jQuery 
-         $(document).ready(function () {
-            $('#project').DataTable({
-                "pageLength" : 10,
-                scrollX: true,
-                columnDefs: [
-                    { "width": "200px", targets: "_all" },
-                    { "className": "schedule-table", targets: "_all" } 
-                ]
-            });
-        });
-    </script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- DATE RANGE END -->
+    <!-- CUSTOM JS FOR SCHEDULING TAB -->
+    <script src="js/a_scheduling.js"></script>
+    <!-- CUSTOM JS SCHEDULE END -->
 </body>
 
 </html>
