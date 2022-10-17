@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
-
 <body>
 <?php
         include 'sidebar.php';
@@ -62,7 +61,6 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Attendance Record</h3> <br>
-
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
