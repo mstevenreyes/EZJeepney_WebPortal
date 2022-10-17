@@ -1,5 +1,7 @@
 /*============ STEVEN CUSTOM CSS======== */
 
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .emp-row{
     display: flex;
     flex-wrap: wrap;
@@ -130,7 +132,9 @@ th{
     margin-left: 80px;
 }
 
-.schedule-table{
+.schedule-column{
+    font-family: Arvo, 'Courier New', Courier, monospace;
+    font-size: 16px;
     text-align: center;
     vertical-align: middle;
 }
@@ -154,3 +158,18 @@ img.schedule-emp-img{
 
   /* ====================================== */
    
+  /* ==================== FOR SCHEDULING PAGE ======================= */
+  
+  .btn-add-schedule{
+    font-size: 12px;
+    border: solid 2px rgb(41, 157, 192);
+    color: white;
+    background-color: rgb(41, 157, 192);
+    border-radius: 20px;
+    transition-duration: .2s;
+  }
+  .btn-add-schedule:hover{
+    border: 1px blue;
+    border: solid 2px rgb(20, 80, 99);
+    border-radius: 20px;
+  }
