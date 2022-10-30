@@ -47,12 +47,14 @@
 }
 
 .btn-edit{
+    width: 305px; 
     position: relative; 
-    border: none;
-    outline: 0 !important;
-    background-color: color(#fafafa);
+    left:800px;
+    bottom: 25px;
+    border-style: none;
+    background-color: rgb(192, 139, 41);
     border-radius: 10px;
-
+    font-weight: bolder
 }
 
 
@@ -177,9 +179,15 @@ img.schedule-emp-img{
 
     .edit-form,
     .ereset-form {
+        margin-top: 50px;
+        margin-left: 50px;
         cursor: pointer;
+        color: white;
+        padding: 10px 25px;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
         border-radius: 19px;
+        border: 2px solid rgb(41, 157, 192);
+        background-color: rgb(41, 157, 192);
         text-transform: uppercase;
         font-size: 14px;
         transition: .3s;
@@ -249,5 +257,39 @@ img.schedule-emp-img{
     .esuccess-message h1 {
         color: #ffffff;
         margin-top: 3em;
+    }
+
+    .e_select {
+        width: 70%;
+        padding: 1px 20px;
+        margin-left: 5px;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
+        background-color:#ffffff;
+    }
+
+    .e_textField {
+        width: 408px;
+        padding: 1px 20px;
+        margin-left: 5px;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
+        background-color:#ffffff;
+    }
+
+    .e_textField2 {
+        width: 425px;
+        padding: 1px 20px;
+        margin-left: 5px;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
+        background-color:#ffffff;
+    }
+
+    .e_marginInvent {
+        margin-left: 40px;
     }
   /* ====================================== */

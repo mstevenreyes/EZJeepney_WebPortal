@@ -116,7 +116,13 @@
 
                 <div class="col-sm-12">
                     <div class="white-box">
-                        <h3 class="box-title">Supplies/Spare Parts List</h3> <br>
+                        <div class="page-breadcrumb bg-white">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                    <h3 class="page-title">Supplies/Spare Parts List</h3>
+                                </div>
+                                <button class="btn-edit btn edit-form">EDIT INVENTORY DETAILS:</button>
+                            </div>                     
 
                         <div class="table-responsive">
                             <table class="table text-nowrap schedule-table">
@@ -124,22 +130,23 @@
                                     <tr>
                                         <th class="border-top-0">Item Name:</th>
                                         <th class="border-top-0">Stocks Available:</th>
-                                        <th class="border-top-0">Edit Details:</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- GET SUPPLIES/PARTS DATA FROM DB -->
                                     <?php
-                                        require_once '../dbh.inc.php';  
+                                        $items = array();
+                                        $counter = 0;
+
+                                        require_once '../dbh.inc.php'; 
                                         $statement = "SELECT item, quantity FROM tb_inventory";
                                         $dt = mysqli_query($conn, $statement);
+
                                         while ($result = mysqli_fetch_array($dt)){
-                                        $result = "<tr><td>"  . $result['item'] . "</td>" .
-                                        "<td>"  . $result['quantity'] . "</td>";
+                                        ++$counter;
+                                        $items[] = $result['item'];
+                                        $result = "<tr><td>" . $result['item'] . "</td><td>"  . $result['quantity'] . "</td>";
                                         echo $result;
-                                    ?>
-                                        <td class="border-top-0"><button class="col-sm-6 col-md-6 col-lg-3 f-icon btn-edit edit-form"><i class="fas fa-pencil-alt"></i></button></td>
-                                    <?php
                                         }
                                     ?>
                                 </tbody>
@@ -178,9 +185,9 @@
 
             <!-- EDIT CURRENT INVENTORY -->
             <div class="eform-popup">
-                <div class="eform-wrapper">
+                <div class="container eform-wrapper">
                     <button class="btn eclose-form">Close</button>
-                    <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
+                    <form action="a_inventory_edit.php" method="POST" novalidate="novalidate">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <div class="eform-check">
@@ -193,19 +200,35 @@
                         <div class="eform-check">
                             <label></label>
                         </div>
-                            <div class="form-group col-sm-6">
-                                <label for="name">Edit Item Name:</label>
-                                <input type="text" class="eform-control" id="item" name="item" required>
+
+                            <div class="col-md-12 e_marginInvent">
+                                <label for="name">Select Item:</label>
+                                <select class="eform-control e_select" id="item" name="item" required>
+                                    <option class="e_select" value=""></option>
+                                    <?php
+                                        require_once '../dbh.inc.php'; 
+                                        $statement = "SELECT item FROM tb_inventory";
+                                        $dt = mysqli_query($conn, $statement);
+                                        while ($result = mysqli_fetch_array($dt)){
+                                        $result = "<option>" . $result['item'] . "</option>";
+                                        echo $result;
+                                        }
+                                    ?>
+                                </select>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="name">Quantity:</label>
-                                <input type="text" class="eform-control" id="qty" name="quantity" required>
+                            <div class="form-group mb-4 col-sm-12 e_marginInvent"><br>
+                                <label for="name">Edit Name:</label>
+                                <input type="text" class="e_textField2" id="item" name="quantity" required>
+                            </div>
+                            <div class="form-group mb-4 col-sm-12 e_marginInvent">
+                                <label for="name">Edit Quantity:</label>
+                                <input type="text" class="e_textField" id="qty" name="quantity" required>
                             </div>
                         </div>
                         <div class="eform-check">
                             <label></label>
                         </div>
-                        <input type="submit" name="update" class="btn esend-form" value="Confirm">
+                        <input type="submit" name="update" class="btn esend-form e_marginInvent" value="Confirm">
                     </form>
                 </div>
             </div>
