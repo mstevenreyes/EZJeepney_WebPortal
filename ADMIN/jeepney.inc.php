@@ -2,10 +2,10 @@
 
     function addJeepney($conn, $plate_num, $route){
 
-        $sql = "INSERT INTO tb_jeepney VALUES (?, ?)";
+        $sql = "INSERT INTO tb_jeepney (plate_number, jeepney_route) VALUES (?, ?)";
         $stmt = mysqli_stmt_init($conn); // prepare connection
             if(!mysqli_stmt_prepare($stmt, $sql)){
-                header('location: a_jeepney.php?error=stmtfailed');
+                header('location: jeepney.inc.php?error=stmtfailed');
                 exit();
             }
         mysqli_stmt_bind_param($stmt, "ss", $plate_num, $route); // bind variables
