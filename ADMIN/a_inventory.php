@@ -203,14 +203,17 @@
 
                             <div class="col-md-12 e_marginInvent">
                                 <label for="name">Select Item:</label>
-                                <select class="eform-control e_select" id="item" name="item" required>
+                                <select class="eform-control e_select" id="item" name="edit_item" required>
                                     <option class="e_select" value=""></option>
                                     <?php
                                         require_once '../dbh.inc.php'; 
                                         $statement = "SELECT item FROM tb_inventory";
                                         $dt = mysqli_query($conn, $statement);
+
                                         while ($result = mysqli_fetch_array($dt)){
-                                        $result = "<option>" . $result['item'] . "</option>";
+                                        unset($itemName);
+                                        $itemName = $result['item'];
+                                        $result = "<option class = e_select value= '$itemName'>" . $result['item'] . "</option>";
                                         echo $result;
                                         }
                                     ?>
@@ -218,11 +221,11 @@
                             </div>
                             <div class="form-group mb-4 col-sm-12 e_marginInvent"><br>
                                 <label for="name">Edit Name:</label>
-                                <input type="text" class="e_textField2" id="item" name="quantity" required>
+                                <input type="text" class="e_textField2" id="item2" name="edit_name" required>
                             </div>
                             <div class="form-group mb-4 col-sm-12 e_marginInvent">
                                 <label for="name">Edit Quantity:</label>
-                                <input type="text" class="e_textField" id="qty" name="quantity" required>
+                                <input type="text" class="e_textField" id="qty2" name="edit_quantity" required>
                             </div>
                         </div>
                         <div class="eform-check">

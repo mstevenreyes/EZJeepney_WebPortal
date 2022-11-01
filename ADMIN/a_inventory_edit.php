@@ -2,27 +2,23 @@
 
     require '../dbh.inc.php';
 
-    $item = $_POST['item'];
-    $qty = $_POST['quantity'];
-    $submitBtn = $_POST['submit'];
-    $tbName = "tb_inventory";
+    $oldName = $_POST['edit_item'];
+    $newName = $_POST['edit_name'];
+    $qty = $_POST['edit_quantity'];
+    $submitBtn = $_POST['update'];
 
-    // $sql = "INSERT INTO tb_inventory (item, quantity) VALUES (?, ?)";
-
-    // if (mysqli_query( $conn, $sql)){
-    //     echo "Record Added";
-    // }
-    // else {
-    //     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    // }
-    // mysqli_close($conn);
-    
     if(isset($submitBtn)){
-        // $stmt = mysqli_prepare($conn, "INSERT INTO $tbName (item, quantity) VALUES (?, ?)"); 
-        // mysqli_stmt_bind_param($stmt, "si", $item, $qty);
-        // mysqli_stmt_execute($stmt);
-        // mysqli_stmt_close($stmt);
-        // mysqli_close($conn);
+
+        $sql = "UPDATE tb_inventory SET item = '$newName', quantity = '$qty' WHERE item = '$oldName'";
+        $sql_run = mysqli_query($conn, $sql);
+
+        if($sql_run){
+            echo '<script alert("Data Updated"); </script';
+        }
+        else{
+            echo '<script alert("Data Not Updated"); </script';
+        }
+
 
         header('location: a_inventory.php');
     }
