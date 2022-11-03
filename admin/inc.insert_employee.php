@@ -1,10 +1,6 @@
 <?php
-
-
     require '../dbh.inc.php';
-
     // POST VARIABLES
-
     $empSurname = $_POST['emp-surname'];
     $empImage = $_FILES['emp-image']['name'];
     $empImageSource = $_FILES['emp-image']['tmp_name'];
@@ -35,14 +31,13 @@
         // FORMS NEW EMPLOYEE ID
         $empID = $prefix . "-" . str_pad(intval(substr($result2, -5, 5)) + 1, 5, "0", STR_PAD_LEFT);
         // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
-        $sql = "INSERT INTO $tablename(emp_id, emp_type, emp_pword, emp_surname, emp_firstname) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO $tablename() VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             // echo "ERROR: " . mysqli_error($conn);
             header('location: a_emp_list.php?error=stmtfailed');
             exit();
         }
-
         mysqli_stmt_bind_param($stmt, "sssss", $empID, $empType, $empPassword, $empSurname, $empFirstname);
         if(!mysqli_stmt_execute($stmt)){
             echo "ERROR: " . mysqli_error($conn);
@@ -52,7 +47,6 @@
         // RENAMING IMAGE
         $temp = explode(".", $_FILES["emp-image"]["name"]);
         $newfilename =  $empID . '.' . end($temp);
-
         // MAKES DIRECTORY OF IMAGE AND UPLOADS EMPLOYEE IMAGE TO SERVER
         $empDirectory = "../employee/employee_profiles/{$empID}/" ;
         mkdir(
