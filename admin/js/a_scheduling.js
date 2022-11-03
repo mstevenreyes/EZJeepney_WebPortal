@@ -32,6 +32,16 @@ $(function() {
     }),
     $('.close-form').click(function() {
         $('.form-popup').hide(); }); //HIDES POPUP
+    
+    // tomorrow.toISOString().split('T')[0]
+    // console.log(tomorrow);
+    // var tomorrowFormatted = tomorrow.toDateString('yy-MM-dd')
+    $("#start-date").change(function(){
+        var startDate = $(this).val();
+        var endDate = moment(startDate, "YYYY-MM-DD").add(6, 'days');
+        // console.log(endDate);
+        $("#end-date").val(endDate.format('YYYY-MM-DD'));
+    });
 });
 
 // $(window).on('load', function() {
@@ -46,6 +56,8 @@ $( function() {
         });
     });
 });
+
+
 // $('#schedule-range').change(function(){
 //     var scheduleRange = $('#schedule-range').val().split(" "); //Splits Date
 //     var date = getDates(scheduleRange[0], scheduleRange[2]); 

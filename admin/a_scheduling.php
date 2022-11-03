@@ -35,24 +35,55 @@
             $day5= new DateTime('+4 day');
             $day6= new DateTime('+5 day');
             $day7= new DateTime('+6 day');
+
+            
         }else{
-            $day1 = $_POST['start-date'];
+            $day1String = $_POST['start-date'];
+            $day1 = new DateTime($_POST['start-date']);
+            $day2= new DateTime($_POST['start-date']);
+            $day2->add(new DateInterval('P1D'));
+            $day3= new DateTime($_POST['start-date']);
+            $day3->add(new DateInterval('P2D'));
+            $day4= new DateTime($_POST['start-date']);
+            $day4->add(new DateInterval('P3D'));
+            $day5= new DateTime($_POST['start-date']);
+            $day5->add(new DateInterval('P4D'));
+            $day6= new DateTime($_POST['start-date']);
+            $day6->add(new DateInterval('P5D'));
+            $day7= new DateTime($_POST['start-date']);
+            $day7->add(new DateInterval('P6D'));
+
+            // $day2= new DateTime('+1 day');
+            // $day3= new DateTime('+2 day');
+            // $day4= new DateTime('+3 day');
+            // $day5= new DateTime('+4 day');
+            // $day6= new DateTime('+5 day');
+            // $day7= new DateTime('+6 day');
         }
+        
         $day1Formatted = $day1->format('Y-m-d');
         $day2Formatted = $day2->format('Y-m-d');
         $day3Formatted = $day3->format('Y-m-d');
         $day4Formatted = $day4->format('Y-m-d');
         $day5Formatted = $day5->format('Y-m-d');
         $day6Formatted = $day6->format('Y-m-d');
-        $day7Formatted = $day6->format('Y-m-d');
-        $day1Number = $day1->format('d') ;
-        $day2Number = $day2->format('d') ;
-        $day3Number = $day3->format('d') ;
-        $day4Number = $day4->format('d') ;
-        $day5Number = $day5->format('d') ;
-        $day6Number = $day6->format('d') ;
-        $day7Number = $day7->format('d') ;
-        $monthName = getMonthName($day1Formatted); // Gets month name 
+        $day7Formatted = $day7->format('Y-m-d');
+    
+        $day1Number = $day1->format('d');
+        $day2Number = $day2->format('d');
+        $day3Number = $day3->format('d');
+        $day4Number = $day4->format('d');
+        $day5Number = $day5->format('d');
+        $day6Number = $day6->format('d');
+        $day7Number = $day7->format('d');
+
+        $day1monthName = getMonthName($day1Formatted); // Gets month name 
+        $day2monthName = getMonthName($day2Formatted); // Gets month name 
+        $day3monthName = getMonthName($day3Formatted);
+        $day4monthName = getMonthName($day4Formatted);
+        $day5monthName = getMonthName($day5Formatted);
+        $day6monthName = getMonthName($day6Formatted);
+        $day7monthName = getMonthName($day7Formatted);
         function getMonthName($date){
             $monthName = '';
             $month = substr($date, 5, 2);
@@ -98,8 +129,6 @@
             }
             return $monthName;
         }
-      
-
 ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -129,11 +158,11 @@
                     <div class="col-sm-12">
                         <div style="display:flex">
                             <div class="white-box">
-                                <form action="#" method="POST">
+                                <form action="a_scheduling.php" method="POST">
                                     <label for="start-date">Start Date</label>
-                                    <input type="text" class="datepicker" name="start-date" id="start-date">
+                                    <input type="text" class="datepicker" name="start-date" id="start-date" autocomplete="off">
                                     <label for="end-date">End Date</label>
-                                    <input type="text" class="datepicker" name="end-date" id="end-date">
+                                    <input type="text" class="" name="end-date" id="end-date" readonly>
                                     <input type="submit" class="btn-schedule-go" id="btn-schedule-go" value="Go">
                                 </form>
                             </div>
@@ -143,13 +172,13 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Employee</th>
-                                            <th class="border-top-0" ><?php echo $monthName . " " . $day1Number; ?></th>
-                                            <th class="border-top-0"><?php echo $monthName . " " . $day2Number;  ?></th>
-                                            <th class="border-top-0"><?php echo $monthName . " " . $day3Number;  ?></th>
-                                            <th class="border-top-0" ><?php echo $monthName . " " . $day4Number;  ?></th>
-                                            <th class="border-top-0" ><?php echo $monthName . " " . $day5Number;  ?></th>
-                                            <th class="border-top-0" ><?php echo $monthName . " " . $day6Number;  ?></th>
-                                            <th class="border-top-0" ><?php echo $monthName . " " . $day7Number;  ?></th>
+                                            <th class="border-top-0" ><?php echo $day1monthName . " " . $day1Number; ?></th>
+                                            <th class="border-top-0"><?php echo $day2monthName . " " . $day2Number;  ?></th>
+                                            <th class="border-top-0"><?php echo $day3monthName . " " . $day3Number;  ?></th>
+                                            <th class="border-top-0" ><?php echo $day4monthName . " " . $day4Number;  ?></th>
+                                            <th class="border-top-0" ><?php echo $day5monthName . " " . $day5Number;  ?></th>
+                                            <th class="border-top-0" ><?php echo $day6monthName . " " . $day6Number;  ?></th>
+                                            <th class="border-top-0" ><?php echo $day7monthName . " " . $day7Number;  ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,9 +186,7 @@
                                             include '../dbh.inc.php';
                                             $sql = "SELECT * FROM tb_employee";
                                             $query = mysqli_query($conn, $sql);
-
                                             while($result = mysqli_fetch_array($query)){
-                                                
                                         ?>
                                         <tr>
                                             <td ><img class="schedule-emp-img" src="../employee/employee_profiles/<?php echo $result['emp_id'] . '/' . $result['emp_id'] . '.png"' ?> alt="photo"><h5><?php echo $result['emp_id']; ?></h5></td>
