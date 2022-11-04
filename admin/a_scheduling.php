@@ -321,7 +321,7 @@
                             <div class="row">
                             <div class="form-group col-sm-12">
                                 <label for="driver">Select Driver</label>
-                                <select class="form-control" name="driver-id" id="driver-id" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                <select class="form-control" name="driver-id" id="driver-id" required>
                                     <option value=""></option>
                                     <?php 
                                             $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'DR%'";
@@ -334,7 +334,7 @@
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="pao">Select PAO</label>
-                                    <select class="form-control" name="pao-id" id="pao-id" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                    <select class="form-control" name="pao-id" id="pao-id" required>
                                         <option value=""></option>
                                         <?php 
                                              $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'PAO%'";
@@ -347,7 +347,7 @@
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Select Jeepney Unit</label>
-                                    <select class="form-control" name="plate-number" id="plate-number" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                    <select class="form-control" name="plate-number" id="plate-number"  required>
                                         <option value=""></option>
                                         <?php 
                                              $sql = "SELECT * FROM tb_jeepney";
@@ -359,9 +359,27 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-12">
-                                    <label for="schedule-date">Schedule Date</label>
-                                    <input class="form-control datepicker" name="schedule-date" id="schedule-date" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                    <label for="schedule-type">Select Schedule Type</label>
+                                    <select class="form-control" name="schedule-type" id="schedule-type">
+                                        <option value="Day">1 Day</option>
+                                        <option value="range">Schedule Range</option>
+                                    </select>
                                 </div>
+                                <div class="form-group col-sm-12" name="schedule-date" id="schedule-date">
+                                    <label for="schedule-date">Schedule Date</label>
+                                    <input class="form-control datepicker" name="schedule-date" id="schedule-date" required>
+                                </div>
+                                <div class="form-group col-sm-12" name="schedule-range" id="schedule-range">
+                                    <label for="schedule-range">Schedule Range</label>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                        <label for="schedule-start">Schedule Start</label>
+                                        <input class="form-control datepicker" name="schedule-start" id="schedule-start" required>
+                                            </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="schedule-start">Schedule End</label>
+                                        <input class="form-control datepicker" name="schedule-start" id="schedule-start" required>
+                                    </div>
                             <div class="form-check">
                                 <label>
                                 </label>
