@@ -111,6 +111,14 @@
                                 <span class="hide-menu">PAO Attendance</span>
                             </a>
                         </li>
+
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="emp_salary.php"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Employee Salary</span>
+                            </a>
+                        </li>
                        
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"

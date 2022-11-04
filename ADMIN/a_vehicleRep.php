@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>PAO Attendance - Majetsco</title>
+    <title>Vehicle Report - Majetsco</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -121,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+                <form action = "a_vehicleRep_inc.php" method="POST">
                 <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="col-lg-4 col-md-12">
                             <div class="white-box analytics-info">
@@ -144,68 +145,71 @@
                 <div class="col-sm-12">
                     <div class="white-box"> 
                         <div class="form-group mb-4">
+
+                        <div class="form-group mb-4">
                             <div class="col-sm-12">Date Issued<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
-                                    </select>
+                                    <input type="date" name="DateIssued" id="DateIssued" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required>
+                                        <noscript>
+                                            <input type="submit" value="submit">
+                                        </noscript>
                                 </div>
                             </div>
                         </div>
+                    </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Plate Number<br>
                                 <div class="col-sm-12 border-bottom">
                                     <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
+                                        <option class="e_select" value="" selected="true" disabled="disabled"></option>
+                                        <?php
+                                            require_once '../dbh.inc.php'; 
+                                            $statement = "SELECT plate_number FROM tb_jeepney";
+                                            $dt = mysqli_query($conn, $statement);
+
+                                            while ($result = mysqli_fetch_array($dt)){
+                                            unset($plateNum);
+                                            $plateNum = $result['plate_number'];
+                                            $result = "<option class = e_select value= '$itemName'>" . $result['plate_number'] . "</option>";
+                                            echo $result;
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Defective Part<br>
-                                <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
-                                    </select>
+                                <div class="form-select shadow-none p-0 border-0 form-control">
+                                    <textarea rows="5" class="form-control p-0 border-0" name="defectPart" id="defectPart"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Reason for Maintenance<br>
                                 <div class="col-md-12 border-bottom p-0">
-                                    <textarea rows="5" class="form-control p-0 border-0"></textarea>
+                                    <select class="form-select shadow-none p-0 border-0 form-control" name="description" id="description">
+                                        <option class="e_select" value="" selected="true" disabled="disabled"></option>
+                                        <option class="e_select" value="Maintenance">Scheduled Maintenance</option>
+                                        <option class="e_select" value="Defective Part">Defective Part Found</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Fixed<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
-                                    </select>
+                                    <input type="date" name="DateFixed" id="DateFixed" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required>
+                                        <noscript>
+                                            <input type="submit" value="submit">
+                                        </noscript>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Maintenance Cost<br>
                                 <div class="col-md-12 border-bottom p-0">
-                                    <input type="text" class="form-control p-0 border-0"> 
+                                    <input type="text" class="form-control p-0 border-0" name="MaintenanceCost" id="MaintenanceCost"> 
                                 </div>
                             </div>
                         </div>
@@ -213,6 +217,7 @@
                     </div>
                 </div>
                 </div>
+                </form>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

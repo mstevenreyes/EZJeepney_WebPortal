@@ -204,7 +204,7 @@
                             <div class="col-md-12 e_marginInvent">
                                 <label for="name">Select Item:</label>
                                 <select class="eform-control e_select" id="item" name="edit_item" required>
-                                    <option class="e_select" value=""></option>
+                                    <option class="e_select" value="" selected="true" disabled="disabled"></option>
                                     <?php
                                         require_once '../dbh.inc.php'; 
                                         $statement = "SELECT item FROM tb_inventory";
