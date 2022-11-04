@@ -27,11 +27,11 @@ $(function() {
     
     });
     $('.open-form').click(function() {
-        $('.form-popup').show(); // SHOWS POPUP FORM
-        console.log('Open!');
+        $('.form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+   
     }),
     $('.close-form').click(function() {
-        $('.form-popup').hide(); }); //HIDES POPUP
+        $('.form-popup').show(100).fadeOut(300); }); //HIDES POPUP
     
     // tomorrow.toISOString().split('T')[0]
     // console.log(tomorrow);

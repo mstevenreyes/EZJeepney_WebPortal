@@ -309,7 +309,7 @@
                     </div>
                 </div>
                 <!-- ===================== FORM POP-UP =========================== -->
-                <div class="form-popup" >
+                <div class="form-popup" id="form-popup">
                     <div class="container form-wrapper" style="border-radius: 20px;">
                         <button class="btn close-form" style="border-radius: 20px;">Close</button>
                         <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
