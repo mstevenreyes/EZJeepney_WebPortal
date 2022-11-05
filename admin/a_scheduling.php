@@ -319,71 +319,74 @@
                                 </div>
                             </div>
                             <div class="row">
-                            <div class="form-group col-sm-12">
-                                <label for="driver">Select Driver</label>
-                                <select class="form-control" name="driver-id" id="driver-id" required>
-                                    <option value=""></option>
-                                    <?php 
-                                            $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'DR%'";
-                                            $query = mysqli_query($conn, $sql);
-                                            while($result = mysqli_fetch_array($query)){
-                                            echo "<option value='" . $result['emp_id'] . "'>" . $result['emp_id'] . " (" . $result['emp_surname'] . ", " . $result['emp_firstname'] . ")" . "</option>";
-                                            }
-                                    ?>
-                                </select>
-                                </div>
                                 <div class="form-group col-sm-12">
-                                    <label for="pao">Select PAO</label>
-                                    <select class="form-control" name="pao-id" id="pao-id" required>
+                                    <label for="driver">Select Driver</label>
+                                    <select class="form-control" name="driver-id" id="driver-id" required>
                                         <option value=""></option>
                                         <?php 
-                                             $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'PAO%'";
-                                             $query = mysqli_query($conn, $sql);
-                                             while($result = mysqli_fetch_array($query)){
+                                                $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'DR%'";
+                                                $query = mysqli_query($conn, $sql);
+                                                while($result = mysqli_fetch_array($query)){
                                                 echo "<option value='" . $result['emp_id'] . "'>" . $result['emp_id'] . " (" . $result['emp_surname'] . ", " . $result['emp_firstname'] . ")" . "</option>";
-                                             }
+                                                }
                                         ?>
                                     </select>
-                                </div>
-                                <div class="form-group col-sm-12">
-                                    <label for="name">Select Jeepney Unit</label>
-                                    <select class="form-control" name="plate-number" id="plate-number"  required>
-                                        <option value=""></option>
-                                        <?php 
-                                             $sql = "SELECT * FROM tb_jeepney";
-                                             $query = mysqli_query($conn, $sql);
-                                             while($result = mysqli_fetch_array($query)){
-                                                echo "<option value='" . $result['plate_number'] . "'>" . $result['plate_number'] . "</option>";
-                                             }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-12">
-                                    <label for="schedule-type">Select Schedule Type</label>
-                                    <select class="form-control" name="schedule-type" id="schedule-type">
-                                        <option value="Day">1 Day</option>
-                                        <option value="range">Schedule Range</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-12" name="schedule-date" id="schedule-date">
-                                    <label for="schedule-date">Schedule Date</label>
-                                    <input class="form-control datepicker" name="schedule-date" id="schedule-date" required>
-                                </div>
-                                <div class="form-group col-sm-12" name="schedule-range" id="schedule-range">
-                                    <label for="schedule-range">Schedule Range</label>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                        <label for="schedule-start">Schedule Start</label>
-                                        <input class="form-control datepicker" name="schedule-start" id="schedule-start" required>
-                                            </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="schedule-start">Schedule End</label>
-                                        <input class="form-control datepicker" name="schedule-start" id="schedule-start" required>
                                     </div>
-                            <div class="form-check">
-                                <label>
-                                </label>
-                            </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="pao">Select PAO</label>
+                                        <select class="form-control" name="pao-id" id="pao-id" required>
+                                            <option value=""></option>
+                                            <?php 
+                                                $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'PAO%'";
+                                                $query = mysqli_query($conn, $sql);
+                                                while($result = mysqli_fetch_array($query)){
+                                                    echo "<option value='" . $result['emp_id'] . "'>" . $result['emp_id'] . " (" . $result['emp_surname'] . ", " . $result['emp_firstname'] . ")" . "</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="name">Select Jeepney Unit</label>
+                                        <select class="form-control" name="plate-number" id="plate-number"  required>
+                                            <option value=""></option>
+                                            <?php 
+                                                $sql = "SELECT * FROM tb_jeepney";
+                                                $query = mysqli_query($conn, $sql);
+                                                while($result = mysqli_fetch_array($query)){
+                                                    echo "<option value='" . $result['plate_number'] . "'>" . $result['plate_number'] . "</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                  
+                                        <div class="form-group col-sm-12">
+                                            <label for="schedule-type">Select Schedule Type</label>
+                                            <select class="form-control" name="schedule-type" id="schedule-type">
+                                                <option value="Day">1 Day</option>
+                                                <option value="range">Schedule Range</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-12" name="schedule-date" id="date-day">
+                                            <label for="schedule-date">Schedule Date</label>
+                                            <input class="form-control datepicker" name="schedule-date" id="schedule-date" required>
+                                        </div>
+                                        <div class="row" id="date-ranger" style="display:none;">
+                                            <label for="schedule-range" style="width:100%;">Schedule Range</label>
+                                            <div class="form-group col-sm-6">
+                                                <label for="schedule-start">Schedule Start</label>
+                                                <input class="form-control datepicker" name="schedule-start" id="schedule-start" required>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label for="schedule-start">Schedule End</label>
+                                                <input class="form-control datepicker" name="schedule-end" id="schedule-end" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                <div class="form-check">
+                                    <label>
+                                    </label>
+                                </div>
                             <input type="submit" class="btn send-form" name="submit" value="Add Schedule" style="border-radius: 20px;">
                         </form>
                     </div>

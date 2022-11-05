@@ -1,18 +1,19 @@
 // DATE RANGE PICKER
-var today = new Date();
-var endDate = new Date( );
-$(function() {
-    $('input[name="daterange"]').daterangepicker({ // DATE RANGE PICKER
-        startDate: moment(),
-        endDate: moment().add(7, 'day'), 
-        dateLimit: { days: 7 },
-        locale: {
-            format: 'YYYY-MM-DD'
-        },
+// var today = new Date();
+// var endDate = new Date( );
+// $(function() {
 
-    });
+//     $('input[name="daterange"]').daterangepicker({ // DATE RANGE PICKER
+//         startDate: moment(),
+//         endDate: moment().add(7, 'day'), 
+//         dateLimit: { days: 7 },
+//         locale: {
+//             format: 'YYYY-MM-DD'
+//         },
 
-});
+//     });
+
+// });
 
 
  $(document).ready(function () {
@@ -24,7 +25,7 @@ $(function() {
             { "width": "200px", targets: "_all" },
             { "className": "schedule-column", targets: "_all" } 
         ]
-    
+        
     });
     $('.open-form').click(function() {
         $('.form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
@@ -42,6 +43,28 @@ $(function() {
         // console.log(endDate);
         $("#end-date").val(endDate.format('YYYY-MM-DD'));
     });
+    $( function() {
+        $( ".datepicker" ).each(function(){//DATEPICKER
+            $(this).datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    });
+    $("#schedule-type").change(function()
+    {
+        var scheduleType =  $(this).find(":selected").val();
+        var dateRanger = document.getElementById('date-ranger');
+        var dateday = document.getElementById('date-day');
+       if(scheduleType == "Day"){
+            console.log(scheduleType);
+            dateRanger.style.display ='none';
+            dateday.style.display = 'block';
+       }else{
+            console.log(scheduleType);
+            dateday.style.display = 'none';
+            dateRanger.style.display = 'flex';
+       }
+    });
 });
 
 // $(window).on('load', function() {
@@ -49,13 +72,7 @@ $(function() {
 //     // getDates(scheduleRange[0], scheduleRange[2]);
     
 // });
-$( function() {
-    $( ".datepicker" ).each(function(){//DATEPICKER
-        $(this).datepicker({
-            dateFormat: 'yy-mm-dd'
-        });
-    });
-});
+
 
 
 // $('#schedule-range').change(function(){
