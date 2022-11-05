@@ -80,20 +80,33 @@
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Route</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <select name="Route" id="Route" class="form-control p-0 border-0"> 
-                                                <?php 
-                                                     require_once '../dbh.inc.php';  
-                                                     $statement = "SELECT * FROM tb_route";
-                                                     $dt = mysqli_query($conn, $statement);
-                                                     while ($result = mysqli_fetch_array($dt)){
-                                                         $result = "<option value='"  . $result['jeepney_route'] . "'>" . $result['jeepney_route'] . "</option>";
-                                                         echo $result;
-                                                     }
-                                                ?>
-                                            </select>
+                                            <div class="col-md-12 border-bottom p-0">
+                                                <select name="Route" id="Route" class="form-control p-0 border-0"> 
+                                                    <?php 
+                                                        require_once '../dbh.inc.php';  
+                                                        $statement = "SELECT * FROM tb_route";
+                                                        $dt = mysqli_query($conn, $statement);
+                                                        while ($result = mysqli_fetch_array($dt)){
+                                                            $result = "<option value='"  . $result['jeepney_route'] . "'>" . $result['jeepney_route'] . "</option>";
+                                                            echo $result;
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
                                     </div>
+                                    <div class="form-group mb-4">
+                                        <div class="col-sm-12">Acquirement Date<br>
+                                            <div class="col-sm-12 border-bottom">
+                                                <input type="date" name="AcquirementDate" id="AcquirementDate" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'>
+                                                    <noscript>
+                                                        <input type="submit" value="submit">
+                                                    </noscript>
+                                            </div>
                                     </div>
+                                    <div class="form-group mb-4">
+                                        <div class="col-sm-12">
+                                                    </div>
+                                                    </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type='submit' name="submit" class="btn btn-success" value="Add Jeepney">Add Jeepney</button>

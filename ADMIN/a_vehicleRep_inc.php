@@ -15,7 +15,14 @@
     //     mysqli_stmt_close($stmt);
     //     mysqli_close($conn);
 
-    echo $DI;
-    echo $DF;
+    
+    if ($DF == NULL){
+        echo "No DF";
+    }
+    else{
+        echo $DI;
+        echo $DF;
+    }
+
     // }
     

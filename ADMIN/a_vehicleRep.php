@@ -199,7 +199,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Fixed<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <input type="date" name="DateFixed" id="DateFixed" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required>
+                                    <input type="date" name="DateFixed" id="DateFixed" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'>
                                         <noscript>
                                             <input type="submit" value="submit">
                                         </noscript>
@@ -213,6 +213,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <button class="btn btn-success" style="color: white ">Submit Maintenance Report</button>
                     </div>
                 </div>
