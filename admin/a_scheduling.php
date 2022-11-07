@@ -358,11 +358,10 @@
                                             ?>
                                         </select>
                                     </div>
-                                  
                                         <div class="form-group col-sm-12">
                                             <label for="schedule-type">Select Schedule Type</label>
                                             <select class="form-control" name="schedule-type" id="schedule-type">
-                                                <option value="Day">1 Day</option>
+                                                <option value="day">1 Day</option>
                                                 <option value="range">Schedule Range</option>
                                             </select>
                                         </div>
@@ -382,7 +381,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
                                 <div class="form-check">
                                     <label>
                                     </label>

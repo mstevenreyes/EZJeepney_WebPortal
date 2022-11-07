@@ -55,7 +55,7 @@
         var scheduleType =  $(this).find(":selected").val();
         var dateRanger = document.getElementById('date-ranger');
         var dateday = document.getElementById('date-day');
-       if(scheduleType == "Day"){
+       if(scheduleType == "day"){
             console.log(scheduleType);
             dateRanger.style.display ='none';
             dateday.style.display = 'block';
