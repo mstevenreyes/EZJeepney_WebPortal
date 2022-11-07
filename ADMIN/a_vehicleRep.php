@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Vehicle Report</h3> <br>
+                            <h3 class="box-title">History of Maintenance and Repairs</h3> <br>
 
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
@@ -78,14 +78,26 @@
                                     <tbody>
                                         <?php
                                             require_once '../dbh.inc.php';  
+                                            $start = date('m/d/Y');
+                                            $end = date('m/d/Y');
                                             $statement = "SELECT * FROM tb_maintenance";
                                             $dt = mysqli_query($conn, $statement);
+
                                             while ($result = mysqli_fetch_array($dt)){
+
+                                                if($result['date_issued'] == NULL && $result['date_fixed'] == NULL){
+                                                    $status = "On-going";
+                                                }
+                                                else{
+                                                    $status = "Fixed";
+                                                }
+
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
                                                 "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>" .
                                                 "<td>"  . date("F d, Y", strtotime($result['date_fixed']))  . "</td>" .
-                                                "<td>"  . $result['description'] . "</td>" .
-                                                "<td>"  . $result['maintenance_cost'] . "</td></tr>";
+                                                "<td>"  . $result['descript'] . "</td>" .
+                                                "<td>"  . $result['maintenance_cost'] . "</td>" .
+                                                "<td>" . $status . "</td>" . "</tr>";
                                                 echo $result;
                                             }
                                         ?>
@@ -107,11 +119,23 @@
                                     <tbody>
                                         <?php
                                             require_once '../dbh.inc.php';  
+                                            $start = date('m/d/Y');
+                                            $end = date('m/d/Y');
                                             $statement = "SELECT * FROM tb_maintenance";
                                             $dt = mysqli_query($conn, $statement);
+
                                             while ($result = mysqli_fetch_array($dt)){
+
+                                                if($result['date_issued'] == NULL && $result['date_fixed'] == NULL){
+                                                    $status = "On-going";
+                                                }
+                                                else{
+                                                    $status = "Fixed";
+                                                }
+
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
-                                                "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>";
+                                                "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>" .
+                                                "<td>" . $status . "</td>";
                                                 echo $result;
                                             }
                                         ?>
@@ -160,7 +184,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Plate Number<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
+                                    <select class="form-select shadow-none p-0 border-0 form-control" id='plateNumber' name='plateNumber'>
                                         <option class="e_select" value="" selected="true" disabled="disabled"></option>
                                         <?php
                                             require_once '../dbh.inc.php'; 
@@ -170,7 +194,7 @@
                                             while ($result = mysqli_fetch_array($dt)){
                                             unset($plateNum);
                                             $plateNum = $result['plate_number'];
-                                            $result = "<option class = e_select value= '$itemName'>" . $result['plate_number'] . "</option>";
+                                            $result = "<option class = 'e_select' value= '$plateNum'>" . $result['plate_number'] . "</option>";
                                             echo $result;
                                             }
                                         ?>
@@ -179,20 +203,20 @@
                             </div>
                         </div>
                         <div class="form-group mb-4">
-                            <div class="col-sm-12">Defective Part<br>
-                                <div class="form-select shadow-none p-0 border-0 form-control">
-                                    <textarea rows="5" class="form-control p-0 border-0" name="defectPart" id="defectPart"></textarea>
+                            <div class="col-sm-12">Reason of Report<br>
+                                <div class="col-md-12 border-bottom p-0">
+                                    <select class="form-select shadow-none p-0 border-0 form-control" name="reason" id="reason">
+                                        <option class="e_select" name="reason" id="reason" value="reason" selected="true" disabled="disabled"></option>
+                                        <option class="e_select" value="Maintenance">Scheduled Maintenance</option>
+                                        <option class="e_select" id="def_part" value="Defective Part">Defective Part Found</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
-                            <div class="col-sm-12">Reason for Maintenance<br>
-                                <div class="col-md-12 border-bottom p-0">
-                                    <select class="form-select shadow-none p-0 border-0 form-control" name="description" id="description">
-                                        <option class="e_select" value="" selected="true" disabled="disabled"></option>
-                                        <option class="e_select" value="Maintenance">Scheduled Maintenance</option>
-                                        <option class="e_select" value="Defective Part">Defective Part Found</option>
-                                    </select>
+                            <div class="col-sm-12">Additional Description<br>
+                                <div class="form-select shadow-none p-0 border-0 form-control">
+                                    <textarea rows="5" class="form-control p-0 border-0" name="descript" id="descript"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -214,7 +238,7 @@
                             </div>
                         </div>
                         
-                        <button class="btn btn-success" style="color: white ">Submit Maintenance Report</button>
+                        <button class="btn btn-success"  type='submit' name="submit" style="color: white ">Submit Maintenance Report</button>
                     </div>
                 </div>
                 </div>
