@@ -369,15 +369,10 @@
                                             <label for="schedule-date">Schedule Date</label>
                                             <input class="form-control datepicker" name="schedule-date" id="schedule-date" required>
                                         </div>
-                                        <div class="row" id="date-ranger" style="display:none;">
-                                            <label for="schedule-range" style="width:100%;">Schedule Range</label>
-                                            <div class="form-group col-sm-6">
-                                                <label for="schedule-start">Schedule Start</label>
-                                                <input class="form-control datepicker" name="schedule-start" id="schedule-start" required>
-                                            </div>
-                                            <div class="form-group col-sm-6">
-                                                <label for="schedule-start">Schedule End</label>
-                                                <input class="form-control datepicker" name="schedule-end" id="schedule-end" required>
+                                        <div class="row" id="date-ranger" style="display:none;z-index:1000;">
+                                            <div class="form-group col-sm-12" style="z-index: 1001;">
+                                                <label for="schedule-range">Schedule Range</label>
+                                                <input type="text" class="form-control daterangerpicker" name="schedule-range" id="schedule-range" style="z-index: 10000 !important;" required autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -409,12 +404,14 @@
     <!-- ============================================================== -->
    
 
-    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" async></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" async></script>
     <!-- All Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" ></script>
+    <!-- For Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
@@ -424,8 +421,6 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
-     <!-- For Datatables -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- CSS For Date Range Picker and Datepicker-->                                                 
     <script src="js/a_scheduling.js"></script>
 </body>
