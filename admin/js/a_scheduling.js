@@ -1,20 +1,6 @@
 // DATE RANGE PICKER
 // var today = new Date();
 // var endDate = new Date( );
-// $(function() {
-
-//     $('input[name="daterange"]').daterangepicker({ // DATE RANGE PICKER
-//         startDate: moment(),
-//         endDate: moment().add(7, 'day'), 
-//         dateLimit: { days: 7 },
-//         locale: {
-//             format: 'YYYY-MM-DD'
-//         },
-
-//     });
-
-// });
-
 
  $(document).ready(function () {
     $('#schedule-table').DataTable({ // MAKING DATATABLE 
@@ -27,6 +13,14 @@
         ]
         
     });
+    //Date Range Picker Scheduling
+    $('input[name="schedule-range"]').daterangepicker({ // DATE RANGE PICKER
+        startDate: moment(),
+        endDate: moment().add(7, 'day'), 
+        dateLimit: { days: 7 },
+        locale: { format: 'YYYY-MM-DD' }
+    });
+    //
     $('.open-form').click(function() {
         $('.form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
    
@@ -56,11 +50,9 @@
         var dateRanger = document.getElementById('date-ranger');
         var dateday = document.getElementById('date-day');
        if(scheduleType == "day"){
-            console.log(scheduleType);
             dateRanger.style.display ='none';
             dateday.style.display = 'block';
        }else{
-            console.log(scheduleType);
             dateday.style.display = 'none';
             dateRanger.style.display = 'flex';
        }
