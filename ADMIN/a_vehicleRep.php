@@ -68,8 +68,8 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Vehicle Plate Number</th>
-                                            <th class="border-top-0">Start of Maintenance</th>
-                                            <th class="border-top-0">End of Maintenance</th>
+                                            <th class="border-top-0">Date Issued</th>
+                                            <th class="border-top-0">Date Fixed</th>
                                             <th class="border-top-0">Reason of Report</th>
                                             <th class="border-top-0">Maintenance Cost</th>
                                             <th class="border-top-0">Vehicle Status</th>
@@ -85,16 +85,23 @@
 
                                             while ($result = mysqli_fetch_array($dt)){
 
-                                                if($result['date_issued'] == NULL && $result['date_fixed'] == NULL){
+                                                if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
                                                     $status = "On-going";
                                                 }
                                                 else{
                                                     $status = "Fixed";
                                                 }
 
+                                                if($result['date_fixed'] == NULL){
+                                                    $dateFixed = "";
+                                                }
+                                                else{
+                                                    $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                }
+
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
                                                 "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>" .
-                                                "<td>"  . date("F d, Y", strtotime($result['date_fixed']))  . "</td>" .
+                                                "<td>"  . $dateFixed  . "</td>" .
                                                 "<td>"  . $result['descript'] . "</td>" .
                                                 "<td>"  . $result['maintenance_cost'] . "</td>" .
                                                 "<td>" . $status . "</td>" . "</tr>";
@@ -112,7 +119,7 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Vehicle Plate Number</th>
-                                            <th class="border-top-0">Date of Maintenance</th>
+                                            <th class="border-top-0">Schedule of Maintenance</th>
                                             <th class="border-top-0">Vehicle Status</th>
                                         </tr>
                                     </thead>
@@ -208,7 +215,7 @@
                                     <select class="form-select shadow-none p-0 border-0 form-control" name="reason" id="reason">
                                         <option class="e_select" name="reason" id="reason" value="reason" selected="true" disabled="disabled"></option>
                                         <option class="e_select" value="Maintenance">Scheduled Maintenance</option>
-                                        <option class="e_select" id="def_part" value="Defective Part">Defective Part Found</option>
+                                        <option class="e_select" id="def_part" value="Defective Part/s">Defective Part/s Found</option>
                                     </select>
                                 </div>
                             </div>
@@ -216,7 +223,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Additional Description<br>
                                 <div class="form-select shadow-none p-0 border-0 form-control">
-                                    <textarea rows="5" class="form-control p-0 border-0" name="descript" id="descript"></textarea>
+                                    <textarea rows="5" class="form-control p-0 border-0" name="details" id="details"></textarea>
                                 </div>
                             </div>
                         </div>
