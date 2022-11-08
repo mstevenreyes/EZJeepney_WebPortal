@@ -10,45 +10,95 @@
     $batchId = '5432';
     $scheduleType = $_POST['schedule-type'];
     $scheduleDate = $_POST['schedule-date'];
-    $scheduleStart = $_POST['schedule-start'];
-    $scheduleEnd = $_POST['schedule-end'];
     $submitBtn = $_POST['submit'];
     $tablename = "tb_schedule_sheet";
 
     if(isset($submitBtn)){
-        // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
-        if($scheduleType == "day"){
+        //If scheduling only one day
+        if($scheduleType == "day")
+        {
+            $sql = "INSERT INTO $tablename(schedule_date, batch_id, emp_id, plate_number) VALUES (?, ?, ?, ?)"; // Sql Statement
+            // Initializing Connection
+            $stmt = mysqli_stmt_init($conn); 
+            if(!mysqli_stmt_prepare($stmt, $sql))
+            {
+                echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
+                exit();
+            }
+    
+            mysqli_stmt_bind_param($stmt, "ssss", $scheduleDate, $batchId, $driverId, $plateNumber);
+            if(!mysqli_stmt_execute($stmt))
+            {
+                // echo "ERROR: " . mysqli_error($conn);
+                header('location: a_scheduling.php?error=stmtfailed');
+                exit();
+            }
+            // FOR PAO INSERTION
+            $sql = "INSERT INTO $tablename(schedule_date, batch_id, emp_id, plate_number) VALUES (?, ?, ?, ?)"; // Sql Statement
+            $stmt = mysqli_stmt_init($conn); // Initializing Connection
+            if(!mysqli_stmt_prepare($stmt, $sql))
+            {
+                echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
+                header('location: a_scheduling.php?error=stmtfailed');
+                exit();
+            }
+            mysqli_stmt_bind_param($stmt, "ssss", $scheduleDate, $batchId, $paoId, $plateNumber);
+            if(!mysqli_stmt_execute($stmt)){
+                // echo "ERROR: " . mysqli_error($conn);
+                header('location: a_scheduling.php?error=stmtfailed');
+                exit();
+            }
+        }
+        //If Schedule is for a specific range
+        else
+        {
+            $daterange = $_POST['schedule-range'];
+            $dateArray = explode(" - ", $daterange);
+            $scheduleStart = new DateTime($dateArray[0]);
+            $scheduleEnd = new DateTime($dateArray[1]);
+            $scheduleIncrement = $scheduleStart;
+            while($scheduleIncrement != $scheduleEnd)
+            {
+                $scheduleFormatted = $scheduleIncrement->format('Y-m-d');
+                $sql = "INSERT INTO $tablename(schedule_date, batch_id, emp_id, plate_number) VALUES (?, ?, ?, ?)"; // Sql Statement
+                // Initializing Connection
+                $stmt = mysqli_stmt_init($conn); 
+                if(!mysqli_stmt_prepare($stmt, $sql))
+                {
+                    echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
+                    exit();
+                }
+        
+                mysqli_stmt_bind_param($stmt, "ssss", $scheduleFormatted, $batchId, $driverId, $plateNumber);
+                if(!mysqli_stmt_execute($stmt))
+                {
+                    // echo "ERROR: " . mysqli_error($conn);
+                    header('location: a_scheduling.php?error=stmtfailed');
+                    exit();
+                }
+                // FOR PAO INSERTION
+                $sql = "INSERT INTO $tablename(schedule_date, batch_id, emp_id, plate_number) VALUES (?, ?, ?, ?)"; // Sql Statement
+                $stmt = mysqli_stmt_init($conn); // Initializing Connection
+                if(!mysqli_stmt_prepare($stmt, $sql))
+                {
+                    echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
+                    header('location: a_scheduling.php?error=stmtfailed');
+                    exit();
+                }
+                mysqli_stmt_bind_param($stmt, "ssss", $scheduleFormatted, $batchId, $paoId, $plateNumber);
+                if(!mysqli_stmt_execute($stmt)){
+                    // echo "ERROR: " . mysqli_error($conn);
+                    header('location: a_scheduling.php?error=stmtfailed');
+                    exit();
+                }
+
+                $scheduleIncrement->add(new DateInterval('P1D'));
+            }
+            exit();
             
         }
-        $sql = "INSERT INTO $tablename(schedule_date, batch_id, emp_id, plate_number) VALUES (?, ?, ?, ?)"; // Sql Statement
-        $stmt = mysqli_stmt_init($conn); // Initializing Connection
-        if(!mysqli_stmt_prepare($stmt, $sql)){
-            echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
-            exit();
-        }
-
-        mysqli_stmt_bind_param($stmt, "ssss", $scheduleDate, $batchId, $driverId, $plateNumber);
-        if(!mysqli_stmt_execute($stmt)){
-            echo "ERROR: " . mysqli_error($conn);
-            exit();
-        }
-        // FOR PAO INSERTION
-        $sql = "INSERT INTO $tablename(schedule_date, batch_id, emp_id, plate_number) VALUES (?, ?, ?, ?)"; // Sql Statement
-        $stmt = mysqli_stmt_init($conn); // Initializing Connection
-        if(!mysqli_stmt_prepare($stmt, $sql)){
-            echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
-            header('location: a_scheduling.php?error=stmtfailed');
-            exit();
-        }
-        
-        mysqli_stmt_bind_param($stmt, "ssss", $scheduleDate, $batchId, $paoId, $plateNumber);
-        if(!mysqli_stmt_execute($stmt)){
-            echo "ERROR: " . mysqli_error($conn);
-            header('location: a_scheduling.php?error=stmtfailed');
-            exit();
-        }
-
-        header('location: a_scheduling.php?success');
+        // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
+        // header('location: a_scheduling.php?success');
     }
 
   
