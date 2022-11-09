@@ -297,18 +297,32 @@
         function valiDate(){
             var sDate = document.getElementById("DateIssued").value;
             var fDate = document.getElementById("DateFixed").value;
-            submitOK = "true";
+            var mCost = document.getElementById("MaintenanceCost").value;
+            submitOk = 0;
 
-            if(sDate >= fDate){
-                alert("The date fixed should not be earlier than the date issued.");
+            if(sDate >= fDate || (mCost < 0 || isNaN(mCost))){
+
+                if(sDate >= fDate){
+                    alert("The date fixed should not be earlier than the date issued.");
+                    submitOk = "false";
+                }
+
+                if(mCost < 0 || isNaN(mCost)){
+                    alert("The maintenance cost should be numerical.");
+                    submitOk = "false";
+                }
             }
             else{
+                submitOk = "true";
+            }
+
+            if(submitOk === "true")
                 $('#vhRep').submit(function() {
                 alert('Success!');
                 return true;
                 });
                 }
-            }
+            
     </script>
 </body>
 
