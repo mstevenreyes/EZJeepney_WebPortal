@@ -38,30 +38,35 @@
     
     if(isset($SubmitBtn)){
 
-        $varEDate = NULL; $varSDate = NULL; //default value is NULL
-        $sqlCheck_DF = "SELECT tb_maintenance.date_issued, tb_maintenance.date_fixed FROM tb_maintenance, tb_jeepney 
-                        WHERE tb_maintenance.date_issued = '$DI' 
-                        AND tb_jeepney.plate_number = '$plateNum';";
-        $testDF = mysqli_query($conn, $sqlCheck_DF);
-        
-        while ($result = mysqli_fetch_assoc($testDF)){
-            $varSDate = $result['date_issued'];
-            $varEDate = $result['date_fixed'];
-        }
-
-
-        if($DF == NULL && $varSDate != NULL){
-            addRecord($conn, $DI, $plateNum, $deets, $reason, $MaintenanceCost);
-        }
-        else if($varEDate == NULL && $varSDate == $DI){
-            addFixedDate($conn, $DI, $DF, $plateNum);
-        }
-        else if($varEDate == NULL && $varSDate == NULL){
-            insert($conn, $DI, $DF, $plateNum, $deets, $reason, $MaintenanceCost);
+        if($DI >= $DF){
+            echO"pasokkk";
         }
         else{
+            $varEDate = NULL; $varSDate = NULL; //default value is NULL
+            $sqlCheck_DF = "SELECT tb_maintenance.date_issued, tb_maintenance.date_fixed FROM tb_maintenance, tb_jeepney 
+                            WHERE tb_maintenance.date_issued = '$DI' 
+                            AND tb_jeepney.plate_number = '$plateNum';";
+            $testDF = mysqli_query($conn, $sqlCheck_DF);
+            
+            while ($result = mysqli_fetch_assoc($testDF)){
+                $varSDate = $result['date_issued'];
+                $varEDate = $result['date_fixed'];
+            }
+
+
+            if($DF == NULL && $varSDate != NULL){
+                //addRecord($conn, $DI, $plateNum, $deets, $reason, $MaintenanceCost);
+            }
+            else if($varEDate == NULL && $varSDate == $DI){
+                //addFixedDate($conn, $DI, $DF, $plateNum);
+            }
+            else if($varEDate == NULL && $varSDate == NULL){
+                //insert($conn, $DI, $DF, $plateNum, $deets, $reason, $MaintenanceCost);
+            }
+            else{
+            }
+            header('location: a_vehicleRep.php');
         }
-        header('location: a_vehicleRep.php');
 
     }
 

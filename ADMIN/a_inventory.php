@@ -275,19 +275,6 @@
 </script>
     <script>
 
-        // // DATEPICKER
-        //   $(function() {
-        //     $('input[name="birthdate"]').datepicker({
-        //         changeMonth: true,
-        //         changeYear: true,
-        //         dateFormat: 'yy-dd-mm'
-        //     });
-        //     // $('input[name="date-fixed"]').datepicker({
-        //     //     dateFormat: 'yy-dd-mm'
-        //     // });
-
-        // });
-
         // FUNCTION FOR OPEN-FORM //
         $(document).ready(function() {
             $('.open-form').click(function() {

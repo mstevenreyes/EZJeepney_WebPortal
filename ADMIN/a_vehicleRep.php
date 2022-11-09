@@ -152,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                <form action = "a_vehicleRep_inc.php" method="POST">
+                <form action = "a_vehicleRep_inc.php" method="POST" id="vhRep">
                 <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="col-lg-4 col-md-12">
                             <div class="white-box analytics-info">
@@ -180,10 +180,10 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Issued<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <input type="date" name="DateIssued" id="DateIssued" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required>
-                                        <noscript>
-                                            <input type="submit" value="submit">
-                                        </noscript>
+                                    <input type="date" name="DateIssued" id="DateIssued" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required> 
+                                    <noscript>
+                                        <input type="submit" value="submit">
+                                    </noscript>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Plate Number<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control" id='plateNumber' name='plateNumber'>
+                                    <select class="form-select shadow-none p-0 border-0 form-control" id='plateNumber' name='plateNumber' required>
                                         <option class="e_select" value="" selected="true" disabled="disabled"></option>
                                         <?php
                                             require_once '../dbh.inc.php'; 
@@ -230,7 +230,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Fixed<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <input type="date" name="DateFixed" id="DateFixed" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'>
+                                    <input type="date" name="DateFixed" id="DateFixed" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'?>
                                         <noscript>
                                             <input type="submit" value="submit">
                                         </noscript>
@@ -245,7 +245,7 @@
                             </div>
                         </div>
                         
-                        <button class="btn btn-success"  type='submit' name="submit" style="color: white ">Submit Maintenance Report</button>
+                        <button onclick="valiDate()" class="btn btn-success"  type='submit' name="submit" style="color: white">Submit Maintenance Report</button>
                     </div>
                 </div>
                 </div>
@@ -282,6 +282,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -292,6 +293,23 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <script script type="text/javascript" language="javascript">
+        function valiDate(){
+            var sDate = document.getElementById("DateIssued").value;
+            var fDate = document.getElementById("DateFixed").value;
+            submitOK = "true";
+
+            if(sDate >= fDate){
+                alert("The date fixed should not be earlier than the date issued.");
+            }
+            else{
+                $('#vhRep').submit(function() {
+                alert('Success!');
+                return true;
+                });
+                }
+            }
+    </script>
 </body>
 
 </html>
