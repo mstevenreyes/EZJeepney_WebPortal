@@ -1,19 +1,31 @@
 <?php
 
-
     require '../dbh.inc.php';
 
-    // POST VARIABLES
-
-    $spareParts = $_POST['spare_parts'];
+    $item = $_POST['item'];
     $qty = $_POST['quantity'];
     $submitBtn = $_POST['submit'];
-    $tablename = "tb_spare_parts";
+    $tbName = "tb_inventory";
 
+    // $sql = "INSERT INTO tb_inventory (item, quantity) VALUES (?, ?)";
+
+    // if (mysqli_query( $conn, $sql)){
+    //     echo "Record Added";
+    // }
+    // else {
+    //     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    // }
+    // mysqli_close($conn);
+    
     if(isset($submitBtn)){
-        $sql = "INSERT INTO $tablename(spare_parts, quantity) VALUES (?, ?)";
-        $stmt = mysqli_stmt_init($conn, $sql);
-        if(!mysqli_stmt_prepare($stmt)){
-            die("Error")
-        }
+        $stmt = mysqli_prepare($conn, "INSERT INTO $tbName (item, quantity) VALUES (?, ?)"); 
+        mysqli_stmt_bind_param($stmt, "si", $item, $qty);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+
+        header('location: a_inventory.php');
     }
+    
+
+
