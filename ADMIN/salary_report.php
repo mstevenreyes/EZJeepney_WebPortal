@@ -33,11 +33,7 @@
 <body>
 <?php
         include 'sidebar.php';
-        include '../dbh.inc.php';
-        // $sql = "SELECT * FROM tb_employee";
-        $sql = "SELECT tbs.salary_id, tbs.emp_id, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname  
-        FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe ON  tbs.emp_id = tbe.emp_id";
-        $query = mysqli_query($conn, $sql);
+      
 ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -49,9 +45,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Employee Salary - Majetsco</h4>
-                        <p>Employee Salary</p>
-            
+                        <h4 class="page-title">Salary Reports - Majetsco</h4>            
                     </div> 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -69,39 +63,64 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                        <div style="display:flex">
-                            
-                            <h3 class="box-title">Pay Slip </h3>
-                            <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button>
-                        </div>
+                            <div style="text-align:center">
+                                <h3 class="box-title">PAYSLIP FOR THE MONTH OF [INSERT MONTH HERE]</h3>
+                                <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
+                            </div>
+                            <div class="payslip-details">
+                                <div class="company-details">
+                                    <p>Majetsco Cooperative</p>
+                                    <img src="images/majetsco-logo.png" alt="" style="width: 80px;">
+                                    <p>29 Gov. Pascual Ave</p>
+                                    <p>Malabon, 1470 Metro Manila</p>
+                                </div>
+                                <div class="employee-details">
+                                        <p>Jane Doe</p>
+                                        <p>Driver</p>
+                                        <p>Employee ID: [varchar]</p>
+                                    </div>
+                                <div class="salary-details">
+                                    <div class="earning-details">
+                                        <h3>Earnings</h3>
+                                        <div class="earning-details-child">
+                                            <p>Basic Salary</p>
+                                            <p class="amount">P6500</p>
+                                        </div>
+                                        <div class="earning-details-child">
+                                            <p>Canteen Fees</p>
+                                            <p class="amount">P55</p>
+                                        </div>
+                                        <div class="earning-details-child">
+                                            <p>Other Allowance</p>
+                                            <p class="amount">P55</p>
+                                        </div>
+                                        <div class="earning-details-child">
+                                            <p>Total Earnings</p>
+                                            <p class="amount">P5500</p>
+                                        </div>
+                                    </div>
+                                    <div class="deduction-details">
+                                        <h3>Deductions</h3>
+                                        <div class="earning-details-child">
+                                            <p>Pag-ibig</p>
+                                            <p class="amount">P6500</p>
+                                        </div>
+                                        <div class="earning-details-child">
+                                            <p>Philhealth</p>
+                                            <p class="amount">P55</p>
+                                        </div>
+                                        <div class="earning-details-child">
+                                            <p>SSS</p>
+                                            <p class="amount">P55</p>
+                                        </div>
+                                        <div class="earning-details-child">
+                                            <p>Total Earnings</p>
+                                            <p class="amount">P5500</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="table-responsive">
-                                <table class="table text-nowrap" id="project">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Employee</th>
-                                            <th class="border-top-0">Employee Role</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Salary</th>
-                                            <th class="border-top-0">Pay Slip</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                            while($result = mysqli_fetch_array($query)){
-                                                $salaryID = $result['salary_id'];
-                                        ?>
-                                        <tr>
-                                            <td class="border-top-0"><div style=""><img src="../employee/employee_profiles/<?php echo $result['emp_id'] . "/" . $result['emp_id'] . '.png' ?>" 
-                                            class="schedule-emp-img" alt="image"><p><?php echo $result['emp_firstname'] . " " .$result['emp_surname']?></p><p><?php echo $result['emp_id'] ?></p></div></td>
-                                            <td class="border-top-0"><?php echo $result['emp_type']?></td>
-                                            <td class="border-top-0">example@gmail.com</td>
-                                            <td class="border-top-0">1000 <p style="color: gray; font-size: 10px;">Salary ID: <?php echo$salaryID?></p> </td>
-                                            <td><a class = "btn btn-generate" href="salary_report.php?salary-id=<?php echo $result['salary_id'] ?>">Generate Slip </a></td>
-<!-- echo $result['salary_id'] -->
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>

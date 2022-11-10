@@ -153,15 +153,23 @@ th{
 }
 
 .schedule-table{
+    font-size: 14px;
     text-align: center;
     vertical-align: middle;
 }
 
+.btn-generate{
+    background-color: rgb(41, 157, 192);
+    color: white;
+    border-radius: 10px;
+}
+
 img.schedule-emp-img{
-    width: 80px;
+    width: 50px;
     border-color: gray;
     border-style: solid;
     border-radius: 50px;
+    margin: 5px;
 }
 
 /* FOR PROFILE PAGE */
@@ -296,3 +304,28 @@ img.schedule-emp-img{
     /* ====================================== */
 
   /* a_vehicleRep_error */
+
+  /* ========== FOR salary_report.php ================ */
+  .salary-details{
+    display: flex;
+    width: 100%;
+  }
+
+  .payslip-details p{
+    margin: 10px 5px;
+  }
+
+  .earning-details, .deduction-details{
+    flex: 1;
+    margin: 10px 10px;
+  }
+
+  .earning-details-child{
+    margin:0px;
+    display:flex;
+    border: .5px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .amount{
+    margin-left: auto !important;
+  }
