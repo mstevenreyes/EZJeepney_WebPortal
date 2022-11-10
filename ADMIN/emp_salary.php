@@ -51,8 +51,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <h4 class="page-title">Employee Salary - Majetsco</h4>
                         <p>Employee Salary</p>
-            
                     </div> 
+                    <div>
+                            <button class="btn-add-salary btn open-form">Add Salary</button>
+                    </div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -79,7 +81,7 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Employee</th>
-                                            <th class="border-top-0">Employee Role</th>
+                                            <th class="border-top-0">Job Position</th>
                                             <th class="border-top-0">Email</th>
                                             <th class="border-top-0">Salary</th>
                                             <th class="border-top-0">Pay Slip</th>
@@ -95,8 +97,8 @@
                                             class="schedule-emp-img" alt="image"><p><?php echo $result['emp_firstname'] . " " .$result['emp_surname']?></p><p><?php echo $result['emp_id'] ?></p></div></td>
                                             <td class="border-top-0"><?php echo $result['emp_type']?></td>
                                             <td class="border-top-0">example@gmail.com</td>
-                                            <td class="border-top-0">1000 <p style="color: gray; font-size: 10px;">Salary ID: <?php echo$salaryID?></p> </td>
-                                            <td><a class = "btn btn-generate" href="salary_report.php?salary-id=<?php echo $result['salary_id'] ?>">Generate Slip </a></td>
+                                            <td class="border-top-0">1000<p style="color: gray; font-size: 10px;">Salary ID: <?php echo$salaryID?></p> </td>
+                                            <td><a class = "btn btn-generate" href="salary_report.php?salary-id=<?php echo $result['salary_id'] ?>">Generate Pay Slip </a></td>
 <!-- echo $result['salary_id'] -->
                                         </tr>
                                         <?php } ?>
@@ -110,6 +112,75 @@
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
+                <!-- =======================FORM POPUP============================= -->
+                <div class="form-popup" id="form-popup">
+                    <div class="container form-wrapper" style="border-radius: 20px;">
+                        <button class="btn close-form" style="border-radius: 20px;">Close</button>
+                        <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h3 class="form-title" >Add Staff Salary</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label for="staff">Select Staff</label>
+                                    <select class="form-control" name="driver-id" id="driver-id" required>
+                                        <option value=""></option>
+                                        <?php 
+                                                $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'DR%'";
+                                                $query = mysqli_query($conn, $sql);
+                                                while($result = mysqli_fetch_array($query)){
+                                                echo "<option value='" . $result['emp_id'] . "'>" . $result['emp_id'] . " (" . $result['emp_surname'] . ", " . $result['emp_firstname'] . ")" . "</option>";
+                                                }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="net-pay">Net Pay</label>
+                                    <input class="form-control" type="text" name="net-pay">
+                                </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="name">Select Jeepney Unit</label>
+                                        <select class="form-control" name="plate-number" id="plate-number"  required>
+                                            <option value=""></option>
+                                            <?php 
+                                                $sql = "SELECT * FROM tb_jeepney";
+                                                $query = mysqli_query($conn, $sql);
+                                                while($result = mysqli_fetch_array($query)){
+                                                    echo "<option value='" . $result['plate_number'] . "'>" . $result['plate_number'] . "</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                        <div class="form-group col-sm-12">
+                                            <label for="schedule-type">Select Schedule Type</label>
+                                            <select class="form-control" name="schedule-type" id="schedule-type">
+                                                <option value="day">1 Day</option>
+                                                <option value="range">Schedule Range</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-12" name="schedule-date" id="date-day">
+                                            <label for="schedule-date">Schedule Date</label>
+                                            <input class="form-control datepicker" name="schedule-date" id="schedule-date" required>
+                                        </div>
+                                        <div class="row" id="date-ranger" style="display:none;z-index:1000;">
+                                            <div class="form-group col-sm-12" style="z-index: 1001;">
+                                                <label for="schedule-range">Schedule Range</label>
+                                                <input type="text" class="form-control daterangerpicker" name="schedule-range" id="schedule-range" style="z-index: 10000 !important;" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="form-check">
+                                    <label>
+                                    </label>
+                                </div>
+                                <div class="form-group col-sm-12" style="margin:10px auto;"> 
+                                    <input type="submit" class="btn send-form" name="submit" value="Submit" style="border-radius: 20px;">
+                                </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -156,7 +227,12 @@
                     { "className": "schedule-table", targets: "_all" } 
                 ]
             });
-        });
+            $('.open-form').click(function() {
+                $('.form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+            }),
+            $('.close-form').click(function() {
+                $('.form-popup').show(100).fadeOut(300); }); //HIDES POPUP
+                });
     </script>
 </body>
 

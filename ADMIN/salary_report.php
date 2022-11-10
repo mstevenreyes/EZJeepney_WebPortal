@@ -64,7 +64,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <div style="text-align:center">
-                                <h3 class="box-title">PAYSLIP FOR THE MONTH OF [INSERT MONTH HERE]</h3>
+                                <h3 class="box-title">PAYSLIP FOR THE WEEK OF [INSERT MONTH HERE]</h3>
                                 <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                             </div>
                             <div class="payslip-details">
