@@ -69,30 +69,45 @@
                             </div>
                             <div class="payslip-details">
                                 <div class="company-details">
-                                    <p>Majetsco Cooperative</p>
+                                    <h3>Majetsco Cooperative</h3>
                                     <img src="images/majetsco-logo.png" alt="" style="width: 80px;">
                                     <p>29 Gov. Pascual Ave</p>
                                     <p>Malabon, 1470 Metro Manila</p>
                                 </div>
                                 <div class="employee-details">
-                                        <p>Jane Doe</p>
-                                        <p>Driver</p>
-                                        <p>Employee ID: [varchar]</p>
-                                    </div>
+                                    <?php
+                                    require_once '../dbh.inc.php';
+                                    //temp variables
+                                    $pag_ibig = 'P150';
+                                    $philhealth = 'P150';
+                                    $sss = 'P150';
+                                    $salary = $_GET['salary-id'];
+                                    $stmt = "SELECT tbs.salary_id, tbs.emp_id, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname
+                                     FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe ON  tbs.emp_id = tbe.emp_id WHERE tbs.salary_id = '$salary'";
+                                    $sr = mysqli_query($conn, $stmt);
+                                    
+
+                                    while ($result = mysqli_fetch_array($sr))
+                                    {
+                                        echo "<p>" . $result['emp_firstname'] . " " . $result['emp_surname'] . "</p>";
+                                        echo "<p>" . $salary . "</p>" . "<p>" . $result['emp_type'] . "</p>";
+                                    ?>
+                            
+                                </div>
                                 <div class="salary-details">
                                     <div class="earning-details">
                                         <h3>Earnings</h3>
                                         <div class="earning-details-child">
                                             <p>Basic Salary</p>
-                                            <p class="amount">P6500</p>
+                                            <p class="amount"><?php echo $result['basic-salary']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Canteen Fees</p>
-                                            <p class="amount">P55</p>
+                                            <p class="amount"><?php echo $result['canteen-fees']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Other Allowance</p>
-                                            <p class="amount">P55</p>
+                                            <p class="amount"><?php echo $result['canteen-fees']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Total Earnings</p>
@@ -103,15 +118,15 @@
                                         <h3>Deductions</h3>
                                         <div class="earning-details-child">
                                             <p>Pag-ibig</p>
-                                            <p class="amount">P6500</p>
+                                            <p class="amount"><?php echo $pag_ibig; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Philhealth</p>
-                                            <p class="amount">P55</p>
+                                            <p class="amount"><?php echo $philhealth; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>SSS</p>
-                                            <p class="amount">P55</p>
+                                            <p class="amount"><?php echo $sss; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Total Earnings</p>
@@ -119,6 +134,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php
+                                    }
+                                ?>
                             </div>
                             <div class="table-responsive">
                             </div>
