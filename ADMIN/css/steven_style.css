@@ -182,36 +182,50 @@ h5.schedule-emp-details{
   }
   .btn-add-schedule:hover{
     border: 1px blue;
-    border: solid 2px rgb(20, 80, 99);
+    border: solid 2px rgba(4, 48, 83, 0.137);
     border-radius: 20px;
   }
 
-  #schedule-table tbody p{
-    font-size: 12px;
+  #schedule-table tbody .schedule-details{
+    font-size: 14px;
+    font-weight: 700;
     border: dashed 1px;
     border-color: #6299ce;
-    background-color: #7e7e7e1e;
+    background-color: #0c222400;
+    padding: 10px;
+    border-radius: 10px;
+    color: #066392;
+    transition-duration: .4s;
+  }
+
+  #schedule-table tbody .schedule-details:focus{
+    font-size: 14px;
+    font-weight: 700;
+    border: dashed 1px;
+    border-color: #6299ce;
+    background-color: #0c222400;
     padding: 10px;
     border-radius: 10px;
     color: #0a0a0a;
     transition-duration: .4s;
   }
 
-  #schedule-table tbody button{
+  #schedule-table tbody .add-new{
     font-size: 12px;
+    font-weight: 700;
     border-style: dashed;
     border-color: #6299ce;
-    background-color: #7e7e7e1e;
+    background-color: #f5f9fa;
     padding: 10px;
     border-radius: 10px;
-    color: #0a0a0a;
+    color: #118bc4;
     transition-duration: .4s;
   }
 
-  #schedule-table tbody button:hover{
-    background-color: #6567693f;
-  }
-  #schedule-table tbody button:focus{
+  #schedule-table tbody .add-new:hover{
+    background-color: #e2e2e2f8;
+    }
+  #schedule-table tbody .add-new:focus{
     outline: none;
   }
 
