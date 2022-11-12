@@ -105,7 +105,7 @@
                             </a>
                         </li>        
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vehicle_report.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"
                                 aria-expanded="false">
                                 <i class="fas fa-book"></i>
                                 <span class="hide-menu">Vehicle Report</span>
