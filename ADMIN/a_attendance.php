@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>PAO Attendance - Majetsco</title>
+    <title>Driver Attendance - Majetsco</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -28,11 +28,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
-
 <body>
 <?php
         include 'sidebar.php';
-    ?>
+?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -43,8 +42,8 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">PAO Attendance</h4>
-                    </div>
+                        <h4 class="page-title">Driver Attendance</h4>
+                    </div> 
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -79,7 +78,7 @@
                                         require_once '../dbh.inc.php';  
                                         $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
                                         FROM `tb_attendance_sheet` as att
-                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='pao';";
+                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='driver';";
                                         $dt = mysqli_query($conn, $statement);
                                         while ($result = mysqli_fetch_array($dt)){
                                             $result = "<tr><td>"  . $result['attendance_date'] . "</td>" .
