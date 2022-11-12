@@ -137,13 +137,10 @@
             <!-- Bread crumb and right sidebar toggle -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Daily Scheduling - Majetsco</h4>
-                        <p>Employee Scheduling</p>
-                        <div style="display:flex">
-                            <button class="btn-add-driver btn open-form">Add Schedule</button>
-                        </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" style="display: flex;">
+                        <h4 class="page-title" style="min-width: 500px;">Daily Scheduling - Majetsco</h4>
                     </div> 
+                    <button class="btn-add-driver btn open-form">Add Schedule</button>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -203,7 +200,7 @@
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                             <button class="open-form">Add Schedule</button>
-                                            <?php }else{ echo '<p>Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</p>'; } ?>
+                                            <?php }else{ echo '<a href="#"><p>Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</p></a>'; } ?>
                                             </td>
                                             <!-- Day 2 -->
                                             <td><?php 
@@ -218,8 +215,7 @@
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                             <button class="open-form">Add Schedule</button>
-                                            <?php }else{ echo '<p>Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</p>'; } ?>
-                                            </td>
+                                            <?php }else{ echo '<a href="#"><p>Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</p></a>'; } ?>                                            </td>
                                             <!-- ====== -->
                                             <!-- Day 3  -->
                                              <td><?php 
