@@ -34,7 +34,7 @@ body{
 
 .btn-add-driver{
     margin-left: auto;
-    width: 250px; 
+    width: 150px; 
     bottom: 25px;
     border-style: none;
     background-color: rgb(41, 157, 192);
@@ -48,7 +48,7 @@ body{
 .reset-form {
     cursor: pointer;
     color: white;
-    padding: 10px 25px;
+    /* padding: 10px 25px; */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
     border: 2px solid rgb(41, 157, 192);
     background-color: rgb(41, 157, 192);
@@ -139,15 +139,23 @@ th{
 .schedule-column{
     font-family: 'Nunito', 'Courier New', Courier, monospace;
     font-size: 16px;
+    font-weight: 700;
     text-align: center;
     vertical-align: middle;
 }
 
+
 img.schedule-emp-img{
-    width: 80px;
-    border-color: gray;
+    width: 60px;
+    border-color: rgb(80, 160, 235);
     border-style: solid;
     border-radius: 50px;
+}
+
+h5.schedule-emp-details{
+    font-size: 16px;
+    margin: 10px 0px 0px 10px;
+    text-align: left;
 }
 
 /* FOR PROFILE PAGE */
@@ -222,4 +230,9 @@ input[type=text]:focus{
 
 .sidebar-nav{
     font-weight: 100;
+}
+
+.dataTables_length{
+    display: inline-block;
+    width: 250px;
 }
