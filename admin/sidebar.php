@@ -106,7 +106,7 @@
                             </a>
                         </li>  
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_emp_salary.php"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-money-check-dollar"></i>
                                 <span class="hide-menu">Payroll</span>

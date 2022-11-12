@@ -186,7 +186,14 @@
                                             while($result = mysqli_fetch_array($query)){
                                         ?>
                                         <tr>
-                                            <td ><img class="schedule-emp-img" src="../employee/employee_profiles/<?php echo $result['emp_id'] . '/' . $result['emp_id'] . '.png"' ?> alt="photo"><h5><?php echo $result['emp_id']; ?></h5></td>
+                                            <td>
+                                                <div style="display: flex;">
+                                                    <img class="schedule-emp-img" src="../employee/employee_profiles/<?php echo $result['emp_id'] . '/' . $result['emp_id'] . '.png"' ?> 
+                                                    alt="photo"><h5 class="schedule-emp-details"><strong><?php echo strtok($result['emp_firstname'] , " "). " " . $result['emp_surname']; ?></strong>
+                                                    <br><?php echo $result['emp_id']; ?> </h5>
+                     
+                                                </div>
+                                            </td>
                                             <!-- Day 1 -->
                                             <td><?php 
                                                     $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE emp_id = ? AND schedule_date = ?";
