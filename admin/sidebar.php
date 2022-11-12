@@ -17,6 +17,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
+    <script src="https://kit.fontawesome.com/a398ec554b.js" crossorigin="anonymous"></script>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <!-- ============================================================== -->
@@ -79,21 +80,21 @@
                         <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_dashboard.php"
                                 aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
+                                <i class="fa-solid fa-chart-column"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_emp_list.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa-solid fa-user-tie"></i>
                                 <span class="hide-menu">Employees</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_scheduling.php"
                                 aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <i class="fa-solid fa-calendar-week"></i>
                                 <span class="hide-menu">Scheduling/Shift</span>
                             </a>
                         </li>
@@ -103,18 +104,25 @@
                                 <i class="fas fa-clock"></i>
                                 <span class="hide-menu">Attendance</span>
                             </a>
-                        </li>        
+                        </li>  
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_.php"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-money-check-dollar"></i>
+                                <span class="hide-menu">Payroll</span>
+                            </a>
+                        </li>           
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"
                                 aria-expanded="false">
-                                <i class="fas fa-book"></i>
+                                <i class="fa-solid fa-clipboard-list"></i>
                                 <span class="hide-menu">Vehicle Report</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_inventory.php"
                                 aria-expanded="false">
-                                <i class="fas fa-warehouse"></i>
+                                <i class="fa-solid fa-truck-ramp-box"></i>
                                 <span class="hide-menu">Inventory</span>
                             </a>
                         </li>
@@ -128,7 +136,7 @@
                         </li><li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout.inc.php"
                                 aria-expanded="false">
-                                <i class="fa fa-power-off fa-2x" aria-hidden="true"></i>
+                                <i class="fa-solid fa-right-from-bracket"></i>
                                 <span class="hide-menu">Log Out</span>
                             </a>
                         </li>
