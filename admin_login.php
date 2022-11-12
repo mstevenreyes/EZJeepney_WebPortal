@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login - MAJETSCO</title>
-  <link rel="stylesheet" href="login_style.css">
+  <link rel="stylesheet" href="css/login_style.css">
 </head>
 <body>
 <div class='login'>
@@ -19,7 +19,7 @@
         <div class='icon'>
           <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
         </div>
-        <input name="username" placeholder='Username' type='text'>
+        <input name="username" placeholder='Username' type='text' autocomplete="off">
       </div>
       <div class='login_fields__password'>
         <div class='icon'>
