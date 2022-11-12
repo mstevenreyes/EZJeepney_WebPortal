@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>PAO Attendance - Majetsco</title>
+    <title>Vehicle Report - Majetsco</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -30,8 +30,8 @@
 </head>
 
 <body>
-<?php
-        include 'sidebar.php';
+    <?php
+        include_once 'sidebar.php';
     ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -61,20 +61,55 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Vehicle Report</h3> <br>
+                            <h3 class="box-title">History of Maintenance and Repairs</h3> <br>
 
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Vehicle Plate Number</th>
-                                            <th class="border-top-0">Start of Maintenance</th>
-                                            <th class="border-top-0">End of Maintenance</th>
+                                            <th class="border-top-0">Date Issued</th>
+                                            <th class="border-top-0">Date Fixed</th>
                                             <th class="border-top-0">Reason of Report</th>
-                                            <th class="border-top-0">Vehicle Status</th>
                                             <th class="border-top-0">Maintenance Cost</th>
+                                            <th class="border-top-0">Vehicle Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <?php
+                                            require_once '../dbh.inc.php';  
+                                            $start = date('m/d/Y');
+                                            $end = date('m/d/Y');
+                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $dt = mysqli_query($conn, $statement);
+
+                                            while ($result = mysqli_fetch_array($dt)){
+
+                                                if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
+                                                    $status = "On-going";
+                                                }
+                                                else{
+                                                    $status = "Fixed";
+                                                }
+
+                                                if($result['date_fixed'] == NULL){
+                                                    $dateFixed = "";
+                                                }
+                                                else{
+                                                    $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                }
+
+                                                $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
+                                                "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] . '">' . date("F d, Y", strtotime($result['date_issued'])) . '</a>' . "</td>" .
+                                                // "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] .  '">' . '</a>' . "</td>" .
+                                                "<td>"  . $dateFixed  . "</td>" .
+                                                "<td>"  . $result['descript'] . "</td>" .
+                                                "<td>"  . $result['maintenance_cost'] . "</td>" .
+                                                "<td>" . $status . "</td>" . "</tr>";
+                                                echo $result;
+                                            }
+                                        ?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -85,21 +120,56 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Vehicle Plate Number</th>
-                                            <th class="border-top-0">Date of Maintenance</th>
+                                            <th class="border-top-0">Schedule of Maintenance</th>
                                             <th class="border-top-0">Vehicle Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <?php
+                                            require_once '../dbh.inc.php';  
+                                            $start = date('m/d/Y');
+                                            $end = date('m/d/Y');
+                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $dt = mysqli_query($conn, $statement);
+
+                                            while ($result = mysqli_fetch_array($dt)){
+
+                                                if($result['date_issued'] == NULL && $result['date_fixed'] == NULL){
+                                                    $status = "On-going";
+                                                }
+                                                else{
+                                                    $status = "Fixed";
+                                                }
+
+                                                $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
+                                                "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>" .
+                                                "<td>" . $status . "</td>";
+                                                echo $result;
+                                            }
+                                        ?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                <form action = "a_vehicleRep_inc.php" method="POST" id="vhRep">
                 <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="col-lg-4 col-md-12">
                             <div class="white-box analytics-info">
                                 <h3 class="box-title">Total Maintenance Expense</h3>
                                 <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li class="ms-auto"><span class="counter text-danger">₱0.00</span></li>
+                                    <?php
+                                        require_once '../dbh.inc.php';  
+                                        $statement = "SELECT maintenance_cost FROM tb_maintenance;";
+                                        $dt = mysqli_query($conn, $statement);
+                                        $maintenance_cost = 0;
+                                        while ($result = mysqli_fetch_array($dt)){
+                                            $maintenance_cost += $result['maintenance_cost']; 
+                                        }
+                                        // echo $maintenance_cost;
+                                    ?>
+                                <li class="ms-auto"><span class="counter text-danger">₱<?php echo $maintenance_cost ?></span></li>
                                 </ul>
                             </div>
                         </div>
@@ -107,75 +177,80 @@
                 <div class="col-sm-12">
                     <div class="white-box"> 
                         <div class="form-group mb-4">
+
+                        <div class="form-group mb-4">
                             <div class="col-sm-12">Date Issued<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
-                                    </select>
+                                    <input type="date" name="DateIssued" id="DateIssued" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required> 
+                                    <noscript>
+                                        <input type="submit" value="submit">
+                                    </noscript>
                                 </div>
                             </div>
                         </div>
+                    </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Plate Number<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
+                                    <select class="form-select shadow-none p-0 border-0 form-control" id='plateNumber' name='plateNumber' required>
+                                        <option class="e_select" value="" selected="true" disabled="disabled"></option>
+                                        <?php
+                                            require_once '../dbh.inc.php'; 
+                                            $statement = "SELECT plate_number FROM tb_jeepney";
+                                            $dt = mysqli_query($conn, $statement);
+
+                                            while ($result = mysqli_fetch_array($dt)){
+                                            unset($plateNum);
+                                            $plateNum = $result['plate_number'];
+                                            $result = "<option class = 'e_select' value= '$plateNum'>" . $result['plate_number'] . "</option>";
+                                            echo $result;
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
-                            <div class="col-sm-12">Defective Part<br>
-                                <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="col-sm-12">Reason for Maintenance<br>
+                            <div class="col-sm-12">Reason of Report<br>
                                 <div class="col-md-12 border-bottom p-0">
-                                    <textarea rows="5" class="form-control p-0 border-0"></textarea>
+                                    <select class="form-select shadow-none p-0 border-0 form-control" name="reason" id="reason">
+                                        <option class="e_select" name="reason" id="reason" value="reason" selected="true" disabled="disabled"></option>
+                                        <option class="e_select" value="Maintenance">Scheduled Maintenance</option>
+                                        <option class="e_select" id="def_part" value="Defective Part/s">Defective Part/s Found</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="col-sm-12">Additional Description<br>
+                                <div class="form-select shadow-none p-0 border-0 form-control">
+                                    <textarea rows="5" class="form-control p-0 border-0" name="details" id="details"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Fixed<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <select class="form-select shadow-none p-0 border-0 form-control">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
-                                    </select>
+                                    <input type="date" name="DateFixed" id="DateFixed" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'?>
+                                        <noscript>
+                                            <input type="submit" value="submit">
+                                        </noscript>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Maintenance Cost<br>
                                 <div class="col-md-12 border-bottom p-0">
-                                    <input type="text" class="form-control p-0 border-0"> 
+                                    <input type="text" class="form-control p-0 border-0" name="MaintenanceCost" id="MaintenanceCost"> 
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-success" style="color: white ">Submit Maintenance Report</button>
+                        
+                        <button onclick="valiDate()" class="btn btn-success"  type='submit' name="submit" style="color: white">Submit Maintenance Report</button>
                     </div>
                 </div>
                 </div>
+                </form>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -208,6 +283,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -218,6 +294,37 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <script script type="text/javascript" language="javascript">
+        function valiDate(){
+            var sDate = document.getElementById("DateIssued").value;
+            var fDate = document.getElementById("DateFixed").value;
+            var mCost = document.getElementById("MaintenanceCost").value;
+            submitOk = 0;
+
+            if(sDate >= fDate || (mCost < 0 || isNaN(mCost))){
+
+                if(sDate >= fDate){
+                    alert("The date fixed should not be earlier than the date issued.");
+                    submitOk = "false";
+                }
+
+                if(mCost < 0 || isNaN(mCost)){
+                    alert("The maintenance cost should be numerical.");
+                    submitOk = "false";
+                }
+            }
+            else{
+                submitOk = "true";
+            }
+
+            if(submitOk === "true")
+                $('#vhRep').submit(function() {
+                alert('Success!');
+                return true;
+                });
+                }
+            
+    </script>
 </body>
 
 </html>
