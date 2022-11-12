@@ -43,7 +43,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">PAO Attendance</h4>
+                        <h4 class="page-title">Vehicle Report</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -61,41 +61,120 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Attendance Record</h3> <br>
+                            <h3 class="box-title">Vehicle Report</h3> <br>
+
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">Employee ID</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
-                                            <th class="border-top-0">Time-In</th>
-                                            <th class="border-top-0">Time-Out</th>
+                                            <th class="border-top-0">Vehicle Plate Number</th>
+                                            <th class="border-top-0">Start of Maintenance</th>
+                                            <th class="border-top-0">End of Maintenance</th>
+                                            <th class="border-top-0">Reason of Report</th>
+                                            <th class="border-top-0">Vehicle Status</th>
+                                            <th class="border-top-0">Maintenance Cost</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                    <?php
-                                        require_once '../dbh.inc.php';  
-                                        $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
-                                        FROM `tb_attendance_sheet` as att
-                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='pao';";
-                                        $dt = mysqli_query($conn, $statement);
-                                        while ($result = mysqli_fetch_array($dt)){
-                                            $result = "<tr><td>"  . $result['attendance_date'] . "</td>" .
-                                            "<td>"  . $result['emp_id'] . "</td>" .
-                                            "<td>"  . $result['emp_surname'] . "</td>" .
-                                            "<td>"  . $result['emp_firstname'] . "</td>" .
-                                            "<td>"  . $result['time_in'] . "</td>" .
-                                            "<td>"  . $result['time_out'] . "</td></tr>";
-                                            echo $result;
-                                        }
-                                    ?>
-                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="white-box">
+                            <h3 class="box-title">Maintenance Schedule</h3> <br>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">Vehicle Plate Number</th>
+                                            <th class="border-top-0">Date of Maintenance</th>
+                                            <th class="border-top-0">Vehicle Status</th>
+                                        </tr>
+                                    </thead>
                                 </table>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-8 col-xlg-9 col-md-12">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="white-box analytics-info">
+                                <h3 class="box-title">Total Maintenance Expense</h3>
+                                <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li class="ms-auto"><span class="counter text-danger">₱0.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="white-box"> 
+                        <div class="form-group mb-4">
+                            <div class="col-sm-12">Date Issued<br>
+                                <div class="col-sm-12 border-bottom">
+                                    <select class="form-select shadow-none p-0 border-0 form-control">
+                                        <option>London</option>
+                                        <option>India</option>
+                                        <option>Usa</option>
+                                        <option>Canada</option>
+                                        <option>Thailand</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="col-sm-12">Plate Number<br>
+                                <div class="col-sm-12 border-bottom">
+                                    <select class="form-select shadow-none p-0 border-0 form-control">
+                                        <option>London</option>
+                                        <option>India</option>
+                                        <option>Usa</option>
+                                        <option>Canada</option>
+                                        <option>Thailand</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="col-sm-12">Defective Part<br>
+                                <div class="col-sm-12 border-bottom">
+                                    <select class="form-select shadow-none p-0 border-0 form-control">
+                                        <option>London</option>
+                                        <option>India</option>
+                                        <option>Usa</option>
+                                        <option>Canada</option>
+                                        <option>Thailand</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="col-sm-12">Reason for Maintenance<br>
+                                <div class="col-md-12 border-bottom p-0">
+                                    <textarea rows="5" class="form-control p-0 border-0"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="col-sm-12">Date Fixed<br>
+                                <div class="col-sm-12 border-bottom">
+                                    <select class="form-select shadow-none p-0 border-0 form-control">
+                                        <option>London</option>
+                                        <option>India</option>
+                                        <option>Usa</option>
+                                        <option>Canada</option>
+                                        <option>Thailand</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="col-sm-12">Maintenance Cost<br>
+                                <div class="col-md-12 border-bottom p-0">
+                                    <input type="text" class="form-control p-0 border-0"> 
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-success" style="color: white ">Submit Maintenance Report</button>
+                    </div>
+                </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

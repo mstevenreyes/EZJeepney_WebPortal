@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>PAO Attendance - Majetsco</title>
+    <title>Driver Attendance - Majetsco</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
+    <link href="css/steven_style.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -32,7 +33,11 @@
 <body>
 <?php
         include 'sidebar.php';
-    ?>
+        include '../dbh.inc.php';
+        $sql = "SELECT * FROM tb_employee WHERE emp_id='" . $_GET['employee'] . "'";
+        $stmt = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_assoc($stmt);
+?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -43,8 +48,9 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">PAO Attendance</h4>
-                    </div>
+                        <h4 class="page-title">Employee Profile - Majetsco</h4>
+                        <p>Employee</p>
+                    </div> 
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -60,40 +66,45 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Attendance Record</h3> <br>
-                            <div class="table-responsive">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">Employee ID</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
-                                            <th class="border-top-0">Time-In</th>
-                                            <th class="border-top-0">Time-Out</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                        require_once '../dbh.inc.php';  
-                                        $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
-                                        FROM `tb_attendance_sheet` as att
-                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='pao';";
-                                        $dt = mysqli_query($conn, $statement);
-                                        while ($result = mysqli_fetch_array($dt)){
-                                            $result = "<tr><td>"  . $result['attendance_date'] . "</td>" .
-                                            "<td>"  . $result['emp_id'] . "</td>" .
-                                            "<td>"  . $result['emp_surname'] . "</td>" .
-                                            "<td>"  . $result['emp_firstname'] . "</td>" .
-                                            "<td>"  . $result['time_in'] . "</td>" .
-                                            "<td>"  . $result['time_out'] . "</td></tr>";
-                                            echo $result;
-                                        }
-                                    ?>
-                                    </tbody>
-                                </table>
+                        <div class="white-box" style="display:flex;">
+                            <div class="profile-container">
+                                    <img class="profile-img" src="../employee/employee_profiles/<?php echo $result['emp_id']. '/'. $result['emp_id'] . '.png';  ?>" alt="image">
+                            </div>   
+                            <div class="profile-container" style="margin: 50px 0px 0px 30px;flex:2;">
+                                <h3><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname']; ?></h3>
+                                <h5><?php if(substr($result['emp_id'], 0, 2) == "DR"){
+                                    echo "Jeepney Driver";
+                                }else{
+                                    echo "Public Assistance Officer";
+                                } ?></h3>
+                                <h5><?php echo $result['emp_id'];?></h5>
                             </div>
+                            <div class="profile-container" style="margin-top: 50px; flex:2;">
+                                <h5>Phone: </h5>
+                                <h5>Email: </h5>
+                                <h5>Birthday:</h5>
+                                <h5>Address: </h5>
+                                <h5>Gender: </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box" style="display:flex;">
+                            <div class="profile-container">
+                                <h4><strong>Emergency Contact</strong></h4>
+                                <p><strong>Primary</strong></p>
+                                <p>Name</p>
+                                <p>Relationship</p>
+                                <p>Phone</p>
+                                <p>----------------------------------------------------</p>
+                                <p><strong>Secondary</strong></p>
+                                <p>Name</p>
+                                <p>Relationship</p>
+                                <p>Phone</p>
+                            </div>
+                                
                         </div>
                     </div>
                 </div>
@@ -139,6 +150,21 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        // For initializing data table jQuery 
+         $(document).ready(function () {
+            $('#project').DataTable({
+                "pageLength" : 10,
+                scrollX: true,
+                columnDefs: [
+                    { "width": "200px", targets: "_all" },
+                    { "className": "schedule-table", targets: "_all" } 
+                ]
+            });
+        });
+    </script>
 </body>
 
 </html>
