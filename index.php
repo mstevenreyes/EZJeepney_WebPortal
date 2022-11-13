@@ -6,24 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login - MAJETSCO</title>
   <link rel="stylesheet" href="css/login_style.css">
+  <script src="https://kit.fontawesome.com/a398ec554b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class='login'>
+<div class='welcome-page'>
   <div class='login_fields'>
       <div class='login_fields__submit index' >
-        <div>
-          <h3>Welcome, Select Login</h3>
+        <div style="text-align: center;">
+          <img src="images/ez-jeepney-logo-text.png" alt="logo" width="250px">
         </div>
-        <div style="width: 200px;position:relative;left:30px;">
-        <form action="emp_login.php" method="POST">
-          <input type='submit' name="submit" value='Employee'>
-        </form>
-        </div>
-        <div style="width: 300px;position:relative;left:30px;">
-        <form action="admin_login.php" method="POST">
-          <input type='submit' name="submit" value='Admin'>
-        </form>
-        </div>
+        <div style="display: flex;text-align:center">
+          <div style="flex:1;">
+            <a href="admin_login.php"><button><i class="fa-solid fa-user"></i><br>EMPLOYEE</button></a>
+          </div>
+          <div  style="flex:1;text-align:center">
+            <a href="emp_login.php"><button><i class="fa-solid fa-user-tie"></i><br>ADMIN</button></a>
+          </div>
+         </div>
+        
       </div>
   </div>
 <script src="login.js"></script>
