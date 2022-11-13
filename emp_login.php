@@ -6,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Login - MAJETSCO </title>
   <link rel="stylesheet" href="css/login_style.css">
+  <script src="https://kit.fontawesome.com/a398ec554b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class='brand'>
-  <a href='https://www.jamiecoulter.co.uk' target='_blank'>
-    <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/logo.png'>
-  </a>
-</div>
 <div class='login'>
   <div class='login_title'>
-    <span>Login to your account</span>
+  <img src="images/ez-jeepney-logo-text.png" alt=""><br>
+  <i class="fa-solid fa-user"></i><br><span>Employee Login</span>
   </div>
   <div class='login_fields'>
     <form action="emp_login.inc.php" method="POST">
@@ -34,7 +31,7 @@
       <div class='login_fields__submit'>
         <input type='submit' name="submit" value='Log In'>
         <div class='forgot'>
-          <a href='#'>Forgotten password?</a>
+          <!-- <a href='#'>Forgotten password?</a> -->
         </div>
       </div>
     </form>

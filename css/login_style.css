@@ -236,11 +236,11 @@ body .login_fields__submit input {
   border-radius: 50px;
   background: transparent;
   /* padding: 10px 50px; */
-  border: 2px solid #61abdc00;
+  border: 2px solid #61abdc;
   color: #6192dc;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
-  font-size: 24px;
+  font-size: 14px;
   transition-property: background, color;
   transition-duration: 0.2s;
   width: 200px;

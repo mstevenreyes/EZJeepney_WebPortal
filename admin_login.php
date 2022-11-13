@@ -6,12 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login - MAJETSCO</title>
   <link rel="stylesheet" href="css/login_style.css">
+  <script src="https://kit.fontawesome.com/a398ec554b.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class='login'>
   <div class='login_title'>
-    <p><img src="images/majetsco-logo.png" alt="logo"></p>
-    <span>Login to your account</span>
+    <!-- <p><img src="images/majetsco-logo.png" alt="logo"></p> -->
+    <img src="images/ez-jeepney-logo-text.png" alt=""><br>
+    <i class="fa-solid fa-user-tie fa-xs"></i> <br><span>Dispatcher Login</span>
   </div>
   <div class='login_fields'>
     <form action="admin_login.inc.php" method="POST">
@@ -30,7 +32,7 @@
       <div class='login_fields__submit'>
         <input type='submit' name="submit" value='Log In'>
         <div class='forgot'>
-          <a href='#'>Forgotten password?</a>
+          <!-- <a href='#'>Forgotten password?</a> -->
         </div>
       </div>
     </form>
