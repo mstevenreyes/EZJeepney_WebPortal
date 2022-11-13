@@ -266,15 +266,15 @@ body .login_fields__submit button {
   border-radius: 50px;
   background: transparent;
   /* padding: 10px 50px; */
-  border: 2px solid #61abdc00;
+  border: 2px solid #61abdc60;
   color: #6192dc;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   transition-property: background, color;
   transition-duration: 0.2s;
   width: 200px;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -284,8 +284,8 @@ body .login_fields__submit button:focus {
   outline: none;
 }
 body .login_fields__submit button:hover {
-  color: white;
-  background: #61a1dc;
+  color: #6192dc;
+  border: 2px solid #6192dc;
   cursor: pointer;
   transition-property: background, color;
   transition-duration: 0.2s;

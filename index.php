@@ -17,10 +17,10 @@
         </div>
         <div style="display: flex;text-align:center">
           <div style="flex:1;">
-            <a href="admin_login.php"><button><i class="fa-solid fa-user"></i><br>EMPLOYEE</button></a>
+            <a href="admin_login.php"><button><i class="fa-solid fa-users fa-sm"></i><br>Employee</button></a>
           </div>
           <div  style="flex:1;text-align:center">
-            <a href="emp_login.php"><button><i class="fa-solid fa-user-tie"></i><br>ADMIN</button></a>
+            <a href="emp_login.php"><button><i class="fa-solid fa-user-tie fa-sm"></i><br>Dispatcher</button></a>
           </div>
          </div>
         
