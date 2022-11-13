@@ -207,7 +207,7 @@
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                             <button class="open-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>
+                                            <?php }else{ echo '<button class="schedule-details open-form">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>
                                             </td>
                                             <!-- Day 2 -->
                                             <td><?php 
@@ -222,7 +222,7 @@
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                               <button class="open-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>                                 </td>
+                                            <?php }else{ echo '<button class="schedule-details open-form">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>                                 </td>
                                             <!-- ====== -->
                                             <!-- Day 3  -->
                                              <td><?php 
