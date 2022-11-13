@@ -250,3 +250,15 @@ input[type=text]:focus{
     display: inline-block;
     width: 250px;
 }
+
+/* =========== FOR PAYROLL========================= */
+
+.btn-generate{
+    background-color: #6299ce;
+    border-radius: 10px;
+    color: white;
+}
+
+.btn-generate:hover{
+    color: white;
+}
