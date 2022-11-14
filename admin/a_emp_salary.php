@@ -135,39 +135,46 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="net-pay">Net Pay</label>
+                                    <label for="net-pay">Gross Pay</label>
                                     <input class="form-control" type="text" name="net-pay">
                                 </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="name">Select Jeepney Unit</label>
-                                        <select class="form-control" name="plate-number" id="plate-number"  required>
-                                            <option value=""></option>
-                                            <?php 
-                                                $sql = "SELECT * FROM tb_jeepney";
-                                                $query = mysqli_query($conn, $sql);
-                                                while($result = mysqli_fetch_array($query)){
-                                                    echo "<option value='" . $result['plate_number'] . "'>" . $result['plate_number'] . "</option>";
-                                                }
-                                            ?>
-                                        </select>
+                                <div class="form-group col-sm-6">
+                                    <h3>Earnings</h3>
+                                    <div class="form-group col-sm-12">
+                                        <label for="basic-pay">Basic Pay</label>
+                                        <input class="form-control" type="text" name="basic-pay" id="basic-pay">
                                     </div>
-                                        <div class="form-group col-sm-12">
-                                            <label for="schedule-type">Select Schedule Type</label>
-                                            <select class="form-control" name="schedule-type" id="schedule-type">
-                                                <option value="day">1 Day</option>
-                                                <option value="range">Schedule Range</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-sm-12" name="schedule-date" id="date-day">
-                                            <label for="schedule-date">Schedule Date</label>
-                                            <input class="form-control datepicker" name="schedule-date" id="schedule-date" required>
-                                        </div>
-                                        <div class="row" id="date-ranger" style="display:none;z-index:1000;">
-                                            <div class="form-group col-sm-12" style="z-index: 1001;">
-                                                <label for="schedule-range">Schedule Range</label>
-                                                <input type="text" class="form-control daterangerpicker" name="schedule-range" id="schedule-range" style="z-index: 10000 !important;" required autocomplete="off">
-                                            </div>
-                                        </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="canteen-fees">Canteen Allowance</label>
+                                        <input class="form-control" type="text" name="canteen-fees" id="canteen-fees">
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="other-allowance">Other Allowance</label>
+                                        <input class="form-control" type="text" name="other-allowance" id="other-allowance">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <h3>Deductions</h3>
+                                    <div class="form-group col-sm-12">
+                                        <label for="pag-ibig">Pag-ibig</label>
+                                        <input class="form-control" type="text" name="pag-ibig" id="pag-ibig">
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="philhealth">Philhealth</label>
+                                        <input class="form-control" type="text" name="philhealth" id="philhealth">
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="sss">SSS</label>
+                                        <input class="form-control" type="text" name="sss" id="sss">
+                                    </div>
+                                </div>
+                             
+                                <div class="row" id="date-ranger" style="display:none;z-index:1000;">
+                                    <div class="form-group col-sm-12" style="z-index: 1001;">
+                                        <label for="schedule-range">Schedule Range</label>
+                                        <input type="text" class="form-control daterangerpicker" name="schedule-range" id="schedule-range" style="z-index: 10000 !important;" required autocomplete="off">
+                                    </div>
+                                </div>
                                     </div>
                                 <div class="form-check">
                                     <label>
