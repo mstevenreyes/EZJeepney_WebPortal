@@ -125,7 +125,7 @@
                 <div class="form-popup" >
                     <div class="container form-wrapper" style="border-radius: 20px;">
                         <button class="btn close-form" style="border-radius: 20px;">Close</button>
-                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
+                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h1 class="form-title" >Add new Employee</h1>
@@ -142,11 +142,11 @@
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="emp-surname">Surname</label>
-                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" autocomplete="nope">
+                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" autocomplete="off">
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" autocomplete="nope" required>
+                                    <input type="password" class="form-control" id="password" name="password" autocomplete="off">
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Employee Type</label>
