@@ -95,7 +95,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_scheduling.php"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-calendar-week"></i>
-                                <span class="hide-menu">Scheduling/Shift</span>
+                                <span class="hide-menu">Scheduling</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

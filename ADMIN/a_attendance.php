@@ -62,7 +62,7 @@
                         <div class="white-box">
                             <h3 class="box-title">Attendance Record</h3> <br>
                             <div class="table-responsive">
-                                <table class="table text-nowrap">
+                                <table class="table text-nowrap" id="attendance-table">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Date</th>
@@ -128,7 +128,14 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- All Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" ></script>
+    <!-- For Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
@@ -138,6 +145,8 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <!-- CSS For Date Range Picker and Datepicker-->                                                 
+    <script src="js/a_scheduling.js"></script>
 </body>
 
 </html>

@@ -82,7 +82,7 @@
                                     $philhealth = 'P150';
                                     $sss = 'P150';
                                     $salary = $_GET['salary-id'];
-                                    $stmt = "SELECT tbs.salary_id, tbs.emp_id, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname
+                                    $stmt = "SELECT tbs.salary_id, tbs.emp_id, tbs.basic_salary, tbs.canteen_fees, tbs.other_deductions, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname
                                      FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe ON  tbs.emp_id = tbe.emp_id WHERE tbs.salary_id = '$salary'";
                                     $sr = mysqli_query($conn, $stmt);
                                     
@@ -99,15 +99,15 @@
                                         <h3>Earnings</h3>
                                         <div class="earning-details-child">
                                             <p>Basic Salary</p>
-                                            <p class="amount"><?php echo $result['basic-salary']; ?></p>
+                                            <p class="amount"><?php echo $result['basic_salary']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Canteen Fees</p>
-                                            <p class="amount"><?php echo $result['canteen-fees']; ?></p>
+                                            <p class="amount"><?php echo $result['canteen_fees']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Other Allowance</p>
-                                            <p class="amount"><?php echo $result['canteen-fees']; ?></p>
+                                            <p class="amount"><?php echo $result['other_deductions']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Total Earnings</p>

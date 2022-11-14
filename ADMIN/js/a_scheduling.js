@@ -13,6 +13,7 @@
         ]
         
     });
+   
     //Date Range Picker Scheduling
     $('input[name="schedule-range"]').daterangepicker({ // DATE RANGE PICKER
         startDate: moment(),

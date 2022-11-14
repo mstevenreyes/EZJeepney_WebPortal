@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login - MAJETSCO</title>
+  <title>Admin Login - EZ JEEPNEY</title>
   <link rel="stylesheet" href="css/login_style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <script src="https://kit.fontawesome.com/a398ec554b.js" crossorigin="anonymous"></script>
 </head>
 <body>

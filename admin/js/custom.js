@@ -32,3 +32,15 @@ $(function() {
     $(window).on("resize", setsidebartype);
 
 });
+
+$(document).ready(function(){
+    $('#attendance-table').DataTable({ // MAKING DATATABLE 
+
+        "pageLength" : 10,
+        scrollX: true,
+        columnDefs: [
+            { "width": "200px", targets: "_all" },
+            { "className": "schedule-column", targets: "_all" } 
+        ]
+    });
+});

@@ -37,7 +37,7 @@ function loginFaculty($conn, $username, $pwd){
         session_start();
         $_SESSION['admin-id'] = $uidExists['emp_id'];
         $_SESSION['admin-pword'] = $uidExists['emp_pword'];
-        header('location: ./employee/dp_dashboard.php');
+        header('location: ./employee/dashboard.php');
         exit();
     }else{
     
