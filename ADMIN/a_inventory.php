@@ -80,7 +80,7 @@
                                         <!-- GET VEHICLES LIST DATA FROM DB -->
                                         <?php
                                             require_once '../dbh.inc.php';  
-                                            $statement = "SELECT plate_number, date_acquired, date_issued, date_fixed FROM tb_jeepney";
+                                            $statement = "SELECT plate_number, date_issued, date_fixed FROM tb_maintenance";
                                             $dt = mysqli_query($conn, $statement);
                                             while ($result = mysqli_fetch_array($dt)){
 
