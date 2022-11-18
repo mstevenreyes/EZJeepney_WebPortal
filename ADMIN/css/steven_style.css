@@ -23,7 +23,7 @@ body{
     border-radius: 10px;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%);
     text-align: center;
-  }
+}
   
 .emp-container img{
     width: 100px;
@@ -291,3 +291,17 @@ input[type=text]:focus{
   .amount{
     margin-left: auto !important;
   }
+
+  /* ======== FOR a_dashboard.php ============== */
+
+  .box-title{
+    text-align: right;
+  }
+
+#area-chart,
+#line-chart,
+#bar-chart,
+#stacked,
+#pie-chart{
+  min-height: 250px;
+}
