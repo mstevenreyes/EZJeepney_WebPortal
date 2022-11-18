@@ -10,6 +10,10 @@ body{
     flex-wrap: wrap;
 }
 
+/* h2 .navbar-text{
+    font-family: ;
+} */
+
 .emp-container{
     flex-basis: 20%;
     background-color: rgb(255, 255, 255);

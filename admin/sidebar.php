@@ -33,13 +33,14 @@
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
-                            <img style="height: 50px;" src="images/majetsco-logo.png" alt="homepage" />
+                            <img style="height: 45px;" src="../images/ez-jeepney-logo-only.png" alt="homepage" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <h2>MAJETSCO</h2>
+                            <!-- <h2>EZ JEEPNEY</h2> -->
+                            <img style="height: 45px;" src="../images/ez-jeepney-logo-text-2.png" alt="">
                         </span>
                     </a>
                     <!-- ============================================================== -->
