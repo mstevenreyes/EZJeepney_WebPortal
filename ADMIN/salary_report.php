@@ -140,6 +140,37 @@
                             </div>
                             <div class="table-responsive">
                             </div>
+
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <button type="submit" name="submit" class="btn-edit btn edit-form opem-form">EDIT EMPLOYEE SALARY DETAILS</button>
+                            </div>    
+                        </div>
+                    </div>
+                            <!-- ADD NEW PARTS OR SUPPLIES -->
+                    <div class="form-popup">
+                        <div class="container form-wrapper">
+                            <button class="btn close-form">Close</button>
+                            <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h1 class="form-title">Edit Basic Salary</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="name">Edit Canteen Fees:</label>
+                                        <input type="text" class="form-control" id="item" name="item" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="name">Edit Other Deductions:</label>
+                                        <input type="text" class="form-control" id="qty" name="quantity" required>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <label></label>
+                                </div>
+                                <!-- <input type="submit" name="submit" class="btn send-form" value="Confirm"> -->
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -169,7 +200,14 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- All Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" ></script>
+    <!-- For Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
@@ -179,10 +217,7 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
+    <!-- <script>
         // For initializing data table jQuery 
          $(document).ready(function () {
             $('#project').DataTable({
@@ -194,7 +229,54 @@
                 ]
             });
         });
+    </script> -->
+     <script>
+
+</script>
+    <script>
+
+        // FUNCTION FOR OPEN-FORM //
+        $(document).ready(function() {
+            $('.open-form').click(function() {
+                $('.form-popup').show();
+            });
+            $('.close-form').click(function() {
+                $('.form-popup').hide();
+    
+            });
+
+            $(document).mouseup(function(e) {
+                var container = $(".form-wrapper");
+                var form = $(".form-popup");
+
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    form.hide();
+                }
+            });
+        });
+
+        // $(document).ready(function() {
+        //     $('.edit-form').click(function() {
+        //         $('.eform-popup').show();
+        //     });
+        //     $('.eclose-form').click(function() {
+        //         $('.eform-popup').hide();
+    
+        //     });
+
+        //     $(document).mouseup(function(e) {
+        //         var econtainer = $(".eform-wrapper");
+        //         var eform = $(".eform-popup");
+
+        //         if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
+        //             eform.hide();
+        //         }
+        //     });
+        // });
     </script>
+
 </body>
 
 </html>
+
+//jquery
