@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                                <button type="submit" name="submit" class="btn-edit btn edit-form opem-form">EDIT EMPLOYEE SALARY DETAILS</button>
+                                <button type="submit" name="submit" class="btn-edit btn edit-form open-form">EDIT EMPLOYEE SALARY DETAILS</button>
                             </div>    
                         </div>
                     </div>
