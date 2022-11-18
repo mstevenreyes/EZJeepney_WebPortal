@@ -6,16 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>EZJEEPNEY - Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/">
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Favicon icon -->
     <link rel="icon" type="image/ico" sizes="16x16" href="../images/favicon.ico">
     <!-- Custom CSS -->
@@ -158,26 +156,68 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 ">
-                        <div class="white-box" style="display: flex;">
-                            <div style="width: 50%;border-right:1px solid #313131;height:100%">
+                        <div class="white-box-2" style="display: flex;">
+                            <div class="dashboard-child">
                                 <!-- Header -->
-                                <div style="display: flex;">
-                                    <div style="width: 50%;">
-                                        <p><strong>New Employees</strong></p>
+                                <div class="dashboard-child-inner">
+                                    <div style="display: flex;">
+                                        <div class="percentage-label">
+                                            <p><strong>New Employees</strong></p>
+                                        </div>
+                                        <div class="percentage">
+                                            <p><strong>+10%</strong></p>
+                                        </div>
                                     </div>
-                                    <div style="width: 50%;">
-                                        <p><strong>+10%</strong></p>
+                                    <div class="progress">
+                                        <div class="progress-bar w-75" style="background-color:#7E6910" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div style="width: 50%">
+                            <div class="dashboard-child">
                                 <!-- Header -->
-                                <div style="display: flex;">
-                                    <div style="width: 50%;">
-                                        <p><strong>New Employees</strong></p>
+                                <div class="dashboard-child-inner">
+                                    <div style="display: flex;">
+                                        <div class="percentage-label">
+                                            <p><strong>Earnings</strong></p>
+                                        </div>
+                                        <div class="percentage">
+                                            <p><strong>+25%</strong></p>
+                                        </div>
                                     </div>
-                                    <div style="width: 50%;">
-                                        <p><strong>+10%</strong></p>
+                                    <div class="progress">
+                                        <div class="progress-bar w-25" style="background-color: #487228" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-child">
+                                <!-- Header -->
+                                <div class="dashboard-child-inner">
+                                    <div style="display: flex;">
+                                        <div class="percentage-label">
+                                            <p><strong>Expenses</strong></p>
+                                        </div>
+                                        <div class="percentage">
+                                            <p><strong>+50%</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div style="background-color:#7F1000;" class="progress-bar w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-child">
+                                <!-- Header -->
+                                <div class="dashboard-child-inner">
+                                    <div style="display: flex;">
+                                        <div class="percentage-label">
+                                            <p><strong>Profits</strong></p>
+                                        </div>
+                                        <div class="percentage">
+                                            <p><strong>+75%</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar w-75" style="background-color: #385482" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -219,6 +259,10 @@
     <!--chartis chart-->
     <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- CHART FOR DASHBOARD GRAPHS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- CHART FOR ATTENDANCE KEEPING -->
     <script src="js/pages/dashboards/dashboard1.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
