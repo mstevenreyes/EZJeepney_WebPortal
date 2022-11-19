@@ -153,10 +153,14 @@
                             <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <h1 class="form-title">Edit Basic Salary</h1>
+                                        <h1 class="form-title">Edit Employee Salary</h1>
                                     </div>
                                 </div>
                                 <div class="row">
+                                <div class="form-group col-sm-6">
+                                        <label for="name">Edit Basic Salary:</label>
+                                        <input type="text" class="form-control" id="item" name="item" required>
+                                    </div>
                                     <div class="form-group col-sm-6">
                                         <label for="name">Edit Canteen Fees:</label>
                                         <input type="text" class="form-control" id="item" name="item" required>
