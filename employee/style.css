@@ -24,13 +24,13 @@ h2 > span{
 .navbar {
     display: flex;
     position: fixed;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     height: 55px;
     top: 0;
     left: 0;
-    background-color: #2cabe3;
+    background-color: #171F26;
     color: #fff;
     z-index: 2;
     padding-left: 6rem;
@@ -70,6 +70,7 @@ header{
     max-width: 200px;
     justify-content: space-around;
     align-items: center;
+    margin-left: auto;
 }
 
 .profile-image{
@@ -135,8 +136,8 @@ header{
 }
 
 .sidebar-menu:hover{
-    color: black;
-    background-color: #2cabe3;
+    color: rgb(247, 247, 247);
+    background-color: #171f26;
 }
 
 .active-link{
@@ -252,8 +253,8 @@ main{
 
 .eom-card h1{
     margin-top: 1.5rem;
-    color: #2cabe3;
-    text-shadow: 2px 2px lightslategrey;
+    color: #171f26;
+    text-shadow: 1px 1px rgba(55, 62, 70, 0.445);
 }
 
 .eom-card h3{
@@ -291,7 +292,7 @@ main{
     padding: 0.5rem;
     width: 10rem;
     border-radius: 3px;
-    background: #2cabe3;
+    background: #171f26;
     color: white;
     text-align: center;
     box-shadow: 2px 2px 2px 2px slategray;
@@ -334,7 +335,7 @@ main{
 
 .info-detail button{
     margin-top: 1rem;
-    background-color: #0099cc;
+    background-color: #171f26;
     border: none;
     padding: 0.3rem;
     color: white;
@@ -349,9 +350,12 @@ main{
 
 .info-image{
     font-size: 50px;
-    color: #0099cc;
+    color: #171f26;
 }
 
+.details{
+    font-size: 20px;
+}
 
 .detail-header{
     display: grid;
