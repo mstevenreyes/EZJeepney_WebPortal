@@ -48,12 +48,7 @@
         $temp = explode(".", $_FILES["emp-image"]["name"]);
         $newfilename =  $empID . '.' . end($temp);
         // MAKES DIRECTORY OF IMAGE AND UPLOADS EMPLOYEE IMAGE TO SERVER
-        $empDirectory = "../employee/employee_profiles/{$empID}/" ;
-        mkdir(
-            $empDirectory, 
-            $permissions,
-            true
-        );
+        $empDirectory = "../employee/employee_images/" ;
         move_uploaded_file($empImageSource, $empDirectory.$newfilename);
 
         header('location: a_emp_list.php?success');

@@ -67,7 +67,7 @@
                 <div class="emp-row">
                     <?php while($result = mysqli_fetch_array($stmt)){ ?>
                     <div class="emp-container">
-                        <a href="a_profile.php?employee=<?php echo $result['emp_id'] ?>"><img src="../employee/employee_profiles/<?php echo $result['emp_id']. '/'. $result['emp_id'] . '.png';  ?>" alt="image">
+                        <a href="a_profile.php?employee=<?php echo $result['emp_id'] ?>"><img src="../employee/employee_images/<?php echo $result['emp_id'] . '.png';  ?>" alt="image">
                         <h4 class="emp-profile-names"><strong><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname'];
                         ?></strong></h4></a>
                         <p><strong><?php if(substr($result['emp_id'], 0, 2 ) == "DR"){echo "Driver<br>";}else{echo "Public Assistance Officer<br>";}
