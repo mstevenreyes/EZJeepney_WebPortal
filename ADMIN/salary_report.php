@@ -79,18 +79,19 @@
                                 <div class="employee-details box-title" style="margin-left: 10px">
                                     <?php
                                     require_once '../dbh.inc.php';
-                                    //temp variables
-                                    $pag_ibig = 'P150';
+
+                                    $pag_ibig = 'P150';          //temp variables
                                     $philhealth = 'P150';
                                     $sss = 'P150';
                                     $salary = $_GET['salary-id'];
-                                    $stmt = "SELECT tbs.salary_id, tbs.emp_id, tbs.days_worked, tbs.basic_salary, tbs.canteen_fees, tbs.oth_allow, tbs.grosspay, tbs.netpay, tbs.other_deductions, tbs.othd_amnt, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname
-                                     FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe ON  tbs.emp_id = tbe.emp_id WHERE tbs.salary_id = '$salary'";
+                                    $stmt = "SELECT tbs.salary_id, tbs.emp_id, tbs.days_worked, tbs.basic_salary, tbs.canteen_fees, tbs.grosspay, 
+                                            tbs.netpay, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname 
+                                            FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe 
+                                            ON  tbs.emp_id = tbe.emp_id  WHERE tbs.salary_id = '$salary'";
                                     $sr = mysqli_query($conn, $stmt);
                                     
 
-                                    while ($result = mysqli_fetch_array($sr))
-                                    {
+                                    while ($result = mysqli_fetch_array($sr)){
                                         echo "<p>" . $result['emp_firstname'] . " " . $result['emp_surname'] . "</p>";
                                         echo "<p>" . $salary . "</p>" . "<p>" . $result['emp_type'] . "</p>";
                                     ?>
@@ -138,20 +139,26 @@
                                             <p>SSS</p>
                                             <p class="amount"><?php echo $sss; ?></p>
                                         </div>
-                                        <div class="earning-details-child">
-                                            <p>Other Deductions</p>
-                                            <p class="amount"><?php echo $result['other_deductions']; ?></p>
-                                        </div>
-                                        <div class="earning-details-child">
-                                            <p>Other Deductions Amount</p>
-                                            <p class="amount"><?php echo $result['othd_amnt']; ?></p>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
                                 <?php
                                     }
+
+                                    $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
+                                                ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
+                                    
+                                    $mysql = mysqli_query($conn, $stmt2);
+
+                                    while ($fetch = mysqli_fetch_array($mysql)){
                                 ?>
+                                    <div class="earning-details-child">
+                                            <p><?php echo $fetch['deductions']; ?></p>
+                                            <p class="amount"><?php echo $fetch['d_amount']; ?></p>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <!-- deduction div -->
+                                    </div>
                             </div>
                             <div class="table-responsive">  
                                     <button type="submit" name="submit" class="btn-edit btn edit-form open-form">EDIT SALARY DETAILS</button>
