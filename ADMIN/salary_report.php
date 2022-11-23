@@ -84,9 +84,7 @@
                                     $philhealth = 'P150';
                                     $sss = 'P150';
                                     $salary = $_GET['salary-id'];
-                                    $stmt = "SELECT tbs.salary_id, tbs.emp_id, tbs.days_worked, tbs.basic_salary, tbs.canteen_fees, tbs.grosspay, 
-                                            tbs.netpay, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname 
-                                            FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe 
+                                    $stmt = "SELECT * FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe 
                                             ON  tbs.emp_id = tbe.emp_id  WHERE tbs.salary_id = '$salary'";
                                     $sr = mysqli_query($conn, $stmt);
                                     
@@ -129,15 +127,15 @@
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Pag-ibig</p>
-                                            <p class="amount"><?php echo $pag_ibig; ?></p>
+                                            <p class="amount"><?php echo $result['pagibig']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Philhealth</p>
-                                            <p class="amount"><?php echo $philhealth; ?></p>
+                                            <p class="amount"><?php echo $result['philhealth']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
                                             <p>SSS</p>
-                                            <p class="amount"><?php echo $sss; ?></p>
+                                            <p class="amount"><?php echo $result['sss']; ?></p>
                                         </div>
                                 <?php
                                     }
@@ -159,35 +157,37 @@
 
                                     <!-- deduction div -->
                                     </div>
+                                </div>
                             </div>
                             <div class="table-responsive">  
-                                    <button type="submit" name="submit" class="btn-edit btn edit-form open-form">EDIT SALARY DETAILS</button>
-                                    <button type="submit" name="delete" class="btn-edit btn edit-form edit-form">DELETE SALARY REPORT</button> 
+                                <button type="submit" name="submit" class="btn-edit btn edit-form">EDIT SALARY DETAILS</button>
+                                <button type="submit" name="delete" class="btn-edit btn del-form">DELETE SALARY REPORT</button> 
                             </div> 
                         </div>
                     </div>
-                            <!-- Edit Salary Details -->
-                    <div class="form-popup">
-                        <div class="container form-wrapper">
-                            <button class="btn close-form">Close</button>
-                            <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
+
+                    <!-- Edit Salary Details -->
+                    <div class="eform-popup">
+                        <div class="container eform-wrapper">
+                            <button class="btn eclose-form">Close</button>
+                            <form action="" method="POST" novalidate="novalidate">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <h1 class="form-title">Edit Employee Salary</h1>
+                                        <h1 class="eform-title">Edit Employee Salary</h1>
                                     </div>
                                 </div>
                                 <div class="row">
-                                <div class="form-group col-sm-6">
+                                <div class="eform-group edit_empSal">
                                         <label for="name">Edit Basic Salary:</label>
-                                        <input type="text" class="form-control" id="item" name="item" required>
+                                        <input type="text" class="eform-control edit_textField" id="item" name="item" style="width: 403px" required>
                                     </div>
-                                    <div class="form-group col-sm-6">
+                                    <div class="eform-group edit_empSal">
                                         <label for="name">Edit Canteen Fees:</label>
-                                        <input type="text" class="form-control" id="item" name="item" required>
+                                        <input type="text" class="eform-control edit_textField" id="item" name="item" style="width: 395px" required>
                                     </div>
-                                    <div class="form-group col-sm-6">
+                                    <div class="eform-group edit_empSal">
                                         <label for="name">Edit Other Deductions:</label>
-                                        <input type="text" class="form-control" id="qty" name="quantity" required>
+                                        <input type="text" class="eform-control edit_textField" id="qty" name="quantity" style="width: 370px" required>
                                     </div>
                                 </div>
                                 <div class="form-check">
@@ -197,30 +197,22 @@
                             </form>
                         </div>
                     </div>
+
                      <!-- Delete Salary Details -->
-                     <div class="eform-popup">
-                        <div class="container eform-wrapper">
-                            <button class="btn eclose-form">Close</button>
-                            <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
-                                <div class="row">
-                                    <div class="col-md-12 text-center">
-                                        <h1 class="form-title">Edit Employee Salary</h1>
-                                    </div>
+                    <div class="delform-popup">
+                        <div class="container delform-wrapper">
+                            <button class="btn delclose-form">Close</button>
+                            <form action="" method="POST" novalidate="novalidate">
+
+                            <div class="row">
+                                <div class="col-md-12 text-center"></br>
+                                    <h2 class="form-title">Proceed to delete this record?</h2>
                                 </div>
-                                <div class="row">
-                                <div class="form-group col-sm-6">
-                                        <label for="name">Edit Basic Salary:</label>
-                                        <input type="text" class="form-control" id="item" name="item" required>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="name">Edit Canteen Fees:</label>
-                                        <input type="text" class="form-control" id="item" name="item" required>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="name">Edit Other Deductions:</label>
-                                        <input type="text" class="form-control" id="qty" name="quantity" required>
-                                    </div>
-                                </div>
+                            </div>
+
+                            <button type="submit" name="" class="del-form del_btnPlace">Yes</button>
+                            <button type="submit" name="" class="del-form del_btnPlace">No</button> 
+                            
                                 <div class="form-check">
                                     <label></label>
                                 </div>
@@ -272,46 +264,11 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
-    <!-- <script>
-        // For initializing data table jQuery 
-         $(document).ready(function () {
-            $('#project').DataTable({
-                "pageLength" : 10,
-                scrollX: true,
-                columnDefs: [
-                    { "width": "200px", targets: "_all" },
-                    { "className": "schedule-table", targets: "_all" } 
-                ]
-            });
-        });
-    </script> -->
-     <script>
 
-</script>
+    <!-- EDIT SALARY BTN & DELETE SALARY BTN -->
     <script>
 
-        // FUNCTION FOR OPEN-FORM //
-        $(document).ready(function() {
-            $('.open-form').click(function() {
-                $('.form-popup').show();
-            });
-            $('.close-form').click(function() {
-                $('.form-popup').hide();
-    
-            });
-
-            $(document).mouseup(function(e) {
-                var container = $(".form-wrapper");
-                var form = $(".form-popup");
-
-                if (!container.is(e.target) && container.has(e.target).length === 0) {
-                    form.hide();
-                }
-            });
-        });
-
-     
-
+        // FUNCTION FOR EDIT //
         $(document).ready(function() {
             $('.edit-form').click(function() {
                 $('.eform-popup').show();
@@ -322,18 +279,38 @@
             });
 
             $(document).mouseup(function(e) {
-                var econtainer = $(".eform-wrapper");
-                var eform = $(".eform-popup");
+                var container = $(".eform-wrapper");
+                var form = $(".eform-popup");
 
-                if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
-                    eform.hide();
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    form.hide();
                 }
             });
         });
+
+     
+        // FUNCTION FOR DELETE //
+        $(document).ready(function() {
+            $('.del-form').click(function() {
+                $('.delform-popup').show();
+            });
+            $('.delclose-form').click(function() {
+                $('.delform-popup').hide();
+    
+            });
+
+            $(document).mouseup(function(e) {
+                var econtainer = $(".delform-wrapper");
+                var eform = $(".delform-popup");
+
+                if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
+                    delform.hide();
+                }
+            });
+        });
+
     </script>
 
 </body>
 
 </html>
-
-//jquery
