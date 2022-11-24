@@ -6,10 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Driver Attendance - Majetsco</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,7 +77,7 @@
                                         INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='driver';";
                                         $dt = mysqli_query($conn, $statement);
                                         while ($result = mysqli_fetch_array($dt)){
-                                            $result = "<tr><td>"  . $result['attendance_date'] . "</td>" .
+                                            $result = "<tr><td>"  . date('F d , Y', strtotime($result['attendance_date'])) . "</td>" .
                                             "<td>"  . $result['emp_id'] . "</td>" .
                                             "<td>"  . $result['emp_surname'] . "</td>" .
                                             "<td>"  . $result['emp_firstname'] . "</td>" .
