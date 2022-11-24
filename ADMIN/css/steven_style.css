@@ -5,6 +5,18 @@
 body{
     font-family: 'Nunito', Courier, monospace !important;
 }
+
+/* Body css */
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity .3s ease-out;
+}
+
 .emp-row{
     display: flex;
     flex-wrap: wrap;
@@ -15,7 +27,7 @@ body{
 } */
 
 .emp-container{
-    flex-basis: 20%;
+    flex-basis: 17%;
     background-color: rgb(255, 255, 255);
     margin-bottom: 20px;
     margin-left: 10px;
@@ -28,13 +40,19 @@ body{
 .emp-container img{
     width: 100px;
     border-radius: 100px;
+    border: 2px solid #18181a80;
+}
+
+.emp-container p, .emp-container a{
+  color: #066392;
 }
 
 .emp-profile-names{
     margin-top: 20px;
 }
 
-.daterangepicker{ z-index: 999999 !important; }
+.daterangepicker, .timepicker{ z-index: 999999 !important; }
+
 
 .btn-add-driver{
     margin-left: auto;
