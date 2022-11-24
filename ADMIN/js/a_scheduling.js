@@ -3,7 +3,8 @@
 // var endDate = new Date( );
 
  $(document).ready(function () {
-    $('#schedule-table').DataTable({ // MAKING DATATABLE 
+ 
+    var table = $('#schedule-table').DataTable({ // MAKING DATATABLE 
 
         "pageLength" : 10,
         scrollX: true,
@@ -22,12 +23,22 @@
         locale: { format: 'YYYY-MM-DD' }
     });
     //
-    $('.open-form').click(function() {
-        $('.form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+    $('.open-add-form').click(function() {
+        $('#add-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
    
     }),
-    $('.close-form').click(function() {
-        $('.form-popup').show(100).fadeOut(300); }); //HIDES POPUP
+    $('#close-add-form').click(function() {
+        $('#add-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
+    
+    $('.open-edit-form').click(function() {
+        $('#edit-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+   
+    }),
+    $('#close-edit-form').click(function() {
+        $('#edit-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
+    
     
     // tomorrow.toISOString().split('T')[0]
     // console.log(tomorrow);
@@ -58,7 +69,39 @@
             dateRanger.style.display = 'flex';
        }
     });
+
+    // For selecting rows and putting to edit schedule form
+    $('#schedule-table tbody').on('click', 'tr', function () {
+        //putting data to the text fields
+        var data =  table.row(this).data();
+        // var proj_num = $('#proj-number');   
+        // var req_type = $('#req-type');
+        // var store_code = $('#store-code');
+        // var store_name = $('#store-name');
+        // var target_date = $('#target-date');
+        // proj_num.val(data[0]);    
+        // req_type.val(data[1]);
+        // store_code.val(data[5]);
+        // store_name.val(data[6])
+        // target_date.val(data[3]);
+        var driverIdPos = data[1].search("DR-");
+        var paoIDPost = data[1].search("PAO-");
+        var data = data[1].slice(driverIdPos, 100);
+        console.log( data.slice(0, 8));
+    });
+
+    // Timepicker for schedule (both add and edit)
+    $('.timepicker').each(function()
+    {
+        $(this).timepicker({ zindex: 999999});
+    });
+
+    document.body.className = "visible"; // Fade in transition for the body
 });
+
+
+
+
 
 // $(window).on('load', function() {
 //     var scheduleRange = $('#schedule-range').val().split(" ");
