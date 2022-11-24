@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 
-<body>
+<body class="hidden">
 <?php
         include 'sidebar.php';
         include '../dbh.inc.php';
@@ -68,7 +68,7 @@
                     <div class="col-sm-12">
                         <div class="white-box" style="display:flex;">
                             <div class="profile-container">
-                                    <img class="profile-img" src="../employee/employee_profiles/<?php echo $result['emp_id']. '/'. $result['emp_id'] . '.png';  ?>" alt="image">
+                                    <img class="profile-img" src="../employee/employee_images/<?php echo $result['emp_id'] . '.png';  ?>" alt="image">
                             </div>   
                             <div class="profile-container" style="margin: 50px 0px 0px 30px;flex:2;">
                                 <h3><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname']; ?></h3>
