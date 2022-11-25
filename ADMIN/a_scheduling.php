@@ -37,8 +37,6 @@
             $day5= new DateTime('+4 day');
             $day6= new DateTime('+5 day');
             $day7= new DateTime('+6 day');
-
-            
         }else{
             $day1String = $_POST['start-date'];
             $day1 = new DateTime($_POST['start-date']);
@@ -63,6 +61,9 @@
             // $day7= new DateTime('+6 day');
         }
         
+        $dayFormmatted = array();
+        array_push($dayFormmatted,  $day1->format('Y-m-d'), $day2->format('Y-m-d'), $day3->format('Y-m-d'), $day4->format('Y-m-d'), $day5->format('Y-m-d'), $day6->format('Y-m-d'), 
+        $day7->format('Y-m-d'));
         $day1Formatted = $day1->format('Y-m-d');
         $day2Formatted = $day2->format('Y-m-d');
         $day3Formatted = $day3->format('Y-m-d');
@@ -156,7 +157,7 @@
                 <!-- Start Page Content -->
                 <div class="row white-box">
                     <div class="col-sm-12">
-                        <div style="display:flex">
+                        <div style="display:flex;justify-content:flex-end;">
                             <div class="white-box">
                                 <form action="a_scheduling.php" method="POST">
                                     <label for="start-date">Start Date</label>
@@ -192,76 +193,76 @@
                                             <td>
                                                 <div style="display: flex;">
                                                     <img class="schedule-emp-img" src="../employee/employee_images/<?php echo $result['emp_id'] . '.png"' ?> 
-                                                    alt="photo"><h5 class="schedule-emp-details"><strong><?php echo strtok($result['emp_firstname'] , " "). " " . $result['emp_surname']; ?></strong>
+                                                    alt="photo"><h5 class="schedule-emp-details"><strong><?php echo  strtok($result['emp_firstname'] , " "). " " . $result['emp_surname']; ?></strong>
                                                     <br><?php echo $result['emp_id']; ?> </h5>
                                                 </div>
                                             </td>
                                             <!-- Day 1 -->
-                                            <?php 
-                                            $x = 0;
-                                            while($x > 7){
-                                            ?>
                                             <td><?php 
-                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE driver_id = ? AND schedule_date = ?";
+                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE (driver_id = ? OR pao_id = ?) AND schedule_date = ?";
                                                     $stmt = mysqli_stmt_init($conn);
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $day1Formatted );
+                                                    mysqli_stmt_bind_param($stmt, "sss", $result['emp_id'],  $result['emp_id'], $dayFormmatted[0] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                             <button class="open-add-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details open-edit-form">Schedule: ' . $row['schedule_date'] . '<br>Driver ID: ' . $row['driver_id'] . 'PAO ID:' . $row['pao_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '</button>'; } ?>
+                                            <?php }else{ echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
+                                                . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; } ?>
                                             </td>
-                                            <?php } ?>
                                             <!-- Day 2 -->
                                             <td><?php 
-                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE driver_id = ? AND schedule_date = ?";
+                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE (driver_id = ? OR pao_id = ?) AND schedule_date = ?";
                                                     $stmt = mysqli_stmt_init($conn);
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $day2Formatted );
+                                                    mysqli_stmt_bind_param($stmt, "sss", $result['emp_id'],  $result['emp_id'], $dayFormmatted[1] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                               <button class="open-add-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details open-edit-form">Schedule: ' . $row['schedule_date'] . '<br>Driver ID: ' . $row['driver_id'] . 'PAO ID:' . $row['pao_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '</button>'; } ?>
-                                            <!-- ====== -->
+                                              <?php }else{ echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
+                                                . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; } ?>                                            <!-- ====== -->
                                             <!-- Day 3  -->
                                              <td><?php 
-                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE driver_id = ? AND schedule_date = ?";
+                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE (driver_id = ? OR pao_id = ?) AND schedule_date = ?";
                                                     $stmt = mysqli_stmt_init($conn);
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $day3Formatted );
+                                                    mysqli_stmt_bind_param($stmt, "sss", $result['emp_id'], $result['emp_id'], $dayFormmatted[2] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                               <button class="open-add-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                              <?php }else{ echo '<button class="schedule-details open-edit-form">Schedule: ' . $row['schedule_date'] . '<br>Driver ID: ' . $row['driver_id'] . 'PAO ID:' . $row['pao_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '</button>'; } ?>
-                                            </td>
+                                              <?php }else{ echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
+                                                . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; } ?>                                            </td>
                                             <!-- ====  -->
                                             <!-- Day 4 -->
                                             <td><?php 
-                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE driver_id = ? AND schedule_date = ?";
+                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE (driver_id = ? OR pao_id = ?) AND schedule_date = ?";
                                                     $stmt = mysqli_stmt_init($conn);
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $day4Formatted );
+                                                    mysqli_stmt_bind_param($stmt, "sss", $result['emp_id'], $result['emp_id'], $dayFormmatted[3] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                               <button class="open-add-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details open-edit-form">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>
-                                            </td>
+                                              <?php }else{ echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
+                                                . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; } ?>                                            </td>
                                             <!-- ===== -->
                                             <!-- Day 5 -->
                                             <td><?php 
@@ -270,14 +271,15 @@
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $day5Formatted );
+                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $dayFormmatted[4] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                              <button class="open-add-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details open-edit-form">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>
-                                            </td>
+                                             <?php }else{ echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
+                                                . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; } ?>                                            </td>
                                             <!--  -->
                                             <!-- Day 6 -->
                                             <td><?php 
@@ -286,14 +288,15 @@
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $day6Formatted );
+                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $dayFormmatted[5] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                              <button class="open-add-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>
-                                            </td>
+                                             <?php }else{ echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
+                                                . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; } ?>                                            </td>
                                             <!--  -->
                                             <!-- Day 7 -->
                                             <td><?php 
@@ -302,14 +305,15 @@
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $day7Formatted );
+                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $dayFormmatted[6] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
                                                 ?>
                                               <button class="open-add-form add-new"><i class="fa-solid fa-plus"></i></button>
-                                            <?php }else{ echo '<button class="schedule-details">Schedule: ' . $row['schedule_date'] . '<br>ID: ' . $row['emp_id'] . '<br>Jeep Unit: ' . $row['plate_number'] . '</button>'; } ?>
-                                            </td>
+                                              <?php }else{ echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
+                                                . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; } ?>                                            </td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -336,8 +340,10 @@
                                         <?php 
                                                 $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'DR%'";
                                                 $query = mysqli_query($conn, $sql);
-                                                while($result = mysqli_fetch_array($query)){
-                                                echo "<option value='" . $result['emp_id'] . "'>" . $result['emp_id'] . " (" . $result['emp_surname'] . ", " . $result['emp_firstname'] . ")" . "</option>";
+                                                while($result = mysqli_fetch_array($query))
+                                                {
+                                                    echo "<option value='" . $result['emp_id'] . "'>" . $result['emp_id'] .
+                                                     " (" . $result['emp_surname'] . ", " . $result['emp_firstname'] . ")" . "</option>";
                                                 }
                                         ?>
                                     </select>
@@ -406,7 +412,7 @@
                 <!-- ===================== EDIT FORM POP-UP =========================== -->
                 <div class="form-popup" id="edit-form-popup" style="z-index: 100;">
                 <div class="container form-wrapper" style="border-radius: 20px;">
-                    <button class="btn close-form" id="close-edit-form" style="border-radius: 20px;">Close</button>
+                    <button class="btn close-form" id="close-edit-form" style="border-radius: 10px;">Close</button>
                     <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -416,29 +422,29 @@
                         <div class="row">
                             <div class="form-group col-sm-12">
                                 <label for="batch-id">Batch ID:</label>
-                                <input type="text" class="form-control" name="batch-id" id="batch-id" readonly>
+                                <input type="text" class="form-control" name="edit-form-batch-id" id="edit-form-batch-id" readonly>
                             </div>
                             <div class="form-group col-sm-12">
                                 <label for="driver-id">Driver</label>
-                                <input type="text" class="form-control" name="driver-id" id="driver-id" readonly>
+                                <input type="text" class="form-control" name="edit-form-driver-id" id="edit-form-driver-id" readonly>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="pao">PAO</label>
-                                    <input type="text" class="form-control" name="pao-id" id="pao-id" readonly>
+                                    <input type="text" class="form-control" name="edit-form-pao-id" id="edit-form-pao-id" readonly>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Jeepney Unit</label>
-                                    <input type="text" class="form-control" name="plate-number" id="plate-number" readonly>
+                                    <input type="text" class="form-control" name="edit-form-plate-number" id="edit-form-plate-number" readonly>
                                 </div>
                                 <div class="form-group col-sm-12" name="schedule-date" id="date-day">
                                     <label for="schedule-date">Schedule Date</label>
-                                    <input class="form-control" name="schedule-date" id="schedule-date" required readonly>
+                                    <input class="form-control" name="edit-form-schedule-date" id="edit-form-schedule-date" required readonly>
                                 </div>
-                                <div class="form-group col-sm-6" name="schedule-date" id="date-day" style="z-index: 99999;">
+                                <div class="form-group col-sm-6">
                                     <label for="shift-start">Shift Start</label>
                                     <input class="form-control timepicker" name="shift-start" id="shift-start" required>
                                 </div>
-                                <div class="form-group col-sm-6" name="schedule-date" id="date-day">
+                                <div class="form-group col-sm-6">
                                     <label for="shift-end">Shift End</label>
                                     <input class="form-control timepicker" name="shift-end" id="shift-end" required>
                                 </div>
@@ -447,7 +453,9 @@
                                 <label>
                                 </label>
                             </div>
-                        <input type="submit" class="btn send-form" name="update-schedule" value="Update Schedule" style="border-radius: 20px;">
+                        <input type="submit" class="btn update-btn" name="update-schedule" value="Update Schedule">
+                        <input type="submit" class="btn delete-btn" name="delete-schedule" value="Delete Schedule">
+
                     </form>
                 </div>
             </div>
@@ -492,6 +500,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <!-- CSS For Date Range Picker and Datepicker-->                                                 
     <script src="js/a_scheduling.js"></script>
+    <script>
+        var php_var = "<?php echo $day1; ?>"
+    </script>
 </body>
 
 </html>
