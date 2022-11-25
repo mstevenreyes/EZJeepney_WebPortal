@@ -1,9 +1,11 @@
 /*============ STEVEN CUSTOM CSS======== */
 
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Custom Webfonts */
+@import url("webfonts.css");
 
 body{
-    font-family: 'Nunito', Courier, monospace !important;
+    font-family: 'NoirPro-Regular', Courier, monospace !important;
 }
 
 /* Body css */
@@ -33,14 +35,16 @@ body{
     margin-left: 10px;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%);
+    /* box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%); */
+    outline: rgba(110, 110, 110, 0.5) solid 1px;
     text-align: center;
 }
   
 .emp-container img{
     width: 100px;
     border-radius: 100px;
-    border: 2px solid #18181a80;
+    /* border: 2px solid #18181a80; */
+    outline: rgba(98, 103, 121, 0.37) solid 1px;
 }
 
 .emp-container p, .emp-container a{
@@ -71,7 +75,6 @@ body{
     cursor: pointer;
     color: white;
     /* padding: 10px 25px; */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
     border: 2px solid rgb(41, 157, 192);
     background-color: rgb(41, 157, 192);
     font-size: 12px;
@@ -105,7 +108,7 @@ body{
     text-transform: uppercase;
 }
 .close-form {
-    border-radius: 0px;
+    border-radius: 10px;
     position: absolute;
     top: 0;
     right: 0;
@@ -116,7 +119,6 @@ body{
     border: 2px solid rgb(41, 157, 192);
     color: #ffffff;
     font-size: 18px;
-    text-transform: uppercase;
     margin-bottom: 20px;
     transition: .3s;
 }
@@ -141,7 +143,7 @@ body{
 }
 .btn:hover {
     color:white;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 1px 1px 2px rgb(0 0 0 / 58%);
 }
 .success-message {
     text-align: center;
@@ -159,9 +161,9 @@ th{
 }
 
 .schedule-column{
-    font-family: 'Nunito', 'Courier New', Courier, monospace;
+    /* font-family: 'NoirPro-Regular', 'Courier New', Courier, monospace; */
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 100;
     text-align: center;
     vertical-align: middle;
 }
@@ -169,7 +171,7 @@ th{
 
 img.schedule-emp-img{
     width: 60px;
-    border-color: rgb(80, 160, 235);
+    border-color: rgba(36, 37, 71, 0.733);
     border-style: solid;
     border-radius: 50px;
 }
@@ -209,7 +211,7 @@ h5.schedule-emp-details{
   }
 
   #schedule-table tbody .schedule-details{
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     border: dashed 1px;
     border-color: #6299ce;
@@ -221,15 +223,14 @@ h5.schedule-emp-details{
   }
 
   #schedule-table tbody .schedule-details:focus{
-    font-size: 14px;
     font-weight: 700;
     border: dashed 1px;
     border-color: #6299ce;
-    background-color: #0c222400;
     padding: 10px;
     border-radius: 10px;
-    color: #0a0a0a;
+    color: #066392;
     transition-duration: .4s;
+    outline: none;
   }
 
   #schedule-table tbody .add-new{
@@ -273,6 +274,15 @@ input[type=text]:focus{
     width: 250px;
 }
 
+.delete-btn{
+  background-color: red;
+  color: white;
+}
+
+.update-btn{
+  background-color: rgb(37, 46, 75);
+  color: white;
+}
 /* =========== FOR PAYROLL========================= */
 
 .btn-generate{
@@ -313,7 +323,7 @@ input[type=text]:focus{
   /* ======== FOR a_dashboard.php ============== */
 
   .box-title{
-    text-align: right;
+    /* text-align: right; */
   }
 
   #area-chart,
@@ -325,16 +335,20 @@ input[type=text]:focus{
   }
 
   .page-wrapper{
-    background-color: #e2e2e2 !important;
+    background-color: #f7fafc !important;
   }
 
   .white-box-2{
     background-color: white;
     border-radius: 2px;
     box-shadow: 0px 2px 1px #0a0a0a3b;
+    outline: rgba(110, 110, 110, 0.5) solid 1px;
+    border-radius: 5px;
   }
   .white-box{
-    box-shadow: 0px 2px 1px #0a0a0a33;
+    /* box-shadow: 0px 2px 1px #0a0a0a33; */
+    outline: rgba(110, 110, 110, 0.5) solid 1px;
+    border-radius: 5px;
   }
 
   .dashboard-child{
@@ -360,4 +374,50 @@ input[type=text]:focus{
 
   .progress-bar{
     background-color: #118bc4;
+  }
+
+  /* INVENTORY CSS */
+
+  .btn-add-supply, .edit-form{
+    color: #ffffff;
+    background-color: rgb(37, 46, 75);
+    width: 300px;
+    margin-left: auto;
+  }
+
+  /* Sidebar */
+  #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul{
+    color: #77ACF2 !important;
+
+  }
+
+  /* #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i{
+    color: #0a81b1 ;
+    transition-duration: .5s;
+  } */
+  .sidebar-nav ul .sidebar-item .sidebar-link i{
+    font-size: 16px;
+    width: 40px;
+  }
+  /* #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link:hover, 
+  #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i:hover{
+    color: #ACDEF2 !important;
+  } */
+  .sidebar-nav ul .sidebar-item .sidebar-link{
+    background-color: rgba(31, 53, 133, 0);
+    color: #ACDEF2 !important
+  }
+  .sidebar-nav ul .sidebar-item .sidebar-link:hover{
+    background-color: rgba(31, 53, 133, 0.384);
+    color: #ACDEF2 !important
+  }
+
+  
+  .left-sidebar[data-sidebarbg=skin6]{
+    background-color: #090126 !important;
+  }
+  /* Topbar */
+  #main-wrapper[data-layout=vertical] .topbar[data-navbarbg=skin5]{
+    background: #0f1236;
+    border-bottom: #acdef22a solid 1px;
   }
