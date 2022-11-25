@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 
-<body class="hidden">
+<body>
 <?php
         include 'sidebar.php';
         include '../dbh.inc.php';
