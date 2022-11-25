@@ -23,6 +23,7 @@
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="./css/steven_style.css">
 </head>
 <body>
 <?php
@@ -63,8 +64,7 @@
                                         <tr>
                                             <th class="border-top-0">Date</th>
                                             <th class="border-top-0">Employee ID</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
+                                            <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Time-In</th>
                                             <th class="border-top-0">Time-Out</th>
                                         </tr>
@@ -79,10 +79,9 @@
                                         while ($result = mysqli_fetch_array($dt)){
                                             $result = "<tr><td>"  . date('F d , Y', strtotime($result['attendance_date'])) . "</td>" .
                                             "<td>"  . $result['emp_id'] . "</td>" .
-                                            "<td>"  . $result['emp_surname'] . "</td>" .
-                                            "<td>"  . $result['emp_firstname'] . "</td>" .
-                                            "<td>"  . $result['time_in'] . "</td>" .
-                                            "<td>"  . $result['time_out'] . "</td></tr>";
+                                            "<td>"  . $result['emp_firstname'] . ' ' . $result['emp_surname'] . "</td>" .
+                                            "<td>"  .  date('h:i:s A', strtotime($result['time_in'])) . "</td>" .
+                                            "<td>"  .  date('h:i:s A', strtotime($result['time_out'])) . "</td></tr>";
                                             echo $result;
                                         }
                                     ?>
