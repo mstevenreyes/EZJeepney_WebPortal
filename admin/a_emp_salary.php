@@ -91,7 +91,7 @@
                                                 $salaryID = $result['salary_id'];
                                         ?>
                                         <tr>
-                                            <td class="border-top-0"><div style="display:flex;"><img src="../employee/employee_profiles/<?php echo $result['emp_id'] . "/" . $result['emp_id'] . '.png' ?>" 
+                                            <td class="border-top-0"><div style="display:flex;"><img src="../employee/employee_images/<?php echo $result['emp_id'] . '.png'; ?>" 
                                             class="schedule-emp-img" alt="image"><h5 class="schedule-emp-details"><?php echo $result['emp_firstname'] . " " .$result['emp_surname']?><br><?php echo $result['emp_id'] ?></h5></div></td>
                                             <td class="border-top-0"><?php echo $result['emp_type']?></td>
                                             <td class="border-top-0">example@gmail.com</td>

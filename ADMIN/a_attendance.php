@@ -39,7 +39,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Driver Attendance</h4>
+                        <!-- <h4 class="page-title">Driver Attendance</h4> -->
                     </div> 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -56,8 +56,8 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Attendance Record</h3> <br>
+                    <h3 class="box-title">Attendance Record</h3> <br>
+                        <div class="white-box" style="display:flex;">
                             <div class="table-responsive">
                                 <table class="table text-nowrap" id="attendance-table">
                                     <thead>
@@ -133,13 +133,14 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/attendance.js"></script>
     <script src="js/app-style-switcher.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="js/custom.js"></script>
+
     <!-- CSS For Date Range Picker and Datepicker-->                                                 
     <script src="js/a_scheduling.js"></script>
 </body>

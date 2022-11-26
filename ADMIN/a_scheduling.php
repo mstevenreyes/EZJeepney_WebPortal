@@ -168,7 +168,7 @@
                                 </form>
                             </div>
                         </div>
-                            <div class="table-responsive">
+                            <div class="table-responsive center">
                                 <table class="table text-nowrap" id="schedule-table">
                                     <thead>
                                         <tr>
@@ -324,8 +324,8 @@
                 </div>
                 <!-- ===================== FORM POP-UP =========================== -->
                 <div class="form-popup" id="add-form-popup">
-                    <div class="container form-wrapper" style="border-radius: 20px;">
-                        <button class="btn close-form" id="close-add-form" style="border-radius: 20px;">Close</button>
+                    <div class="container form-wrapper">
+                        <button class="btn close-form" id="close-add-form">Close</button>
                         <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
@@ -404,15 +404,15 @@
                                     <label>
                                     </label>
                                 </div>
-                            <input type="submit" class="btn send-form" name="submit" value="Add Schedule" style="border-radius: 20px;">
+                            <input type="submit" class="btn send-form" name="submit" value="Add Schedule" >
                         </form>
                     </div>
                 </div>
                 <!-- ============================================================= -->
                 <!-- ===================== EDIT FORM POP-UP =========================== -->
                 <div class="form-popup" id="edit-form-popup" style="z-index: 100;">
-                <div class="container form-wrapper" style="border-radius: 20px;">
-                    <button class="btn close-form" id="close-edit-form" style="border-radius: 10px;">Close</button>
+                <div class="container form-wrapper">
+                    <button class="btn close-form" id="close-edit-form" >Close</button>
                     <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -453,8 +453,11 @@
                                 <label>
                                 </label>
                             </div>
-                        <input type="submit" class="btn update-btn" name="update-schedule" value="Update Schedule">
-                        <input type="submit" class="btn delete-btn" name="delete-schedule" value="Delete Schedule">
+                        <div class="center">
+                            <input type="submit" class="btn update-btn" name="update-schedule" value="Update Schedule">
+                            <input type="submit" class="btn delete-btn" name="delete-schedule" value="Delete Schedule">
+                        </div>
+                     
 
                     </form>
                 </div>

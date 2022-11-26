@@ -3,18 +3,21 @@
     require '../dbh.inc.php';
 
     // POST VARIABLES
+    $batchId = $_POST['batch-id'];
     $driverId = $_POST['driver-id'];
     $paoId = $_POST['pao-id'];
     $plateNumber = $_POST['plate-number'];
     $scheduleType = $_POST['schedule-type'];
     $scheduleDate = $_POST['schedule-date']; 
-    $shiftStart = $_POST['shift-start'];
-    $shiftEnd = $_POST['shift-end'];
+    $shiftStart = date("G:i", strtotime($_POST['shift-start']));
+    $shiftEnd = date("G:i", strtotime($_POST['shift-end']));
     $submitBtn = $_POST['submit'];
     $updateSchedBtn = $_POST['update-schedule'];
+    $deleteSchedBtn = $_POST['delete-schedule'];
     $tablename = "tb_schedule_sheet";
 
-    if(isset($submitBtn)){
+    if(isset($submitBtn))
+    {
         //If scheduling only one day
         if($scheduleType == "day")
         {
@@ -30,7 +33,7 @@
             if(!mysqli_stmt_execute($stmt))
             {
                 echo "ERROR: " . mysqli_error($conn);
-                // header('location: a_scheduling.php?error=stmtfailed');
+                header('location: a_scheduling.php?error=insert-day-failed');
                 exit();
             }
         }
@@ -45,7 +48,7 @@
             while($scheduleIncrement != $scheduleEnd)
             {
                 $scheduleFormatted = $scheduleIncrement->format('Y-m-d');
-                $sql = "INSERT INTO $tablename(schedule_date, driver_id, pao_id, plate_number, shift_start, shift_end) VALUES (?, ?, ?, ?, ?, ?)"; // Sql Statement
+                $sql = "INSERT INTO tb_schedule_sheet(schedule_date, driver_id, pao_id, plate_number, shift_start, shift_end) VALUES (?, ?, ?, ?, ?, ?)"; // Sql Statement
                 // Initializing Connection
                 $stmt = mysqli_stmt_init($conn); 
                 if(!mysqli_stmt_prepare($stmt, $sql))
@@ -53,30 +56,13 @@
                     echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
                     exit();
                 }
-        
-                mysqli_stmt_bind_param($stmt, "ssssss", $scheduleFormatted, $driverId, $paoId, $plateNumber, $shiftStart, $shiftEnd );
+                mysqli_stmt_bind_param($stmt, "ssssss", $scheduleDate, $driverId, $paoId, $plateNumber, $shiftStart, $shiftEnd );
                 if(!mysqli_stmt_execute($stmt))
                 {
-                    // echo "ERROR: " . mysqli_error($conn);
-                    header('location: a_scheduling.php?error=stmtfailed');
+                    echo "ERROR: " . mysqli_error($conn);
+                    header('location: a_scheduling.php?error=insert-day-failed');
                     exit();
                 }
-                // FOR PAO INSERTION
-                $sql = "INSERT INTO $tablename(schedule_date, batch_id, emp_id, plate_number) VALUES (?, ?, ?, ?)"; // Sql Statement
-                $stmt = mysqli_stmt_init($conn); // Initializing Connection
-                if(!mysqli_stmt_prepare($stmt, $sql))
-                {
-                    echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
-                    header('location: a_scheduling.php?error=stmtfailed');
-                    exit();
-                }
-                mysqli_stmt_bind_param($stmt, "ssss", $scheduleFormatted, $batchId, $paoId, $plateNumber);
-                if(!mysqli_stmt_execute($stmt)){
-                    // echo "ERROR: " . mysqli_error($conn);
-                    header('location: a_scheduling.php?error=stmtfailed');
-                    exit();
-                }
-                $scheduleIncrement->add(new DateInterval('P1D'));
             }      
         }
         header('location: a_scheduling.php?status=success');
@@ -85,7 +71,8 @@
     }
     elseif(isset($updateSchedBtn))
     {
-        $sql = "INSERT INTO $tablename(schedule_date, driver_id, pao_id, plate_number, shift_start, shift_end) VALUES (?, ?, ?, ?, ?, ?)"; // Sql Statement
+        $batchId = $_POST['edit-form-batch-id'];
+        $sql = "UPDATE tb_schedule_sheet SET shift_start = ?, shift_end = ? WHERE batch_id = ?"; // Sql Statement
         // Initializing Connection
         $stmt = mysqli_stmt_init($conn); 
         if(!mysqli_stmt_prepare($stmt, $sql))
@@ -93,12 +80,40 @@
             echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
             exit();
         }
-        mysqli_stmt_bind_param($stmt, "ssssss", $scheduleDate, $driverId, $paoId, $plateNumber, $shiftStart, $shiftEnd );
+        mysqli_stmt_bind_param($stmt, "sss", $shiftStart, $shiftEnd, $batchId);
         if(!mysqli_stmt_execute($stmt))
         {
             echo "ERROR: " . mysqli_error($conn);
             // header('location: a_scheduling.php?error=stmtfailed');
             exit();
+        }
+        header('location:a_scheduling.php?status=insert-success');
+    }
+    elseif(isset($deleteSchedBtn))
+    {
+        $batchId = $_POST['edit-form-batch-id'];
+        $sql = "DELETE FROM tb_schedule_sheet WHERE batch_id = ?"; // Sql Statement
+        // Initializing Connection
+        $stmt = mysqli_stmt_init($conn); 
+        if(!mysqli_stmt_prepare($stmt, $sql))
+        {
+            echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "s", $batchId);
+        if(!mysqli_stmt_execute($stmt))
+        {
+            // echo "ERROR: " . mysqli_error($conn);
+            header('location: a_scheduling.php?error=stmtfailed');
+            exit();
+        }
+        if(mysqli_stmt_affected_rows($stmt) > 0)
+        {
+            header('location:a_scheduling.php?status=delete-success');
+        }else{
+            echo mysqli_error($conn);
+            exit();
+            header('location:a_scheduling.php?status=delete-failed');
         }
     }
   

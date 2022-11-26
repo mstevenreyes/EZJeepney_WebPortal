@@ -12,6 +12,7 @@ body{
 
 .hidden {
   opacity: 0;
+  /* transition: opacity .4s ease-out; */
 }
 
 .visible {
@@ -47,8 +48,11 @@ body{
     outline: rgba(98, 103, 121, 0.37) solid 1px;
 }
 
-.emp-container p, .emp-container a{
-  color: #066392;
+.emp-container a{
+  color: #101a3a;
+}
+.emp-container a:hover{
+  color: #5c0000;
 }
 
 .emp-profile-names{
@@ -63,7 +67,7 @@ body{
     width: 150px; 
     bottom: 25px;
     border-style: none;
-    background-color: rgb(41, 157, 192);
+    background-color: #0f1236;
     border-radius: 10px;
 }
 
@@ -75,8 +79,8 @@ body{
     cursor: pointer;
     color: white;
     /* padding: 10px 25px; */
-    border: 2px solid rgb(41, 157, 192);
-    background-color: rgb(41, 157, 192);
+    border: 2px solid #0f1236;
+    background-color: #0f1236;
     font-size: 12px;
     transition: .3s;
 }
@@ -94,6 +98,7 @@ body{
 .form-popup .form-wrapper {
     top: 2em;
     max-width: 700px;
+    border-radius: 5px;
     background: white;
     padding: 50px;
     padding-top: 50px;
@@ -108,25 +113,26 @@ body{
     text-transform: uppercase;
 }
 .close-form {
-    border-radius: 10px;
+    border-radius: 3px;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 9;
     cursor: pointer;
     padding: 10px 30px;
-    background-color: rgb(41, 157, 192);
-    border: 2px solid rgb(41, 157, 192);
+    background-color: #0f1236;
+    border: 2px solid #0f1236;
     color: #ffffff;
     font-size: 18px;
     margin-bottom: 20px;
     transition: .3s;
 }
 .send-form {
+    border-radius: 5px;
     cursor: pointer;
     padding: 10px 30px;
-    background-color: rgb(41, 157, 192);
-    border: 2px solid rgb(41, 157, 192);
+    background-color: #0f1236;
+    border: 2px solid #0f1236;
     color: #ffffff;
     font-size: 18px;
     text-transform: uppercase;
@@ -191,6 +197,35 @@ h5.schedule-emp-details{
     border-color: black;
 }
 
+#schedule-table_filter{
+  text-align: right;
+}
+#schedule-table_filter input{
+  margin-left: 20px;
+  border: #066392 solid 1px;
+  border-radius: 5px;
+}
+#schedule-table_length {
+  display: block;
+  width: 250px;
+  margin-left: auto;
+  text-align: right;
+}
+#schedule-table_length select {
+  border-radius: 5px;
+}
+#schedule-table{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+}
+
+table.dataTable thead th {
+  border-bottom: #000533 1px solid;
+  color: #000000;
+  border-radius: 5px;
+}
 
   /* ====================================== */
    
@@ -219,6 +254,18 @@ h5.schedule-emp-details{
     padding: 10px;
     border-radius: 10px;
     color: #066392;
+    transition-duration: .4s;
+  }
+
+  #schedule-table tbody .schedule-details:hover{
+    font-size: 12px;
+    font-weight: 700;
+    border: dashed 1px;
+    border-color: #1a1168f8;
+    background-color: #0c222400;
+    padding: 10px;
+    border-radius: 10px;
+    color: #1a1168f8;
     transition-duration: .4s;
   }
 
@@ -286,7 +333,7 @@ input[type=text]:focus{
 /* =========== FOR PAYROLL========================= */
 
 .btn-generate{
-    background-color: #6299ce;
+    background-color: #0f1236;
     border-radius: 10px;
     color: white;
 }
@@ -390,26 +437,20 @@ input[type=text]:focus{
     color: #77ACF2 !important;
 
   }
-
-  /* #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i{
-    color: #0a81b1 ;
-    transition-duration: .5s;
-  } */
   .sidebar-nav ul .sidebar-item .sidebar-link i{
     font-size: 16px;
     width: 40px;
   }
-  /* #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link:hover, 
-  #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i:hover{
-    color: #ACDEF2 !important;
-  } */
+/* Sidebar per item */
   .sidebar-nav ul .sidebar-item .sidebar-link{
     background-color: rgba(31, 53, 133, 0);
-    color: #ACDEF2 !important
+    color: #ACDEF2 !important;
+    transition-duration: .1s;
   }
+  /* hover on sidebar */
   .sidebar-nav ul .sidebar-item .sidebar-link:hover{
     background-color: rgba(31, 53, 133, 0.384);
-    color: #ACDEF2 !important
+    color: #c2235d !important
   }
 
   
@@ -421,3 +462,47 @@ input[type=text]:focus{
     background: #0f1236;
     border-bottom: #acdef22a solid 1px;
   }
+
+  /* ========== FOR ATTENDANCE TAB =================== */
+  
+  .center{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .table-responsive{
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 100%;
+  }
+  #attendance-table_wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;  
+  }
+  #attendance-table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;  
+  }
+
+  /* ======= EMPLOYEE TAB ============= */
+
+  /* .red-hover{
+    transition-duration: .2s;
+  }
+
+  .red-hover:hover{
+    color: #a5033e;
+  } */
+
+
+  /* ========== INVENTORY TAB =============== */
+
+  .eclose-form, .esend-form{
+    background-color: #000533;
+    color: #ffffff;
+  }
+
+
+  /* ========================================== */

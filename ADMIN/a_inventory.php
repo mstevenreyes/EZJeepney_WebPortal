@@ -184,7 +184,7 @@
             </div>
 
             <!-- EDIT CURRENT INVENTORY -->
-            <div class="eform-popup">
+            <div class="form-popup edit-form">
                 <div class="container eform-wrapper">
                     <button class="btn eclose-form">Close</button>
                     <form action="a_inventory_edit.php" method="POST" novalidate="novalidate">
@@ -297,17 +297,15 @@
 
         $(document).ready(function() {
             $('.edit-form').click(function() {
-                $('.eform-popup').show();
+                $('.form-popup edit-form').show();
             });
             $('.eclose-form').click(function() {
-                $('.eform-popup').hide();
-    
+                $('.form-popup edit-form').hide();
             });
 
             $(document).mouseup(function(e) {
                 var econtainer = $(".eform-wrapper");
-                var eform = $(".eform-popup");
-
+                var eform = $(".form-popup edit-form");
                 if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
                     eform.hide();
                 }

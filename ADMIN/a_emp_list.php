@@ -67,64 +67,19 @@
                 <div class="emp-row">
                     <?php while($result = mysqli_fetch_array($stmt)){ ?>
                     <div class="emp-container">
-                        <a href="a_profile.php?employee=<?php echo $result['emp_id'] ?>"><img src="../employee/employee_images/<?php echo $result['emp_id'] . '.png';  ?>" alt="image">
+                        <a class="red-hover" href="a_profile.php?employee=<?php echo $result['emp_id'] ?>"><img src="../employee/employee_images/<?php echo $result['emp_id'] . '.png';  ?>" alt="image">
                         <h4 class="emp-profile-names"><strong><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname'];
-                        ?></strong></h4></a>
+                        ?></strong></h4>
                         <p><strong><?php if(substr($result['emp_id'], 0, 2 ) == "DR"){echo "Driver<br>";}else{echo "Public Assistance Officer<br>";}
-                        echo  '(' . $result['emp_id'] ?>)
+                        echo  '(' . $result['emp_id'] ?>)</a>
                         </strong></p>
                     </div>
                     <?php } ?>
                 </div>
-                <!-- <div class="row"> -->
-                    <!-- Column -->
-                    <!-- <div class="col-lg-8 col-xlg-9 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <form class="form-horizontal form-material">
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Full Name</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                                class="form-control p-0 border-0"> </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label for="example-email" class="col-md-12 p-0">Email</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="email" placeholder="johnathan@admin.com"
-                                                class="form-control p-0 border-0" name="example-email"
-                                                id="example-email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Password</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" value="password" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Phone No</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="123 456 7890"
-                                                class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-success">Update Profile</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- Column -->
-                <!-- </div>  -->
-               
                 <!-- FORM POP-UP -->
                 <div class="form-popup" >
-                    <div class="container form-wrapper" style="border-radius: 20px;">
-                        <button class="btn close-form" style="border-radius: 20px;">Close</button>
+                    <div class="container form-wrapper" style="border-radius: 10px;">
+                        <button class="btn close-form">Close</button>
                         <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-md-12 text-center">
@@ -174,7 +129,7 @@
                                 <label>
                                 </label>
                             </div>
-                            <input type="submit" class="btn send-form" name="submit" value="Add Employee" style="border-radius: 20px;">
+                            <input type="submit" class="btn send-form" name="submit" value="Add Employee">
                         </form>
                     </div>
                 </div>
