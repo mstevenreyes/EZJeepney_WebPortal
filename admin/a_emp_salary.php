@@ -112,8 +112,8 @@
                 <!-- ============================================================== -->
                 <!-- =======================FORM POPUP============================= -->
                 <div class="form-popup" id="form-popup">
-                    <div class="container form-wrapper" style="border-radius: 20px;">
-                        <button class="btn close-form" style="border-radius: 20px;">Close</button>
+                    <div class="container form-wrapper" >
+                        <button class="btn close-form">Close</button>
                         <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
@@ -181,7 +181,7 @@
                                     </label>
                                 </div>
                                 <div class="form-group col-sm-12" style="margin:10px auto;"> 
-                                    <input type="submit" class="btn send-form" name="submit" value="Submit" style="border-radius: 20px;">
+                                    <input type="submit" class="btn send-form" name="submit" value="Submit">
                                 </div>
                         </form>
                     </div>

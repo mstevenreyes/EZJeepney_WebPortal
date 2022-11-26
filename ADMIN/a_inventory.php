@@ -121,9 +121,8 @@
                                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                     <h3 class="page-title">Supplies/Spare Parts List</h3>
                                 </div>
-                                <button class="btn-edit btn edit-form">EDIT INVENTORY DETAILS:</button>
+                                <button class="btn-edit btn edit-form" id="edit-inventory-form">EDIT INVENTORY DETAILS:</button>
                             </div>                     
-
                         <div class="table-responsive">
                             <table class="table text-nowrap schedule-table">
                                 <thead>
@@ -142,11 +141,12 @@
                                         $statement = "SELECT item, quantity FROM tb_inventory";
                                         $dt = mysqli_query($conn, $statement);
 
-                                        while ($result = mysqli_fetch_array($dt)){
-                                        ++$counter;
-                                        $items[] = $result['item'];
-                                        $result = "<tr><td>" . $result['item'] . "</td><td>"  . $result['quantity'] . "</td>";
-                                        echo $result;
+                                        while ($result = mysqli_fetch_array($dt))
+                                        {
+                                            ++$counter;
+                                            $items[] = $result['item'];
+                                            $result = "<tr><td>" . $result['item'] . "</td><td>"  . $result['quantity'] . "</td>";
+                                            echo $result;
                                         }
                                     ?>
                                 </tbody>
@@ -156,7 +156,7 @@
                 </div>  
             
             <!-- ADD NEW PARTS OR SUPPLIES -->
-            <div class="form-popup">
+            <div class="form-popup" id="add-supplies">
                 <div class="container form-wrapper">
                     <button class="btn close-form">Close</button>
                     <form action="a_inventory_inc.php" method="POST" novalidate="novalidate">
@@ -182,11 +182,10 @@
                     </form>
                 </div>
             </div>
-
             <!-- EDIT CURRENT INVENTORY -->
-            <div class="form-popup edit-form">
-                <div class="container eform-wrapper">
-                    <button class="btn eclose-form">Close</button>
+            <div class="form-popup" id="edit-form">
+                <div class="container form-wrapper">
+                    <button class="btn close-form" id="close-inventory-form">Close</button>
                     <form action="a_inventory_edit.php" method="POST" novalidate="novalidate">
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -231,7 +230,7 @@
                         <div class="eform-check">
                             <label></label>
                         </div>
-                        <input type="submit" name="update" class="btn esend-form e_marginInvent" value="Confirm">
+                        <input type="submit" name="update" class="btn esend-form e_marginInvent" id="edit-send-form" value="Confirm">
                     </form>
                 </div>
             </div>
@@ -275,14 +274,21 @@
 </script>
     <script>
 
-        // FUNCTION FOR OPEN-FORM //
         $(document).ready(function() {
+            //Open Form Add new parts
             $('.open-form').click(function() {
-                $('.form-popup').show();
+                $('#add-supplies').show();
             });
             $('.close-form').click(function() {
-                $('.form-popup').hide();
+                $('#add-supplies').hide();
     
+            });
+
+            $('#edit-inventory-form').click(function() {
+                $('#edit-form').show();
+            });
+            $('#close-inventory-form').click(function() {
+                $('#edit-form').hide();
             });
 
             $(document).mouseup(function(e) {
@@ -293,19 +299,10 @@
                     form.hide();
                 }
             });
-        });
-
-        $(document).ready(function() {
-            $('.edit-form').click(function() {
-                $('.form-popup edit-form').show();
-            });
-            $('.eclose-form').click(function() {
-                $('.form-popup edit-form').hide();
-            });
 
             $(document).mouseup(function(e) {
                 var econtainer = $(".eform-wrapper");
-                var eform = $(".form-popup edit-form");
+                var eform = $(".eform-popup .edit-form");
                 if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
                     eform.hide();
                 }
