@@ -506,3 +506,10 @@ input[type=text]:focus{
 
 
   /* ========================================== */
+  /* ==========  FOR SALARY REPORT ============== */
+
+  #project{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;
+  }
