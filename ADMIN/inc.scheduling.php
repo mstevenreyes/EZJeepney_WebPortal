@@ -33,7 +33,7 @@
             if(!mysqli_stmt_execute($stmt))
             {
                 echo "ERROR: " . mysqli_error($conn);
-                header('location: a_scheduling.php?error=insert-day-failed');
+                header('location: a_scheduling?error=insert-day-failed');
                 exit();
             }
         }
@@ -65,7 +65,7 @@
                 }
             }      
         }
-        header('location: a_scheduling.php?status=success');
+        header('location: a_scheduling?status=success');
         // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
         // header('location: a_scheduling.php?success');
     }
@@ -104,7 +104,7 @@
         if(!mysqli_stmt_execute($stmt))
         {
             // echo "ERROR: " . mysqli_error($conn);
-            header('location: a_scheduling.php?error=stmtfailed');
+            header('location: a_scheduling?error=delete-sched-exec-failed');
             exit();
         }
         if(mysqli_stmt_affected_rows($stmt) > 0)

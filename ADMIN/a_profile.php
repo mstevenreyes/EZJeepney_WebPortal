@@ -1,3 +1,12 @@
+<?php
+    include '../dbh.inc.php';
+    $sql = "SELECT * FROM tb_employee WHERE emp_id='" . $_GET['employee'] . "'";
+    $stmt = mysqli_query($conn, $sql);
+
+    if(!$result = mysqli_fetch_assoc($stmt)){
+        header("location: a_emp_list.php?error=employee-not-found");
+    }
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -11,13 +20,13 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Driver Attendance - Majetsco</title>
+    <title>EZ Jeepney - Employee Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/majetsco_logo.png">
+    <link rel="icon" type="image/ico" sizes="16x16" href="../images/favicon.ico">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -33,10 +42,8 @@
 <body>
 <?php
         include 'sidebar.php';
-        include '../dbh.inc.php';
-        $sql = "SELECT * FROM tb_employee WHERE emp_id='" . $_GET['employee'] . "'";
-        $stmt = mysqli_query($conn, $sql);
-        $result = mysqli_fetch_assoc($stmt);
+
+
 ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->

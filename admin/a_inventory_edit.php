@@ -13,10 +13,10 @@
         $sql_run = mysqli_query($conn, $sql);
 
         if($sql_run){
-            echo '<script alert("Data Updated"); </script';
+            echo '<script> alert("Data Updated"); </script>';
         }
         else{
-            echo '<script alert("Data Not Updated"); </script';
+            echo '<script> alert("Data Not Updated"); </script>';
         }
 
 

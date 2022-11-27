@@ -47,12 +47,12 @@
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
-                <div class="row align-items-center" style="display: flex;">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 salary-label">
                         <h4 class="page-title">Employee Salary - Majetsco</h4>
-                        <p>Employee Salary</p>
+                        
                     </div> 
-                    <div>
+                    <div class="container-add-salary">
                         <button class="btn-add-salary btn open-form">Add Salary</button>
                     </div>
                 </div>

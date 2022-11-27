@@ -141,7 +141,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" style="display: flex;">
-                        <h4 class="page-title" style="min-width: 500px;">Daily Scheduling - Majetsco</h4>
+                        <h3 class="page-title" style="min-width: 500px;">Daily Scheduling - Majetsco</h3>
                     </div> 
                     <button class="btn-add-driver btn open-form open-add-form" id="open-add-form">Add Schedule</button>
                     <!-- <button class="btn-add-driver btn open-form open-edit-form" id="open-edit-form">Edit Schedule</button> -->
@@ -266,12 +266,12 @@
                                             <!-- ===== -->
                                             <!-- Day 5 -->
                                             <td><?php 
-                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE driver_id = ? AND schedule_date = ?";
+                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE (driver_id = ? OR pao_id = ?) AND schedule_date = ?";
                                                     $stmt = mysqli_stmt_init($conn);
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $dayFormmatted[4] );
+                                                    mysqli_stmt_bind_param($stmt, "sss", $result['emp_id'], $result['emp_id'], $dayFormmatted[4] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
@@ -283,12 +283,12 @@
                                             <!--  -->
                                             <!-- Day 6 -->
                                             <td><?php 
-                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE driver_id = ? AND schedule_date = ?";
+                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE (driver_id = ? OR pao_id = ?) AND schedule_date = ?";
                                                     $stmt = mysqli_stmt_init($conn);
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $dayFormmatted[5] );
+                                                    mysqli_stmt_bind_param($stmt, "sss", $result['emp_id'], $result['emp_id'], $dayFormmatted[5] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
@@ -300,12 +300,12 @@
                                             <!--  -->
                                             <!-- Day 7 -->
                                             <td><?php 
-                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE driver_id = ? AND schedule_date = ?";
+                                                    $sql_tbSchedule_query="SELECT * FROM tb_schedule_sheet WHERE (driver_id = ? OR pao_id = ?) AND schedule_date = ?";
                                                     $stmt = mysqli_stmt_init($conn);
                                                     if(!mysqli_stmt_prepare($stmt, $sql_tbSchedule_query)){
                                                         echo "ERROR: " . mysqli_error($conn);
                                                     }
-                                                    mysqli_stmt_bind_param($stmt, "ss", $result['emp_id'], $dayFormmatted[6] );
+                                                    mysqli_stmt_bind_param($stmt, "sss", $result['emp_id'], $result['emp_id'], $dayFormmatted[6] );
                                                     mysqli_stmt_execute($stmt);
                                                     $result2 = mysqli_stmt_get_result($stmt);
                                                     if(is_null($row = mysqli_fetch_array($result2)) ){
