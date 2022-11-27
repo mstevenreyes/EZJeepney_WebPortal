@@ -224,15 +224,12 @@ h5.schedule-emp-details{
 }
 
 table.dataTable thead th {
+
   border-bottom: #000533 1px solid;
   color: #000000;
   border-radius: 5px;
 }
 
-  /* ====================================== */
-   
-  /* ==================== FOR SCHEDULING PAGE ======================= */
-  
   .btn-add-schedule{
     font-size: 12px;
     border: solid 2px rgb(41, 157, 192);
@@ -332,6 +329,31 @@ input[type=text]:focus{
   background-color: rgb(37, 46, 75);
   color: white;
 }
+
+#schedule-table_paginate > span > a {
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+#schedule-table_info{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+#schedule-table_paginate{
+  margin-top: 30px;
+  text-align: left;
+}
+
+#schedule-table_previous, #schedule-table_next{
+  padding: 10px;
+  border-radius: 20px;
+}
+#schedule-table_previous, #schedule-table_next, #schedule-table_paginate > span > a{
+  color: #000533 !important;
+}
 /* =========== FOR PAYROLL========================= */
 
 .btn-generate{
@@ -350,6 +372,12 @@ input[type=text]:focus{
     width: 100%;
   }
   
+  #project{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;
+  }
+
   .payslip-details p{
     margin: 10px 5px;
   }
@@ -367,6 +395,34 @@ input[type=text]:focus{
   
   .amount{
     margin-left: auto !important;
+  }
+
+  #project_filter{
+    display: inline-block;
+    float: right;
+  }
+
+  #project_filter input{
+    margin-left: 20px;
+    border-radius: 10px;
+    border-color: #010955;
+  }
+
+  .container-add-salary{
+    display: inline-block;
+    margin-left: auto;
+    width:max-content;
+    font-size: 20px;
+  }
+  
+  .salary-label{
+    display: inline-block;
+  }
+
+  .btn-add-salary{
+    width: 200px;
+    font-size: 16px;
+    border-radius: 5px;
   }
 
   /* ======== FOR a_dashboard.php ============== */
@@ -519,10 +575,4 @@ input[type=text]:focus{
 
 
   /* ========================================== */
-  /* ==========  FOR SALARY REPORT ============== */
 
-  #project{
-    margin-left: auto;
-    margin-right: auto;
-    width: 100% !important;
-  }
