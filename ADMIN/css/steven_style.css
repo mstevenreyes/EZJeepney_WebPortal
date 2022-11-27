@@ -198,7 +198,9 @@ h5.schedule-emp-details{
 }
 
 #schedule-table_filter{
+  display: inline-block;
   text-align: right;
+  float: right;
 }
 #schedule-table_filter input{
   margin-left: 20px;
@@ -206,10 +208,10 @@ h5.schedule-emp-details{
   border-radius: 5px;
 }
 #schedule-table_length {
-  display: block;
+  display: inline-block;
   width: 250px;
-  margin-left: auto;
-  text-align: right;
+  float: left;
+  text-align: left;
 }
 #schedule-table_length select {
   border-radius: 5px;
