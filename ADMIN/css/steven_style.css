@@ -486,6 +486,17 @@ input[type=text]:focus{
     width: 100% !important;  
   }
 
+  #attendance-table_filter{
+    display: inline-block;
+    float:right;
+  }
+  #attendance-table_filter input{
+    margin-left: 20px;
+    border-radius: 10px;
+    border-style: groove;
+    border-color: #000d7e;
+  }
+
   /* ======= EMPLOYEE TAB ============= */
 
   /* .red-hover{
