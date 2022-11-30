@@ -33,14 +33,14 @@
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
-                            <img style="height: 45px;" src="../images/ez-jeepney-logo-only.png" alt="homepage" />
+                            <img style="height: 35px;margin:10px " src="../images/ez-jeepney-logo-only.png" alt="homepage" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
                             <!-- <h2>EZ JEEPNEY</h2> -->
-                            <img style="height: 45px;" src="../images/ez-jeepney-logo-text-2.png" alt="">
+                            <img style="height: 35px;" src="../images/ez-jeepney-logo-text-2.png" alt="">
                         </span>
                     </a>
                     <!-- ============================================================== -->

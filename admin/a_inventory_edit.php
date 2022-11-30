@@ -20,6 +20,6 @@
         }
 
 
-        header('location: a_inventory.php');
+        header('location: a_inventory.php?status');
     }
     

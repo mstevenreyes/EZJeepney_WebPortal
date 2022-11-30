@@ -190,6 +190,16 @@ h5.schedule-emp-details{
 
 /* FOR PROFILE PAGE */
 
+.employee-profile-label{
+  display: inline-block;
+}
+
+.edit-profile-container{
+  display: inline-block;
+  width: max-content;
+  margin-left: auto;
+}
+
 .profile-img{
     width: 250px;
     border-radius: 150px;
@@ -228,6 +238,7 @@ table.dataTable thead th {
   border-bottom: #000533 1px solid;
   color: #000000;
   border-radius: 5px;
+  cursor: pointer;
 }
 
   .btn-add-schedule{
