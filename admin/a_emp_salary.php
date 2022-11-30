@@ -49,7 +49,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 salary-label">
-                        <h4 class="page-title">Employee Salary - Majetsco</h4>
+                        <h3 class="page-title">Employee Salary - Majetsco</h3>
                         
                     </div> 
                     <div class="container-add-salary">
@@ -237,7 +237,7 @@
             }),
             $('.close-form').click(function() {
                 $('.form-popup').show(100).fadeOut(300); }); //HIDES POPUP
-                });
+            });
     </script>
 </body>
 
