@@ -80,8 +80,8 @@
                                             $result = "<tr><td>"  . date('F d , Y', strtotime($result['attendance_date'])) . "</td>" .
                                             "<td>"  . $result['emp_id'] . "</td>" .
                                             "<td>"  . $result['emp_firstname'] . ' ' . $result['emp_surname'] . "</td>" .
-                                            "<td>"  .  date('h:i:s A', strtotime($result['time_in'])) . "</td>" .
-                                            "<td>"  .  date('h:i:s A', strtotime($result['time_out'])) . "</td></tr>";
+                                            "<td>"  .  date('h:i A', strtotime($result['time_in'])) . "</td>" .
+                                            "<td>"  .  date('h:i A', strtotime($result['time_out'])) . "</td></tr>";
                                             echo $result;
                                         }
                                     ?>
