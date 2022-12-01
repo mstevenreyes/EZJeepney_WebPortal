@@ -105,18 +105,49 @@
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Employee Type</label>
-                                    <select class="form-control" name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                    <select class="form-control" name="emp-type" id="emp-type" required>
                                         <option value="DRIVER">Driver</option>
                                         <option value="PAO">Public Assistance Officer</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="name">Date of Birth</label>
-                                    <input type="text" class="form-control" id="birthdate" name="birthdate" required="">
+                                    <input type="text" class="form-control" id="birthdate" name="birthdate" required>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="email">Contact Number</label>
-                                    <input type="text" class="form-control" id="contact-number" name="contact-number" required="">
+                                    <input type="text" class="form-control" id="contact-number" name="contact-number" required>
+                                </div>
+                                <div class="form-group col-sm-12" style="border-top: black 1px dashed;padding-top: 20px;">
+                                    <h2 style="text-align: center;"><strong>Emergency Contacts</strong></h2>
+                                    <h4><strong>Primary</strong></h4>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="primary-contact-name">Name</label>
+                                    <input type="text" class="form-control" name="primary-contact-name" id="primary-contact-name">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="primary-contact-relationship">Relationship</label>
+                                    <input type="text" class="form-control" name="primary-contact-relationship" id="primary-contact-relationship">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="primary-contact-phone">Phone Number</label>
+                                    <input type="text" class="form-control" name="primary-contact-phone" id="primary-contact-phone">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <h4><strong>Secondary</strong></h4>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="secondary-contact-name">Name</label>
+                                    <input type="text" class="form-control" name="secondary-contact-name" id="secondary-contact-name">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="secondary-contact-relationship">Relationship</label>
+                                    <input type="text" class="form-control" name="secondary-contact-relationship" id="secondary-contact-relationship">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="secondary-contact-phone">Phone Number</label>
+                                    <input type="text" class="form-control" name="secondary-contact-phone" id="secondary-contact-phone">
                                 </div>
                             </div>
                             <div class="row">

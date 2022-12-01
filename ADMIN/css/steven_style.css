@@ -141,8 +141,13 @@ body{
 .form-control {
     width: 100%;
     font-size:14px;
-    border-color: rgb(31, 31, 31);
+    border-color: rgba(31, 31, 31, 0.422);
 }
+
+.form-popup{
+  overflow: auto;
+}
+
 .form-control:focus {
     border-color: rgb(41, 157, 192);
     box-shadow: 0 0 0 0.2rem rgba(102, 163, 181, 0.25);
