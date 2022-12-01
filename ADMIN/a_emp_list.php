@@ -80,7 +80,7 @@
                 <div class="form-popup" >
                     <div class="container form-wrapper" style="border-radius: 10px;">
                         <button class="btn close-form">Close</button>
-                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data" novalidate="novalidate">
+                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h1 class="form-title" >Add new Employee</h1>
@@ -96,12 +96,12 @@
                                     <input type="text" class="form-control" id="name" name="emp-firstname" required>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="emp-surname">Surname</label>
-                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" autocomplete="off">
+                                    <label for="emp-surname">Last Name</label>
+                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" autocomplete="off" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" autocomplete="off">
+                                    <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Employee Type</label>
@@ -110,11 +110,18 @@
                                         <option value="PAO">Public Assistance Officer</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-4">
                                     <label for="name">Date of Birth</label>
                                     <input type="text" class="form-control" id="birthdate" name="birthdate" required>
                                 </div>
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-4">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control" name="gender" id="gender" required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4">
                                     <label for="email">Contact Number</label>
                                     <input type="text" class="form-control" id="contact-number" name="contact-number" required>
                                 </div>

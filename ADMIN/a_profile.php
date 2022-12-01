@@ -86,7 +86,6 @@
                             </div>
                             <div class="profile-container" style="margin-top: 50px; flex:2;">
                                 <h5>Phone: <?php echo $result['emp_phone_number'] ?> </h5>
-                                <h5>Email: <?php echo $result['emp_email']; ?></h5>
                                 <h5>Birthday: <?php echo $result['emp_birthday']; ?></h5>
                                 <h5>Address: <?php echo $result['emp_address']; ?></h5>
                                 <h5>Gender: <?php echo $result['emp_gender']; ?></h5>

@@ -7,6 +7,15 @@
     $empFirstname = $_POST['emp-firstname'];
     $empPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $empType = $_POST['emp-type'];
+    $birthDate = $_POST['birthdate'];
+    $empContactNumber = $_POST['contact-number'];
+    $gender = $_POST['gender'];
+    $primaryContactName = $_POST['primary-contact-name'];
+    $primaryContactRelationship = $_POST['primary-contact-relationship'];
+    $primaryContactPhone = $_POST['primary-contact-phone'];
+    $secondaryContactName = $_POST['secondary-contact-name'];
+    $secondaryContactRelationship = $_POST['secondary-contact-relationship'];
+    $secondaryContactPhone = $_POST['secondary-contact-phone'];
     $empID = "";
     $submitBtn = $_POST['submit'];
     $tablename = "tb_employee";
@@ -31,17 +40,18 @@
         // FORMS NEW EMPLOYEE ID
         $empID = $prefix . "-" . str_pad(intval(substr($result2, -5, 5)) + 1, 5, "0", STR_PAD_LEFT);
         // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
-        $sql = "INSERT INTO $tablename() VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO tb_employee VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
-            // echo "ERROR: " . mysqli_error($conn);
-            header('location: a_emp_list.php?error=stmtfailed');
+            echo "ERROR: " . mysqli_error($conn);
+            // header('location: a_emp_list.php?error=employee-add-stmt-failed');
             exit();
         }
-        mysqli_stmt_bind_param($stmt, "sssss", $empID, $empType, $empPassword, $empSurname, $empFirstname);
+        mysqli_stmt_bind_param($stmt, "sssssssssssssss", $empID, $empType, $empPassword, $empContactNumber , $empSurname, $empFirstname, $address, $gender, $birthDate, $primaryContactName, $primaryContactRelationship, $primaryContactPhone
+    , $secondaryContactName, $secondaryContactRelationship, $secondaryContactPhone);
         if(!mysqli_stmt_execute($stmt)){
             echo "ERROR: " . mysqli_error($conn);
-            header('location: a_emp_list.php?error=stmtfailed');
+            header('location: a_emp_list.php?error=employee-add-failed');
             exit();
         }
         // RENAMING IMAGE
