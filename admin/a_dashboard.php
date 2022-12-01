@@ -17,14 +17,14 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/ico" sizes="16x16" href="../images/favicon.ico">
     <!-- Custom CSS -->
-    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <!-- <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css"> -->
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> OLD CSS -->
     <link rel="stylesheet" href="css/steven_style.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 </head>
@@ -255,7 +255,7 @@
     <script src="js/sidebarmenu.js"></script>
     <!--This page JavaScript -->
     <!-- CHART FOR DASHBOARD GRAPHS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- CHART FOR ATTENDANCE KEEPING -->
@@ -263,41 +263,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!--chartis chart-->
-    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script>
-      var data = [
-      { y: '2014', a: 50, b: 90},
-      { y: '2015', a: 65,  b: 75},
-      { y: '2016', a: 50,  b: 50},
-      { y: '2017', a: 75,  b: 60},
-      { y: '2018', a: 80,  b: 65},
-      { y: '2019', a: 90,  b: 70},
-      { y: '2020', a: 100, b: 75},
-      { y: '2021', a: 115, b: 75},
-      { y: '2022', a: 120, b: 85},
-      { y: '2023', a: 145, b: 85},
-      { y: '2024', a: 160, b: 95}
-    ],
-    config = {
-        data: data,
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Total Income', 'Total Outcome'],
-        fillOpacity: 0.6,
-        hideHover: 'auto',
-        behaveLikeLine: true,
-        resize: true,
-        pointFillColors:['#ffffff'],
-        pointStrokeColors: ['black'],
-        lineColors:['blue','dimgray']
-    };
-    config.element = 'area-chart';
-    Morris.Area(config);
-    config.element = 'stacked';
-    config.element = 'bar-chart';
-    Morris.Bar(config);
-    </script>
+    <!-- <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script> -->
 </body>
 
 </html>
