@@ -99,14 +99,14 @@
                             <div class="profile-container">
                                 <h4><strong>Emergency Contact</strong></h4>
                                 <p><strong>Primary</strong></p>
-                                <p>Name  <?php echo $result['emp_primary_name']; ?></p>
-                                <p>Relationship  <?php echo $result['emp_primary_relationship']; ?></p>
-                                <p>Phone  <?php echo $result['emp_primary_phone']; ?></p>
+                                <p>Name:  <?php echo $result['emp_primary_name']; ?></p>
+                                <p>Relationship:  <?php echo $result['emp_primary_relationship']; ?></p>
+                                <p>Phone:  <?php echo $result['emp_primary_phone']; ?></p>
                                 <p>----------------------------------------------------</p>
                                 <p><strong>Secondary</strong></p>
-                                <p>Name <?php echo $result['emp_secondary_name']; ?></p>
-                                <p>Relationship <?php echo $result['emp_secondary_relationship']; ?></p>
-                                <p>Phone <?php echo $result['emp_secondary_phone']; ?></p>
+                                <p>Name: <?php echo $result['emp_secondary_name']; ?></p>
+                                <p>Relationship: <?php echo $result['emp_secondary_relationship']; ?></p>
+                                <p>Phone: <?php echo $result['emp_secondary_phone']; ?></p>
                             </div>
                                 
                         </div>

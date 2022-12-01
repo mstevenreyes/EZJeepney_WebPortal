@@ -131,36 +131,36 @@
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="primary-contact-name">Name</label>
-                                    <input type="text" class="form-control" name="primary-contact-name" id="primary-contact-name">
+                                    <input type="text" class="form-control" name="primary-contact-name" id="primary-contact-name" required>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="primary-contact-relationship">Relationship</label>
-                                    <input type="text" class="form-control" name="primary-contact-relationship" id="primary-contact-relationship">
+                                    <input type="text" class="form-control" name="primary-contact-relationship" id="primary-contact-relationship" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="primary-contact-phone">Phone Number</label>
-                                    <input type="text" class="form-control" name="primary-contact-phone" id="primary-contact-phone">
+                                    <input type="text" class="form-control" name="primary-contact-phone" id="primary-contact-phone" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <h4><strong>Secondary</strong></h4>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="secondary-contact-name">Name</label>
-                                    <input type="text" class="form-control" name="secondary-contact-name" id="secondary-contact-name">
+                                    <input type="text" class="form-control" name="secondary-contact-name" id="secondary-contact-name" required>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="secondary-contact-relationship">Relationship</label>
-                                    <input type="text" class="form-control" name="secondary-contact-relationship" id="secondary-contact-relationship">
+                                    <input type="text" class="form-control" name="secondary-contact-relationship" id="secondary-contact-relationship" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="secondary-contact-phone">Phone Number</label>
-                                    <input type="text" class="form-control" name="secondary-contact-phone" id="secondary-contact-phone">
+                                    <input type="text" class="form-control" name="secondary-contact-phone" id="secondary-contact-phone" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="something">Address</label>
-                                    <textarea name="something" class="form-control" id=""></textarea>
+                                    <textarea name="address" class="form-control" id="address"></textarea>
                                 </div>
                             </div>
                             <div class="form-check">
