@@ -404,7 +404,7 @@
                                     <label>
                                     </label>
                                 </div>
-                            <input type="submit" class="btn send-form" name="submit" value="Add Schedule" >
+                            <input type="submit" class="btn send-form" name="add-schedule" value="Add Schedule" >
                         </form>
                     </div>
                 </div>

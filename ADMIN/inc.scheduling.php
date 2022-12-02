@@ -11,7 +11,7 @@
     $scheduleDate = $_POST['schedule-date']; 
     $shiftStart = date("G:i", strtotime($_POST['shift-start']));
     $shiftEnd = date("G:i", strtotime($_POST['shift-end']));
-    $submitBtn = $_POST['submit'];
+    $submitBtn = $_POST['add-schedule'];
     $updateSchedBtn = $_POST['update-schedule'];
     $deleteSchedBtn = $_POST['delete-schedule'];
     $tablename = "tb_schedule_sheet";
@@ -45,7 +45,7 @@
             $scheduleStart = new DateTime($dateArray[0]);
             $scheduleEnd = new DateTime($dateArray[1]);
             $scheduleIncrement = $scheduleStart;
-            while($scheduleIncrement != $scheduleEnd)
+            while($scheduleIncrement <= $scheduleEnd)
             {
                 $scheduleFormatted = $scheduleIncrement->format('Y-m-d');
                 $sql = "INSERT INTO tb_schedule_sheet(schedule_date, driver_id, pao_id, plate_number, shift_start, shift_end) VALUES (?, ?, ?, ?, ?, ?)"; // Sql Statement
@@ -56,13 +56,15 @@
                     echo "ERROR: " . mysqli_error($conn); //Outputs Error in case of statement failing
                     exit();
                 }
-                mysqli_stmt_bind_param($stmt, "ssssss", $scheduleDate, $driverId, $paoId, $plateNumber, $shiftStart, $shiftEnd );
+                mysqli_stmt_bind_param($stmt, "ssssss", $scheduleFormatted, $driverId, $paoId, $plateNumber, $shiftStart, $shiftEnd );
                 if(!mysqli_stmt_execute($stmt))
                 {
                     echo "ERROR: " . mysqli_error($conn);
                     header('location: a_scheduling.php?error=insert-day-failed');
                     exit();
                 }
+                print_r($scheduleFormatted);
+                $scheduleIncrement->modify('+1 day');
             }      
         }
         header('location: a_scheduling?status=success');
