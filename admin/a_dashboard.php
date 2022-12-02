@@ -32,6 +32,20 @@
 <body>
     <?php
         include 'sidebar.php';
+        include '../dbh.inc.php';
+        // query for present details
+        $sql = "SELECT COUNT(emp_id) AS present_driver FROM tb_attendance_sheet WHERE attendance_date = CURDATE() AND emp_id LIKE 'DR%';";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_array($query);
+        $presentDrivers = $result['present_driver'];
+        $sql = "SELECT COUNT(emp_id) AS present_pao FROM tb_attendance_sheet WHERE attendance_date = CURDATE() AND emp_id LIKE 'PAO%';";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_array($query);
+        $presentPaos = $result['present_pao'];
+        $sql = "SELECT COUNT(DISTINCT plate_number) AS jeepney_on_route FROM tb_jeepneys_on_route WHERE schedule_date = CURDATE() AND emp_id LIKE 'DR%';";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_array($query);
+        $jeepneysOnRoute = $result['jeepney_on_route'];
     ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -74,7 +88,7 @@
                                 </div>
                                 <div style="text-align: right;width:50%;">
                                     <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                        <li class="ms-auto"><span class="counter text-info">45</span>
+                                        <li class="ms-auto"><span class="counter text-info"><?php echo $presentDrivers ?></span>
                                         </li>
                                     </ul>
                                     <h3 class="box-title">Present Drivers</h3>
@@ -90,7 +104,7 @@
                                 </div>
                                 <div style="text-align: right;width:50%;">
                                     <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                        <li class="ms-auto"><span class="counter text-info">45</span>
+                                        <li class="ms-auto"><span class="counter text-info"><?php echo $presentPaos ?></span>
                                         </li>
                                     </ul>
                                     <h3 class="box-title">Present PAOs</h3>
@@ -106,7 +120,7 @@
                                 </div>
                                 <div style="text-align: right;width:50%;">
                                     <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                        <li class="ms-auto"><span class="counter text-info">22</span>
+                                        <li class="ms-auto"><span class="counter text-info"><?php echo $jeepneysOnRoute; ?></span>
                                         </li>
                                     </ul>
                                     <h3 class="box-title">Jeepneys On-route</h3>
@@ -124,14 +138,6 @@
                             <!-- <h3 class="box-title">Daily Earnings</h3> -->
                             <h3 class="box-title">Daily Attendance</h3>
                             <div class="d-md-flex">
-                                <ul class="list-inline d-flex ms-auto">
-                                    <li class="ps-3">
-                                        <h5><i class="fa fa-circle me-1 text-info"></i>Drivers</h5>
-                                    </li>
-                                    <li class="ps-3">
-                                        <h5><i class="fa fa-circle me-1 text-inverse"></i>PAOs</h5>
-                                    </li>
-                                </ul>
                             </div>
                             <div id="area-chart" style="height: 250px;"></div>
                         </div>
@@ -140,14 +146,6 @@
                         <div class="white-box">
                             <h3 class="box-title">Daily Revenue</h3>
                             <div class="d-md-flex">
-                                <ul class="list-inline d-flex ms-auto">
-                                    <li class="ps-3">
-                                        <h5><i class="fa fa-circle me-1 text-info"></i>Earnings</h5>
-                                    </li>
-                                    <li class="ps-3">
-                                        <h5><i class="fa fa-circle me-1 text-inverse"></i>Expenses</h5>
-                                    </li>
-                                </ul>
                             </div>
                             <!-- <label class="label label-success">Line Chart</label> -->
                             <div id="bar-chart" ></div>
