@@ -68,11 +68,11 @@
                                 <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                             </div>
                             <div class="payslip-details">
-                                <div class="company-details">
-                                    <h3>Majetsco Cooperative</h3>
-                                    <img src="images/majetsco-logo.png" alt="" style="width: 80px;">
-                                    <p>29 Gov. Pascual Ave</p>
-                                    <p>Malabon, 1470 Metro Manila</p>
+                                <div class="company-details" style="text-align:center">
+                                    <h3 class="box-title">Majetsco Cooperative</h3>
+                                    <img src="images/majetsco-logo.png" alt="" style="width: 100px;">
+                                    <h4  class="box-title">29 Gov. Pascual Ave</h4 >
+                                    <h4 class="box-title">Malabon, 1470 Metro Manila</h4 >
                                 </div>
                                 <div class="employee-details">
                                     <?php
@@ -82,8 +82,8 @@
                                     $philhealth = 'P150';
                                     $sss = 'P150';
                                     $salary = $_GET['salary-id'];
-                                    $stmt = "SELECT tbs.salary_id, tbs.emp_id, tbs.basic_salary, tbs.canteen_fees, tbs.other_deductions, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname
-                                     FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe ON  tbs.emp_id = tbe.emp_id WHERE tbs.salary_id = '$salary'";
+                                    $stmt = "SELECT * FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe 
+                                                ON  tbs.emp_id = tbe.emp_id  WHERE tbs.salary_id = '$salary'";
                                     $sr = mysqli_query($conn, $stmt);
                                     
 
@@ -98,48 +98,126 @@
                                     <div class="earning-details">
                                         <h3>Earnings</h3>
                                         <div class="earning-details-child">
-                                            <p>Basic Salary</p>
-                                            <p class="amount"><?php echo $result['basic_salary']; ?></p>
+                                            <p>Days Worked</p>
+                                            <p class="amount" ><?php echo $result['days_worked']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
-                                            <p>Canteen Fees</p>
-                                            <p class="amount"><?php echo $result['canteen_fees']; ?></p>
+                                            <p>Daily Wage</p>
+                                            <p class="amount" name="bSalary"><?php echo $result['basic_salary']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
-                                            <p>Other Allowance</p>
-                                            <p class="amount"><?php echo $result['other_deductions']; ?></p>
+                                            <p>Gross Pay</p>
+                                            <p class="amount"><?php echo $result['grosspay']; ?></p>
                                         </div>
                                         <div class="earning-details-child">
-                                            <p>Total Earnings</p>
-                                            <p class="amount">P5500</p>
+                                            <p>Total Deductions: </p>
+                                            <p class="amount"><?php echo -$result['grosspay']; ?></p>
+                                        </div>
+                                        <div class="earning-details-child" style="font-weight: bold;">
+                                            <p>Net Pay</p>
+                                            <p class="amount"><?php echo $result['netpay']; ?></p>
                                         </div>
                                     </div>
                                     <div class="deduction-details">
                                         <h3>Deductions</h3>
-                                        <div class="earning-details-child">
-                                            <p>Pag-ibig</p>
-                                            <p class="amount"><?php echo $pag_ibig; ?></p>
-                                        </div>
-                                        <div class="earning-details-child">
-                                            <p>Philhealth</p>
-                                            <p class="amount"><?php echo $philhealth; ?></p>
-                                        </div>
-                                        <div class="earning-details-child">
-                                            <p>SSS</p>
-                                            <p class="amount"><?php echo $sss; ?></p>
-                                        </div>
-                                        <div class="earning-details-child">
-                                            <p>Total Earnings</p>
-                                            <p class="amount">P5500</p>
-                                        </div>
+                                            <div class="earning-details-child">
+                                                <p>Canteen Fees</p>
+                                                <p class="amount" name="cFees"><?php echo $result['canteen_fees']; ?></p>
+                                            </div>
+                                            <div class="earning-details-child">
+                                                <p>Pag-ibig</p>
+                                                <p class="amount"><?php echo $result['pagibig']; ?></p>
+                                            </div>
+                                            <div class="earning-details-child">
+                                                <p>Philhealth</p>
+                                                <p class="amount"><?php echo $result['philhealth']; ?></p>
+                                            </div>
+                                            <div class="earning-details-child">
+                                                <p>SSS</p>
+                                                <p class="amount"><?php echo $result['sss']; ?></p>
+                                            </div>
+
+                                        <?php
+                                            }
+
+                                            $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
+                                                ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
+                                    
+                                            $mysql = mysqli_query($conn, $stmt2);
+
+                                            while ($fetch = mysqli_fetch_array($mysql)){
+                                        ?>
+
+                                            <div class="earning-details-child">
+                                                <p><?php echo $fetch['deductions']; ?></p>
+                                                <p class="amount"><?php echo $fetch['d_amount']; ?></p>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
+                                    
                                 </div>
-                                <?php
-                                    }
-                                ?>
+                                
                             </div>
                             <div class="table-responsive">
+                                <button type="submit" name="submit" class="btn edit-form" style="width: 300px; background-color: #0f1236">EDIT SALARY DETAILS</button>
+                                <button type="submit" name="delete" class="btn del-form" style="width: 300px; background-color: #0f1236">DELETE SALARY REPORT</button>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Edit Salary Details -->
+                    <div class="eform-popup">
+                        <div class="container eform-wrapper">
+                            <button class="btn eclose-form">Close</button>
+                            <form action="salary_report_edit_inc.php" method="POST" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h1 class="eform-title">Edit Employee Salary</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="eform-group edit_empSal">
+                                        <label for="name">Edit Basic Salary:</label>
+                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_bSalary" style="width: 403px" required>
+                                    </div>
+                                    <div class="eform-group edit_empSal">
+                                        <label for="name">Edit Canteen Fees:</label>
+                                        <input type="text" class="eform-control edit_textField" id="edit_cFees" name="edit_cFees" style="width: 395px" required>
+                                    </div>
+                                    <div class="eform-group edit_empSal">
+                                        <label for="name">Edit Other Deductions:</label>
+                                        <input type="text" class="eform-control edit_textField" id="oDeductions" name="edit_oDeductions" style="width: 370px" required>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <label></label>
+                                </div>
+                                <input type="submit" name="submit" class="btn send-form" value="Confirm" style = "margin-left: 39%">
+                            </form>
+                        </div>
+                    </div>
+
+                     <!-- Delete Salary Details -->
+                    <div class="delform-popup">
+                        <div class="container delform-wrapper">
+                            <button class="btn delclose-form">Close</button>
+                            <form action="" method="POST" novalidate="novalidate">
+
+                            <div class="row">
+                                <div class="col-md-12 text-center"></br>
+                                    <h2 class="form-title">Proceed to delete this record?</h2>
+                                </div>
+                            </div>
+
+                            <button type="submit" name="" class="del-form del_btnPlace">Yes</button>
+                            <button type="submit" name="" class="del-form del_btnPlace">No</button> 
+                            
+                                <div class="form-check">
+                                    <label></label>
+                                </div>
+                                <!-- <input type="submit" name="submit" class="btn send-form" value="Confirm"> -->
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -169,7 +247,13 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" ></script>
+    <!-- For Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
@@ -179,21 +263,50 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- EDIT SALARY BTN & DELETE SALARY BTN -->
     <script>
-        // For initializing data table jQuery 
-         $(document).ready(function () {
-            $('#project').DataTable({
-                "pageLength" : 10,
-                scrollX: true,
-                columnDefs: [
-                    { "width": "200px", targets: "_all" },
-                    { "className": "schedule-table", targets: "_all" } 
-                ]
+
+        // FUNCTION FOR EDIT //
+        $(document).ready(function() {
+            $('.edit-form').click(function() {
+                $('.eform-popup').show();
+            });
+            $('.eclose-form').click(function() {
+                $('.eform-popup').hide();
+    
+            });
+
+            $(document).mouseup(function(e) {
+                var container = $(".eform-wrapper");
+                var form = $(".eform-popup");
+
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    form.hide();
+                }
             });
         });
+
+     
+        // FUNCTION FOR DELETE //
+        $(document).ready(function() {
+            $('.del-form').click(function() {
+                $('.delform-popup').show();
+            });
+            $('.delclose-form').click(function() {
+                $('.delform-popup').hide();
+    
+            });
+
+            $(document).mouseup(function(e) {
+                var econtainer = $(".delform-wrapper");
+                var eform = $(".delform-popup");
+
+                if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
+                    delform.hide();
+                }
+            });
+        });
+
     </script>
 </body>
 
