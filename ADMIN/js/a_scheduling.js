@@ -1,10 +1,7 @@
-// DATE RANGE PICKER
-// var today = new Date();
-// var endDate = new Date( );
 
  $(document).ready(function () {
-    $('#schedule-table').DataTable({ // MAKING DATATABLE 
-
+ 
+    var table = $('#schedule-table').DataTable({ // MAKING DATATABLE 
         "pageLength" : 10,
         scrollX: true,
         columnDefs: [
@@ -13,24 +10,33 @@
         ]
         
     });
+   
     //Date Range Picker Scheduling
     $('input[name="schedule-range"]').daterangepicker({ // DATE RANGE PICKER
         startDate: moment(),
         endDate: moment().add(7, 'day'), 
-        dateLimit: { days: 7 },
+        dateLimit: { days: 6 },
         locale: { format: 'YYYY-MM-DD' }
     });
     //
-    $('.open-form').click(function() {
-        $('.form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+    $('.open-add-form').click(function() {
+        $('#add-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
    
     }),
-    $('.close-form').click(function() {
-        $('.form-popup').show(100).fadeOut(300); }); //HIDES POPUP
+    $('#close-add-form').click(function() {
+        $('#add-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
     
-    // tomorrow.toISOString().split('T')[0]
-    // console.log(tomorrow);
-    // var tomorrowFormatted = tomorrow.toDateString('yy-MM-dd')
+    $('.open-edit-form').click(function() {
+        $('#edit-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+        
+   
+    }),
+    $('#close-edit-form').click(function() {
+        $('#edit-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
+    
+
     $("#start-date").change(function(){
         var startDate = $(this).val();
         var endDate = moment(startDate, "YYYY-MM-DD").add(6, 'days');
@@ -56,38 +62,37 @@
             dateday.style.display = 'none';
             dateRanger.style.display = 'flex';
        }
+    }); 
+
+    // Edit Form auto Fillup Schedule tab
+    $('#schedule-table tbody').on('click', 'td', function () {
+        //putting data to the text fields
+        var data =  table.cell(this).data();
+        var driverIdPos = data.search("DR-");
+        var paoIdPos = data.search("PAO-");
+        var batchIdPos = data.search("BID-");
+        var plateNumPos = data.search("Unit:");
+        var driverId = data.substr(driverIdPos, 8);
+        var paoId = data.substr(paoIdPos, 9);
+        var batchId = data.substr(batchIdPos, 13);
+        var plateNumber = data.substr(plateNumPos + 6, 10);
+        var scheduleDatePos = data.search("Date:");
+        var scheduleDate = data.substr(scheduleDatePos + 6, 10);
+        $('#edit-form-batch-id').val(batchId);
+        $('#edit-form-driver-id').val(driverId);
+        $('#edit-form-pao-id').val(paoId);
+        $('#edit-form-plate-number').val(plateNumber.substring(0, plateNumber.indexOf('<')));
+        $('#edit-form-schedule-date').val(scheduleDate);
     });
+
+    // Timepicker for schedule (both add and edit)
+    $('.timepicker').each(function()
+    {
+        $(this).timepicker({ zindex: 999999});
+    });
+
+    document.body.className = "visible"; // Fade in transition for the body
 });
 
-// $(window).on('load', function() {
-//     var scheduleRange = $('#schedule-range').val().split(" ");
-//     // getDates(scheduleRange[0], scheduleRange[2]);
-    
-// });
 
 
-
-// $('#schedule-range').change(function(){
-//     var scheduleRange = $('#schedule-range').val().split(" "); //Splits Date
-//     var date = getDates(scheduleRange[0], scheduleRange[2]); 
-// })
-// function getDates(start, end){
-//     const listDate = [];
-//     const startDate = start;
-//     const endDate = end;
-//     const dateMove = new Date(startDate);
-//     let strDate = startDate;
-
-//     while (strDate < endDate) {
-//         strDate = dateMove.toISOString().slice(0, 10);
-//         listDate.push(strDate);
-//         dateMove.setDate(dateMove.getDate() + 1);
-//     };
-//     $('#schedule-table thead tr').eq(0).find('th').eq(1).html(listDate[0]);
-//     $('#schedule-table thead tr').eq(0).find('th').eq(2).html(listDate[1]);
-//     $('#schedule-table thead tr').eq(0).find('th').eq(3).html(listDate[2]);
-//     $('#schedule-table thead tr').eq(0).find('th').eq(4).html(listDate[3]);
-//     $('#schedule-table thead tr').eq(0).find('th').eq(5).html(listDate[4]);
-//     $('#schedule-table thead tr').eq(0).find('th').eq(6).html(listDate[5]);
-//     $('#schedule-table thead tr').eq(0).find('th').eq(7).html(listDate[6]);
-// }

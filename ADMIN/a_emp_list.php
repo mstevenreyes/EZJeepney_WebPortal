@@ -10,13 +10,13 @@
     <meta name="description"
         content="">
     <meta name="robots" content="noindex,nofollow">
-    <title>Driver Profile - Majetsco</title>
+    <title>Ez Jeepney - Employees</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/majetsco_logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/ez-jeepney-logo-only.png">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -67,65 +67,20 @@
                 <div class="emp-row">
                     <?php while($result = mysqli_fetch_array($stmt)){ ?>
                     <div class="emp-container">
-                        <a href="a_profile.php?employee=<?php echo $result['emp_id'] ?>"><img src="../employee/employee_profiles/<?php echo $result['emp_id']. '/'. $result['emp_id'] . '.png';  ?>" alt="image">
+                        <a class="red-hover" href="a_profile?employee=<?php echo $result['emp_id'] ?>"><img src="../employee/employee_images/<?php echo $result['emp_id'] . '.png';  ?>" alt="image">
                         <h4 class="emp-profile-names"><strong><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname'];
-                        ?></strong></h4></a>
+                        ?></strong></h4>
                         <p><strong><?php if(substr($result['emp_id'], 0, 2 ) == "DR"){echo "Driver<br>";}else{echo "Public Assistance Officer<br>";}
-                        echo  '(' . $result['emp_id'] ?>)
+                        echo  '(' . $result['emp_id'] ?>)</a>
                         </strong></p>
                     </div>
                     <?php } ?>
                 </div>
-                <!-- <div class="row"> -->
-                    <!-- Column -->
-                    <!-- <div class="col-lg-8 col-xlg-9 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <form class="form-horizontal form-material">
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Full Name</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                                class="form-control p-0 border-0"> </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label for="example-email" class="col-md-12 p-0">Email</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="email" placeholder="johnathan@admin.com"
-                                                class="form-control p-0 border-0" name="example-email"
-                                                id="example-email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Password</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" value="password" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Phone No</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="123 456 7890"
-                                                class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-success">Update Profile</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- Column -->
-                <!-- </div>  -->
-               
                 <!-- FORM POP-UP -->
                 <div class="form-popup" >
-                    <div class="container form-wrapper" style="border-radius: 20px;">
-                        <button class="btn close-form" style="border-radius: 20px;">Close</button>
-                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
+                    <div class="container form-wrapper" style="border-radius: 10px;">
+                        <button class="btn close-form">Close</button>
+                        <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h1 class="form-title" >Add new Employee</h1>
@@ -141,40 +96,78 @@
                                     <input type="text" class="form-control" id="name" name="emp-firstname" required>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="emp-surname">Surname</label>
-                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" autocomplete="nope">
+                                    <label for="emp-surname">Last Name</label>
+                                    <input type="text" class="form-control" id="emp-surname" name="emp-surname" autocomplete="off" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" autocomplete="nope" required>
+                                    <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="name">Employee Type</label>
-                                    <select class="form-control" name="emp-type" id="emp-type" style="width: 100%;font-size:14px;border-color: gray;" required>
+                                    <select class="form-control" name="emp-type" id="emp-type" required>
                                         <option value="DRIVER">Driver</option>
                                         <option value="PAO">Public Assistance Officer</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-4">
                                     <label for="name">Date of Birth</label>
-                                    <input type="text" class="form-control" id="birthdate" name="birthdate" required="">
+                                    <input type="text" class="form-control" id="birthdate" name="birthdate" required>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control" name="gender" id="gender" required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="email">Contact Number</label>
+                                    <input type="text" class="form-control" id="contact-number" name="contact-number" required>
+                                </div>
+                                <div class="form-group col-sm-12" style="border-top: black 1px dashed;padding-top: 20px;">
+                                    <h2 style="text-align: center;"><strong>Emergency Contacts</strong></h2>
+                                    <h4><strong>Primary</strong></h4>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="email">Contact Number</label>
-                                    <input type="text" class="form-control" id="contact-number" name="contact-number" required="">
+                                    <label for="primary-contact-name">Name</label>
+                                    <input type="text" class="form-control" name="primary-contact-name" id="primary-contact-name" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="primary-contact-relationship">Relationship</label>
+                                    <input type="text" class="form-control" name="primary-contact-relationship" id="primary-contact-relationship" required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="primary-contact-phone">Phone Number</label>
+                                    <input type="text" class="form-control" name="primary-contact-phone" id="primary-contact-phone" required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <h4><strong>Secondary</strong></h4>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="secondary-contact-name">Name</label>
+                                    <input type="text" class="form-control" name="secondary-contact-name" id="secondary-contact-name" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="secondary-contact-relationship">Relationship</label>
+                                    <input type="text" class="form-control" name="secondary-contact-relationship" id="secondary-contact-relationship" required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="secondary-contact-phone">Phone Number</label>
+                                    <input type="text" class="form-control" name="secondary-contact-phone" id="secondary-contact-phone" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="something">Address</label>
-                                    <textarea name="something" class="form-control" id=""></textarea>
+                                    <textarea name="address" class="form-control" id="address"></textarea>
                                 </div>
                             </div>
                             <div class="form-check">
                                 <label>
                                 </label>
                             </div>
-                            <input type="submit" class="btn send-form" name="submit" value="Add Employee" style="border-radius: 20px;">
+                            <input type="submit" class="btn send-form" name="submit" value="Add Employee">
                         </form>
                     </div>
                 </div>
@@ -241,6 +234,7 @@
                 });
         });
     </script>
+    
 </body>
 
 </html>
