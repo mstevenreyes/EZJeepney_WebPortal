@@ -1,3 +1,12 @@
+<?php
+    include '../dbh.inc.php';
+    $sql = "SELECT * FROM tb_employee WHERE emp_id='" . $_GET['employee'] . "'";
+    $stmt = mysqli_query($conn, $sql);
+
+    if(!$result = mysqli_fetch_assoc($stmt)){
+        header("location: a_emp_list.php?error=employee-not-found");
+    }
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -6,18 +15,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Driver Attendance - Majetsco</title>
+    <title>EZ Jeepney - Employee Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/majetsco_logo.png">
+    <link rel="icon" type="image/ico" sizes="16x16" href="../images/favicon.ico">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -33,10 +38,8 @@
 <body>
 <?php
         include 'sidebar.php';
-        include '../dbh.inc.php';
-        $sql = "SELECT * FROM tb_employee WHERE emp_id='" . $_GET['employee'] . "'";
-        $stmt = mysqli_query($conn, $sql);
-        $result = mysqli_fetch_assoc($stmt);
+
+
 ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -47,10 +50,12 @@
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Employee Profile - Majetsco</h4>
-                        <p>Employee</p>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 employee-profile-label">
+                        <h3 class="page-title">Employee Profile - Majetsco</h3>
                     </div> 
+                    <div class="edit-profile-container">
+                        <button class="btn edit-profile-btn open-form">Edit Profile</button>
+                    </div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -68,7 +73,7 @@
                     <div class="col-sm-12">
                         <div class="white-box" style="display:flex;">
                             <div class="profile-container">
-                                    <img class="profile-img" src="../employee/employee_profiles/<?php echo $result['emp_id']. '/'. $result['emp_id'] . '.png';  ?>" alt="image">
+                                <img class="profile-img" src="../employee/employee_images/<?php echo $result['emp_id'] . '.png';  ?>" alt="image">
                             </div>   
                             <div class="profile-container" style="margin: 50px 0px 0px 30px;flex:2;">
                                 <h3><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname']; ?></h3>
@@ -80,11 +85,10 @@
                                 <h5><?php echo $result['emp_id'];?></h5>
                             </div>
                             <div class="profile-container" style="margin-top: 50px; flex:2;">
-                                <h5>Phone: </h5>
-                                <h5>Email: </h5>
-                                <h5>Birthday:</h5>
-                                <h5>Address: </h5>
-                                <h5>Gender: </h5>
+                                <h5>Phone: <?php echo $result['emp_phone_number'] ?> </h5>
+                                <h5>Birthday: <?php echo $result['emp_birthday']; ?></h5>
+                                <h5>Address: <?php echo $result['emp_address']; ?></h5>
+                                <h5>Gender: <?php echo $result['emp_gender']; ?></h5>
                             </div>
                         </div>
                     </div>
@@ -95,14 +99,14 @@
                             <div class="profile-container">
                                 <h4><strong>Emergency Contact</strong></h4>
                                 <p><strong>Primary</strong></p>
-                                <p>Name</p>
-                                <p>Relationship</p>
-                                <p>Phone</p>
+                                <p>Name:  <?php echo $result['emp_primary_name']; ?></p>
+                                <p>Relationship:  <?php echo $result['emp_primary_relationship']; ?></p>
+                                <p>Phone:  <?php echo $result['emp_primary_phone']; ?></p>
                                 <p>----------------------------------------------------</p>
                                 <p><strong>Secondary</strong></p>
-                                <p>Name</p>
-                                <p>Relationship</p>
-                                <p>Phone</p>
+                                <p>Name: <?php echo $result['emp_secondary_name']; ?></p>
+                                <p>Relationship: <?php echo $result['emp_secondary_relationship']; ?></p>
+                                <p>Phone: <?php echo $result['emp_secondary_phone']; ?></p>
                             </div>
                                 
                         </div>

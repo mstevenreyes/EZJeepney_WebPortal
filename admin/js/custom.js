@@ -1,16 +1,16 @@
 $(function() {
     "use strict";
 
-    $(".preloader").fadeOut();
-    // this is for close icon when navigation open in mobile view
-    $(".nav-toggler").on('click', function() {
-        $("#main-wrapper").toggleClass("show-sidebar");
-        $(".nav-toggler i").toggleClass("ti-menu");
-    });
-    $(".search-box a, .search-box .app-search .srh-btn").on('click', function() {
-        $(".app-search").toggle(200);
-        $(".app-search input").focus();
-    });
+    // $(".preloader").fadeOut();
+    // // this is for close icon when navigation open in mobile view
+    // $(".nav-toggler").on('click', function() {
+    //     $("#main-wrapper").toggleClass("show-sidebar");
+    //     $(".nav-toggler i").toggleClass("ti-menu");
+    // });
+    // $(".search-box a, .search-box .app-search .srh-btn").on('click', function() {
+    //     $(".app-search").toggle(200);
+    //     $(".app-search input").focus();
+    // });
     // ============================================================== 
     // Resize all elements
     // ============================================================== 

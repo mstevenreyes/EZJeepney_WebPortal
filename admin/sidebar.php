@@ -17,6 +17,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
+    <script src="https://kit.fontawesome.com/a398ec554b.js" crossorigin="anonymous"></script>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <!-- ============================================================== -->
@@ -32,13 +33,14 @@
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
-                            <img style="height: 50px;" src="images/majetsco-logo.png" alt="homepage" />
+                            <img style="height: 35px;margin:10px " src="../images/ez-jeepney-logo-only.png" alt="homepage" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <h2>MAJETSCO</h2>
+                            <!-- <h2>EZ JEEPNEY</h2> -->
+                            <img style="height: 35px;" src="../images/ez-jeepney-logo-text-2.png" alt="">
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -77,58 +79,65 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_dashboard.php"
+                            <a class="waves-effect waves-dark sidebar-link" href="a_dashboard"
                                 aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
+                                <i class="fa-solid fa-chart-column fa-lg"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_emp_list.php"
+                        <li class="sidebar-item  pt-2">
+                            <a class="waves-effect waves-dark sidebar-link" href="a_emp_list"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa-solid fa-user-tie"></i>
                                 <span class="hide-menu">Employees</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_scheduling.php"
+                        <li class="sidebar-item  pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_scheduling"
                                 aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Scheduling/Shift</span>
+                                <i class="fa-solid fa-calendar-week"></i>
+                                <span class="hide-menu">Scheduling</span>
                             </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_attendance.php"
+                        </li> 
+                        <li class="sidebar-item  pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_attendance"
                                 aria-expanded="false">
                                 <i class="fas fa-clock"></i>
                                 <span class="hide-menu">Attendance</span>
                             </a>
-                        </li>        
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep.php"
+                        </li>  
+                        <li class="sidebar-item  pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_emp_salary"
                                 aria-expanded="false">
-                                <i class="fas fa-book"></i>
+                                <i class="fa-solid fa-money-check-dollar"></i>
+                                <span class="hide-menu">Payroll</span>
+                            </a>
+                        </li>           
+                        <li class="sidebar-item  pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_vehicleRep"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-clipboard-list"></i>
                                 <span class="hide-menu">Vehicle Report</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_inventory.php"
+                        <li class="sidebar-item  pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_inventory"
                                 aria-expanded="false">
-                                <i class="fas fa-warehouse"></i>
+                                <i class="fa-solid fa-truck-ramp-box"></i>
                                 <span class="hide-menu">Inventory</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_jeepney.php"
+                        <li class="sidebar-item  pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_jeepney"
                                 aria-expanded="false">
                                 <i class="fas fa-bus"></i>
                                 <span class="hide-menu">Add Jeepney</span>
                             </a>
                         </li>
-                        </li><li class="sidebar-item">
+                        </li><li class="sidebar-item  pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout.inc.php"
                                 aria-expanded="false">
-                                <i class="fa fa-power-off fa-2x" aria-hidden="true"></i>
+                                <i class="fa-solid fa-right-from-bracket"></i>
                                 <span class="hide-menu">Log Out</span>
                             </a>
                         </li>

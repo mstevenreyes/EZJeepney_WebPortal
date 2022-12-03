@@ -29,16 +29,13 @@ function loginFaculty($conn, $username, $pwd){
         exit();
     }
     $pwdHashed = $uidExists['emp_pword'];
-
     $pwd_check = password_verify($pwd, $pwdHashed);
 
     
     if($pwd_check){
         session_start();
-        $_SESSION['admin-id'] = $uidExists['emp_id'];
-        $_SESSION['admin-pword'] = $uidExists['emp_pword'];
-        header('location: ./employee/dp_dashboard.php');
-        exit();
+        $_SESSION['emp-id'] = $uidExists['emp_id'];
+        header('location: ./employee/dashboard.php');
     }else{
     
         header('location: emp_login.php?error=wronglogin');
@@ -48,7 +45,6 @@ function loginFaculty($conn, $username, $pwd){
 if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $pwd = $_POST['password'];
-
     require 'dbh.inc.php';
     loginFaculty($conn, $username, $pwd);
 }else{
