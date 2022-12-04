@@ -52,6 +52,7 @@
                     <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
+                <div class="navbar-timer"><span id="time-ticker">00:00:00</span></div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
@@ -148,6 +149,7 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        <script src="js/pages/sidebar.js"></script>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->

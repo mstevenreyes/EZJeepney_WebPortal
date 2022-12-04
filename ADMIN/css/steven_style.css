@@ -460,6 +460,25 @@ input[type=text]:focus{
     font-weight: 100;
 }
 
+#main-wrapper > header > nav {
+  flex-wrap: wrap !important;
+}
+
+
+/* timer in header */
+.navbar-timer{
+  height: 100%;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+#time-ticker{
+  float: right;
+  color: #ffffff;
+  font-size: 20px;
+  min-width: 200px;
+}
+
 .dataTables_length{
     display: inline-block;
     width: 250px;
