@@ -52,7 +52,14 @@
                     <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
-                <div class="navbar-timer"><span id="time-ticker">00:00:00</span></div>
+               
+                <div class="navbar-timer">
+                    
+                    <span id="time-ticker">00:00:00</span>
+                </div>
+                <div class="navbar-notification">
+                    <span><button id="notification-button"><i class="fa-solid fa-bell fa-lg"></i></button></span>
+                </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->

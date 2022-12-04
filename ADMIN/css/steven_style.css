@@ -464,19 +464,33 @@ input[type=text]:focus{
   flex-wrap: wrap !important;
 }
 
+/* notification bell */
+.navbar-notification{
+  padding-right: 50px;
+}
+#notification-button{
+  background-color: rgba(0, 0, 0, 0);
+  color: #7ccbe8;
+  outline: none;
+  border: none;
+}
+#notification-button:focus{
+  outline: none;
+
+}
 
 /* timer in header */
 .navbar-timer{
   height: 100%;
   margin-left: auto;
-  margin-right: 50px;
+  margin-right: 20px;
 }
 
 #time-ticker{
   float: right;
   color: #ffffff;
   font-size: 20px;
-  min-width: 200px;
+  min-width: 100px;
 }
 
 .dataTables_length{
