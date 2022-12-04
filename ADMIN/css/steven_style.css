@@ -479,6 +479,29 @@ input[type=text]:focus{
 
 }
 
+.popup-notification{
+  /* margin-left: auto; */
+  display: none;
+  box-shadow: 2px 2px 5px #000000;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  min-width: 300px;
+  max-width: 300px;
+  z-index: 999999999;
+  padding: 20px;
+  background-color: rgba(233, 233, 233, 0.808);
+}
+
+.notification-hidden{
+  display: none;
+}
+
+.notification-show{
+  display: block;
+}
+
 /* timer in header */
 .navbar-timer{
   height: 100%;
