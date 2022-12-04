@@ -105,7 +105,8 @@ $(function () {
         resize: true,
         pointFillColors:['#ffffff'],
         pointStrokeColors: ['black'],
-        lineColors:['#2E4559','#BF573F']
+        lineColors:['#2E4559','#BF573F'],
+        pointSize: 0
     };
     attendanceConfig.element = 'area-chart';
     Morris.Area(attendanceConfig);
@@ -113,4 +114,7 @@ $(function () {
     config.element = 'bar-chart';
     Morris.Bar(config);
 
+    function getDataFromDB(){
+        
+    }
 });
