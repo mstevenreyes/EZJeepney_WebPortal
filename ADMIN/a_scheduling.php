@@ -27,6 +27,7 @@
 
 <body>
 <?php
+
         include 'sidebar.php';
         $timezone = date_default_timezone_set('Asia/Taipei');
         if(!isset($_POST['start-date'])){
@@ -483,6 +484,7 @@
    
 
     <!-- All Jquery -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
@@ -501,11 +503,13 @@
     <script src="js/custom.js"></script>
     <!-- Timepicker JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    <!-- CSS For Date Range Picker and Datepicker-->                                                 
+    <!-- CSS For Date Range Picker and Datepicker-->     
+    <?php if ($_GET['status'] == 'delete-success'){echo "<script>alert('Deleted Successfully.');</script>";};  ?>
     <script src="js/a_scheduling.js"></script>
     <script>
         var php_var = "<?php echo $day1; ?>"
     </script>
+
 </body>
 
 </html>
