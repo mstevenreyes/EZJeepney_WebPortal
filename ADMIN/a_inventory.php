@@ -121,7 +121,7 @@
                                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                     <h3 class="page-title">Supplies/Spare Parts List</h3>
                                 </div>
-                                <button class="btn-edit btn edit-form" id="edit-inventory-form">EDIT INVENTORY DETAILS:</button>
+                                <button class="btn-edit-supply btn edit-form" id="edit-inventory-form">EDIT INVENTORY DETAILS:</button>
                             </div>                     
                         <div class="table-responsive">
                             <table class="table text-nowrap schedule-table">
@@ -182,10 +182,10 @@
                     </form>
                 </div>
             </div>
-            <!-- EDIT CURRENT INVENTORY -->
-            <div class="form-popup" id="edit-form">
-                <div class="container form-wrapper">
-                    <button class="btn close-form" id="close-inventory-form">Close</button>
+             <!-- EDIT CURRENT INVENTORY -->
+             <div class="eform-popup">
+                <div class="container eform-wrapper">
+                    <button class="btn eclose-form">Close</button>
                     <form action="a_inventory_edit.php" method="POST" novalidate="novalidate">
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -230,7 +230,7 @@
                         <div class="eform-check">
                             <label></label>
                         </div>
-                        <input type="submit" name="update" class="btn esend-form e_marginInvent" id="edit-send-form" value="Confirm">
+                        <input type="submit" name="update" class="btn esend-form e_marginInvent" value="Confirm">
                     </form>
                 </div>
             </div>
@@ -274,21 +274,14 @@
 </script>
     <script>
 
+        // FUNCTION FOR OPEN-FORM //
         $(document).ready(function() {
-            //Open Form Add new parts
             $('.open-form').click(function() {
-                $('#add-supplies').show();
+                $('.form-popup').show();
             });
             $('.close-form').click(function() {
-                $('#add-supplies').hide();
+                $('.form-popup').hide();
     
-            });
-
-            $('#edit-inventory-form').click(function() {
-                $('#edit-form').show();
-            });
-            $('#close-inventory-form').click(function() {
-                $('#edit-form').hide();
             });
 
             $(document).mouseup(function(e) {
@@ -299,10 +292,21 @@
                     form.hide();
                 }
             });
+        });
+
+        $(document).ready(function() {
+            $('.edit-form').click(function() {
+                $('.eform-popup').show();
+            });
+            $('.eclose-form').click(function() {
+                $('.eform-popup').hide();
+    
+            });
 
             $(document).mouseup(function(e) {
                 var econtainer = $(".eform-wrapper");
-                var eform = $(".eform-popup .edit-form");
+                var eform = $(".eform-popup");
+
                 if (!econtainer.is(e.target) && econtainer.has(e.target).length === 0) {
                     eform.hide();
                 }
