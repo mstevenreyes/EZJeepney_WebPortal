@@ -953,3 +953,26 @@ input[type=text]:focus{
     box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
     background-color:#ffffff;
   }
+
+  .deductions_table {
+    width: 543px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
+    background-color:#ffffff;
+  }
+
+  .deduction_details{
+    text-align: center;
+    margin: 10px 10px;
+  }
+
+  .btn-srdel{
+    background-color: #0f1236;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .btn-srdel:hover{
+      color: white;
+  }

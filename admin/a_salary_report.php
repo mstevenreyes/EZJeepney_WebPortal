@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -148,9 +152,9 @@
                                             while ($fetch = mysqli_fetch_array($mysql)){
                                         ?>
 
-                                            <div class="earning-details-child">
+                                            <div class="earning-details-child" name="Dname">
                                                 <p><?php echo $fetch['deductions']; ?></p>
-                                                <p class="amount"><?php echo $fetch['d_amount']; ?></p>
+                                                <p class="amount" name="deduct"><?php echo $fetch['d_amount']; ?></p>
                                             </div>
                                         <?php
                                         }
@@ -170,7 +174,7 @@
                     <div class="eform-popup">
                         <div class="container eform-wrapper">
                             <button class="btn eclose-form">Close</button>
-                            <form action="salary_report_edit_inc.php" method="POST" novalidate="novalidate">
+                            <form action="a_salary_report_edit_inc.php" method="POST" novalidate="novalidate">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <h1 class="eform-title">Edit Employee Salary</h1>
@@ -185,10 +189,37 @@
                                         <label for="name">Edit Canteen Fees:</label>
                                         <input type="text" class="eform-control edit_textField" id="edit_cFees" name="edit_cFees" style="width: 395px" required>
                                     </div>
-                                    <div class="eform-group edit_empSal">
-                                        <label for="name">Edit Other Deductions:</label>
-                                        <input type="text" class="eform-control edit_textField" id="oDeductions" name="edit_oDeductions" style="width: 370px" required>
-                                    </div>
+                                    
+                                    <!-- DEDUCTIONS TABLE -->
+                                    <table class="deductions_table deduction_details">
+                                        <thead>
+                                            <tr><th class="border-top-0">Deductions</th>
+                                            <th class="border-top-0">Amount</th>
+                                            <th class="border-top-0"></th></tr>
+                                        </thead>
+                                    <?php
+                                        $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
+                                            ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
+                                
+                                        $mysql = mysqli_query($conn, $stmt2);
+                                        
+                                        
+                                        while ($fetch = mysqli_fetch_array($mysql)){
+                                    ?>
+
+                                        
+                                            <tr><td><input type="text" class="deduction_details" name="edit_Dname" placeholder="<?php echo $fetch['deductions']; ?>"></td>
+                                            <td><input type="text" class="deduction_details" name="edit_deduct" placeholder="<?php echo $fetch['d_amount']; ?>"></td>
+                                            <td><a class = "btn-srdel btn" style="width: 75px;">Delete</a></tr>
+                                        
+                                    <?php
+                                        }
+
+                                        // Making SAL-ID global
+                                        $_SESSION['salary-id'] = $salary;
+
+                                        ?>
+                                    </table>
                                 </div>
                                 <div class="form-check">
                                     <label></label>
