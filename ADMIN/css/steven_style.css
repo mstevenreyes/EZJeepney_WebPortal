@@ -1031,8 +1031,8 @@ input[type=text]:focus{
   }
 
   .deductions_table {
-    width: 543px;
     border: none;
+    width: 586px;
     border-radius: 4px;
     box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
     background-color:#ffffff;

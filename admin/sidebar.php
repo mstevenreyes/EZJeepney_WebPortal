@@ -4,6 +4,7 @@
         if(!isset($_SESSION['admin-id'])){
             header('location: ../index.php?invalid');
         }
+        
 ?>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

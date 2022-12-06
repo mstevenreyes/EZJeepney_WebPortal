@@ -1,4 +1,4 @@
-<?php 
+<?php
     session_start();
 ?>
 
@@ -81,10 +81,7 @@
                                 <div class="employee-details">
                                     <?php
                                     require_once '../dbh.inc.php';
-                                    //temp variables
-                                    $pag_ibig = 'P150';
-                                    $philhealth = 'P150';
-                                    $sss = 'P150';
+                                    
                                     $salary = $_GET['salary-id'];
                                     $stmt = "SELECT * FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe 
                                                 ON  tbs.emp_id = tbe.emp_id  WHERE tbs.salary_id = '$salary'";
@@ -142,6 +139,9 @@
                                             </div>
 
                                         <?php
+                                            $pagibig = $result['pagibig'];
+                                            $philhealth = $result['philhealth'];
+                                            $sss = $result['sss'];
                                             }
 
                                             $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
@@ -182,12 +182,12 @@
                                 </div>
                                 <div class="row">
                                 <div class="eform-group edit_empSal">
-                                        <label for="name">Edit Basic Salary:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_bSalary" style="width: 403px" required>
-                                    </div>
-                                    <div class="eform-group edit_empSal">
-                                        <label for="name">Edit Canteen Fees:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_cFees" name="edit_cFees" style="width: 395px" required>
+                                        <label for="name">Edit Days Worked:</label>
+                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_bSalary" style="width: 426px" required>
+                                </div>
+                                <div class="eform-group edit_empSal">
+                                        <label for="name">Edit Daily Wage:</label>
+                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="dWage" style="width: 439px" required>
                                     </div>
                                     
                                     <!-- DEDUCTIONS TABLE -->
@@ -202,7 +202,15 @@
                                             ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
                                 
                                         $mysql = mysqli_query($conn, $stmt2);
-                                        
+                                    
+                                    ?>
+                                        <tr><td class="deduction_details" name="">Pag-ibig</td>
+                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $pagibig?>"></td></tr>
+                                        <tr><td class="deduction_details" name="">Philhealth</td>
+                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $philhealth?>"></td></tr>
+                                        <tr><td class="deduction_details" name="">SSS</td>
+                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $sss?>"></td></tr>
+                                    <?php
                                         
                                         while ($fetch = mysqli_fetch_array($mysql)){
                                     ?>
