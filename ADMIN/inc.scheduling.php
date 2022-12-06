@@ -33,7 +33,7 @@
             if(!mysqli_stmt_execute($stmt))
             {
                 echo "ERROR: " . mysqli_error($conn);
-                header('location: a_scheduling?error=insert-day-failed');
+                header('location: a_scheduling?error=insert-failed');
                 exit();
             }
         }
@@ -60,14 +60,14 @@
                 if(!mysqli_stmt_execute($stmt))
                 {
                     echo "ERROR: " . mysqli_error($conn);
-                    header('location: a_scheduling.php?error=insert-day-failed');
+                    header('location: a_scheduling.php?error=insert-failed');
                     exit();
                 }
                 print_r($scheduleFormatted);
                 $scheduleIncrement->modify('+1 day');
             }      
         }
-        header('location: a_scheduling?status=success');
+        header('location: a_scheduling?status=insert-success');
         // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
         // header('location: a_scheduling.php?success');
     }
@@ -89,7 +89,7 @@
             // header('location: a_scheduling.php?error=stmtfailed');
             exit();
         }
-        header('location:a_scheduling.php?status=insert-success');
+        header('location:a_scheduling.php?status=update-success');
     }
     elseif(isset($deleteSchedBtn))
     {
