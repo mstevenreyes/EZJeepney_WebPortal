@@ -504,12 +504,19 @@
     <!-- Timepicker JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <!-- CSS For Date Range Picker and Datepicker-->     
-    <?php if ($_GET['status'] == 'delete-success'){echo "<script>alert('Deleted Successfully.');</script>";};  ?>
     <script src="js/a_scheduling.js"></script>
-    <script>
-        var php_var = "<?php echo $day1; ?>"
-    </script>
+    <?php 
+    if ($_GET['status'] == 'delete-success'){echo "<script>alert('Deleted Successfully.');</script>";};  
+    if ($_GET['status'] == 'insert-success'){echo "<script>alert('Inserted Successfully.');</script>";};  
+    if ($_GET['status'] == 'update-success'){echo "<script>alert('Updated Successfully.');</script>";};  
+    if ($_GET['status'] == 'delete-failed'){echo "<script>alert('Delete Failed.');</script>";};  
+    if ($_GET['status'] == 'insert-failed'){echo "<script>alert('Insertion Failed.');</script>";};  
+    if ($_GET['status'] == 'update-failed'){echo "<script>alert('Update Failed.');</script>";};                          
+
+    ?>                                       
+
+    
+
 
 </body>
-
 </html>

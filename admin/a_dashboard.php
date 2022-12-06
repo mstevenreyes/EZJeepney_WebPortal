@@ -56,9 +56,8 @@
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h3 class="page-title">Good day, Admin!</h3>
-                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" style="display: flex;">
+                        <h3 class="page-title">Good day, Admin!</h3>                    </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
@@ -67,6 +66,8 @@
                         </div>
                     </div>
                 </div>
+                <h5 class="page-title-date">Today is Monday, December 5, 2022</h5>
+
                 <!-- /.col-lg-12 -->
             </div>
             <!-- ============================================================== -->
@@ -257,7 +258,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- CHART FOR ATTENDANCE KEEPING -->
-    <script src="js/pages/dashboards/dashboard1.js"></script>
+    <script src="js/pages/dashboard1.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!--chartis chart-->

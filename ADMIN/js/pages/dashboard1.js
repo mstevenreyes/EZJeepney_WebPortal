@@ -1,9 +1,4 @@
-/*
-Template Name: Admin Pro Admin
-Author: Wrappixel
-Email: niravjoshi87@gmail.com
-File: js
-*/
+
 $(function () {
     "use strict";
     // ============================================================== 
@@ -79,24 +74,31 @@ $(function () {
     // =============================================
 
     // MORRIS JS
-    
-    var attendanceData = [
-        { year: '2012-01-02', a: 50, b: 90},
-        { year: '2012-01-03', a: 65,  b: 75},
-        { year: '2012-01-04', a: 50,  b: 50},
-        { year: '2012-01-05', a: 75,  b: 60},
-        { year: '2012-01-06', a: 80,  b: 65},
-        { year: '2012-01-07', a: 90,  b: 70},
-        { year: '2012-01-08', a: 100, b: 75},
-        { year: '2012-01-09', a: 115, b: 75},
-        { year: '2012-01-10', a: 120, b: 85},
-        { year: '2012-01-11', a: 145, b: 85},
-        { year: '2012-01-12', a: 160, b: 95}
-    ],
-    attendanceConfig = {
+    // gets data from db
+    var attendanceData, revenueData;
+    function getAttendanceDB(){
+        attendanceData = $.parseJSON($.ajax({
+            type: "POST",
+            url: "ajax/dashboard1.php",
+            data: "get=attendance_count",
+            async: false
+        }).responseText);
+    };
+    function getRevenueDB(){
+        revenueData = $.parseJSON($.ajax({
+            type: "POST",
+            url: "ajax/dashboard1.php",
+            data: "get=revenue_count",
+            async: false
+        }).responseText);
+    };
+    getAttendanceDB();
+    getRevenueDB();
+    // Attendance graph config
+    var attendanceConfig = {
         data: attendanceData,
-        xkey: 'year',
-        ykeys: ['a', 'b'],
+        xkey: 'attendance_date',
+        ykeys: ['present', 'absent'],
         xLabels: 'day',
         labels: ['Present', 'Absent'],
         fillOpacity: 0.6,
@@ -107,14 +109,26 @@ $(function () {
         pointStrokeColors: ['black'],
         lineColors:['#2E4559','#BF573F'],
         pointSize: 0
-    };
+    },
+    revenueConfig = {
+        data: revenueData,
+        xkey: 'revenue_date',
+        ykeys: ['income', 'expenses'],
+        xLabels: 'day',
+        labels: ['Present', 'Absent'],
+        fillOpacity: 0.6,
+        hideHover: 'auto',
+        behaveLikeLine: true,
+        resize: true,
+        pointFillColors:['#ffffff'],
+        pointStrokeColors: ['black'],
+        barColors:['#2E4559','#BF573F'],
+        pointSize: 0
+    }
     attendanceConfig.element = 'area-chart';
     Morris.Area(attendanceConfig);
-    config.element = 'stacked';
-    config.element = 'bar-chart';
-    Morris.Bar(config);
-
-    function getDataFromDB(){
-        
-    }
+    // config.element = 'stacked';
+    revenueConfig.element = 'bar-chart';
+    Morris.Bar(revenueConfig);
+    console.log(revenueData);
 });
