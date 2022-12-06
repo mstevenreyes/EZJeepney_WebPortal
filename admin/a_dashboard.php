@@ -66,9 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <h5 class="page-title-date">Today is Monday, December 5, 2022</h5>
-
-                <!-- /.col-lg-12 -->
+                <h5 class="page-title-date">Today is <?php echo date('l, F d Y.'); ?></h5>
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
