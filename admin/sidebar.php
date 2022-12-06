@@ -1,9 +1,9 @@
 <?php
         // Script to check if user is logged in using session variables
-        // session_start();
-        // if(!isset($_SESSION['admin-id'])){
-        //     header('location: ../index.php?invalid');
-        // }
+        session_start();
+        if(!isset($_SESSION['admin-id'])){
+            header('location: ../index.php?invalid');
+        }
 ?>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -18,6 +18,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <script src="https://kit.fontawesome.com/a398ec554b.js" crossorigin="anonymous"></script>
+    
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <!-- ============================================================== -->
@@ -77,8 +78,21 @@
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- Notification Pop-up -->
-        <div class="popup-notification" id="popup-notification">
-            <p>Test: Driver DR-00001 is Late.</p>
+        <div class="popup-notification" id="notification">
+            <div class="notif-content">
+                <span class="close">&times;</span>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+                <p>Test: Driver DR-00001 is Late.</p>
+            </div>
         </div>
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -155,13 +169,12 @@
                             </a>
                         </li>
                     </ul>
-
+                    <script src="js/pages/sidebar.js"></script>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <script src="js/pages/sidebar.js"></script>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
