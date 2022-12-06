@@ -79,19 +79,14 @@
         <!-- ============================================================== -->
         <!-- Notification Pop-up -->
         <div class="popup-notification" id="notification">
+            <div class="close-notif">
+                    <span class="close">&times;</span>
+            </div>
             <div class="notif-content">
-                <span class="close">&times;</span>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
-                <p>Test: Driver DR-00001 is Late.</p>
+                <div class="notif-details">
+                    <p id="notif-date">September 12, 2:59PM</p>
+                    <p>Test: Driver DR-00001 is Late.</p>
+                </div>
             </div>
         </div>
         <!-- ============================================================== -->
