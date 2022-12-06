@@ -39,6 +39,12 @@ body{
     /* box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%); */
     outline: rgba(110, 110, 110, 0.5) solid 1px;
     text-align: center;
+    transition-duration: .8s;
+    color: #2cabe3;
+}
+
+.emp-container:hover{
+  background-color: #8a96fd;
 }
 
 .page-title-date{
@@ -409,7 +415,7 @@ table.dataTable thead th {
     font-weight: 700;
     border: dashed 1px;
     border-color: #1a1168f8;
-    background-color: #0c222400;
+    background-color: #a9a2e6bb;
     padding: 10px;
     border-radius: 10px;
     color: #1a1168f8;
