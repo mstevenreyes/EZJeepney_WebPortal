@@ -115,7 +115,7 @@ $(function () {
         xkey: 'revenue_date',
         ykeys: ['income', 'expenses'],
         xLabels: 'day',
-        labels: ['Present', 'Absent'],
+        labels: ['Income', 'Expenses'],
         fillOpacity: 0.6,
         hideHover: 'auto',
         behaveLikeLine: true,
