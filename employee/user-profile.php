@@ -39,9 +39,6 @@
                                 <!-- Note: PHP Variables located in navbar-sidebar.php -->
                                 <span class="details">Employee Name: <u><i><?php echo $empFirstname . ' ' . $empSurname ?></i></u> </span>
                             </div>
-                        <div class="input box3">
-                            <span class="details">Email: <u><i><?php echo $empEmail ?></i></u></span>
-                         </div>
                         <div class="input box4">
                             <span class="details">Birthday: <u><i><?php echo $empBirthday ?></i></u></span>
                         </div>
