@@ -40,7 +40,10 @@ body{
     outline: rgba(110, 110, 110, 0.5) solid 1px;
     text-align: center;
 }
-  
+
+.page-title-date{
+  margin-left: auto;
+}
 .emp-container img{
     width: 100px;
     border-radius: 100px;
@@ -479,19 +482,76 @@ input[type=text]:focus{
 
 }
 
-.popup-notification{
-  /* margin-left: auto; */
+/* .popup-notification{
   display: none;
   box-shadow: 2px 2px 5px #000000;
   border-radius: 5px;
   position: absolute;
+  top: 80px;
   right: 0;
   margin-right: 10px;
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: scroll;
   z-index: 999999999;
   padding: 20px;
-  background-color: rgba(233, 233, 233, 0.808);
+  color: #ffffff;
+  animation-name: animetetop;
+  animation-duration: 0.4s;
+  background-color: #090126db;
+} */
+
+.popup-notification{
+  display: none;
+  box-shadow: 2px 2px 5px #000000;
+  border-radius: 5px;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  margin-right: 10px;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: scroll;
+  z-index: 999999999;
+  padding: 20px;
+  color: #ffffff;
+  animation-name: animetetop;
+  animation-duration: 0.4s;
+  background-color: #090126db;
+}
+
+.notif-content{
+  border: 1px solid #888;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.popup-notification p{
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
 }
 
 .notification-hidden{
