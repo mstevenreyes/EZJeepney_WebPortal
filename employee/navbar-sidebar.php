@@ -70,7 +70,7 @@
             <span class="fa fa-bus"></span>
                 <p>View Assigned Jeepney</p>
         </div></a>
-        <a href="index.php"><div class="sidebar-menu">
+        <a href="../index.php"><div class="sidebar-menu">
             <span class="fa fa-sign-out"></span>
                 <p>Logout</p>
         </div></a>
