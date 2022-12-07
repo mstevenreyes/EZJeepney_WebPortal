@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <title>Dashboard</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <title>Employee Dashboard - EZ Jeepney</title>
 </head>
 <body>
 
@@ -16,60 +16,13 @@
 
     <?php
         include 'navbar-sidebar.php';
-
-        function getMonthName($date)
-        {
-            $monthName = '';
-            $month = $date;
-            switch($month){
-                case '01':
-                    $monthName = 'January';
-                    break;
-                case '02':
-                    $monthName = 'February';
-                    break;
-                case '03':
-                    $monthName = 'March';
-                    break;
-                case '04':
-                    $monthName = 'April';
-                    break;
-                case '05':
-                    $monthName = 'May';
-                    break;
-                case '06':
-                    $monthName = 'June';
-                    break;
-                case '07':
-                    $monthName = 'July';
-                    break;
-                case '08':
-                    $monthName = 'August';
-                    break;
-                case '09':
-                    $monthName = 'September';
-                    break;
-                case '10':
-                    $monthName = 'October';
-                    break;
-                case '11':
-                    $monthName = 'November';
-                    break;
-                case '12':
-                    $monthName = 'December';
-                    break;
-                default:
-                    $monthName = 'Invalid';
-            }
-            return $monthName;
-        }
     ?>
 
 
     <!--main dashboard-->
 
     <main>
-    
+        <h1>Good Day, <?php echo $empFirstname . "!"; ?></h1>
         <div class="index-dashboard-container">
             <div class="card total2">
                 <div class="info">
@@ -95,7 +48,7 @@
                     </div>   
                 </div>
                 <div class="info-detail">
-                    <button>Apply Leave</button>
+                    <button id="apply-leave">Apply Leave</button>
                 </div>
             </div>
             <div class="card total4">
@@ -158,6 +111,22 @@
              
         
     </main>
-
+     <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app-style-switcher.js"></script>
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--This page JavaScript -->
+    <!-- CHART FOR DASHBOARD GRAPHS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/pages/dashboard.js"></script>
 </body>
 </html>
