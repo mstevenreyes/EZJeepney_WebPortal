@@ -32,18 +32,21 @@
 
                 <table>
                     <tr>
-                        <th>Attendance ID</th>
                         <th>Date</th>
                         <th>Time-In</th>
                         <th>Time-Out</th>
                     </tr>
-                
+                        <?php
+                            $sql = "SELECT * FROM tb_attendance_sheet WHERE emp_id = 'DR-00001'";
+                            $query = mysqli_query($conn, $sql);
+                            while($result = mysqli_fetch_array($query)){
+                        ?>
                         <tr>
-                            <td>123456</td>
-                            <td>September 28, 2022</td>
-                            <td>8:00am</td>
-                            <td>8:00pm</td>
+                            <td><?php echo date('l, F d', strtotime($result['attendance_date']));  ?></td>
+                            <td><?php echo date('h:i A', strtotime($result['time_in'])); ?></td>
+                            <td><?php echo date('h:i A', strtotime($result['time_out'])); ?></td>
                         </tr>
+                        <?php } ?>
 
                 </table>
                
@@ -61,19 +64,22 @@
 
                 <table>
                     <tr>
-                        <th>Absences</th>
+                        <th>Leaves Application Date</th>
                         <th>Status</th>
                     </tr>
                 
                         <tr>
-                            <td>September 26, 2022</td>
-                            <td>-</td>
+                            <?php 
+                            $sql="SELECT * FROM tb_employee_leaves WHERE emp_id = '$empID'";
+                            $query2 = mysqli_query($conn, $sql); 
+                            while($result = mysqli_fetch_array($query2)){
+                            ?>  
+                            <td><?php echo date('F d Y', strtotime($result['apply_date']));  ?></td>
+                            <td><?php echo $result['leave_status']; ?></td>
                         </tr>
-                        <tr>
-                            <td>September 27, 2022</td>
-                            <td>Paid Leave</td>
-                        </tr>
-
+                        <?php
+                            }
+                        ?>
                 </table>
                
 
