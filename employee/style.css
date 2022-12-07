@@ -111,13 +111,13 @@ header{
     left: 0;
     top: 0;
     padding: 80px 0 20px 0;
-    color: black;
-    background-color: #ffffff;
+    color: rgb(127, 116, 196);
+    background-color: #171f26;
     box-shadow: 2px 0 5px rgba(1, 1, 1, 0.5);
 }
 
 .sidebar > a{
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
@@ -136,8 +136,8 @@ header{
 }
 
 .sidebar-menu:hover{
-    color: rgb(247, 247, 247);
-    background-color: #171f26;
+    color: rgb(252, 93, 143);
+    background-color: #0c1c29;
 }
 
 .active-link{
