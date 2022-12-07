@@ -1,9 +1,9 @@
 <?php
         // Script to check if user is logged in using session variables
         session_start();
-        if(!isset($_SESSION['admin-id'])){
-            header('location: ../index.php?invalid');
-        }
+        // if(!isset($_SESSION['admin-id'])){
+        //     header('location: ../index.php?invalid');
+        // }
         
 ?>
     <!-- ============================================================== -->
