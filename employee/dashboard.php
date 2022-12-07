@@ -141,7 +141,7 @@
             </div>
         </div>
             <div class="eom-card">
-                <div class="eomcardu" data-label="<?php echo $date = getMonthName(date('m')); ?>">
+                <div class="eomcardu" data-label="<?php echo $date = getMonthName(date('m', strtotime('-1 month'))); ?>">
                     <div class="info-detail">
                         <img style="width: 122px;
                                             height: 113px;
