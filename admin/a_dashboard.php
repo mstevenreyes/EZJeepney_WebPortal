@@ -42,7 +42,7 @@
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
         $presentPaos = $result['present_pao'];
-        $sql = "SELECT COUNT(DISTINCT plate_number) AS jeepney_on_route FROM tb_jeepneys_on_route WHERE schedule_date = CURDATE() AND emp_id LIKE 'DR%';";
+        $sql = "SELECT COUNT(*) AS jeepney_on_route FROM tb_jeepneys_on_route WHERE schedule_date = CURDATE() AND attendance_date = CURDATE() AND emp_id LIKE 'DR%'";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
         $jeepneysOnRoute = $result['jeepney_on_route'];
@@ -259,6 +259,7 @@
     <script src="js/pages/dashboard1.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="js/notification.js"></script>
     <!--chartis chart-->
     <!-- <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script> -->
