@@ -1,7 +1,3 @@
-<?php
-    // session_start();
-?>
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -139,7 +135,9 @@
                                             </div>
 
                                         <?php
-                
+                                            $pagibig = $result['pagibig'];
+                                            $philhealth = $result['philhealth'];
+                                            $sss = $result['sss'];
                                             }
 
                                             $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
@@ -178,45 +176,48 @@
                                         <h1 class="eform-title">Edit Employee Salary</h1>
                                     </div>
                                 </div>
-                                <?php
-                                        $stmt2 = "SELECT tbd.deductions, tbd.d_amount, tbs.days_worked, tbs.basic_salary, tbs.pagibig, tbs.philhealth, tbs.sss FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
-                                            ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
-                                
-                                        $mysql = mysqli_query($conn, $stmt2);
-                                        $fetch = mysqli_fetch_array($mysql);
-                                    ?>
-                                
                                 <div class="row">
                                 <div class="eform-group edit_empSal">
                                         <label for="name">Edit Days Worked:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_bSalary" placeholder="<?php echo $fetch['days_worked']; ?>" style="width: 426px" required>
+                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_bSalary" style="width: 426px" required>
                                 </div>
                                 <div class="eform-group edit_empSal">
                                         <label for="name">Edit Daily Wage:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="dWage" placeholder="<?php echo $fetch['basic_salary']; ?>" style="width: 439px" required>
+                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="dWage" style="width: 439px" required>
                                     </div>
                                     
                                     <!-- DEDUCTIONS TABLE -->
-                                    <table class="deductions_table deduction_details">
+                                    <table class="deductions_table deduction_details" style = "margin-left>">
                                         <thead>
                                             <tr><th class="border-top-0">Deductions</th>
                                             <th class="border-top-0">Amount</th>
                                             <th class="border-top-0"></th></tr>
                                         </thead>
-                                   
+                                    <?php
+                                        $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
+                                            ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
+                                
+                                        $mysql = mysqli_query($conn, $stmt2);
+                                    
+                                    ?>
                                         <tr><td class="deduction_details" name="">Pag-ibig</td>
-                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $fetch['pagibig']; ?>"></td></tr>
+                                        <td><input type="text" class="deduction_details" value="<?php $pagibig?>"  
+                                            name="" placeholder="<?php echo $pagibig?>"></td></tr>
                                         <tr><td class="deduction_details" name="">Philhealth</td>
-                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $fetch['philhealth']; ?>"></td></tr>
+                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $philhealth?>"></td></tr>
                                         <tr><td class="deduction_details" name="">SSS</td>
-                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $fetch ['sss']; ?>"></td></tr>
+                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $sss?>"></td></tr>
                                     <?php
                                         
                                         while ($fetch = mysqli_fetch_array($mysql)){
                                     ?>
-                                            <tr><td><input type="text" class="deduction_details" name="edit_Dname" placeholder="<?php echo $fetch['deductions']; ?>"></td>
-                                            <td><input type="text" class="deduction_details" name="edit_deduct" placeholder="<?php echo $fetch['d_amount']; ?>"></td>
-                                            <td><a class = "btn-srdel btn" style="width: 75px;">Delete</a></td></tr>
+
+                                        
+                                            <tr><td><input type="text" class="deduction_details d_input" value="<?php echo $fetch['deductions']; ?>"
+                                                name="edit_Dname" placeholder="<?php echo $fetch['deductions']; ?>"></td>
+                                            <td><input type="text" class="deduction_details d_input" value="<?php echo $fetch['d_amount']; ?>"
+                                                name="edit_deduct" placeholder="<?php echo $fetch['d_amount']; ?>"></td>
+                                            <td><a class = "btn-srdel btn" style="width: 75px;">Delete</a></tr>
                                         
                                     <?php
                                         }
@@ -303,7 +304,7 @@
     <!-- EDIT SALARY BTN & DELETE SALARY BTN -->
     <script>
 
-        // FUNCTION FOR EDIT //
+        // FUNCTION FOR EDIT POP OUT //
         $(document).ready(function() {
             $('.edit-form').click(function() {
                 $('.eform-popup').show();
@@ -324,7 +325,7 @@
         });
 
      
-        // FUNCTION FOR DELETE //
+        // FUNCTION FOR DELETE POP OUT //
         $(document).ready(function() {
             $('.del-form').click(function() {
                 $('.delform-popup').show();
@@ -343,6 +344,29 @@
                 }
             });
         });
+
+        // FUNCTION FOR EDIT SALARY DETAILS //
+
+        $(document).ready(function() {
+            $(".d_input").change(function(){
+                alert("hehe");
+            });
+
+            // $("#pgbg").click(function(x){
+            //     var x = document.getElementByID("pgbg");
+            //     var oldValue = x.oldValue;
+            //     var newValue = x.value;
+
+            //     if(oldValue == newValue){
+            //         alert("The value of pag-ibig hasn't changed.");
+            //     }
+            //     else{
+            //         alert("The old value was: " + oldValue + "\n" + "New value is: " + );
+            //     }
+            // });
+        });
+
+
 
     </script>
 </body>

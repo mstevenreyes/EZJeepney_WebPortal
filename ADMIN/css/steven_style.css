@@ -237,7 +237,7 @@ h5.schedule-emp-details{
     left: 0;
     position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 9999;
     background-color: rgba(0, 0, 0, .5);
     transition: .5s;
 }
@@ -252,7 +252,7 @@ h5.schedule-emp-details{
     margin-right: auto;
     left: 0;
     right: 0;
-    top: 300px;
+    top: 100px;
 }
 .eform-title {
     margin-bottom: 20px;
