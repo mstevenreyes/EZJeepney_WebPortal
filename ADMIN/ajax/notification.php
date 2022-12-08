@@ -1,16 +1,23 @@
 <?php
 
 include('../../dbh.inc.php');
-$command = isset($_POST['get']) ? $_POST['get'] : "";
-
+// $command = isset($_POST['get']) ? $_POST['get'] : "";
+$command = 'late-employees';
 switch($command){
     case 'late-employees':
-        $sql = "SELECT * FROM view_late_drivers";
+        $sql = "SELECT * FROM view_late_employees";
         $query = mysqli_query($conn, $sql);
         $lateEmpArr = array();
-        while($result = mysqli_fetch_array($query)){
+        while($result = mysqli_fetch_assoc($query)){
             if($result['attendance_date'] == NULL){
-                array_push($lateEmpArr, $result['tbs_emp_id']);
+                //if time right now is 30 minutes later than shift start, notif
+                $currentDate = new DateTime("now", new DateTimeZone('Asia/Taipei'));
+                $currentTime = strtotime($currentDate->format('H:i:s'));
+                $shiftStart = strtotime($result['shift_start']);
+                $timeDiff = ($currentTime - $shiftStart)/3600;
+                if($timeDiff >= .5){
+                    array_push($lateEmpArr, $result['tbs_emp_id']);
+                }
             }
         }
         echo json_encode($lateEmpArr);

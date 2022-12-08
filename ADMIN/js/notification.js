@@ -7,13 +7,13 @@ function millisToMinutesAndSeconds(millis) {
 function is30MinsLate()
 {
     //Check Schedule
-    let revenueData = $.parseJSON($.ajax({
+    var lateEmployees = $.parseJSON($.ajax({
         type: "POST",
         url: "ajax/notification.php",
         data: "get=late-employees",
         async: false
     }).responseText);
-    console.log(revenueData);
+    console.log(lateEmployees);
     //Compute Time difference in millis
     var final_time = new Date("12/9/2022");
     var c_date = new Date();
