@@ -94,6 +94,7 @@ $(function () {
     };
     getAttendanceDB();
     getRevenueDB();
+
     // Attendance graph config
     var attendanceConfig = {
         data: attendanceData,
@@ -130,4 +131,5 @@ $(function () {
     // config.element = 'stacked';
     revenueConfig.element = 'bar-chart';
     Morris.Bar(revenueConfig);
+    // console.log(revenueData);
 });
