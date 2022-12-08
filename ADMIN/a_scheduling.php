@@ -506,13 +506,14 @@
     <!-- CSS For Date Range Picker and Datepicker-->     
     <script src="js/a_scheduling.js"></script>
     <?php 
-    if ($_GET['status'] == 'delete-success'){echo "<script>alert('Deleted Successfully.');</script>";};  
-    if ($_GET['status'] == 'insert-success'){echo "<script>alert('Inserted Successfully.');</script>";};  
-    if ($_GET['status'] == 'update-success'){echo "<script>alert('Updated Successfully.');</script>";};  
-    if ($_GET['status'] == 'delete-failed'){echo "<script>alert('Delete Failed.');</script>";};  
-    if ($_GET['status'] == 'insert-failed'){echo "<script>alert('Insertion Failed.');</script>";};  
-    if ($_GET['status'] == 'update-failed'){echo "<script>alert('Update Failed.');</script>";};                          
-
+    if(isset($_GET['status'])){
+        if ($_GET['status'] == 'delete-success'){echo "<script>alert('Deleted Successfully.');</script>";};  
+        if ($_GET['status'] == 'insert-success'){echo "<script>alert('Inserted Successfully.');</script>";};  
+        if ($_GET['status'] == 'update-success'){echo "<script>alert('Updated Successfully.');</script>";};  
+        if ($_GET['status'] == 'delete-failed'){echo "<script>alert('Delete Failed.');</script>";};  
+        if ($_GET['status'] == 'insert-failed'){echo "<script>alert('Insertion Failed.');</script>";};  
+        if ($_GET['status'] == 'update-failed'){echo "<script>alert('Update Failed.');</script>";};    
+    }
     ?>                                       
 
     
