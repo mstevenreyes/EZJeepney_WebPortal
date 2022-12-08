@@ -7,7 +7,6 @@ $('#apply-leave').click(function(){
             url: "ajax/emp_dashboard.php",
             data: "set=apply-leave"
         }).done(function(result) {               
-            console.log('done!');
         });
    }
 });
