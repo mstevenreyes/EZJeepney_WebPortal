@@ -4,16 +4,22 @@ function millisToMinutesAndSeconds(millis) {
     console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
 }
 
-function isLate()
+function is30MinsLate()
 {
     //Check Schedule
-    var final_time = new Date(2022, 12, 7, 11, 30);
+    let revenueData = $.parseJSON($.ajax({
+        type: "POST",
+        url: "ajax/notification.php",
+        data: "get=late-employees",
+        async: false
+    }).responseText);
+    console.log(revenueData);
+    //Compute Time difference in millis
+    var final_time = new Date("12/9/2022");
     var c_date = new Date();
     var diffInMillis = final_time.getTime() - c_date.getTime();
-    console.log(final_time.getTime());
     return(diffInMillis);
-    //Check Each Driver/PAO
 }
-
-let timeDiff = isLate();
-millisToMinutesAndSeconds(timeDiff);
+is30MinsLate();
+setInterval(is30MinsLate, 60000) ;
+// millisToMinutesAndSeconds(timeDiff);
