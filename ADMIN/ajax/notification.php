@@ -16,7 +16,8 @@ switch($command){
                 $shiftStart = strtotime($result['shift_start']);
                 $timeDiff = ($currentTime - $shiftStart)/3600;
                 if($timeDiff >= .5){
-                    array_push($lateEmpArr, $result['tbs_emp_id']);
+                    $tempArr = array($result['tbs_emp_id'], $timeDiff);
+                    array_push($lateEmpArr, $tempArr);
                 }
             }
         }
