@@ -138,6 +138,7 @@
                                             $pagibig = $result['pagibig'];
                                             $philhealth = $result['philhealth'];
                                             $sss = $result['sss'];
+                                            $cFees = $result['canteen_fees'];
                                             }
 
                                             $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
@@ -179,11 +180,11 @@
                                 <div class="row">
                                 <div class="eform-group edit_empSal">
                                         <label for="name">Edit Days Worked:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_bSalary" style="width: 426px" required>
+                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="editDays" style="width: 426px" required>
                                 </div>
                                 <div class="eform-group edit_empSal">
                                         <label for="name">Edit Daily Wage:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="dWage" style="width: 439px" required>
+                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_dWage" style="width: 439px" required>
                                     </div>
                                     
                                     <!-- DEDUCTIONS TABLE -->
@@ -200,13 +201,18 @@
                                         $mysql = mysqli_query($conn, $stmt2);
                                     
                                     ?>
-                                        <tr><td class="deduction_details" name="">Pag-ibig</td>
-                                        <td><input type="text" class="deduction_details" value="<?php $pagibig?>"  
-                                            name="" placeholder="<?php echo $pagibig?>"></td></tr>
-                                        <tr><td class="deduction_details" name="">Philhealth</td>
-                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $philhealth?>"></td></tr>
-                                        <tr><td class="deduction_details" name="">SSS</td>
-                                        <td><input type="text" class="deduction_details" name="" placeholder="<?php echo $sss?>"></td></tr>
+                                        <tr><td class="deduction_details">Pag-ibig</td>
+                                        <td><input type="text" class="deduction_details" id="pgbg"
+                                            name="pagibig" placeholder="<?php echo $pagibig?>"></td></tr>
+                                        <tr><td class="deduction_details">Philhealth</td>
+                                        <td><input type="text" class="deduction_details" id="philhealth" value="<?php $philhealth?>"
+                                            name="phealth" placeholder="<?php echo $philhealth?>"></td></tr>
+                                        <tr><td class="deduction_details">SSS</td>
+                                        <td><input type="text" class="deduction_details" id="sss" value="<?php $sss?>"
+                                            name="sss" placeholder="<?php echo $sss?>"></td></tr>
+                                        <tr><td class="deduction_details">Canteen Fees</td>
+                                        <td><input type="text" class="deduction_details" id="cfees" value="<?php $cFees?>"
+                                        name="cfees" placeholder="<?php echo $cFees?>"></td></tr>
                                     <?php
                                         
                                         while ($fetch = mysqli_fetch_array($mysql)){
@@ -348,9 +354,26 @@
         // FUNCTION FOR EDIT SALARY DETAILS //
 
         $(document).ready(function() {
-            $(".d_input").change(function(){
-                alert("hehe");
+
+            $('#pgbg').change(function(){          
+                var x = $('#pgbg').val();
+                $('#pgbg').val(x);
             });
+
+            $('#philhealth').change(function(){
+                var x = $('#philhealth').val();
+                $('#philhealth').val(x);
+            })
+
+            $('#sss').change(function(){
+                var x = $('#sss').val();
+                $('#sss').val(x);
+            })
+
+            $('#cfees').change(function(){
+                var x = $('#cfees').val();
+                $('#cfees').val(x);
+            })
 
             // $("#pgbg").click(function(x){
             //     var x = document.getElementByID("pgbg");
