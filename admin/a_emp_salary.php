@@ -114,7 +114,7 @@
                 <div class="form-popup" id="form-popup">
                     <div class="container form-wrapper" >
                         <button class="btn close-form">Close</button>
-                        <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
+                        <form action="a_add_emp_sal_inc.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h3 class="form-title" >Add Staff Salary</h3>
@@ -135,14 +135,14 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="net-pay">Gross Pay</label>
-                                    <input class="form-control" type="text" name="net-pay">
+                                    <label for="net-pay">Days Worked</label>
+                                    <input class="form-control" type="text" name="days-worked">
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <h3>Earnings</h3>
                                     <div class="form-group col-sm-12">
-                                        <label for="basic-pay">Basic Pay</label>
-                                        <input class="form-control" type="text" name="basic-pay" id="basic-pay">
+                                        <label for="basic-pay">Daily Wage</label>
+                                        <input class="form-control" type="text" name="daily-wage" id="basic-pay">
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label for="canteen-fees">Canteen Allowance</label>
