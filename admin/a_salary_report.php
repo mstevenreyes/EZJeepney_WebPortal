@@ -118,10 +118,6 @@
                                     <div class="deduction-details">
                                         <h3>Deductions</h3>
                                             <div class="earning-details-child">
-                                                <p>Canteen Fees</p>
-                                                <p class="amount" name="cFees"><?php echo $result['canteen_fees']; ?></p>
-                                            </div>
-                                            <div class="earning-details-child">
                                                 <p>Pag-ibig</p>
                                                 <p class="amount"><?php echo $result['pagibig']; ?></p>
                                             </div>
@@ -132,6 +128,10 @@
                                             <div class="earning-details-child">
                                                 <p>SSS</p>
                                                 <p class="amount"><?php echo $result['sss']; ?></p>
+                                            </div>
+                                            <div class="earning-details-child">
+                                                <p>Canteen Fees</p>
+                                                <p class="amount" name="cFees"><?php echo $result['canteen_fees']; ?></p>
                                             </div>
 
                                         <?php
@@ -213,25 +213,20 @@
                                         <tr><td class="deduction_details">Canteen Fees</td>
                                         <td><input type="text" class="deduction_details" id="cfees" value="<?php $cFees?>"
                                         name="cfees" placeholder="<?php echo $cFees?>"></td></tr>
-                                    <?php
-                                        
-                                        while ($fetch = mysqli_fetch_array($mysql)){
-                                    ?>
 
-                                        
-                                            <tr><td><input type="text" class="deduction_details d_input" value="<?php echo $fetch['deductions']; ?>"
-                                                name="edit_Dname" placeholder="<?php echo $fetch['deductions']; ?>"></td>
-                                            <td><input type="text" class="deduction_details d_input" value="<?php echo $fetch['d_amount']; ?>"
-                                                name="edit_deduct" placeholder="<?php echo $fetch['d_amount']; ?>"></td>
-                                            <td><a class = "btn-srdel btn" style="width: 75px;">Delete</a></tr>
-                                        
-                                    <?php
-                                        }
-
-                                        // Making SAL-ID global
-                                        $_SESSION['salary-id'] = $salary;
-
-                                        ?>
+                                        <td><select name="deduction_name" class="deduction_details d_input" value="" style="width:175px">
+                                            <option class="deduction_details d_input" value="" selected="true" disabled="disabled"></option>
+                                                <?php
+                                                    while ($fetch = mysqli_fetch_array($mysql)){
+                                                        unset($dName);
+                                                        $dName = $fetch['deductions'];
+                                                        $fetch = "<option class=e_eselect value='$dName'>" . $fetch['deductions'] . "</option>";
+                                                        echo $fetch;
+                                                    }
+                                                    // Making SAL-ID global
+                                                    $_SESSION['salary-id'] = $salary;
+                                                ?>
+                                        <td><input type="text" class="deduction_details dd_input" value="" name="edit_deduct" placeholder="---"></td></tr>
                                     </table>
                                 </div>
                                 <div class="form-check">
@@ -373,6 +368,10 @@
             $('#cfees').change(function(){
                 var x = $('#cfees').val();
                 $('#cfees').val(x);
+            })
+
+            $('.d_input').change(function(){
+
             })
 
             // $("#pgbg").click(function(x){
