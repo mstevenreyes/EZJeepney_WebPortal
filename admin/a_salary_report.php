@@ -79,6 +79,10 @@
                                     require_once '../dbh.inc.php';
                                     
                                     $salary = $_GET['salary-id'];
+
+                                        // Making SAL-ID global
+                                        $_SESSION['salary-id'] = $salary;
+
                                     $stmt = "SELECT * FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe 
                                                 ON  tbs.emp_id = tbe.emp_id  WHERE tbs.salary_id = '$salary'";
                                     $sr = mysqli_query($conn, $stmt);
@@ -167,6 +171,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <!-- Edit Salary Details -->
                     <div class="eform-popup">
                         <div class="container eform-wrapper">
@@ -188,11 +193,10 @@
                                     </div>
                                     
                                     <!-- DEDUCTIONS TABLE -->
-                                    <table class="deductions_table deduction_details" style = "margin-left>">
+                                    <table class="deductions_table deduction_details">
                                         <thead>
-                                            <tr><th class="border-top-0">Deductions</th>
+                                            <tr><th class="border-top-0" style="padding-left: 50px">Deductions</th>
                                             <th class="border-top-0">Amount</th>
-                                            <th class="border-top-0"></th></tr>
                                         </thead>
                                     <?php
                                         $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
@@ -201,21 +205,30 @@
                                         $mysql = mysqli_query($conn, $stmt2);
                                     
                                     ?>
-                                        <tr><td class="deduction_details">Pag-ibig</td>
+                                        <tr><td class="deduction_details" style="padding-left: 46px">Pag-ibig</td>
                                         <td><input type="text" class="deduction_details" id="pgbg"
                                             name="pagibig" placeholder="<?php echo $pagibig?>"></td></tr>
-                                        <tr><td class="deduction_details">Philhealth</td>
+                                        <tr><td class="deduction_details" style="padding-left: 46px">Philhealth</td>
                                         <td><input type="text" class="deduction_details" id="philhealth" value="<?php $philhealth?>"
                                             name="phealth" placeholder="<?php echo $philhealth?>"></td></tr>
-                                        <tr><td class="deduction_details">SSS</td>
+                                        <tr><td class="deduction_details" style="padding-left: 46px">SSS</td>
                                         <td><input type="text" class="deduction_details" id="sss" value="<?php $sss?>"
                                             name="sss" placeholder="<?php echo $sss?>"></td></tr>
-                                        <tr><td class="deduction_details">Canteen Fees</td>
+                                        <tr><td class="deduction_details" style="padding-left: 46px">Canteen Fees</td>
                                         <td><input type="text" class="deduction_details" id="cfees" value="<?php $cFees?>"
                                         name="cfees" placeholder="<?php echo $cFees?>"></td></tr>
+                                    </table>
+
+                                    <!-- TABLE FOR tb_deductions -->
+                                    <table class="deductions_table deduction_details">
+
+                                        <thead>
+                                            <tr><th class="border-top-0">Deduction to Edit</th>
+                                            <th class="border-top-0" style="padding-right: 30px">Amount</th></tr>
+                                        </thead>
 
                                         <td><select name="deduction_name" class="deduction_details d_input" value="" style="width:175px">
-                                            <option class="deduction_details d_input" value="" selected="true" disabled="disabled"></option>
+                                            <option class="deduction_details d_input" value="" selected="true" disabled="disabled">Select Deduction:</option>
                                                 <?php
                                                     while ($fetch = mysqli_fetch_array($mysql)){
                                                         unset($dName);
@@ -223,18 +236,69 @@
                                                         $fetch = "<option class=e_eselect value='$dName'>" . $fetch['deductions'] . "</option>";
                                                         echo $fetch;
                                                     }
-                                                    // Making SAL-ID global
-                                                    $_SESSION['salary-id'] = $salary;
                                                 ?>
-                                        <td><input type="text" class="deduction_details dd_input" value="" name="edit_deduct" placeholder="---"></td></tr>
+                                        <td style="padding-right: 29px"><input type="text" class="deduction_details dd_input" value="" name="edit_deduct" placeholder="Place Amount"></td></tr>
+
+                                        <thead>
+                                            <tr><th class="border-top-0">Deduction to Edit</th>
+                                            <th class="border-top-0" style="padding-right: 30px">New Deduction</th></tr>
+                                        </thead>
+
+                                        <td><select name="deduction_name" class="deduction_details d_input" value="" style="width:175px">
+                                            <option class="deduction_details d_input" value="" selected="true" disabled="disabled">Select Deduction:</option>
+                                                <?php
+
+                                                    // DUPLICATED QUERY TO RUN
+                                                    $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
+                                                    ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
+                                    
+                                                    $mysql = mysqli_query($conn, $stmt2);
+                                                    
+                                                    while ($row = mysqli_fetch_array($mysql)){
+                                                        unset($dName2);
+                                                        $dName2 = $row['deductions'];
+                                                        $row = "<option class=e_eselect value='$dName2'>" . $row['deductions'] . "</option>";
+                                                        echo $row;
+                                                    }
+                                                ?>
+                                        <td style="padding-right: 29px"><input type="text" class="deduction_details dd_input" value="" name="edit_deduct" placeholder="Type new name"></td></tr>
+                                        
+                                        <thead>
+                                            <tr><th class="border-top-0">Deduction to Delete</th>
+
+
+                                        <th><select name="deduction_name" class="deduction_details d_input" value="" style="width:175px; margin-right: 35px;">
+                                            <option class="deduction_details d_input" value="" selected="true" disabled="disabled">Select Deduction:</option>
+                                                <?php
+
+                                                    // DUPLICATED QUERY TO RUN
+                                                    $stmt2 = "SELECT tbd.deductions, tbd.d_amount FROM tb_salary_report AS tbs JOIN tb_deductions AS tbd 
+                                                    ON tbd.sal_id = tbs.salary_id WHERE tbs.salary_id = '$salary'";
+                                    
+                                                    $mysql = mysqli_query($conn, $stmt2);
+                                                    
+                                                    while ($row = mysqli_fetch_array($mysql)){
+                                                        unset($dName2);
+                                                        $dName2 = $row['deductions'];
+                                                        $row = "<option class=e_eselect value='$dName2'>" . $row['deductions'] . "</option>";
+                                                        echo $row;
+                                                    }
+                                                ?></th>
+                                        </thead>
                                     </table>
+
                                 </div>
+
                                 <div class="form-check">
                                     <label></label>
                                 </div>
+
                                 <input type="submit" name="submit" class="btn send-form" value="Confirm" style = "margin-left: 39%">
+
                             </form>
+
                         </div>
+
                     </div>
 
                      <!-- Delete Salary Details -->
