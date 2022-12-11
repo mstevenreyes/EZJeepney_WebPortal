@@ -563,7 +563,7 @@ input[type=text]:focus{
   border: 1px solid #ffffff;
   border-radius: 5px;
 }
-.popup-notification #notif-date{
+.notif-date{
   font-size: 10px;
   color: rgb(243, 243, 243);
   text-align: right;
