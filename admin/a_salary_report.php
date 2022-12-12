@@ -33,7 +33,9 @@
 <body>
 <?php
         include 'sidebar.php';
-      
+        $day = date('w');
+        $week_start = strtoupper(date('M d', strtotime('-'.$day.' days')));
+        $week_end = strtoupper(date('M d Y', strtotime('+'.(6-$day).' days'))) ;
 ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -64,7 +66,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <div style="text-align:center">
-                                <h3 class="box-title">PAYSLIP FOR THE WEEK OF [INSERT MONTH HERE]</h3>
+                                <h3 class="box-title">PAYSLIP FOR THE WEEK OF <?php echo $week_start . ' - ' . $week_end ?></h3>
                                 <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                             </div>
                             <div class="payslip-details">
@@ -76,6 +78,7 @@
                                 </div>
                                 <div class="employee-details">
                                     <?php
+                                  
                                     require_once '../dbh.inc.php';
                                     
                                     $salary = $_GET['salary-id'];
