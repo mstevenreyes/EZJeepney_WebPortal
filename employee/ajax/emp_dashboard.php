@@ -7,7 +7,7 @@
     switch($command) 
     {
         case "apply-leave":
-            $sql = "INSERT INTO tb_employee_leaves VALUES( 'DR-00001', CURDATE(), 'PENDING')";
+            $sql = "INSERT INTO tb_employee_leaves VALUES( '$empID', CURDATE(), 'PENDING')";
             $query = mysqli_query($conn, $sql);
             break;
 
