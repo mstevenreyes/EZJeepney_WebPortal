@@ -118,8 +118,7 @@
                                 <div class="col-md-12 text-center">
                                     <h1 class="form-title" >Manage Leaves/Attendance</h1>
                                 </div>
-                            </div>
-                            <table class="table text-nowrap" id="leaves-table">
+                                <table class="table text-nowrap" id="leaves-table">
                                 <thead>
                                     <tr>
                                     <th class="border-top-0">Employee ID</th>
@@ -135,21 +134,26 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $result['emp_id']; ?></td>
-                                        <td><?php echo $result['apply_date']; ?></td>
+                                        <td><?php echo date('M d, Y', strtotime($result['apply_date'])); ?></td>
                                         <td><select name="leave-status" class="leave-status" id="leave-status">
-                                            <option value="PENDING">PENDING</option>
+                                            <option value="<?php echo $result['leave_status']; ?>"><?php echo $result['leave_status']; ?></option>
+                                            <?php if($result['leave_status'] == "PENDING"){?>
                                             <option value="APPROVED">APPROVED</option>
+                                            <?php }else{ ?>
+                                            <option value="PENDING">PENDING</option>
+                                            <?php } ?>
                                         </select></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
+                            </div>
+                           
                             <div class="row">
                                 <div class="form-check">
                                     <label>
                                     </label>
                                 </div>
-                            <input type="submit" class="btn send-form" name="update-Leaves" value="Add Schedule" >
                         </form>
                     </div>
                 </div>
