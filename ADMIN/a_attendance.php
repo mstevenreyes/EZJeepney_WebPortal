@@ -136,7 +136,10 @@
                                     <tr>
                                         <td><?php echo $result['emp_id']; ?></td>
                                         <td><?php echo $result['apply_date']; ?></td>
-                                        <td><?php echo $result['leave_status']; ?></td>
+                                        <td><select name="leave-status" class="leave-status" id="leave-status">
+                                            <option value="PENDING">PENDING</option>
+                                            <option value="APPROVED">APPROVED</option>
+                                        </select></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
