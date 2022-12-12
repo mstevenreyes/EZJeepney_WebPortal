@@ -115,7 +115,7 @@ body{
 }
 .form-popup .form-wrapper {
     top: 2em;
-    max-width: 1000px;
+    max-width: 700px;
     border-radius: 5px;
     background: white;
     padding: 50px;
@@ -126,6 +126,7 @@ body{
     left: 0;
     right: 0;
 }
+
 .form-title {
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -725,7 +726,7 @@ input[type=text]:focus{
   .page-wrapper{
     background-color: #f7fafc !important;
   }
-
+  
   .white-box-2{
     background-color: white;
     border-radius: 2px;
@@ -828,10 +829,23 @@ input[type=text]:focus{
     margin-right: auto;
     width: 100% !important;  
   }
+  #leaves-table, #leaves-table_wrapper > div.dataTables_scroll > div.dataTables_scrollHead > div > table, #leaves-table_wrapper > div.dataTables_scroll > div.dataTables_scrollHead > div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;  
+  }
   #attendance-table{
     margin-left: auto;
     margin-right: auto;
     width: 100% !important;  
+  }
+  #leaves-table_filter{
+    display: inline-block;
+    float:right;
+  }
+
+  #leaves-table_length{
+    display: inline-block;
   }
 
   #attendance-table_filter{

@@ -17,19 +17,19 @@
 //     $("body, .page-wrapper").trigger("resize");
 //     $(".page-wrapper").delay(20).show();
     
-//     //****************************
-//     /* This is for the mini-sidebar if width is less then 1170*/
-//     //**************************** 
-//     var setsidebartype = function() {
-//         var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
-//         if (width < 1170) {
-//             $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
-//         } else {
-//             $("#main-wrapper").attr("data-sidebartype", "full");
-//         }
-//     };
-//     $(window).ready(setsidebartype);
-//     $(window).on("resize", setsidebartype);
+    //****************************
+    /* This is for the mini-sidebar if width is less then 1170*/
+    //**************************** 
+    var setsidebartype = function() {
+        var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
+        if (width < 1170) {
+            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
+        } else {
+            $("#main-wrapper").attr("data-sidebartype", "full");
+        }
+    };
+    $(window).ready(setsidebartype);
+    $(window).on("resize", setsidebartype);
 
 // });
 
@@ -51,30 +51,6 @@ $(document).ready(function(){
     $('#close-edit-form').click(function() {
         $('#edit-form-popup').show(100).fadeOut(300); 
     }); //HIDES POPUP
-    // Detects Leave Status Change
-    $('.leave-status').change(function() {
-        var leaveStatus = $(this).find(":selected").val();
-        $('#leaves-table tbody').on('click', 'tr', function () {
-            var data = table.row( this ).data();
-            var empId = data[0];
-            var applyDate = data[1];
-            let leaveStatus = data[2];
-            // console.log(empId + " " + applyDate);
-            console.log(leaveStatus);
-        });
-    })
-    // $(document).on('change','.leave-status',function(){
-    //     alert('Change Happened');
-    // });
-    $('#attendance-table').DataTable({ // MAKING DATATABLE 
-
-        "pageLength" : 10,
-        scrollX: true,
-        columnDefs: [
-            { "width": "200px", targets: "_all" },
-            { "className": "schedule-column", targets: "_all" } 
-        ]
-    });
     var table = $('#leaves-table').DataTable({ // MAKING DATATABLE 
         "pageLength" : 10,
         scrollX: true,
@@ -84,6 +60,35 @@ $(document).ready(function(){
         ]
         
     });
+    var empId, applyDate, leaveStatus;
+    $('#leaves-table tbody').on( 'click', 'tr', function () {
+        var data = table.row(this).data();
+        empId = data[0];
+        applyDate = data[1];
+  
+    });
+       // Detects Leave Status Change
+    $('.leave-status').change(function() {
+        leaveStatus = $(this).find(":selected").val();
+        $.ajax({
+            type: "POST",
+            url: "ajax/attendance.php",
+            data: "set=leaves&leave-status=" + leaveStatus + "&apply-date=" + applyDate + "&emp-id=" + empId 
+        }).done(function(result) {      
+            console.log(result);         
+            alert('Updated Successfuly.')
+        });
+    });
+
+    $('#attendance-table').DataTable({ // MAKING DATATABLE 
+        "pageLength" : 10,
+        scrollX: true,
+        columnDefs: [
+            { "width": "200px", targets: "_all" },
+            { "className": "schedule-column", targets: "_all" } 
+        ]
+    });
+
     
     document.body.className = "visible";
 
