@@ -112,7 +112,7 @@
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Total Deductions: </p>
-                                            <p class="amount"><?php echo -$result['grosspay']; ?></p>
+                                            <p class="amount"><?php echo -$result['tot_deduct']; ?></p>
                                         </div>
                                         <div class="earning-details-child" style="font-weight: bold;">
                                             <p>Net Pay</p>
