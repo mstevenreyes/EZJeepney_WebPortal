@@ -25,7 +25,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <!-- Steven Custom CSS -->
     <link rel="stylesheet" href="css/steven_style.css">
 </head>
@@ -45,10 +45,16 @@
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h3 class="page-title">Employee List</h3>
+                    
+                    <div class="employee-btns-header">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                            <h3 class="page-title">Employee List</h3>
+                        </div>
+                        <label for="search-employee">Search Employee</label>
+                        <input class="form-control" type="text" name="search-employee" id="search-employee">
+                        <button class="btn-add-employee btn open-form">Add New Employee</button>
                     </div>
-                    <button class="btn-add-driver btn open-form">Add New Employee</button>
+                   
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -63,17 +69,8 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <div class="emp-row">
-                    <?php while($result = mysqli_fetch_array($stmt)){ ?>
-                    <div class="emp-container">
-                        <a class="red-hover" href="a_profile?employee=<?php echo $result['emp_id'] ?>"><img src="../employee/employee_images/<?php echo $result['emp_id'] . '.png';  ?>" alt="image">
-                        <h4 class="emp-profile-names"><strong><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname'];
-                        ?></strong></h4>
-                        <p><strong><?php if(substr($result['emp_id'], 0, 2 ) == "DR"){echo "Driver<br>";}else{echo "Public Assistance Officer<br>";}
-                        echo  '(' . $result['emp_id'] ?>)</a>
-                        </strong></p>
-                    </div>
-                    <?php } ?>
+                <div class="emp-row" id="emp-row">
+                  
                 </div>
                 <!-- FORM POP-UP -->
                 <div class="form-popup" >
@@ -203,8 +200,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-      
+    <script src="js/emp_list.js">
 </script>
     <script>
 

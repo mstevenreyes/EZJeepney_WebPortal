@@ -52,6 +52,7 @@ body{
 }
 .emp-container img{
     width: 100px;
+    height: 100px;
     border-radius: 100px;
     /* border: 2px solid #18181a80; */
     outline: rgba(98, 103, 121, 0.37) solid 1px;
@@ -69,17 +70,36 @@ body{
 }
 
 .daterangepicker, .timepicker{ z-index: 999999 !important; }
-
-
+.employee-btns-header{
+  display:flex;
+}
 .btn-add-driver{
     margin-left: auto;
-    width: 150px; 
+    width: 200px; 
     bottom: 25px;
     border-style: none;
     background-color: #0f1236;
     border-radius: 10px;
 }
-
+.btn-add-employee{
+  margin-left: 10px;
+  width: 200px; 
+  bottom: 25px;
+  border-style: none;
+  background-color: #0f1236;
+  border-radius: 10px;
+}
+#main-wrapper > div.page-wrapper > div.page-breadcrumb.bg-white > div > div > label{
+  font-size: 16px;
+  margin-right: 20px;
+  margin-left: auto;
+  margin-top:10px
+}
+#search-employee{
+  width: 200px;
+  height: 25px;
+  margin-top: 10px;
+}
 .btn-edit{
   width: 305px; 
   position: relative; 
