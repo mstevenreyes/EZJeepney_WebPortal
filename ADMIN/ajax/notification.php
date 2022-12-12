@@ -1,3 +1,4 @@
+<script src="js/notification.js"></script>
 <?php
 
 include('../../dbh.inc.php');
@@ -5,7 +6,7 @@ include('../../dbh.inc.php');
 $command = 'late-employees';
 switch($command){
     case 'late-employees':
-        $sql = "SELECT * FROM view_late_employees";
+        $sql = "SELECT * FROM view_late_employees ORDER BY batch_id";
         $query = mysqli_query($conn, $sql);
         $lateEmpArr = array();
         while($result = mysqli_fetch_assoc($query)){

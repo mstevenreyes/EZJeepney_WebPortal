@@ -84,10 +84,6 @@
                     <span class="close">&times;</span>
             </div>
             <div class="notif-content">
-                <div class="notif-details">
-                    <p id="notif-date">September 12, 2:59PM</p>
-                    <p>Test: Driver DR-00001 is Late.</p>
-                </div>
             </div>
         </div>
         <!-- ============================================================== -->

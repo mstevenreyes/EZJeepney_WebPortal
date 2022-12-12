@@ -198,6 +198,13 @@ th{
     vertical-align: middle;
 }
 
+.leaves-table{
+    /* font-family: 'NoirPro-Regular', 'Courier New', Courier, monospace; */
+    font-size: 16px;
+    font-weight: 100;
+    text-align: center;
+    vertical-align: middle;
+}
 
 img.schedule-emp-img{
     width: 60px;
@@ -563,7 +570,7 @@ input[type=text]:focus{
   border: 1px solid #ffffff;
   border-radius: 5px;
 }
-.popup-notification #notif-date{
+.notif-date{
   font-size: 10px;
   color: rgb(243, 243, 243);
   text-align: right;
