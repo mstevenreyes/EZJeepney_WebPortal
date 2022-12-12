@@ -51,6 +51,21 @@ $(document).ready(function(){
     $('#close-edit-form').click(function() {
         $('#edit-form-popup').show(100).fadeOut(300); 
     }); //HIDES POPUP
+    // Detects Leave Status Change
+    $('.leave-status').change(function() {
+        var leaveStatus = $(this).find(":selected").val();
+        $('#leaves-table tbody').on('click', 'tr', function () {
+            var data = table.row( this ).data();
+            var empId = data[0];
+            var applyDate = data[1];
+            let leaveStatus = data[2];
+            // console.log(empId + " " + applyDate);
+            console.log(leaveStatus);
+        });
+    })
+    // $(document).on('change','.leave-status',function(){
+    //     alert('Change Happened');
+    // });
     $('#attendance-table').DataTable({ // MAKING DATATABLE 
 
         "pageLength" : 10,
