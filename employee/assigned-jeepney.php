@@ -33,8 +33,8 @@
 
                 <table>
                     <thead>
-                        <th>Batch ID</th>
                         <th>Schedule</th>
+                        <th>Batch ID</th>
                         <th>Jeepney Unit</th>
                         <th>Shift Start</th>
                         <th>Shift End</th>
@@ -46,8 +46,8 @@
                             while($result = mysqli_fetch_array($query)){
                         ?>                        
                          <tr>
-                            <td><?php echo $result['batch_id']; ?></td>
                             <td><?php echo date('F d', strtotime($result['schedule_date'])); ?></td>
+                            <td><?php echo $result['batch_id']; ?></td>
                             <td><?php echo $result['plate_number']; ?></td>
                             <td><?php echo date('h:i A', strtotime($result['shift_start'])); ?></td>
                             <td><?php echo date('h:i A', strtotime($result['shift_end'])); ?></td>

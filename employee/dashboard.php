@@ -114,7 +114,7 @@
                                             border-radius: 10%;" src="./employee_images/eoftm/eoftm.png" id="img3" alt="">
                         <h3>Jane Doe</h3>
                         <p>PAO</p>
-                        <h1>Employee of this Month</h1>
+                        <h1>Employee of the Month</h1>
                     </div>
                   </div>
                 </div>
