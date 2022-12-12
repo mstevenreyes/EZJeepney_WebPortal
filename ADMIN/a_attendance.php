@@ -22,7 +22,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <link rel="stylesheet" href="./css/steven_style.css">
 </head>
 <body>
@@ -39,6 +39,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        
                         <!-- <h4 class="page-title">Driver Attendance</h4> -->
                     </div> 
                 </div>
@@ -56,7 +57,10 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-sm-12">
-                    <h3 class="box-title">Attendance Record</h3> <br>
+                    <div class="attendance-header">
+                        <h3 class="box-title">Attendance Record</h3>
+                        <button class="btn-add-driver btn open-form open-add-form" id="open-add-form">Manage Leaves/Records</button>
+                    </div>
                         <div class="white-box" style="display:flex;">
                             <div class="table-responsive">
                                 <table class="table text-nowrap" id="attendance-table">
@@ -105,8 +109,55 @@
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
+             <!-- ===================== FORM POP-UP =========================== -->
+             <div class="form-popup" id="add-form-popup">
+                    <div class="container form-wrapper">
+                        <button class="btn close-form" id="close-add-form">Close</button>
+                        <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h1 class="form-title" >Manage Leaves/Attendance</h1>
+                                </div>
+                            </div>
+                            <table class="table text-nowrap" id="leaves-table">
+                                <thead>
+                                    <tr>
+                                    <th class="border-top-0">Employee ID</th>
+                                    <th class="border-top-0">Apply Date</th>
+                                    <th class="border-top-0">Leave Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $sql = "SELECT * FROM tb_employee_leaves";
+                                        $query = mysqli_query($conn, $sql);
+                                        while($result = mysqli_fetch_array($query)){
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $result['emp_id']; ?></td>
+                                        <td><?php echo $result['apply_date']; ?></td>
+                                        <td><select name="leave-status" class="leave-status" id="leave-status">
+                                            <option value="PENDING">PENDING</option>
+                                            <option value="APPROVED">APPROVED</option>
+                                        </select></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="form-check">
+                                    <label>
+                                    </label>
+                                </div>
+                            <input type="submit" class="btn send-form" name="update-Leaves" value="Add Schedule" >
+                        </form>
+                    </div>
+                </div>
+                <!-- ============================================================= -->
             <!-- ============================================================== -->
+        </div>
             <!-- footer -->
+        <div class="footer"></div>
             <!-- ============================================================== -->
             <footer class="footer text-center"> ©2022  EZ JEEPNEY </footer>
             <!-- ============================================================== -->
@@ -123,7 +174,8 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <!-- All Jquery -->
+   <!-- All Jquery -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
@@ -133,16 +185,17 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="js/attendance.js"></script>
     <script src="js/app-style-switcher.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
-
-    <!-- CSS For Date Range Picker and Datepicker-->                                                 
-    <script src="js/a_scheduling.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.js"></script>
+    <!-- Timepicker JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <!-- CSS For Date Range Picker and Datepicker-->     
+    <script src="js/attendance.js"></script>
 </body>
 
 </html>

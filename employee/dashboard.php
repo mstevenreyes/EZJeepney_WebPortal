@@ -27,8 +27,25 @@
             <div class="card total2">
                 <div class="info">
                     <div class="info-detail">
-                        <h3>480BBZ</h3>
+                        <?php
+                        // Checks if assign or no assign schedule
+                        $sql = "SELECT * FROM tb_schedule_sheet WHERE schedule_date = CURDATE() AND driver_id = '$empID' OR pao_id = '$empID'";
+                        $query = mysqli_query ($conn, $sql);
+                        // $result = mysqli_get_res
+                        if(mysqli_num_rows($query)!=0){
+                            while($result = mysqli_fetch_assoc($query)){
+
+                        ?>
+                        <h3><?php echo $result['plate_number']; ?></h3>
                         <p>Assigned Jeepney Today</p>
+                        <?php
+                            }
+                        }else{
+                        ?>
+                            <h4>No Assigned Schedule Today.</h4>
+                        <?php
+                            } 
+                        ?>
                     </div>
                     <div class="info-image">
                         <i class="fa fa-bus"></i>
@@ -36,16 +53,19 @@
                 </div>
             </div>
             <div class="card total3">
-                <div class="info">
+                <div class="info leave">
                     <div class="info-detail">
-                        <h3>1</h3>
-                        <p>Leave Taken</p>
+                        <h3>
+                            <?php 
+                                $sql = "SELECT COUNT(*) AS total_leaves_taken FROM tb_employee_leaves WHERE emp_id = '$empID' AND YEAR(apply_date) = YEAR(CURDATE())";
+                                $query = mysqli_query($conn, $sql);
+                                $leavesQuery = mysqli_fetch_assoc($query);
+                                $leavesTaken = $leavesQuery['total_leaves_taken'];
+                                echo $leavesTaken;
+                            ?>
+                        </h3>
+                        <p>Leaves Taken This Year</p>
                     </div>
-                    <div class="vl"></div>
-                    <div class="info-detail">
-                        <h3>9</h3>
-                        <p>Remaining</p>
-                    </div>   
                 </div>
                 <div class="info-detail">
                     <button id="apply-leave">Apply Leave</button>
@@ -94,7 +114,7 @@
             </div>
         </div>
             <div class="eom-card">
-                <div class="eomcardu" data-label="<?php echo $date = getMonthName(date('m', strtotime('-1 month'))); ?>">
+                <div class="eomcardu" data-label="<?php echo $date = date('F', strtotime('-1 month')); ?>">
                     <div class="info-detail">
                         <img style="width: 122px;
                                             height: 113px;
@@ -102,7 +122,7 @@
                                             border-radius: 10%;" src="./employee_images/eoftm/eoftm.png" id="img3" alt="">
                         <h3>Jane Doe</h3>
                         <p>PAO</p>
-                        <h1>Best Employee of this Month</h1>
+                        <h1>Employee of the Month</h1>
                     </div>
                   </div>
                 </div>
@@ -127,6 +147,7 @@
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="js/pages/dashboard.js"></script>
+    <script src="./js/pages/dashboard.js"></script>
+
 </body>
 </html>

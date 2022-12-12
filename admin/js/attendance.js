@@ -33,8 +33,39 @@
 
 // });
 
-document.body.className = "hidden";
+// document.body.className = "hidden";
 $(document).ready(function(){
+    $('.open-add-form').click(function() {
+        $('#add-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+   
+    }),
+    $('#close-add-form').click(function() {
+        $('#add-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
+    
+    $('.open-edit-form').click(function() {
+        $('#edit-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+        
+   
+    }),
+    $('#close-edit-form').click(function() {
+        $('#edit-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
+    // Detects Leave Status Change
+    $('.leave-status').change(function() {
+        var leaveStatus = $(this).find(":selected").val();
+        $('#leaves-table tbody').on('click', 'tr', function () {
+            var data = table.row( this ).data();
+            var empId = data[0];
+            var applyDate = data[1];
+            let leaveStatus = data[2];
+            // console.log(empId + " " + applyDate);
+            console.log(leaveStatus);
+        });
+    })
+    // $(document).on('change','.leave-status',function(){
+    //     alert('Change Happened');
+    // });
     $('#attendance-table').DataTable({ // MAKING DATATABLE 
 
         "pageLength" : 10,
@@ -44,5 +75,19 @@ $(document).ready(function(){
             { "className": "schedule-column", targets: "_all" } 
         ]
     });
+    var table = $('#leaves-table').DataTable({ // MAKING DATATABLE 
+        "pageLength" : 10,
+        scrollX: true,
+        columnDefs: [
+            { "width": "200px", targets: "_all" },
+            { "className": "leaves-table", targets: "_all" } 
+        ]
+        
+    });
+    
     document.body.className = "visible";
+
 });
+
+
+

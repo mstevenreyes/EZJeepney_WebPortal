@@ -333,6 +333,11 @@ main{
     font-size: 14px;
 }
 
+div.info.leave{
+    display: block;
+    text-align: center !important;
+}
+
 .info-detail button{
     margin-top: 1rem;
     background-color: #171f26;

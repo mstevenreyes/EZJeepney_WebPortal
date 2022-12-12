@@ -38,7 +38,7 @@
 
         <img src="./employee_images/<?php echo $empID ?>.png" alt="" class="profile-image">
         <p class="profile-name"><?php echo $empSurname . ', ' . $empFirstname   ?><br><?php echo $empID; ?></p>
-        <p class="profile-name"></p>
+        <p id="emp-id" style="display: none;"><?php echo $empID; ?></p>
     </div>
 </nav>
 

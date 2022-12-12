@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>User Profile</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <title>User Profile - EZ Jeepney</title>
 </head>
 <body>
 
@@ -23,7 +24,7 @@
         <div class="compinfo-container">
              <div class="card detail">
                     <div class="detail-header">
-                        <h2>User Profile</h2>
+                        <h2>User Profile - EZ Jeepney</h2>
                     </div>
                     <div class="compform">
                         <div class="input box0">

@@ -29,7 +29,6 @@
     <!-- Steven Custom CSS -->
     <link rel="stylesheet" href="css/steven_style.css">
 </head>
-
 <body>
     <?php
             include 'sidebar.php';

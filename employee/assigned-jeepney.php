@@ -18,6 +18,7 @@
 
     <?php
         include 'navbar-sidebar.php';
+
     ?>
 
     <main>
@@ -31,17 +32,31 @@
 
 
                 <table>
-                    <tr>
-                        <th>Employee ID</th>
+                    <thead>
                         <th>Schedule</th>
+                        <th>Batch ID</th>
                         <th>Jeepney Unit</th>
-                    </tr>
-                
-                        <tr>
-                            <td>DR-00001</td>
-                            <td>October 21, 2022</td>
-                            <td>480BBZ</td>
+                        <th>Shift Start</th>
+                        <th>Shift End</th>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            $sql = "SELECT * FROM tb_schedule_sheet WHERE driver_id = '$empID' OR pao_id = '$empID'";
+                            $query = mysqli_query($conn, $sql);
+                            while($result = mysqli_fetch_array($query)){
+                        ?>                        
+                         <tr>
+                            <td><?php echo date('F d', strtotime($result['schedule_date'])); ?></td>
+                            <td><?php echo $result['batch_id']; ?></td>
+                            <td><?php echo $result['plate_number']; ?></td>
+                            <td><?php echo date('h:i A', strtotime($result['shift_start'])); ?></td>
+                            <td><?php echo date('h:i A', strtotime($result['shift_end'])); ?></td>
                         </tr>
+                        <?php 
+                            }
+                        ?>
+                    </tbody>
+                       
 
                 </table>
                

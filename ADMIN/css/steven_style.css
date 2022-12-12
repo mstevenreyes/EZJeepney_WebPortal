@@ -92,7 +92,6 @@ body{
 }
 
 /* FOR THE BUTTONS */
-
 .open-form,
 .reset-form {
     cursor: pointer;
@@ -116,7 +115,7 @@ body{
 }
 .form-popup .form-wrapper {
     top: 2em;
-    max-width: 700px;
+    max-width: 1000px;
     border-radius: 5px;
     background: white;
     padding: 50px;
@@ -198,6 +197,13 @@ th{
     vertical-align: middle;
 }
 
+.leaves-table{
+    /* font-family: 'NoirPro-Regular', 'Courier New', Courier, monospace; */
+    font-size: 16px;
+    font-weight: 100;
+    text-align: center;
+    vertical-align: middle;
+}
 
 img.schedule-emp-img{
     width: 60px;
