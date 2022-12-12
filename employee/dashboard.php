@@ -55,8 +55,16 @@
             <div class="card total3">
                 <div class="info leave">
                     <div class="info-detail">
-                        <h3>1</h3>
-                        <p>Leave Taken</p>
+                        <h3>
+                            <?php 
+                                $sql = "SELECT COUNT(*) AS total_leaves_taken FROM tb_employee_leaves WHERE emp_id = '$empID' AND YEAR(apply_date) = YEAR(CURDATE())";
+                                $query = mysqli_query($conn, $sql);
+                                $leavesQuery = mysqli_fetch_assoc($query);
+                                $leavesTaken = $leavesQuery['total_leaves_taken'];
+                                echo $leavesTaken;
+                            ?>
+                        </h3>
+                        <p>Leaves Taken This Year</p>
                     </div>
                 </div>
                 <div class="info-detail">
