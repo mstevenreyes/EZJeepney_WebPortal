@@ -43,7 +43,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Jeepney Maintenance Summary</h4>
+                        <h4 class="page-title">Vehicle Report Information</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -73,93 +73,112 @@
                             <div class="card-body">
                                 <form action = "jeepney.inc.php" method="GET" class="form-horizontal form-material">
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0" >Date Issued</label>
+                                        <label class="col-md-12 p-0">Date Issued:</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                                <?php 
-                                                        
-                                                        require_once '../dbh.inc.php';  
-                                                        $di = $_GET['date_issued'];
+                                            <?php 
+                                                    
+                                                    require_once '../dbh.inc.php';  
+                                                    $di = $_GET['date_issued'];
 
-                                                        echo $di;
-                                                        // $statement = "SELECT date_issued FROM tb_maintenance";
-                                                        // $dt = mysqli_query($conn, $statement);
-                                                        
-                                                       
-                                                        // while ($result = mysqli_fetch_array($dt)){
-                                                        //     echo  date("F d, Y", strtotime($result['date_issued'])) ;
-                                                        // }
-                                                        
-                                                        
-
-                                        
-                                                    ?>
+                                                    echo $di;
+                                                    
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0" >Date Fixed</label>
+                                        <label class="col-md-12 p-0">Date Fixed:</label>
+                                            <div class="col-md-12 border-bottom p-0">
                 
                                                 <?php 
-                                                        require_once '../dbh.inc.php';  
-                                                        $statement = "SELECT date_fixed FROM tb_maintenance WHERE date_issued = '$di'";
-                                                        $dt = mysqli_query($conn, $statement);
-                                                       
-                                                        while ($result = mysqli_fetch_array($dt)){
-                                                            echo  $result['date_fixed'];
-                                                        }
-                                                    ?>
+                                                    require_once '../dbh.inc.php';  
+                                                    $statement = "SELECT date_fixed FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $dt = mysqli_query($conn, $statement);
+                                                    
+                                                    while ($result = mysqli_fetch_array($dt)){
+                                                        echo  $result['date_fixed'];
+                                                    }
+                                                ?>
+                                            </div>
                                     </div>
+
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0" >Reason of Report</label>
-                    
+                                        <label class="col-md-12 p-0">Additional Description:</label>
+                                            <div class="col-md-12 border-bottom p-0">
+            
                                                 <?php 
-                                                        require_once '../dbh.inc.php';  
-                                                        $statement = "SELECT descript FROM tb_maintenance WHERE date_issued = '$di'";
-                                                        $dt = mysqli_query($conn, $statement);
-                                                       
-                                                        while ($result = mysqli_fetch_array($dt)){
-                                                            echo $result ['descript'];
-                                                        }
-                                                    ?>
+                                                    require_once '../dbh.inc.php';  
+                                                    $statement = "SELECT description FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $dt = mysqli_query($conn, $statement);
+                                                    
+                                                    while ($result = mysqli_fetch_array($dt)){
+                                                        echo $result ['description'];
+                                                    }
+                                                ?>
+                                            </div>
                                     </div>
+
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0" >Maintenance Cost</label>
-                                        <?php 
-                                                        require_once '../dbh.inc.php';  
-                                                        $statement = "SELECT maintenance_cost FROM tb_maintenance WHERE date_issued = '$di'";
-                                                        $dt = mysqli_query($conn, $statement);
-                                                       
-                                                        while ($result = mysqli_fetch_array($dt)){
-                                                            echo $result ['maintenance_cost'];
-                                                        }
-                                                    ?>
+                                        <label class="col-md-12 p-0">Reason of Report:</label>
+                                            <div class="col-md-12 border-bottom p-0">   
+            
+                                                <?php 
+                                                    require_once '../dbh.inc.php';  
+                                                    $statement = "SELECT reason FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $dt = mysqli_query($conn, $statement);
+                                                    
+                                                    while ($result = mysqli_fetch_array($dt)){
+                                                        echo $result ['reason'];
+                                                    }
+                                                ?>
+                                            </div>
                                     </div>
+
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Vehicle Status</label>
-                                        <?php
-                                            require_once '../dbh.inc.php';  
-                                            $start = date('m/d/Y');
-                                            $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance WHERE date_issued = '$di'";
-                                            $dt = mysqli_query($conn, $statement);
+                                        <label class="col-md-12 p-0" >Maintenance Cost:</label>
+                                            <div class="col-md-12 border-bottom p-0">
 
-                                            while ($result = mysqli_fetch_array($dt)){
+                                                <?php 
+                                                    require_once '../dbh.inc.php';  
+                                                    $statement = "SELECT maintenance_cost FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $dt = mysqli_query($conn, $statement);
+                                                
+                                                    while ($result = mysqli_fetch_array($dt)){
+                                                        echo $result ['maintenance_cost'];
+                                                    }
+                                                ?>
+                                            </div>
+                                    </div>
+                                    
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Vehicle Status:</label>
+                                            <div class="col-md-12 border-bottom p-0">
 
-                                                if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
-                                                    $status = "On-going";
-                                                }
-                                                else{
-                                                    $status = "Fixed";
-                                                }
+                                                <?php
+                                                    require_once '../dbh.inc.php';  
+                                                    $start = date('m/d/Y');
+                                                    $end = date('m/d/Y');
+                                                    $statement = "SELECT * FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $dt = mysqli_query($conn, $statement);
 
-                                                if($result['date_fixed'] == NULL){
-                                                    $dateFixed = "";
-                                                }
-                                                else{
-                                                    $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
-                                                }
-                                           
-                                               echo $status;
-                                            }
-                                        ?>
+                                                    while ($result = mysqli_fetch_array($dt)){
+
+                                                        if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
+                                                            $status = "On-going";
+                                                        }
+                                                        else{
+                                                            $status = "Fixed";
+                                                        }
+
+                                                        if($result['date_fixed'] == NULL){
+                                                            $dateFixed = "";
+                                                        }
+                                                        else{
+                                                            $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                        }
+                                                
+                                                    echo $status;
+                                                    }
+                                                ?>
                                             </div>
                                     </div>
                                     <div class="form-group mb-4">

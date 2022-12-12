@@ -104,7 +104,7 @@
                                                 "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] . '">' . date("F d, Y", strtotime($result['date_issued'])) . '</a>' . "</td>" .
                                                 // "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] .  '">' . '</a>' . "</td>" .
                                                 "<td>"  . $dateFixed  . "</td>" .
-                                                "<td>"  . $result['description'] . "</td>" .
+                                                "<td>"  . $result['reason'] . "</td>" .
                                                 "<td>"  . $result['maintenance_cost'] . "</td>" .
                                                 "<td>" . $status . "</td>" . "</tr>";
                                                 echo $result;

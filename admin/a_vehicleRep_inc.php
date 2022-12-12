@@ -28,7 +28,7 @@
 
     //insert a new record w/o fixed date
     function addRecord($conn, $DI, $plateNum, $deets, $reason, $MaintenanceCost){
-        $stmt = mysqli_prepare($conn, "INSERT INTO tb_maintenance (date_issued, plate_number, defective_part, descript, maintenance_cost) 
+        $stmt = mysqli_prepare($conn, "INSERT INTO tb_maintenance (date_issued, plate_number, description, reason, maintenance_cost) 
                                         VALUES (?, ?, ?, ?, ?)"); 
         mysqli_stmt_bind_param($stmt, "ssssi", $DI, $plateNum,  $deets, $reason, $MaintenanceCost);
         mysqli_stmt_execute($stmt);
