@@ -1,3 +1,4 @@
+<script src="js/notification.js"></script>
 <?php
 
 include('../../dbh.inc.php');

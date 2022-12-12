@@ -260,7 +260,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- CUSTOM JS -->
     <script src="js/pages/dashboard1.js"></script>
-    <script src="js/notification.js"></script>
     <!--chartis chart-->
     <!-- <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script> -->
