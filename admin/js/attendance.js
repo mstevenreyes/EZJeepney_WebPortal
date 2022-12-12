@@ -33,8 +33,24 @@
 
 // });
 
-document.body.className = "hidden";
+// document.body.className = "hidden";
 $(document).ready(function(){
+    $('.open-add-form').click(function() {
+        $('#add-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+   
+    }),
+    $('#close-add-form').click(function() {
+        $('#add-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
+    
+    $('.open-edit-form').click(function() {
+        $('#edit-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+        
+   
+    }),
+    $('#close-edit-form').click(function() {
+        $('#edit-form-popup').show(100).fadeOut(300); 
+    }); //HIDES POPUP
     $('#attendance-table').DataTable({ // MAKING DATATABLE 
 
         "pageLength" : 10,
@@ -44,5 +60,19 @@ $(document).ready(function(){
             { "className": "schedule-column", targets: "_all" } 
         ]
     });
+    var table = $('#leaves-table').DataTable({ // MAKING DATATABLE 
+        "pageLength" : 10,
+        scrollX: true,
+        columnDefs: [
+            { "width": "200px", targets: "_all" },
+            { "className": "leaves-table", targets: "_all" } 
+        ]
+        
+    });
+    
     document.body.className = "visible";
+
 });
+
+
+
