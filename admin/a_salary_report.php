@@ -112,11 +112,11 @@
                                         </div>
                                         <div class="earning-details-child">
                                             <p>Total Deductions: </p>
-                                            <p class="amount"><?php echo -$result['grosspay']; ?></p>
+                                            <p class="amount">- <?php echo $result['tot_exp']; ?></p>
                                         </div>
                                         <div class="earning-details-child" style="font-weight: bold;">
                                             <p>Net Pay</p>
-                                            <p class="amount"><?php echo $result['netpay']; ?></p>
+                                            <p class="amount">₱ <?php echo $result['netpay']; ?></p>
                                         </div>
                                     </div>
                                     <div class="deduction-details">
@@ -185,11 +185,11 @@
                                 <div class="row">
                                 <div class="eform-group edit_empSal">
                                         <label for="name">Edit Days Worked:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="editDays" style="width: 426px" required>
+                                        <input type="text" class="eform-control edit_textField" id="editDays" name="editDays" style="width: 426px" required>
                                 </div>
                                 <div class="eform-group edit_empSal">
                                         <label for="name">Edit Daily Wage:</label>
-                                        <input type="text" class="eform-control edit_textField" id="edit_bSalary" name="edit_dWage" style="width: 439px" required>
+                                        <input type="text" class="eform-control edit_textField" id="edit_dWage" name="edit_dWage" style="width: 439px" required>
                                     </div>
                                     
                                     <!-- DEDUCTIONS TABLE -->
@@ -219,15 +219,24 @@
                                         name="cfees" placeholder="<?php echo $cFees?>"></td></tr>
                                     </table>
 
+                                    <h4 class="deductions_table deduction_details" style="text-align: center; font-weight: bold;">OTHER DEDUCTIONS EDIT TABLE</h4>
+                                    
                                     <!-- TABLE FOR tb_deductions -->
                                     <table class="deductions_table deduction_details">
+
+                                        <thead>
+                                            <tr><th class="border-top-0">Add New Deduction</th>
+                                            <th class="border-top-0" style="padding-right: 30px">Amount</th></tr>
+                                        </thead>
+                                        <td><input type="text" class="deduction_details dd_input" name="addNewddc" id="addNewddc" placeholder="Deduction name"></td>
+                                        <td style="padding-right: 29px"><input type="text" class="deduction_details" name="ddcAmnt" id="ddcAmnt" placeholder="Deduction Amount"></td></tr>
 
                                         <thead>
                                             <tr><th class="border-top-0">Deduction to Edit</th>
                                             <th class="border-top-0" style="padding-right: 30px">Amount</th></tr>
                                         </thead>
 
-                                        <td><select name="deduction_name" class="deduction_details d_input" value="" style="width:175px">
+                                        <td><select name="deductEdit" id="deductEdit" class="deduction_details d_input" value="" style="width:175px">
                                             <option class="deduction_details d_input" value="" selected="true" disabled="disabled">Select Deduction:</option>
                                                 <?php
                                                     while ($fetch = mysqli_fetch_array($mysql)){
@@ -237,14 +246,14 @@
                                                         echo $fetch;
                                                     }
                                                 ?>
-                                        <td style="padding-right: 29px"><input type="text" class="deduction_details dd_input" value="" name="edit_deduct" placeholder="Place Amount"></td></tr>
+                                        <td style="padding-right: 29px"><input type="text" class="deduction_details" name="amntDed" id="amntDed" placeholder="Place Amount"></td></tr>
 
                                         <thead>
-                                            <tr><th class="border-top-0">Deduction to Edit</th>
+                                            <tr><th class="border-top-0">Deduction to Rename</th>
                                             <th class="border-top-0" style="padding-right: 30px">New Deduction</th></tr>
                                         </thead>
 
-                                        <td><select name="deduction_name" class="deduction_details d_input" value="" style="width:175px">
+                                        <td><select name="deductName" id="deductName" class="deduction_details d_input" value="" style="width:175px">
                                             <option class="deduction_details d_input" value="" selected="true" disabled="disabled">Select Deduction:</option>
                                                 <?php
 
@@ -261,13 +270,13 @@
                                                         echo $row;
                                                     }
                                                 ?>
-                                        <td style="padding-right: 29px"><input type="text" class="deduction_details dd_input" value="" name="edit_deduct" placeholder="Type new name"></td></tr>
+                                        <td style="padding-right: 29px"><input type="text" class="deduction_details dd_input" value="" id="ndeductName" name="ndeductName" placeholder="Type new name"></td></tr>
                                         
                                         <thead>
                                             <tr><th class="border-top-0">Deduction to Delete</th>
 
 
-                                        <th><select name="deduction_name" class="deduction_details d_input" value="" style="width:175px; margin-right: 35px;">
+                                        <th><select name="selectDelete" id="selectDelete" class="deduction_details d_input" value="0" style="width:175px; margin-right: 35px;">
                                             <option class="deduction_details d_input" value="" selected="true" disabled="disabled">Select Deduction:</option>
                                                 <?php
 
@@ -411,31 +420,78 @@
         });
 
         // FUNCTION FOR EDIT SALARY DETAILS //
-
         $(document).ready(function() {
 
             $('#pgbg').change(function(){          
                 var x = $('#pgbg').val();
-                $('#pgbg').val(x);
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#pgbg').val(x);
             });
 
             $('#philhealth').change(function(){
                 var x = $('#philhealth').val();
-                $('#philhealth').val(x);
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#philhealth').val(x);
             })
 
             $('#sss').change(function(){
                 var x = $('#sss').val();
-                $('#sss').val(x);
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#sss').val(x);
             })
 
             $('#cfees').change(function(){
                 var x = $('#cfees').val();
-                $('#cfees').val(x);
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#cfees').val(x);
             })
 
-            $('.d_input').change(function(){
+            $('#editDays').change(function(){
+                var x = $('#editDays').val();
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#editDays').val(x);
+            })
 
+            $('#edit_dWage').change(function(){
+                var x = $('#edit_dWage').val();
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#edit_dWage').val(x);
+            })
+
+            $('#ddcAmnt').change(function(){
+                var x = $('#ddcAmnt').val();
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#ddcAmnt').val(x);
+            })
+
+            $('#amntDed').change(function(){
+                var x = $('#amntDed').val();
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#amntDed').val(x);
             })
 
             // $("#pgbg").click(function(x){
