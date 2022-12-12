@@ -196,4 +196,6 @@
         $tot_Ddc = get_totalDdc($salary_ID);
         totalDeductions($salary_ID, $tot_oDdc, $tot_Ddc);
         getNetpay($salary_ID);
+
+        header('location: a_salary_report.php?salary-id='.$salary_ID);
     }

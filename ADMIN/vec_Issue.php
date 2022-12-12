@@ -187,6 +187,8 @@
                                         </div>
                                     </div>
                                 </form>
+
+                                <!-- EDIT FORM FOR MAINTENANCE REPORT -->
                             </div>
                         </div>
                     </div>
