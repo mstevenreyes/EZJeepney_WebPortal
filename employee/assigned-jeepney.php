@@ -47,10 +47,10 @@
                         ?>                        
                          <tr>
                             <td><?php echo $result['batch_id']; ?></td>
-                            <td><?php echo $result['schedule_date']; ?></td>
+                            <td><?php echo date('F d', strtotime($result['schedule_date'])); ?></td>
                             <td><?php echo $result['plate_number']; ?></td>
-                            <td><?php echo $result['shift_start']; ?></td>
-                            <td><?php echo $result['shift_end']; ?></td>
+                            <td><?php echo date('h:i A', strtotime($result['shift_start'])); ?></td>
+                            <td><?php echo date('h:i A', strtotime($result['shift_end'])); ?></td>
                         </tr>
                         <?php 
                             }
