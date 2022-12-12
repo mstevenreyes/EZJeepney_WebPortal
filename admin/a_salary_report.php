@@ -314,7 +314,7 @@
                     <div class="delform-popup">
                         <div class="container delform-wrapper">
                             <button class="btn delclose-form">Close</button>
-                            <form action="" method="POST" novalidate="novalidate">
+                            <form action="a_salary_report_del_inc.php" method="POST" novalidate="novalidate">
 
                             <div class="row">
                                 <div class="col-md-12 text-center"></br>
@@ -322,8 +322,8 @@
                                 </div>
                             </div>
 
-                            <button type="submit" name="" class="del-form del_btnPlace">Yes</button>
-                            <button type="submit" name="" class="del-form del_btnPlace">No</button> 
+                            <button type="submit" name="delete" class="del-form del_btnPlace">Yes</button>
+                            <button type = "button" id="noBtn" class="del-form del_btnPlace">No</button> 
                             
                                 <div class="form-check">
                                     <label></label>
@@ -405,6 +405,11 @@
                 $('.delform-popup').show();
             });
             $('.delclose-form').click(function() {
+                $('.delform-popup').hide();
+    
+            });
+
+            $('#noBtn').click(function() {
                 $('.delform-popup').hide();
     
             });
