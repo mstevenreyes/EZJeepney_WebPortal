@@ -96,7 +96,7 @@
                                             <td class="border-top-0"><?php echo $result['emp_type']?></td>
                                             <td class="border-top-0">example@gmail.com</td>
                                             <td class="border-top-0">1000<p style="color: gray; font-size: 10px;">Salary ID: <?php echo$salaryID?></p> </td>
-                                            <td><a class = "btn btn-generate" href="a_salary_report.php?salary-id=<?php echo $result['salary_id'] ?>">Generate Pay Slip </a></td>
+                                            <td><a class = "btn btn-generate" href="a_salary_report.php?salary-id=<?php echo$result['salary_id'] ?>">Generate Pay Slip </a></td>
 <!-- echo $result['salary_id'] -->
                                         </tr>
                                         <?php } ?>
