@@ -1097,3 +1097,49 @@ input[type=text]:focus{
   .btn-srdel:hover{
       color: white;
   }
+
+  /* =============== FOR DAILY REPORTS PAGE ============================ */
+  .add-item{
+    border: none;
+    background-color: white;
+  }
+  .add-item:focus{
+    border: none;
+    outline: none;
+  }
+  .row.daily-report{
+    text-align: center;
+  }
+
+  .report-item{
+    width: 100px;
+  }
+  
+  .row .btn.submit-report{
+    margin: 0px auto;
+    width: 200px;
+  }
+
+  .add-report-container{
+    max-width: 500px !important;
+  }
+  .row.daily-report #report-date, .row.daily-report #emp-id, .row.daily-report #daily-quota{
+    margin-left: 50px;
+
+  }
+  #earnings-type{
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(110, 110, 110, 0.5);
+    transition-duration: .5s;
+    padding: 3px 0px;
+  }
+  #add-form-popup > div > form > div > div.row.daily-report > div.dynamic-report-container > div{
+    padding: 0px 10px !important;
+  }
+  .dynamic-report-container{
+    display: flex;
+    justify-content: center;
+  }
+  
