@@ -113,7 +113,6 @@
              <div class="form-popup" id="add-form-popup">
                     <div class="container form-wrapper">
                         <button class="btn close-form" id="close-add-form">Close</button>
-                        <form action="inc.scheduling.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h1 class="form-title" >Manage Leaves/Attendance</h1>
@@ -146,15 +145,8 @@
                                     </tr>
                                     <?php } ?>
                                 </tbody>
-                            </table>
+                                </table>
                             </div>
-                           
-                            <div class="row">
-                                <div class="form-check">
-                                    <label>
-                                    </label>
-                                </div>
-                        </form>
                     </div>
                 </div>
                 <!-- ============================================================= -->
