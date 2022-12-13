@@ -58,6 +58,11 @@ body{
     outline: rgba(98, 103, 121, 0.37) solid 1px;
 }
 
+.attendance-header{
+  display:flex;
+  margin-bottom: 20px;
+}
+
 .emp-container a{
   color: #101a3a;
 }
