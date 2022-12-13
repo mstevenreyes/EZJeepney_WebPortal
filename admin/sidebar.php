@@ -119,6 +119,13 @@
                             </a>
                         </li> 
                         <li class="sidebar-item  pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_daily_report"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-file-invoice"></i>
+                                <span class="hide-menu">Daily Report</span>
+                            </a>
+                        </li>  
+                        <li class="sidebar-item  pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_attendance"
                                 aria-expanded="false">
                                 <i class="fas fa-clock"></i>
