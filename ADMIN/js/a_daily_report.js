@@ -62,7 +62,7 @@ $(document).ready(function(){
     });
 
     // Adds another div row for Expenses Report details in case user wants another field
-    
+    var i = 1;
     $('#add-item').click(function(){
         console.log('works!');
        
@@ -79,11 +79,12 @@ $(document).ready(function(){
             + '</select>'
         + '</div>'
         + '<div class="form-group dynamic-report">'
-            + '<input type="text" class="report-item" id="item-description" name="item-description" placeholder="Amount" autocomplete="off" required>'
+            + '<input type="text" class="report-item" id="item-description-' + i + '" name="item-description" placeholder="Amount" autocomplete="off" required>'
         + '</div>'
     + '</div>'
         html.push(template);
         document.getElementById('dynamic-content').innerHTML += html.join('');
+        i++;
     });
     document.body.className = "visible";
 });
