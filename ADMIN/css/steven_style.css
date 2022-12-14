@@ -1127,6 +1127,9 @@ input[type=text]:focus{
     margin-left: 50px;
 
   }
+  #daily-quota{
+    color: rgb(10, 83, 14);
+  }
   #earnings-type{
     border-radius: 5px;
     border-width: 1px;
@@ -1134,6 +1137,7 @@ input[type=text]:focus{
     border-color: rgba(110, 110, 110, 0.5);
     transition-duration: .5s;
     padding: 3px 0px;
+    margin: 0px 18px;
   }
   #add-form-popup > div > form > div > div.row.daily-report > div.dynamic-report-container > div{
     padding: 0px 10px !important;

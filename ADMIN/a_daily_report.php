@@ -113,7 +113,7 @@
              <div class="form-popup" id="add-form-popup">
                     <div class="container form-wrapper add-report-container">
                         <button class="btn close-form" id="close-add-form">Close</button>
-                        <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
+                        <form action="#" method="POST" id="report-form" enctype="multipart/form-data" autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <h3 class="form-title" >Enter Report Details:</h3>
@@ -121,7 +121,7 @@
                                 <div class="row daily-report" id="daily-report-form">
                                     <div class="form-group col-sm-12>
                                         <label for="report-date">Report Date: </label>
-                                        <input type="text" id="report-date" name="report-date" required>
+                                        <input class="datepicker" type="text" id="report-date" name="report-date" required>
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label for="emp-id">Employee ID: </label>
@@ -132,6 +132,7 @@
                                         <input type="text" id="daily-quota" name="daily-quota" autocomplete="off" required>
                                     </div>
                                     <div id="dynamic-content">
+                                        <!-- Dynamic Content will be added here -->
                                         <!-- <div class="dynamic-report-container">
                                             <div class="form-group dynamic-report">
                                                 <input type="text" class="report-item" id="item-description" name="item-description" placeholder="Description" autocomplete="off" required>
@@ -147,7 +148,6 @@
                                             </div>
                                         </div> -->
                                     </div>
-                                   
                                     <div class="form-group col-sm-12">
                                         <button type="button" class="add-item" name="add-item" id="add-item"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
                                     </div>
@@ -156,8 +156,8 @@
                                 <label>
                                 </label>
                             </div>
-                            <input type="submit" class="btn send-form submit-report" name="submit" value="Submit">
-                        </form>
+                            <button type="button" class="btn send-form submit-report" name="submit-report" id="submit-report">Submit</button>
+                        </form> 
                     </div>
                 </div>
                 <!-- ============================================================= -->
