@@ -114,7 +114,15 @@
                                                     $dt = mysqli_query($conn, $statement);
                                                     
                                                     while ($result = mysqli_fetch_array($dt)){
-                                                        echo date("F d, Y", strtotime($result['date_fixed']));
+                                                        if(strtotime($result['date_fixed'])  > 0){
+                                                            $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                            echo $dateFixed;
+                                                        }
+                                                        else{
+                                                            $dateFixed = "N/A";
+                                                            echo $dateFixed;
+                                                        }
+                                                        // echo date("F d, Y", strtotime($result['date_fixed']));
                                                     }
                                                 ?>
                                             </div>
@@ -181,18 +189,19 @@
 
                                                     while ($result = mysqli_fetch_array($dt)){
 
-                                                        if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
-                                                            $status = "On-going";
+                                                        if(strtotime($result['date_fixed'])  > 0){
+                                                            $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                            // $dateFixed = "";
                                                         }
                                                         else{
-                                                            $status = "Fixed";
-                                                        }
-
-                                                        if($result['date_fixed'] == NULL){
                                                             $dateFixed = "";
                                                         }
+        
+                                                        if(strtotime($result['date_issued'])  > 0 && strtotime($result['date_fixed'])  > 0){
+                                                            $status = "Fixed";
+                                                        }
                                                         else{
-                                                            $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                            $status = "On-going";
                                                         }
                                                 
                                                     echo $status;

@@ -86,19 +86,23 @@
 
                                             while ($result = mysqli_fetch_array($dt)){
 
-                                                if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
-                                                    $status = "On-going";
+                                                if(strtotime($result['date_fixed'])  > 0){
+                                                    $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                    // $dateFixed = "";
                                                 }
                                                 else{
-                                                    $status = "Fixed";
-                                                }
-
-                                                if($result['date_fixed'] == NULL){
                                                     $dateFixed = "";
                                                 }
-                                                else{
-                                                    $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+
+                                                if(strtotime($result['date_issued'])  > 0 && strtotime($result['date_fixed'])  > 0){
+                                                    $status = "Fixed";
                                                 }
+                                                else{
+                                                    $status = "On-going";
+                                                }
+
+                                                // if($result['date_fixed'] == NULL){
+                                                
 
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
                                                 "<td>" . '<a href="vec_Issue.php?mtnID=' . $result['mtnID'] . '">' . date("F d, Y", strtotime($result['date_issued'])) . '</a>' . "</td>" .
