@@ -55,13 +55,13 @@
         var scheduleType =  $(this).find(":selected").val();
         var dateRanger = document.getElementById('date-ranger');
         var dateday = document.getElementById('date-day');
-       if(scheduleType == "day"){
+        if(scheduleType == "day"){
             dateRanger.style.display ='none';
             dateday.style.display = 'block';
-       }else{
+        }else{
             dateday.style.display = 'none';
             dateRanger.style.display = 'flex';
-       }
+        }
     }); 
 
     // Edit Form auto Fillup Schedule tab
