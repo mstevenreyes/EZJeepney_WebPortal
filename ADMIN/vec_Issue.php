@@ -243,7 +243,12 @@
                                                 $reason = $result['reason'];
                                                 $mCost = $result['maintenance_cost'];
 
-                                                
+                                                if(strtotime($DF > 0)){
+                                                    $dateFixed = date("F d, Y", strtotime($DF));
+                                                }
+                                                else{
+                                                    $dateFixed = "No fixed date yet";
+                                                }
                                             }
 
                                         ?>
@@ -267,7 +272,7 @@
                                                     <thead>
                                                         <tr><th class="border-top-0">Date Fixed</th>
                                                         <th class="border-top-0">
-                                                            <input placeholder="<?php echo date("F d, Y", strtotime($DF))?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
+                                                            <input placeholder="<?php echo $dateFixed?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
                                                                 <noscript>
                                                                     <input type="submit" value="submit">
                                                                 </noscript></th></tr>
@@ -277,15 +282,29 @@
                                                     <thead>
                                                         <tr><th class="border-top-0">Addtional Description</th></tr>
                                                     </thead>
+                                                    <tr><td class=" shadow-none p-0 border-0 form-control" style="height: 100px">
+                                                        <input type="text" class="deduction_details" 
+                                                                name="newMC" id="newMC" 
+                                                                rows="5" class="deduction_details" 
+                                                            style="resize: none; height: 75px; width: 550px;" 
+                                                            name="vec_details" id="vec_details">
+                                                    </td></tr>
                                                 </table>
                                                 <table class="deductions_table deduction_details">
                                                     <thead>
-                                                        <tr><th class="border-top-0">Reason of Report</th>
+                                                        <tr><th class="border-top-0" style="width:350px;">Reason of Report</th>
+                                                        <th class="border-top-0">
+                                                            <select class="deductions_table deduction_details" style="width:350px; margin-left:-25px" name="vec_reason" id="vec_reason">
+                                                                <option class="e_select" name="reason" id="reason" value="reason" selected="true" disabled="disabled"></option>
+                                                                <option class="e_select" value="Maintenance">Scheduled Maintenance</option>
+                                                                <option class="e_select" id="def_part" value="Defective Part/s">Defective Part/s Found</option>
+                                                            </select>
+                                                        </th></tr>
                                                         
                                                     </thead>
                                                     <thead>
                                                         <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
-                                                        <th><input type="text" class="deduction_details" name="newMC" id="newMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
+                                                        <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
                                                     </thead>
                                                 </table>
                                                 </form>

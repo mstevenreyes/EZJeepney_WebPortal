@@ -134,7 +134,7 @@
                                             require_once '../dbh.inc.php';  
                                             $start = date('m/d/Y');
                                             $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $statement = "SELECT * FROM tb_maintenance WHERE reason = 'Maintenance'";
                                             $dt = mysqli_query($conn, $statement);
 
                                             while ($result = mysqli_fetch_array($dt)){
@@ -229,7 +229,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Additional Description<br>
                                 <div class="form-select shadow-none p-0 border-0 form-control">
-                                    <textarea rows="5" class="form-control p-0 border-0" name="details" id="details"></textarea>
+                                    <textarea rows="5" class="form-control p-0 border-0" style="resize: none; height: 50px;" name="details" id="details"></textarea>
                                 </div>
                             </div>
                         </div>
