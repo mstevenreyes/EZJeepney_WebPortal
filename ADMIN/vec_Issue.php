@@ -72,13 +72,25 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action = "jeepney.inc.php" method="GET" class="form-horizontal form-material">
+
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Maintenance Report ID:</label>
+                                        <div class="col-md-12 border-bottom p-0">
+            
+                                            <?php 
+                                                require_once '../dbh.inc.php';   
+                                                $ID = $_GET['mtnID'];
+                                                echo $ID;
+                                            ?>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Date Issued:</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <?php 
                                                 
                                                 require_once '../dbh.inc.php';  
-                                                $ID = $_GET['mtnID'];
 
                                                 $statement = "SELECT date_issued FROM tb_maintenance WHERE mtnID = '$ID'";
                                                 $dt = mysqli_query($conn, $statement);
@@ -90,6 +102,7 @@
                                             ?>
                                         </div>
                                     </div>
+
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Date Fixed:</label>
                                             <div class="col-md-12 border-bottom p-0">

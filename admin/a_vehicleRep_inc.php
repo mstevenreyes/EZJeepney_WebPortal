@@ -12,7 +12,7 @@
 
     //insert new part record
     function insert($conn, $DI, $DF, $plateNum, $deets, $reason, $MaintenanceCost){
-        $stmt = mysqli_prepare($conn, "INSERT INTO tb_maintenance VALUES (?, ?, ?, ?, ?, ?)"); 
+        $stmt = mysqli_prepare($conn, "INSERT INTO tb_maintenance (date_issued, date_fixed, plate_number, description, reason, maintenance_cost) VALUES (?, ?, ?, ?, ?, ?)"); 
         mysqli_stmt_bind_param($stmt, "sssssi", $DI, $DF, $plateNum,  $deets, $reason, $MaintenanceCost);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
