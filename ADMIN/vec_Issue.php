@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <link href="css/steven_style.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -71,7 +72,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action = "jeepney.inc.php" method="GET" class="form-horizontal form-material">
+                                <form action ="" method="POST" class="form-horizontal form-material" novalidate="novalidate">
 
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Maintenance Report ID:</label>
@@ -201,12 +202,34 @@
                                     </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <button type='submit' name="submit" class="btn btn-success" value="Add Jeepney">Edit Record</button>
+                                            <button type="submit" name="submit" class="btn vc-edit-form">Edit Record</button>
                                         </div>
                                     </div>
+                                    <!-- <div class="table-responsive">
+                                        <button type="submit" name="submit" class="btn edit-form" style="width: 300px;">EDIT SALARY DETAILS</button>
+                                        <button type="submit" name="delete" class="btn del-form" style="width: 300px; background-color: #0f1236">DELETE SALARY REPORT</button>
+                                    </div> -->
                                 </form>
 
                                 <!-- EDIT FORM FOR MAINTENANCE REPORT -->
+                                <div class="vceform-popup">
+                                    <div class="container vceform-wrapper">
+                                        <button class="btn vceclose-form">Close</button>
+                                        <form action="" method="POST" novalidate="novalidate">
+
+                                        <div class="row">
+                                            <div class="col-md-12 text-center"></br>
+                                                <h2 class="vcform-title">Proceed to delete this record?</h2>
+                                            </div>
+                                        </div>
+                                        
+                                            <div class="form-check">
+                                                <label></label>
+                                            </div>
+                                            <!-- <input type="submit" name="submit" class="btn send-form" value="Confirm"> -->
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -255,6 +278,29 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+
+    <!-- EDIT POP OUT -->
+    <script>
+        // FUNCTION FOR DELETE POP OUT //
+        $(document).ready(function() {
+            $('.vc-edit-form').click(function() {
+                $('.vceform-popup').show();
+            });
+            $('.vceclose-form').click(function() {
+                $('.vceform-popup').hide();
+    
+            });
+
+            $(document).mouseup(function(e) {
+                var container = $(".vceform-wrapper");
+                var form = $(".vceform-popup");
+
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    form.hide();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

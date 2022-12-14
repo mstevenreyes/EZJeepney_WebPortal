@@ -310,7 +310,7 @@
 
                     </div>
 
-                     <!-- Delete Salary Details -->
+                    <!-- Delete Salary Details -->
                     <div class="delform-popup">
                         <div class="container delform-wrapper">
                             <button class="btn delclose-form">Close</button>
