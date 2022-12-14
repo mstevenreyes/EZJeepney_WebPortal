@@ -72,7 +72,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action ="" method="POST" class="form-horizontal form-material" novalidate="novalidate">
+                                <form id="form-ni-geon" action ="" method="POST" class="form-horizontal form-material" novalidate="novalidate">
 
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Maintenance Report ID:</label>
@@ -202,7 +202,8 @@
                                     </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <button type="submit" name="submit" class="btn vc-edit-form">Edit Record</button>
+                                            <button type="button" name="submit" class="btn vc-edit-form">Edit Record</button>
+                                           
                                         </div>
                                     </div>
                                     <!-- <div class="table-responsive">
@@ -220,6 +221,9 @@
                                         <div class="row">
                                             <div class="col-md-12 text-center"></br>
                                                 <h2 class="vcform-title">Proceed to delete this record?</h2>
+                                                 <!-- ETONG BUTTON FOR SUBMISSION PWEDE ILAGAY OUTSIDE FORM TAG, LAGAY MU NLNG SA POPUP MO ETO -->
+                                                <button type="submit" form="form-ni-geon" onclick="!this.form&&$('#'+$(this).attr('form')).submit()">Submit Form</button>
+                                                <!-- ========================== -->
                                             </div>
                                         </div>
                                         
