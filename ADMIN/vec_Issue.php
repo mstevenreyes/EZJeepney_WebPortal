@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Add Jeepney Unit - Majetsco</title>
+    <title>Maintenance Report Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -224,14 +224,73 @@
                                 <!-- EDIT FORM FOR MAINTENANCE REPORT -->
                                 <div class="vceform-popup">
                                     <div class="container vceform-wrapper">
-                                        <button class="btn vceclose-form">Close</button>
+                                        <button class="vceclose-form">Close</button>
                                         <form action="" method="POST" novalidate="novalidate">
+
+                                        <!-- QUERY TO GET ALL RELATED VALUES FROM DATABASE -->
+                                        <?php
+                                            require_once '../dbh.inc.php';
+                                            $start = date('m/d/Y');
+                                            $end = date('m/d/Y');
+                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $dt = mysqli_query($conn, $statement);
+
+                                            while ($result = mysqli_fetch_array($dt)){
+                                                $DI = $result['date_issued'];
+                                                $DF = $result['date_fixed'];
+                                                $pNum = $result['plate_number'];
+                                                $descript = $result['description'];
+                                                $reason = $result['reason'];
+                                                $mCost = $result['maintenance_cost'];
+
+                                                
+                                            }
+
+                                        ?>
 
                                         <div class="row">
                                             <div class="col-md-12 text-center"></br>
-                                                <h2 class="vcform-title">Proceed to delete this record?</h2>
+                                                <h2 class="vceform-title">Edit Maintenance Report Details</h2>
+
+                                                <h4 class="deductions_table deduction_details" style="text-align: center; font-weight: bold;">Maintenance Report ID: <?php echo $ID?></h4>
+                                                <form action="a_salary_report_edit_inc.php" method="POST" novalidate="novalidate">
+                                                <!-- DEDUCTIONS TABLE -->
+                                                <table class="deductions_table deduction_details">
+                                                    <thead>
+                                                        <tr><th class="border-top-0" style="width:350px; margin-left: -25px">Date Issued</th>
+                                                        <th class="border-top-0">
+                                                            <input placeholder="<?php echo date("F d, Y", strtotime($DI))?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_iDate" name="vec_iDate" />
+                                                                <noscript>
+                                                                    <input type="submit" value="submit">
+                                                                </noscript></th></tr>
+                                                    </thead>
+                                                    <thead>
+                                                        <tr><th class="border-top-0">Date Fixed</th>
+                                                        <th class="border-top-0">
+                                                            <input placeholder="<?php echo date("F d, Y", strtotime($DF))?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
+                                                                <noscript>
+                                                                    <input type="submit" value="submit">
+                                                                </noscript></th></tr>
+                                                    </thead>
+                                                </table>
+                                                <table class="deductions_table deduction_details">
+                                                    <thead>
+                                                        <tr><th class="border-top-0">Addtional Description</th></tr>
+                                                    </thead>
+                                                </table>
+                                                <table class="deductions_table deduction_details">
+                                                    <thead>
+                                                        <tr><th class="border-top-0">Reason of Report</th>
+                                                        
+                                                    </thead>
+                                                    <thead>
+                                                        <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
+                                                        <th><input type="text" class="deduction_details" name="newMC" id="newMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
+                                                    </thead>
+                                                </table>
+                                                </form>
                                                  <!-- ETONG BUTTON FOR SUBMISSION PWEDE ILAGAY OUTSIDE FORM TAG, LAGAY MU NLNG SA POPUP MO ETO -->
-                                                <button type="submit" form="form-ni-geon" onclick="!this.form&&$('#'+$(this).attr('form')).submit()">Submit Form</button>
+                                                <button class ="vcesend-form" type="submit" form="form-ni-geon" onclick="!this.form&&$('#'+$(this).attr('form')).submit()">Submit Form</button>
                                                 <!-- ========================== -->
                                             </div>
                                         </div>

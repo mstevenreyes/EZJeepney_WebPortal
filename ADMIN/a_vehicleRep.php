@@ -139,11 +139,11 @@
 
                                             while ($result = mysqli_fetch_array($dt)){
 
-                                                if($result['date_issued'] == NULL && $result['date_fixed'] == NULL){
-                                                    $status = "On-going";
+                                                if(strtotime($result['date_issued'])  > 0 && strtotime($result['date_fixed'])  > 0){
+                                                    $status = "Fixed";
                                                 }
                                                 else{
-                                                    $status = "Fixed";
+                                                    $status = "On-going";
                                                 }
 
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
@@ -308,7 +308,7 @@
 
             if(sDate >= fDate || (mCost < 0 || isNaN(mCost))){
 
-                if(sDate >= fDate){
+                if(sDate >= fDate && fDate != NULL){
                     alert("The date fixed should not be earlier than the date issued.");
                     submitOk = "false";
                 }
