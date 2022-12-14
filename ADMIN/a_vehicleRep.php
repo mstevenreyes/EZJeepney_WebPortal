@@ -101,7 +101,7 @@
                                                 }
 
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
-                                                "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] . '">' . date("F d, Y", strtotime($result['date_issued'])) . '</a>' . "</td>" .
+                                                "<td>" . '<a href="vec_Issue.php?mtnID=' . $result['mtnID'] . '">' . date("F d, Y", strtotime($result['date_issued'])) . '</a>' . "</td>" .
                                                 // "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] .  '">' . '</a>' . "</td>" .
                                                 "<td>"  . $dateFixed  . "</td>" .
                                                 "<td>"  . $result['reason'] . "</td>" .

@@ -76,11 +76,16 @@
                                         <label class="col-md-12 p-0">Date Issued:</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <?php 
-                                                    
-                                                    require_once '../dbh.inc.php';  
-                                                    $di = $_GET['date_issued'];
+                                                
+                                                require_once '../dbh.inc.php';  
+                                                $ID = $_GET['mtnID'];
 
-                                                    echo $di;
+                                                $statement = "SELECT date_issued FROM tb_maintenance WHERE mtnID = '$ID'";
+                                                $dt = mysqli_query($conn, $statement);
+                                                
+                                                while ($result = mysqli_fetch_array($dt)){
+                                                    echo date("F d, Y", strtotime($result['date_issued']));
+                                                }
                                                     
                                             ?>
                                         </div>
@@ -91,11 +96,11 @@
                 
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT date_fixed FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT date_fixed FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                     
                                                     while ($result = mysqli_fetch_array($dt)){
-                                                        echo  $result['date_fixed'];
+                                                        echo date("F d, Y", strtotime($result['date_fixed']));
                                                     }
                                                 ?>
                                             </div>
@@ -107,7 +112,7 @@
             
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT description FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT description FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                     
                                                     while ($result = mysqli_fetch_array($dt)){
@@ -123,7 +128,7 @@
             
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT reason FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT reason FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                     
                                                     while ($result = mysqli_fetch_array($dt)){
@@ -139,7 +144,7 @@
 
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT maintenance_cost FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT maintenance_cost FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                 
                                                     while ($result = mysqli_fetch_array($dt)){
@@ -157,7 +162,7 @@
                                                     require_once '../dbh.inc.php';  
                                                     $start = date('m/d/Y');
                                                     $end = date('m/d/Y');
-                                                    $statement = "SELECT * FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT * FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
 
                                                     while ($result = mysqli_fetch_array($dt)){
