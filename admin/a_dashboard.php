@@ -34,6 +34,7 @@
         include 'sidebar.php';
         include '../dbh.inc.php';
         // query for present details
+        date_default_timezone_set('Asia/Taipei');
         $sql = "SELECT COUNT(emp_id) AS present_driver FROM tb_attendance_sheet WHERE attendance_date = CURDATE() AND emp_id LIKE 'DR%';";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
