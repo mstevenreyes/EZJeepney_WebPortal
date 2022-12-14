@@ -72,7 +72,7 @@ $(document).ready(function(){
             + '<input type="text" class="report-item" id="item-description" name="item-description-' + i + '"placeholder="Description" autocomplete="off" required>'
         + '</div>'
         + '<div class="form-group dynamic-report">' 
-            + '<select class="earnings-type" name="earnings-type-' + i + '"id="earnings-type" required>'
+            + '<select class="item-type" name="item-type-' + i + '"id="item-type" required>'
             + '<option value="EARNINGS">Earnings</option>'
             + '<option value="EXPENSES">Expenses</option>'
             + '</select>'
@@ -99,18 +99,21 @@ $(document).ready(function(){
         $.ajax({
             type: "POST",
             url: "ajax/daily_report.php",
-            data: {mydata: JSON.stringify(obj)},
+            data: {mydata: JSON.stringify(obj), command: 'add-report'},
             success: function(response){
-                console.log(response);
+                if(response.split(' ')[0] == "ERROR:"){
+                    alert(response);
+                }else{
+                    alert("Report Submitted.");
+                    location.reload();
+                }
             }
         });
-        //loop iterable FormData
-        // for(let entry of data){
-        //     console.log(entry);
-        // }
-        
-        // alert("Report Submitted.");
-        // location.reload();
+        // Prevents submit button to refresh
+        $("#report-form").submit(function(e) {
+            e.preventDefault();
+        });
+        // ================================
     });
     // =============================================
     //===== Datepicker =============================

@@ -1130,7 +1130,7 @@ input[type=text]:focus{
   #daily-quota{
     color: rgb(10, 83, 14);
   }
-  #earnings-type{
+  #item-type{
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;

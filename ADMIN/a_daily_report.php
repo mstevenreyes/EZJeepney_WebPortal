@@ -67,7 +67,7 @@
                                         <tr>
                                             <th class="border-top-0">Report ID</th>
                                             <th class="border-top-0">Report Date</th>
-                                            <th class="border-top-0">Employee ID</th>
+                                            <th class="border-top-0">Employee</th>
                                             <th class="border-top-0">Earnings</th>
                                             <th class="border-top-0">Expenses</th>
                                             <th class="border-top-0">Final Amount</th>
@@ -75,19 +75,20 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                        require_once '../dbh.inc.php';  
-                                        // $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
-                                        // FROM `tb_attendance_sheet` as att
-                                        // INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='driver';";
-                                        // $dt = mysqli_query($conn, $statement);
-                                        // while ($result = mysqli_fetch_array($dt)){
-                                        //     $result = "<tr><td>"  . date('F d , Y', strtotime($result['attendance_date'])) . "</td>" .
-                                        //     "<td>"  . $result['emp_id'] . "</td>" .
-                                        //     "<td>"  . $result['emp_firstname'] . ' ' . $result['emp_surname'] . "</td>" .
-                                        //     "<td>"  .  date('h:i A', strtotime($result['time_in'])) . "</td>" .
-                                        //     "<td>"  .  date('h:i A', strtotime($result['time_out'])) . "</td></tr>";
-                                        //     echo $result;
-                                        // }
+                                        include '../dbh.inc.php';  
+                                        $statement = "SELECT  * FROM view_daily_report;";
+                                        $dt = mysqli_query($conn, $statement);
+                                        while ($result = mysqli_fetch_array($dt)){
+                                            $earnings = isset($result['earnings']) ? $result['earnings'] : 0;
+                                            $expenses = isset($result['expenses']) ? $result['expenses'] : 0;
+                                            $result = "<tr><td>"  . $result['daily_report_id'] . "</td>" .
+                                            "<td>"  . $result['report_date'] . "</td>" .
+                                            "<td>"  . $result['emp_id'] . "</td>" .
+                                            "<td style='color:green;'>"  . $earnings . "</td>" .
+                                            "<td style='color:red;'>"  . $expenses . "</td>" .
+                                            "<td style='color:blue;'>"  . $result['earnings'] - $result['expenses'] . "</td></tr>";
+                                            echo $result;
+                                        }
                                     ?>
                                     </tbody>
                                 </table>
@@ -113,10 +114,10 @@
              <div class="form-popup" id="add-form-popup">
                     <div class="container form-wrapper add-report-container">
                         <button class="btn close-form" id="close-add-form">Close</button>
-                        <form action="#" method="POST" id="report-form" enctype="multipart/form-data" autocomplete="off">
+                        <form method="POST" id="report-form" enctype="multipart/form-data" autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h3 class="form-title" >Enter Report Details:</h3>
+                                    <h2 class="form-title" >Enter Report Details:</h2>
                                 </div>
                                 <div class="row daily-report" id="daily-report-form">
                                     <div class="form-group col-sm-12>
@@ -124,29 +125,16 @@
                                         <input class="datepicker" type="text" id="report-date" name="report-date" required>
                                     </div>
                                     <div class="form-group col-sm-12">
-                                        <label for="emp-id">Employee ID: </label>
+                                        <label for="emp-id" style="margin-bottom: 0;">Employee ID: </label>
                                         <input type="text" id="emp-id" name="emp-id" required>
                                     </div>
-                                    <div class="form-group col-sm-12">
+                                    <!-- <div class="form-group col-sm-12">
                                         <label for="daily-quota">Daily Quota: </label>
                                         <input type="text" id="daily-quota" name="daily-quota" autocomplete="off" required>
-                                    </div>
+                                    </div> -->
                                     <div id="dynamic-content">
                                         <!-- Dynamic Content will be added here -->
-                                        <!-- <div class="dynamic-report-container">
-                                            <div class="form-group dynamic-report">
-                                                <input type="text" class="report-item" id="item-description" name="item-description" placeholder="Description" autocomplete="off" required>
-                                            </div>
-                                            <div class="form-group dynamic-report">
-                                                <select name="earnings-type" id="earnings-type" required>
-                                                    <option value="EARNINGS">Earnings</option>
-                                                    <option value="EXPENSES">Expenses</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group dynamic-report">
-                                                <input type="text" class="report-item" id="item-description" name="item-description" placeholder="Amount" autocomplete="off" required>
-                                            </div>
-                                        </div> -->
+                                        
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <button type="button" class="add-item" name="add-item" id="add-item"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
@@ -156,7 +144,7 @@
                                 <label>
                                 </label>
                             </div>
-                            <button type="button" class="btn send-form submit-report" name="submit-report" id="submit-report">Submit</button>
+                            <button type="submit" class="btn send-form submit-report" name="submit-report" id="submit-report">Submit</button>
                         </form> 
                     </div>
                 </div>

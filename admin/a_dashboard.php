@@ -151,11 +151,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 ">
                         <div class="white-box-2" style="display: flex;">
                             <div class="dashboard-child">
-                                <!-- Header -->
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -171,7 +170,6 @@
                                 </div>
                             </div>
                             <div class="dashboard-child">
-                                <!-- Header -->
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -187,7 +185,7 @@
                                 </div>
                             </div>
                             <div class="dashboard-child">
-                                <!-- Header -->
+
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -203,7 +201,7 @@
                                 </div>
                             </div>
                             <div class="dashboard-child">
-                                <!-- Header -->
+
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -220,7 +218,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
             <!-- ============================================================== -->
             <!-- ============================================================== -->
