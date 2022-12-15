@@ -81,8 +81,11 @@
                                             <?php 
                                                 require_once '../dbh.inc.php';   
                                                 $ID = $_GET['mtnID'];
+                                                  // Making mtnID global
+                                                $_SESSION['mtnID'] = $ID;
                                                 echo $ID;
                                             ?>
+
                                         </div>
                                     </div>
 
@@ -210,9 +213,9 @@
                                             </div>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <div class="col-sm-12">
-                                            <button type="button" name="submit" class="btn vc-edit-form">Edit Record</button>
-                                           
+                                        <div class="table-responsive">
+                                            <button type="button" name="submit" class="vc-edit-form" style="width:325px">Edit Record</button>
+                                            <button type="button" name="delete" class="del-form" style="width: 300px; background-color: #0f1236">Delete Record</button>
                                         </div>
                                     </div>
                                     <!-- <div class="table-responsive">
@@ -225,7 +228,7 @@
                                 <div class="vceform-popup">
                                     <div class="container vceform-wrapper">
                                         <button class="vceclose-form">Close</button>
-                                        <form action="" method="POST" novalidate="novalidate">
+                                        <form action="vec_Issueinc.php" method="POST" novalidate="novalidate">
 
                                         <!-- QUERY TO GET ALL RELATED VALUES FROM DATABASE -->
                                         <?php
@@ -242,6 +245,7 @@
                                                 $descript = $result['description'];
                                                 $reason = $result['reason'];
                                                 $mCost = $result['maintenance_cost'];
+                                                $dateIssued = date("F d, Y", strtotime($DI));
 
                                                 if(strtotime($DF > 0)){
                                                     $dateFixed = date("F d, Y", strtotime($DF));
@@ -252,30 +256,31 @@
                                             }
 
                                         ?>
-
+                                        
+                                        <!-- EDIT MAINTENANCE REPORT POP OUT FORM -->
                                         <div class="row">
                                             <div class="col-md-12 text-center"></br>
                                                 <h2 class="vceform-title">Edit Maintenance Report Details</h2>
 
                                                 <h4 class="deductions_table deduction_details" style="text-align: center; font-weight: bold;">Maintenance Report ID: <?php echo $ID?></h4>
-                                                <form action="a_salary_report_edit_inc.php" method="POST" novalidate="novalidate">
+                                                <form action="vec_Issueinc.php" method="POST" novalidate="novalidate">
                                                 <!-- DEDUCTIONS TABLE -->
                                                 <table class="deductions_table deduction_details">
                                                     <thead>
                                                         <tr><th class="border-top-0" style="width:350px; margin-left: -25px">Date Issued</th>
                                                         <th class="border-top-0">
-                                                            <input placeholder="<?php echo date("F d, Y", strtotime($DI))?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_iDate" name="vec_iDate" />
-                                                                <noscript>
-                                                                    <input type="submit" value="submit">
-                                                                </noscript></th></tr>
+                                                            <input placeholder="<?php echo $dateIssued ?>" class="deduction_details datepicker" type="text" 
+                                                                onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                                id="vec_iDate" name="vec_iDate" />
+                                                            </th></tr>
                                                     </thead>
                                                     <thead>
                                                         <tr><th class="border-top-0">Date Fixed</th>
                                                         <th class="border-top-0">
-                                                            <input placeholder="<?php echo $dateFixed?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
-                                                                <noscript>
-                                                                    <input type="submit" value="submit">
-                                                                </noscript></th></tr>
+                                                            <input placeholder="<?php echo $dateFixed?>" class="deduction_details text" type="text" 
+                                                                onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                                id="vec_Fdate" name="vec_Fdate" />
+                                                        </th></tr>
                                                     </thead>
                                                 </table>
                                                 <table class="deductions_table deduction_details">
@@ -284,10 +289,9 @@
                                                     </thead>
                                                     <tr><td class=" shadow-none p-0 border-0 form-control" style="height: 100px">
                                                         <input type="text" class="deduction_details" 
-                                                                name="newMC" id="newMC" 
                                                                 rows="5" class="deduction_details" 
-                                                            style="resize: none; height: 75px; width: 550px;" 
-                                                            name="vec_details" id="vec_details">
+                                                                style="resize: none; height: 75px; width: 550px;" 
+                                                                name="vec_details" id="vec_details">
                                                     </td></tr>
                                                 </table>
                                                 <table class="deductions_table deduction_details">
@@ -307,10 +311,9 @@
                                                         <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
                                                     </thead>
                                                 </table>
-                                                </form>
-                                                 <!-- ETONG BUTTON FOR SUBMISSION PWEDE ILAGAY OUTSIDE FORM TAG, LAGAY MU NLNG SA POPUP MO ETO -->
-                                                <button class ="vcesend-form" type="submit" form="form-ni-geon" onclick="!this.form&&$('#'+$(this).attr('form')).submit()">Submit Form</button>
+                                                <button class="vcesend-form" type='submit' name='esubmit'>Submit Form</button>
                                                 <!-- ========================== -->
+                                                </form>
                                             </div>
                                         </div>
                                         
@@ -321,6 +324,28 @@
                                         </form>
                                     </div>
                                 </div>
+                        <!-- Delete Salary Details -->
+                        <div class="delform-popup">
+                            <div class="container delform-wrapper">
+                                <button class="btn delclose-form">Close</button>
+                                <form action="vec_issue_del_inc.php" method="POST" novalidate="novalidate">
+
+                            <div class="row">
+                                <div class="col-md-12 text-center"></br>
+                                    <h2 class="form-title">Proceed to delete this record?</h2>
+                                </div>
+                            </div>
+
+                            <button type="submit" name="delete" class="del-form del_btnPlace">Yes</button>
+                            <button type="button" id="noBtn" class="del-form del_btnPlace" >No</button> 
+                            
+                                <div class="form-check">
+                                    <label></label>
+                                </div>
+                                <!-- <input type="submit" name="submit" class="btn send-form" value="Confirm"> -->
+                            </form>
+                        </div>
+                    </div>
                             </div>
                         </div>
                     </div>
@@ -358,8 +383,13 @@
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" ></script>
+    <!-- For Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
@@ -369,9 +399,13 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <!-- Timepicker JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <!-- CSS For Date Range Picker and Datepicker-->   
 
     <!-- EDIT POP OUT -->
     <script>
+
         // FUNCTION FOR DELETE POP OUT //
         $(document).ready(function() {
             $('.vc-edit-form').click(function() {
@@ -381,16 +415,63 @@
                 $('.vceform-popup').hide();
     
             });
+        });
+        
+        // FUNCTION FOR DELETE POP OUT //
+        $(document).ready(function() {
+            $('.del-form').click(function() {
+                $('.delform-popup').show();
+            });
+            $('.delclose-form').click(function() {
+                $('.delform-popup').hide();
+    
+            });
 
-            $(document).mouseup(function(e) {
-                var container = $(".vceform-wrapper");
-                var form = $(".vceform-popup");
-
-                if (!container.is(e.target) && container.has(e.target).length === 0) {
-                    form.hide();
-                }
+            $('#noBtn').click(function() {
+                $('.delform-popup').hide();
+    
             });
         });
+
+        //  FUNCTION FOR DATE PICKER
+        $(document).ready(function(){
+            var dateIssued;
+            $( function() {
+                $( ".datepicker" ).each(function(){//DATEPICKER
+                        $('#vec_iDate').datepicker({
+                            
+                            dateFormat: 'yy-mm-dd',
+                            onClose: function () {
+                                $("#vec_Fdate").datepicker(
+                                    "change", {
+                                    minDate: new Date($('#vec_iDate').val())
+                                });
+                            }
+                        });
+                        $('#vec_Fdate').datepicker({
+                            dateFormat: 'yy-mm-dd',
+                            onClose: function () {
+                                $("#vec_iDate").datepicker(
+                                    "change", {
+                                    maxDate: new Date($('#vec_iDate').val())
+                                });
+                            }
+                    
+                        })
+
+                    });
+            });
+        });
+
+        // FUNCTION FOR CHECKING INPUT TYPE FOR MAINTENANCE COST
+        $('#vecMC').change(function(){
+                var x = $('#vecMC').val();
+                if(!$.isNumeric(x)){
+                    alert("Input should be of integer value.");
+                }
+                else
+                    $('#vecMC').val(x);
+            })
     </script>
 </body>
 

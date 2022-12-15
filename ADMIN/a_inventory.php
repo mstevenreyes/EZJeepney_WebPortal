@@ -74,6 +74,7 @@
                                             <th class="border-top-0">Date Acquired:</th>
                                             <th class="border-top-0">Status:</th>
                                             <th class="border-top-0">Scheduled Maintenance:</th>
+                                            <th class="border-top-0">Delete Record:</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -129,6 +130,7 @@
                                     <tr>
                                         <th class="border-top-0">Item Name:</th>
                                         <th class="border-top-0">Stocks Available:</th>
+                                        <th class="border-top-0">Delete Record:</th>
                                     </tr>
                                 </thead>
                                 <tbody>

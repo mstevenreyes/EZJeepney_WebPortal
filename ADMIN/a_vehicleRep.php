@@ -350,6 +350,7 @@
             dateFixed.addEventListener('input', () => {
                 console.log(dateFixed.value);
             });
+            
             function valiDate(){
             var sDate = document.getElementById("DateIssued").value;
             var fDate = document.getElementById("DateFixed").value;
