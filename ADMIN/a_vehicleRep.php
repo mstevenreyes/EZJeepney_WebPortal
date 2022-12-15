@@ -18,16 +18,15 @@
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../images/ez-jeepney-logo-only.png">
-    <!-- Custom CSS -->
-    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
+     <!-- Custom CSS -->
+     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
-    <link rel="stylesheet" href="./css/steven_style.css">
+    <!-- EZ Jeepney Custom Styles-->
+    <link rel="stylesheet" href="css/steven_style.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
 <body>
@@ -186,7 +185,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Issued<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <input type="date" name="DateIssued" id="DateIssued" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required> 
+                                    <input class="datepicker" type="text" name="DateIssued" id="DateIssued" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required> 
                                     <noscript>
                                         <input type="submit" value="submit">
                                     </noscript>
@@ -236,7 +235,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Fixed<br>
                                 <div class="col-sm-12 border-bottom">
-                                    <input type="date" name="DateFixed" id="DateFixed" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'?>
+                                    <input class="text" type="text" name="DateFixed" id="DateFixed" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'?>
                                         <noscript>
                                             <input type="submit" value="submit">
                                         </noscript>
@@ -286,10 +285,15 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+   <!-- All Jquery -->
+
+   <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" ></script>
+    <!-- For Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
@@ -299,8 +303,54 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <!-- Timepicker JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+        <!-- CSS For Date Range Picker and Datepicker-->     
     <script script type="text/javascript" language="javascript">
-        function valiDate(){
+       
+        // $('#DateFixed').on('propertychange input', function (e) {
+        //     console.log("working");
+        //     console.log($(this).val());
+        // });
+        $(document).ready(function(){
+            var dateIssued;
+            $( function() {
+                $( ".datepicker" ).each(function(){//DATEPICKER
+                        $('#DateIssued').datepicker({
+                            
+                            dateFormat: 'yy-mm-dd',
+                            onClose: function () {
+                                $("#DateFixed").datepicker(
+                                    "change", {
+                                    minDate: new Date($('#DateIssued').val())
+                                });
+                            }
+                        });
+                        $('#DateFixed').datepicker({
+                            dateFormat: 'yy-mm-dd',
+                            onClose: function () {
+                                $("#DateIssued").datepicker(
+                                    "change", {
+                                    maxDate: new Date($('#DateIssued').val())
+                                });
+                            }
+                    
+                        })
+
+                    });
+            });
+         
+            $('#DateIssued').on('input', function() {
+                dateIssued = $(this).val();
+                console.log($(this).val());
+                console.log('working');
+            });
+        
+            let dateFixed = document.querySelector('#DateFixed');
+            dateFixed.addEventListener('input', () => {
+                console.log(dateFixed.value);
+            });
+            function valiDate(){
             var sDate = document.getElementById("DateIssued").value;
             var fDate = document.getElementById("DateFixed").value;
             var mCost = document.getElementById("MaintenanceCost").value;
@@ -328,6 +378,8 @@
                 return true;
                 });
                 }
+        })
+       
             
     </script>
 </body>
