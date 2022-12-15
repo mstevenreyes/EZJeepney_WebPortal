@@ -8,7 +8,6 @@
             { "width": "200px", targets: "_all" },
             { "className": "schedule-column", targets: "_all" } 
         ]
-        
     });
    
     //Date Range Picker Scheduling

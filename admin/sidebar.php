@@ -4,7 +4,7 @@
         // if(!isset($_SESSION['admin-id'])){
         //     header('location: ../index.php?invalid');
         // }
-        
+        date_default_timezone_set('Asia/Taipei');
 ?>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

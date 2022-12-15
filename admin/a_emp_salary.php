@@ -5,12 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
     <title>Ez Jeepney - Payroll</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,83 +15,72 @@
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
-    <link href="css/steven_style.css" rel="stylesheet">
-    
-    <!-- CSS For Date Range Picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+        <!-- EZ Jeepney Custom Styles-->
+    <link rel="stylesheet" href="css/steven_style.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- Timepicker CSS-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 </head>
 
 <body>
-<?php
-        include 'sidebar.php';
-        include '../dbh.inc.php';
-        // $sql = "SELECT * FROM tb_employee";
-        $sql = "SELECT tbs.salary_id, tbs.emp_id, tbe.emp_type, tbe.emp_surname, tbe.emp_firstname  
-        FROM tb_salary_report AS tbs LEFT JOIN tb_employee AS tbe ON  tbs.emp_id = tbe.emp_id";
-        $query = mysqli_query($conn, $sql);
-?>
+    <?php include 'sidebar.php'; ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
-        <!-- ============================================================== -->
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 salary-label">
-                        <h3 class="page-title">Employee Salary - Majetsco</h3>
-                        
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" style="display: flex;">
+                        <h3 class="page-title" style="min-width: 500px;">Payroll Reports</h3>
                     </div> 
-                    <div class="container-add-salary">
-                        <button class="btn-add-salary btn open-form">Add Salary</button>
-                    </div>
+                    <button class="btn-add-driver btn open-form open-add-form" id="open-add-form">Generate Payroll</button>
+                    <!-- <button class="btn-add-driver btn open-form open-edit-form" id="open-edit-form">Edit Schedule</button> -->
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
+                <div class="row white-box">
                     <div class="col-sm-12">
-                        <div class="white-box">
-                        <div style="display:flex">
-                            <h3 class="box-title">Pay Slip </h3>
+                        <div style="display:flex;justify-content:flex-end;">
+                     
                         </div>
-                            <div class="table-responsive">
-                                <table class="table text-nowrap" id="project">
+                            <div class="table-responsive center">
+                                <table class="table text-nowrap" id="schedule-table">
                                     <thead>
                                         <tr>
+                                            <th class="border-top-0">ID</th>
                                             <th class="border-top-0">Employee</th>
-                                            <th class="border-top-0">Job Position</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Salary</th>
-                                            <th class="border-top-0">Pay Slip</th>
+                                            <th class="border-top-0">Days Worked</th>
+                                            <th class="border-top-0">Gross Pay</th>
+                                            <th class="border-top-0">Total Deduction</th>
+                                            <th class="border-top-0">Net Pay</th>
+                                            <th class="border-top-0">Tools</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
+                                       <?php
+                                            include '../dbh.inc.php';
+                                            $sql = "SELECT * FROM tb_payroll_report";
+                                            $query = mysqli_query($conn, $sql);
                                             while($result = mysqli_fetch_array($query)){
-                                                $salaryID = $result['salary_id'];
-                                        ?>
+                                       ?>
                                         <tr>
-                                            <td class="border-top-0"><div style="display:flex;"><img src="../employee/employee_images/<?php echo $result['emp_id'] . '.png'; ?>" 
-                                            class="schedule-emp-img" alt="image"><h5 class="schedule-emp-details"><?php echo $result['emp_firstname'] . " " .$result['emp_surname']?><br><?php echo $result['emp_id'] ?></h5></div></td>
-                                            <td class="border-top-0"><?php echo $result['emp_type']?></td>
-                                            <td class="border-top-0">example@gmail.com</td>
-                                            <td class="border-top-0">1000<p style="color: gray; font-size: 10px;">Salary ID: <?php echo$salaryID?></p> </td>
-                                            <td><a class = "btn btn-generate" href="a_salary_report.php?salary-id=<?php echo$result['salary_id'] ?>">Generate Pay Slip </a></td>
-<!-- echo $result['salary_id'] -->
+                                            <td><?php echo $result['salary_id'] ?></td>
+                                            <td><?php echo $result['emp_id'] ?></td>
+                                            <td><?php echo $result['days_worked'] ?></td>
+                                            <td><?php echo $result['grosspay'] ?></td>
+                                            <td><?php echo $result['deduction'] ?></td>
+                                            <td><?php echo $result['netpay'] ?></td>
+                                            <td>-</td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -106,109 +89,68 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- =======================FORM POPUP============================= -->
-                <div class="form-popup" id="form-popup">
-                    <div class="container form-wrapper" >
-                        <button class="btn close-form">Close</button>
-                        <form action="a_add_emp_sal_inc.php" method="POST" enctype="multipart/form-data" novalidate="novalidate"  autocomplete="off">
+                <!-- ===================== FORM POP-UP =========================== -->
+                <div class="form-popup" id="add-form-popup">
+                    <div class="container form-wrapper">
+                        <button class="btn close-form" id="close-add-form">Close</button>
+                        <form action="inc.scheduling.php" method="POST"  autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h3 class="form-title" >Add Staff Salary</h3>
+                                    <h1 class="form-title" >Report Details</h1>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <label for="staff">Select Staff</label>
-                                    <select class="form-control" name="driver-id" id="driver-id" required>
-                                        <option value=""></option>
-                                        <?php 
-                                                $sql = "SELECT * FROM tb_employee WHERE emp_id LIKE 'DR%'";
-                                                $query = mysqli_query($conn, $sql);
-                                                while($result = mysqli_fetch_array($query)){
-                                                echo "<option value='" . $result['emp_id'] . "'>" . $result['emp_id'] . " (" . $result['emp_surname'] . ", " . $result['emp_firstname'] . ")" . "</option>";
-                                                }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="net-pay">Days Worked</label>
-                                    <input class="form-control" type="text" name="days-worked">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <h3>Earnings</h3>
-                                    <div class="form-group col-sm-12">
-                                        <label for="basic-pay">Daily Wage</label>
-                                        <input class="form-control" type="text" name="daily-wage" id="basic-pay">
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <label for="canteen-fees">Canteen Allowance</label>
-                                        <input class="form-control" type="text" name="canteen-fees" id="canteen-fees">
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <label for="other-allowance">Other Allowance</label>
-                                        <input class="form-control" type="text" name="other-allowance" id="other-allowance">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <h3>Deductions</h3>
-                                    <div class="form-group col-sm-12">
-                                        <label for="pag-ibig">Pag-ibig</label>
-                                        <input class="form-control" type="text" name="pag-ibig" id="pag-ibig">
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <label for="philhealth">Philhealth</label>
-                                        <input class="form-control" type="text" name="philhealth" id="philhealth">
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <label for="sss">SSS</label>
-                                        <input class="form-control" type="text" name="sss" id="sss">
-                                    </div>
-                                </div>
-                             
-                                <div class="row" id="date-ranger" style="display:none;z-index:1000;">
-                                    <div class="form-group col-sm-12" style="z-index: 1001;">
-                                        <label for="schedule-range">Schedule Range</label>
-                                        <input type="text" class="form-control daterangerpicker" name="schedule-range" id="schedule-range" style="z-index: 10000 !important;" required autocomplete="off">
-                                    </div>
-                                </div>
+                                        <div class="form-group col-sm-6">
+                                            <label for="schedule-type">Select Staff Type</label>
+                                            <select class="form-control" name="staff-type" id="staff-type">
+                                                <option value="driver">Driver</option>
+                                                <option value="pao">PAO/Conductor</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-6" name="schedule-date" id="date-day">
+                                            <label for="schedule-date">Select Start & End Date</label>
+                                            <input type="text" class="form-control" name="payroll-range" id="payroll-range" required>
+                                        </div>
+                                        
                                     </div>
                                 <div class="form-check">
                                     <label>
                                     </label>
                                 </div>
-                                <div class="form-group col-sm-12" style="margin:10px auto;"> 
-                                    <input type="submit" class="btn send-form" name="submit" value="Submit">
-                                </div>
+                            <button type="button" class="btn send-form" id="generate-payroll" name="generate-payroll">Generate</button>
                         </form>
                     </div>
                 </div>
+                <!-- ============================================================= -->
+                
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- footer -->
-            <!-- ============================================================== -->
             <footer class="footer text-center"> ©2022  EZ JEEPNEY </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
-    <!-- ============================================================== -->
+   
+
     <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- DATE RANGE PICKER JAVASCRIPT IMPORTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" ></script>
+    <!-- For Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
@@ -218,27 +160,14 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-        // For initializing data table jQuery 
-         $(document).ready(function () {
-            $('#project').DataTable({
-                "pageLength" : 10,
-                scrollX: true,
-                columnDefs: [
-                    { "width": "200px", targets: "_all" },
-                    { "className": "schedule-table", targets: "_all" } 
-                ]
-            });
-            $('.open-form').click(function() {
-                $('.form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
-            }),
-            $('.close-form').click(function() {
-                $('.form-popup').show(100).fadeOut(300); }); //HIDES POPUP
-            });
-    </script>
-</body>
+    <!-- Timepicker JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <!-- CSS For Date Range Picker and Datepicker-->     
+    <script src="js/emp_salary.js"></script>
+                            
 
+    
+
+
+</body>
 </html>

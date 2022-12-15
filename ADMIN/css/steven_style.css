@@ -43,6 +43,15 @@ body{
     color: #2cabe3;
 }
 
+
+.table td, .table th {
+  padding: 0.2rem 0.4rem !important;
+
+}
+
+tbody, td, tfoot, th, thead, tr{
+  text-align: center;
+}
 .emp-container:hover{
   background-color: #f7ff92;
 }
@@ -795,7 +804,10 @@ input[type=text]:focus{
     display: flex;
     width: 100%;
   }
-  
+  #salary-date-range{
+    position:relative;
+    z-index: 99999;
+  }
   #project{
     margin-left: auto;
     margin-right: auto;
