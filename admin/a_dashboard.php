@@ -34,6 +34,7 @@
         include 'sidebar.php';
         include '../dbh.inc.php';
         // query for present details
+        date_default_timezone_set('Asia/Taipei');
         $sql = "SELECT COUNT(emp_id) AS present_driver FROM tb_attendance_sheet WHERE attendance_date = CURDATE() AND emp_id LIKE 'DR%';";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
@@ -42,7 +43,7 @@
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
         $presentPaos = $result['present_pao'];
-        $sql = "SELECT COUNT(*) AS jeepney_on_route FROM tb_jeepneys_on_route WHERE schedule_date = CURDATE() AND attendance_date = CURDATE() AND emp_id LIKE 'DR%'";
+        $sql = "SELECT COUNT(*) AS jeepney_on_route FROM tb_jeepneys_on_route WHERE schedule_date = CURDATE() AND attendance_date = CURDATE() AND driver_id LIKE 'DR%'";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
         $jeepneysOnRoute = $result['jeepney_on_route'];
@@ -151,11 +152,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 ">
                         <div class="white-box-2" style="display: flex;">
                             <div class="dashboard-child">
-                                <!-- Header -->
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -171,7 +171,6 @@
                                 </div>
                             </div>
                             <div class="dashboard-child">
-                                <!-- Header -->
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -187,7 +186,7 @@
                                 </div>
                             </div>
                             <div class="dashboard-child">
-                                <!-- Header -->
+
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -203,7 +202,7 @@
                                 </div>
                             </div>
                             <div class="dashboard-child">
-                                <!-- Header -->
+
                                 <div class="dashboard-child-inner">
                                     <div style="display: flex;">
                                         <div class="percentage-label">
@@ -220,7 +219,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
             <!-- ============================================================== -->
             <!-- ============================================================== -->

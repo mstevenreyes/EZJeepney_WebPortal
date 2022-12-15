@@ -98,7 +98,7 @@ $(function () {
     // Attendance graph config
     var attendanceConfig = {
         data: attendanceData,
-        xkey: 'attendance_date',
+        xkey: 'schedule_date',
         ykeys: ['present', 'absent'],
         xLabels: 'day',
         labels: ['Present', 'Absent'],
@@ -113,8 +113,8 @@ $(function () {
     },
     revenueConfig = {
         data: revenueData,
-        xkey: 'revenue_date',
-        ykeys: ['income', 'expenses'],
+        xkey: 'report_date',
+        ykeys: ['earnings', 'expenses'],
         xLabels: 'day',
         labels: ['Income', 'Expenses'],
         fillOpacity: 0.6,
@@ -126,6 +126,8 @@ $(function () {
         barColors:['#2E4559','#BF573F'],
         pointSize: 0
     }
+    console.log(attendanceData);
+
     attendanceConfig.element = 'area-chart';
     Morris.Area(attendanceConfig);
     // config.element = 'stacked';

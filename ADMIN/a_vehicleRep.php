@@ -86,22 +86,26 @@
 
                                             while ($result = mysqli_fetch_array($dt)){
 
-                                                if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
-                                                    $status = "On-going";
+                                                if(strtotime($result['date_fixed'])  > 0){
+                                                    $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                    // $dateFixed = "";
                                                 }
                                                 else{
-                                                    $status = "Fixed";
-                                                }
-
-                                                if($result['date_fixed'] == NULL){
                                                     $dateFixed = "";
                                                 }
+
+                                                if(strtotime($result['date_issued'])  > 0 && strtotime($result['date_fixed'])  > 0){
+                                                    $status = "Fixed";
+                                                }
                                                 else{
-                                                    $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                    $status = "On-going";
                                                 }
 
+                                                // if($result['date_fixed'] == NULL){
+                                                
+
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
-                                                "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] . '">' . date("F d, Y", strtotime($result['date_issued'])) . '</a>' . "</td>" .
+                                                "<td>" . '<a href="vec_Issue.php?mtnID=' . $result['mtnID'] . '">' . date("F d, Y", strtotime($result['date_issued'])) . '</a>' . "</td>" .
                                                 // "<td>" . '<a href="vec_Issue.php?date_issued=' . $result['date_issued'] .  '">' . '</a>' . "</td>" .
                                                 "<td>"  . $dateFixed  . "</td>" .
                                                 "<td>"  . $result['reason'] . "</td>" .
@@ -130,16 +134,16 @@
                                             require_once '../dbh.inc.php';  
                                             $start = date('m/d/Y');
                                             $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $statement = "SELECT * FROM tb_maintenance WHERE reason = 'Maintenance'";
                                             $dt = mysqli_query($conn, $statement);
 
                                             while ($result = mysqli_fetch_array($dt)){
 
-                                                if($result['date_issued'] == NULL && $result['date_fixed'] == NULL){
-                                                    $status = "On-going";
+                                                if(strtotime($result['date_issued'])  > 0 && strtotime($result['date_fixed'])  > 0){
+                                                    $status = "Fixed";
                                                 }
                                                 else{
-                                                    $status = "Fixed";
+                                                    $status = "On-going";
                                                 }
 
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
@@ -225,7 +229,7 @@
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Additional Description<br>
                                 <div class="form-select shadow-none p-0 border-0 form-control">
-                                    <textarea rows="5" class="form-control p-0 border-0" name="details" id="details"></textarea>
+                                    <textarea rows="5" class="form-control p-0 border-0" style="resize: none; height: 50px;" name="details" id="details"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -304,7 +308,7 @@
 
             if(sDate >= fDate || (mCost < 0 || isNaN(mCost))){
 
-                if(sDate >= fDate){
+                if(sDate >= fDate && fDate != NULL){
                     alert("The date fixed should not be earlier than the date issued.");
                     submitOk = "false";
                 }

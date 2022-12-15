@@ -64,7 +64,7 @@
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/large/orig_bg.jpg">
+                            <div class="user-bg" style="height: max-content;"> <img alt="user" src="plugins/images/large/orig_bg.jpg">
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,8 @@
                                         <label class="col-md-12 p-0" >Plate Number</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="text" name="plateNum" id="plateNum" placeholder="Enter Plate Number"
-                                                class="form-control p-0 border-0"> </div>
+                                            class="form-control p-0 border-0"> 
+                                        </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Route</label>

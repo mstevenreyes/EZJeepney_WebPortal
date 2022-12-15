@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Add Jeepney Unit - Majetsco</title>
+    <title>Maintenance Report Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <link href="css/steven_style.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -71,31 +72,57 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action = "jeepney.inc.php" method="GET" class="form-horizontal form-material">
+                                <form id="form-ni-geon" action ="" method="POST" class="form-horizontal form-material" novalidate="novalidate">
+
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Maintenance Report ID:</label>
+                                        <div class="col-md-12 border-bottom p-0">
+            
+                                            <?php 
+                                                require_once '../dbh.inc.php';   
+                                                $ID = $_GET['mtnID'];
+                                                echo $ID;
+                                            ?>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Date Issued:</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <?php 
-                                                    
-                                                    require_once '../dbh.inc.php';  
-                                                    $di = $_GET['date_issued'];
+                                                
+                                                require_once '../dbh.inc.php';  
 
-                                                    echo $di;
+                                                $statement = "SELECT date_issued FROM tb_maintenance WHERE mtnID = '$ID'";
+                                                $dt = mysqli_query($conn, $statement);
+                                                
+                                                while ($result = mysqli_fetch_array($dt)){
+                                                    echo date("F d, Y", strtotime($result['date_issued']));
+                                                }
                                                     
                                             ?>
                                         </div>
                                     </div>
+
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Date Fixed:</label>
                                             <div class="col-md-12 border-bottom p-0">
                 
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT date_fixed FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT date_fixed FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                     
                                                     while ($result = mysqli_fetch_array($dt)){
-                                                        echo  $result['date_fixed'];
+                                                        if(strtotime($result['date_fixed'])  > 0){
+                                                            $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                            echo $dateFixed;
+                                                        }
+                                                        else{
+                                                            $dateFixed = "N/A";
+                                                            echo $dateFixed;
+                                                        }
+                                                        // echo date("F d, Y", strtotime($result['date_fixed']));
                                                     }
                                                 ?>
                                             </div>
@@ -107,7 +134,7 @@
             
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT description FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT description FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                     
                                                     while ($result = mysqli_fetch_array($dt)){
@@ -123,7 +150,7 @@
             
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT reason FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT reason FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                     
                                                     while ($result = mysqli_fetch_array($dt)){
@@ -139,7 +166,7 @@
 
                                                 <?php 
                                                     require_once '../dbh.inc.php';  
-                                                    $statement = "SELECT maintenance_cost FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT maintenance_cost FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
                                                 
                                                     while ($result = mysqli_fetch_array($dt)){
@@ -157,23 +184,24 @@
                                                     require_once '../dbh.inc.php';  
                                                     $start = date('m/d/Y');
                                                     $end = date('m/d/Y');
-                                                    $statement = "SELECT * FROM tb_maintenance WHERE date_issued = '$di'";
+                                                    $statement = "SELECT * FROM tb_maintenance WHERE mtnID = '$ID'";
                                                     $dt = mysqli_query($conn, $statement);
 
                                                     while ($result = mysqli_fetch_array($dt)){
 
-                                                        if($result['date_issued'] == NULL || $result['date_fixed'] == NULL){
-                                                            $status = "On-going";
+                                                        if(strtotime($result['date_fixed'])  > 0){
+                                                            $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                            // $dateFixed = "";
                                                         }
                                                         else{
-                                                            $status = "Fixed";
-                                                        }
-
-                                                        if($result['date_fixed'] == NULL){
                                                             $dateFixed = "";
                                                         }
+        
+                                                        if(strtotime($result['date_issued'])  > 0 && strtotime($result['date_fixed'])  > 0){
+                                                            $status = "Fixed";
+                                                        }
                                                         else{
-                                                            $dateFixed = date("F d, Y", strtotime($result['date_fixed']));
+                                                            $status = "On-going";
                                                         }
                                                 
                                                     echo $status;
@@ -183,12 +211,116 @@
                                     </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <button type='submit' name="submit" class="btn btn-success" value="Add Jeepney">Edit Record</button>
+                                            <button type="button" name="submit" class="btn vc-edit-form">Edit Record</button>
+                                           
                                         </div>
                                     </div>
+                                    <!-- <div class="table-responsive">
+                                        <button type="submit" name="submit" class="btn edit-form" style="width: 300px;">EDIT SALARY DETAILS</button>
+                                        <button type="submit" name="delete" class="btn del-form" style="width: 300px; background-color: #0f1236">DELETE SALARY REPORT</button>
+                                    </div> -->
                                 </form>
 
                                 <!-- EDIT FORM FOR MAINTENANCE REPORT -->
+                                <div class="vceform-popup">
+                                    <div class="container vceform-wrapper">
+                                        <button class="vceclose-form">Close</button>
+                                        <form action="" method="POST" novalidate="novalidate">
+
+                                        <!-- QUERY TO GET ALL RELATED VALUES FROM DATABASE -->
+                                        <?php
+                                            require_once '../dbh.inc.php';
+                                            $start = date('m/d/Y');
+                                            $end = date('m/d/Y');
+                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $dt = mysqli_query($conn, $statement);
+
+                                            while ($result = mysqli_fetch_array($dt)){
+                                                $DI = $result['date_issued'];
+                                                $DF = $result['date_fixed'];
+                                                $pNum = $result['plate_number'];
+                                                $descript = $result['description'];
+                                                $reason = $result['reason'];
+                                                $mCost = $result['maintenance_cost'];
+
+                                                if(strtotime($DF > 0)){
+                                                    $dateFixed = date("F d, Y", strtotime($DF));
+                                                }
+                                                else{
+                                                    $dateFixed = "No fixed date yet";
+                                                }
+                                            }
+
+                                        ?>
+
+                                        <div class="row">
+                                            <div class="col-md-12 text-center"></br>
+                                                <h2 class="vceform-title">Edit Maintenance Report Details</h2>
+
+                                                <h4 class="deductions_table deduction_details" style="text-align: center; font-weight: bold;">Maintenance Report ID: <?php echo $ID?></h4>
+                                                <form action="a_salary_report_edit_inc.php" method="POST" novalidate="novalidate">
+                                                <!-- DEDUCTIONS TABLE -->
+                                                <table class="deductions_table deduction_details">
+                                                    <thead>
+                                                        <tr><th class="border-top-0" style="width:350px; margin-left: -25px">Date Issued</th>
+                                                        <th class="border-top-0">
+                                                            <input placeholder="<?php echo date("F d, Y", strtotime($DI))?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_iDate" name="vec_iDate" />
+                                                                <noscript>
+                                                                    <input type="submit" value="submit">
+                                                                </noscript></th></tr>
+                                                    </thead>
+                                                    <thead>
+                                                        <tr><th class="border-top-0">Date Fixed</th>
+                                                        <th class="border-top-0">
+                                                            <input placeholder="<?php echo $dateFixed?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
+                                                                <noscript>
+                                                                    <input type="submit" value="submit">
+                                                                </noscript></th></tr>
+                                                    </thead>
+                                                </table>
+                                                <table class="deductions_table deduction_details">
+                                                    <thead>
+                                                        <tr><th class="border-top-0">Addtional Description</th></tr>
+                                                    </thead>
+                                                    <tr><td class=" shadow-none p-0 border-0 form-control" style="height: 100px">
+                                                        <input type="text" class="deduction_details" 
+                                                                name="newMC" id="newMC" 
+                                                                rows="5" class="deduction_details" 
+                                                            style="resize: none; height: 75px; width: 550px;" 
+                                                            name="vec_details" id="vec_details">
+                                                    </td></tr>
+                                                </table>
+                                                <table class="deductions_table deduction_details">
+                                                    <thead>
+                                                        <tr><th class="border-top-0" style="width:350px;">Reason of Report</th>
+                                                        <th class="border-top-0">
+                                                            <select class="deductions_table deduction_details" style="width:350px; margin-left:-25px" name="vec_reason" id="vec_reason">
+                                                                <option class="e_select" name="reason" id="reason" value="reason" selected="true" disabled="disabled"></option>
+                                                                <option class="e_select" value="Maintenance">Scheduled Maintenance</option>
+                                                                <option class="e_select" id="def_part" value="Defective Part/s">Defective Part/s Found</option>
+                                                            </select>
+                                                        </th></tr>
+                                                        
+                                                    </thead>
+                                                    <thead>
+                                                        <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
+                                                        <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
+                                                    </thead>
+                                                </table>
+                                                </form>
+                                                 <!-- ETONG BUTTON FOR SUBMISSION PWEDE ILAGAY OUTSIDE FORM TAG, LAGAY MU NLNG SA POPUP MO ETO -->
+                                                <button class ="vcesend-form" type="submit" form="form-ni-geon" onclick="!this.form&&$('#'+$(this).attr('form')).submit()">Submit Form</button>
+                                                <!-- ========================== -->
+                                            </div>
+                                        </div>
+                                        
+                                            <div class="form-check">
+                                                <label></label>
+                                            </div>
+                                            <!-- <input type="submit" name="submit" class="btn send-form" value="Confirm"> -->
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -237,6 +369,29 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+
+    <!-- EDIT POP OUT -->
+    <script>
+        // FUNCTION FOR DELETE POP OUT //
+        $(document).ready(function() {
+            $('.vc-edit-form').click(function() {
+                $('.vceform-popup').show();
+            });
+            $('.vceclose-form').click(function() {
+                $('.vceform-popup').hide();
+    
+            });
+
+            $(document).mouseup(function(e) {
+                var container = $(".vceform-wrapper");
+                var form = $(".vceform-popup");
+
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    form.hide();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

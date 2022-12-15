@@ -7,7 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ez Jeepney - Attendance</title>
+    <title>Ez Jeepney - Daily Reports</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -38,9 +38,8 @@
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        
-                        <!-- <h4 class="page-title">Driver Attendance</h4> -->
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">    
+                        <h2 class="page-title"></h2>
                     </div> 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -58,34 +57,36 @@
                 <div class="row">
                     <div class="col-sm-12">
                     <div class="attendance-header">
-                        <h3 class="box-title">Attendance Record</h3>
-                        <button class="btn-add-driver btn open-form open-add-form" id="open-add-form">Manage Leaves/Records</button>
+                        <h3 class="box-title">Daily Earnings/Expenses Report</h3>
+                        <button class="btn-add-driver btn open-form open-add-form" id="open-add-form">Add Report &emsp13;<i class="fa-solid fa-square-plus"></i></button>
                     </div>
                         <div class="white-box" style="display:flex;">
                             <div class="table-responsive">
                                 <table class="table text-nowrap" id="attendance-table">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">Employee ID</th>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Time-In</th>
-                                            <th class="border-top-0">Time-Out</th>
+                                            <th class="border-top-0">Report ID</th>
+                                            <th class="border-top-0">Report Date</th>
+                                            <th class="border-top-0">Employee</th>
+                                            <th class="border-top-0">Earnings</th>
+                                            <th class="border-top-0">Expenses</th>
+                                            <th class="border-top-0">Final Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                        require_once '../dbh.inc.php';  
-                                        $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
-                                        FROM `tb_attendance_sheet` as att
-                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='driver';";
+                                        include '../dbh.inc.php';  
+                                        $statement = "SELECT  * FROM view_daily_report;";
                                         $dt = mysqli_query($conn, $statement);
                                         while ($result = mysqli_fetch_array($dt)){
-                                            $result = "<tr><td>"  . date('F d , Y', strtotime($result['attendance_date'])) . "</td>" .
+                                            $earnings = isset($result['earnings']) ? $result['earnings'] : 0;
+                                            $expenses = isset($result['expenses']) ? $result['expenses'] : 0;
+                                            $result = "<tr><td>"  . $result['daily_report_id'] . "</td>" .
+                                            "<td>"  . $result['report_date'] . "</td>" .
                                             "<td>"  . $result['emp_id'] . "</td>" .
-                                            "<td>"  . $result['emp_firstname'] . ' ' . $result['emp_surname'] . "</td>" .
-                                            "<td>"  .  date('h:i A', strtotime($result['time_in'])) . "</td>" .
-                                            "<td>"  .  date('h:i A', strtotime($result['time_out'])) . "</td></tr>";
+                                            "<td style='color:green;'>"  . $earnings . "</td>" .
+                                            "<td style='color:red;'>"  . $expenses . "</td>" .
+                                            "<td style='color:blue;'>"  . $result['earnings'] - $result['expenses'] . "</td></tr>";
                                             echo $result;
                                         }
                                     ?>
@@ -111,42 +112,40 @@
             <!-- ============================================================== -->
              <!-- ===================== FORM POP-UP =========================== -->
              <div class="form-popup" id="add-form-popup">
-                    <div class="container form-wrapper">
+                    <div class="container form-wrapper add-report-container">
                         <button class="btn close-form" id="close-add-form">Close</button>
+                        <form method="POST" id="report-form" enctype="multipart/form-data" autocomplete="off">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h1 class="form-title" >Manage Leaves/Attendance</h1>
+                                    <h2 class="form-title" >Enter Report Details:</h2>
                                 </div>
-                                <table class="table text-nowrap" id="leaves-table">
-                                <thead>
-                                    <tr>
-                                    <th class="border-top-0">Employee ID</th>
-                                    <th class="border-top-0">Apply Date</th>
-                                    <th class="border-top-0">Leave Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        $sql = "SELECT * FROM tb_employee_leaves";
-                                        $query = mysqli_query($conn, $sql);
-                                        while($result = mysqli_fetch_array($query)){
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $result['emp_id']; ?></td>
-                                        <td><?php echo date('M d, Y', strtotime($result['apply_date'])); ?></td>
-                                        <td><select name="leave-status" class="leave-status" id="leave-status">
-                                            <option value="<?php echo $result['leave_status']; ?>"><?php echo $result['leave_status']; ?></option>
-                                            <?php if($result['leave_status'] == "PENDING"){?>
-                                            <option value="APPROVED">APPROVED</option>
-                                            <?php }else{ ?>
-                                            <option value="PENDING">PENDING</option>
-                                            <?php } ?>
-                                        </select></td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                                </table>
+                                <div class="row daily-report" id="daily-report-form">
+                                    <div class="form-group col-sm-12>
+                                        <label for="report-date">Report Date: </label>
+                                        <input class="datepicker" type="text" id="report-date" name="report-date" required>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="emp-id" style="margin-bottom: 0;">Employee ID: </label>
+                                        <input type="text" id="emp-id" name="emp-id" required>
+                                    </div>
+                                    <!-- <div class="form-group col-sm-12">
+                                        <label for="daily-quota">Daily Quota: </label>
+                                        <input type="text" id="daily-quota" name="daily-quota" autocomplete="off" required>
+                                    </div> -->
+                                    <div id="dynamic-content">
+                                        <!-- Dynamic Content will be added here -->
+                                        
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <button type="button" class="add-item" name="add-item" id="add-item"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
+                                    </div>
+                                </div>
+                            <div class="form-check">
+                                <label>
+                                </label>
                             </div>
+                            <button type="submit" class="btn send-form submit-report" name="submit-report" id="submit-report">Submit</button>
+                        </form> 
                     </div>
                 </div>
                 <!-- ============================================================= -->
@@ -191,7 +190,7 @@
     <!-- Timepicker JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <!-- CSS For Date Range Picker and Datepicker-->     
-    <script src="js/attendance.js"></script>
+    <script src="js/a_daily_report.js"></script>
 </body>
 
 </html>

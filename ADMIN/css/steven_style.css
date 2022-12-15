@@ -52,9 +52,15 @@ body{
 }
 .emp-container img{
     width: 100px;
+    height: 100px;
     border-radius: 100px;
     /* border: 2px solid #18181a80; */
     outline: rgba(98, 103, 121, 0.37) solid 1px;
+}
+
+.attendance-header{
+  display:flex;
+  margin-bottom: 20px;
 }
 
 .emp-container a{
@@ -69,17 +75,36 @@ body{
 }
 
 .daterangepicker, .timepicker{ z-index: 999999 !important; }
-
-
+.employee-btns-header{
+  display:flex;
+}
 .btn-add-driver{
     margin-left: auto;
-    width: 150px; 
+    width: 200px; 
     bottom: 25px;
     border-style: none;
     background-color: #0f1236;
     border-radius: 10px;
 }
-
+.btn-add-employee{
+  margin-left: 10px;
+  width: 200px; 
+  bottom: 25px;
+  border-style: none;
+  background-color: #0f1236;
+  border-radius: 10px;
+}
+#main-wrapper > div.page-wrapper > div.page-breadcrumb.bg-white > div > div > label{
+  font-size: 16px;
+  margin-right: 20px;
+  margin-left: auto;
+  margin-top:10px
+}
+#search-employee{
+  width: 200px;
+  height: 25px;
+  margin-top: 10px;
+}
 .btn-edit{
   width: 305px; 
   position: relative; 
@@ -115,7 +140,7 @@ body{
 }
 .form-popup .form-wrapper {
     top: 2em;
-    max-width: 1000px;
+    max-width: 700px;
     border-radius: 5px;
     background: white;
     padding: 50px;
@@ -126,6 +151,7 @@ body{
     left: 0;
     right: 0;
 }
+
 .form-title {
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -725,7 +751,7 @@ input[type=text]:focus{
   .page-wrapper{
     background-color: #f7fafc !important;
   }
-
+  
   .white-box-2{
     background-color: white;
     border-radius: 2px;
@@ -828,10 +854,23 @@ input[type=text]:focus{
     margin-right: auto;
     width: 100% !important;  
   }
+  #leaves-table, #leaves-table_wrapper > div.dataTables_scroll > div.dataTables_scrollHead > div > table, #leaves-table_wrapper > div.dataTables_scroll > div.dataTables_scrollHead > div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;  
+  }
   #attendance-table{
     margin-left: auto;
     margin-right: auto;
     width: 100% !important;  
+  }
+  #leaves-table_filter{
+    display: inline-block;
+    float:right;
+  }
+
+  #leaves-table_length{
+    display: inline-block;
   }
 
   #attendance-table_filter{
@@ -1058,3 +1097,170 @@ input[type=text]:focus{
   .btn-srdel:hover{
       color: white;
   }
+
+  /* =============== FOR DAILY REPORTS PAGE ============================ */
+  .add-item{
+    border: none;
+    background-color: white;
+  }
+  .add-item:focus{
+    border: none;
+    outline: none;
+  }
+  .row.daily-report{
+    text-align: center;
+  }
+
+  .report-item{
+    width: 100px;
+  }
+  
+  .row .btn.submit-report{
+    margin: 0px auto;
+    width: 200px;
+  }
+
+  .add-report-container{
+    max-width: 500px !important;
+  }
+  .row.daily-report #report-date, .row.daily-report #emp-id, .row.daily-report #daily-quota{
+    margin-left: 50px;
+
+  }
+  #daily-quota{
+    color: rgb(10, 83, 14);
+  }
+  #item-type{
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(110, 110, 110, 0.5);
+    transition-duration: .5s;
+    padding: 3px 0px;
+    margin: 0px 18px;
+  }
+  #add-form-popup > div > form > div > div.row.daily-report > div.dynamic-report-container > div{
+    padding: 0px 10px !important;
+  }
+  .dynamic-report-container{
+    display: flex;
+    justify-content: center;
+  }
+  
+/* =============== FOR vec_Issue ============================ */
+
+.vc-edit-form,
+.vc-reset-form {
+    margin-top: 50px;
+    margin-left: 50px;
+    cursor: pointer;
+    color: white;
+    padding: 10px 25px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 19px;
+    border: 2px solid #0f1236;
+    background-color: #0f1236;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: .3s;
+}
+.vceform-popup,
+.vcesuccess-message {
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+.vceform-popup .vceform-wrapper {
+    top: 2em;
+    max-width: 700px;
+    background: white;
+    padding: 50px;
+    padding-top: 50px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 100px;
+}
+.vceform-title {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.vceclose-form {
+    border-radius: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    cursor: pointer;
+    padding: 10px 30px;
+    border: 2px solid #0f1236;
+    background-color: #0f1236;
+    color: #ffffff;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    transition: .3s;
+}
+.vcesend-form {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 20px;
+    border: 2px solid #0f1236;
+    background-color: #0f1236;
+    color: #ffffff;
+    font-size: 18px;
+    transition: .3s;
+}
+.vceform-control:focus {
+    border-color: rgb(41, 157, 192);
+    box-shadow: 0 0 0 0.2rem rgba(102, 163, 181, 0.25);
+}
+.vcesuccess-message {
+    text-align: center;
+}
+.vcesuccess-message h1 {
+    color: #ffffff;
+    margin-top: 3em;
+}
+
+.vce_select {
+    width: 70%;
+    padding: 1px 20px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
+    background-color:#ffffff;
+}
+
+.vce_textField {
+    width: 408px;
+    padding: 1px 20px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
+    background-color:#ffffff;
+}
+
+.vce_textField2 {
+    width: 425px;
+    padding: 1px 20px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 0.1rem rgba(102, 163, 181, 0.25);
+    background-color:#ffffff;
+}
+
+.vce_marginInvent {
+    margin-left: 40px;
+}
