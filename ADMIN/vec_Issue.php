@@ -90,11 +90,27 @@
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Date Issued:</label>
+                                        <label class="col-md-12 p-0">Vehicle Plate Number:</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <?php 
                                                 
                                                 require_once '../dbh.inc.php';  
+
+                                                $statement = "SELECT plate_number FROM tb_maintenance WHERE mtnID = '$ID'";
+                                                $dt = mysqli_query($conn, $statement);
+                                                
+                                                while ($result = mysqli_fetch_array($dt)){
+                                                    echo $result['plate_number'];
+                                                }
+                                                    
+                                            ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Date Issued:</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <?php  
 
                                                 $statement = "SELECT date_issued FROM tb_maintenance WHERE mtnID = '$ID'";
                                                 $dt = mysqli_query($conn, $statement);
