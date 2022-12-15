@@ -43,10 +43,10 @@
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
         $presentPaos = $result['present_pao'];
-        $sql = "SELECT COUNT(*) AS jeepney_on_route FROM tb_jeepneys_on_route WHERE schedule_date = CURDATE() AND attendance_date = CURDATE() AND driver_id LIKE 'DR%'";
-        $query = mysqli_query($conn, $sql);
-        $result = mysqli_fetch_array($query);
-        $jeepneysOnRoute = $result['jeepney_on_route'];
+        // $sql = "SELECT COUNT(*) AS jeepney_on_route FROM tb_jeepneys_on_route WHERE schedule_date = CURDATE() AND attendance_date = CURDATE() AND driver_id LIKE 'DR%'";
+        // $query = mysqli_query($conn, $sql);
+        // $result = mysqli_fetch_array($query);
+        $jeepneysOnRoute = $presentDrivers;
     ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
