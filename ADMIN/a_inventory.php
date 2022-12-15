@@ -67,11 +67,12 @@
                             <h3 class="box-title">Vehicles List</h3> <br>
 
                             <div class="table-responsive">
-                                <table class="table text-nowrap schedule-table" >
+                                <table class="table text-nowrap schedule-table" style="text-align: center;" >
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Plate Number:</th>
                                             <th class="border-top-0">Date Acquired:</th>
+                                            <th class="border-top-0">Jeepney Route:</th>
                                             <th class="border-top-0">Status:</th>
                                             <th class="border-top-0">Scheduled Maintenance:</th>
                                             <th class="border-top-0">Delete Record:</th>
@@ -81,7 +82,8 @@
                                         <!-- GET VEHICLES LIST DATA FROM DB -->
                                         <?php
                                             require_once '../dbh.inc.php';  
-                                            $statement = "SELECT plate_number, date_issued, date_fixed FROM tb_maintenance";
+                                            $statement = "SELECT tbm.plate_number, tbm.date_issued, tbm.date_fixed, tbj.jeepney_route 
+                                                            FROM tb_maintenance tbm JOIN tb_jeepney tbj ON tbm.plate_number = tbj.plate_number";
                                             $dt = mysqli_query($conn, $statement);
                                             while ($result = mysqli_fetch_array($dt)){
 
@@ -101,8 +103,11 @@
 
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>".
                                                 "<td>"  . $date_acquired . "</td>" .
+                                                "<td>"  . $result['jeepney_route'] . "</td>" .
                                                 "<td>"  . $status . "</td>" .
-                                                "<td>"  . $sched . "</td>";
+                                                "<td>"  . $sched . "</td>" . "<td>" .
+                                                '<a href="a_inventory_vec_delete.php?plate_num=' . $result['plate_number'] . '">' . 
+                                                '<i class="far fa-trash-alt">' . '</i>' . '</td>' . '</tr>';
                                                 // "<td>"  . $result['time_in'] . "</td>" .
                                                 // "<td>"  . $result['time_out'] . "</td></tr>";
                                                 echo $result;
@@ -120,16 +125,16 @@
                         <div class="page-breadcrumb bg-white">
                             <div class="row align-items-center">
                                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                                    <h3 class="page-title">Supplies/Spare Parts List</h3>
+                                    <br><h3 class="page-title">Supplies/Spare Parts List</h3>
                                 </div>
                                 <button class="btn-edit-supply btn edit-form" id="edit-inventory-form">EDIT INVENTORY DETAILS:</button>
-                            </div>                     
-                        <div class="table-responsive">
-                            <table class="table text-nowrap schedule-table">
+                            </div><br>                     
+                        <div class="table-responsive"><form action="a_inventory_delete.php" metho="get">
+                            <table class="table text-nowrap schedule-table" style="text-align: center; width: 1300px">
                                 <thead>
                                     <tr>
                                         <th class="border-top-0">Item Name:</th>
-                                        <th class="border-top-0">Stocks Available:</th>
+                                        <th class="border-top-0">Stocks Count:</th>
                                         <th class="border-top-0">Delete Record:</th>
                                     </tr>
                                 </thead>
@@ -146,14 +151,17 @@
                                         while ($result = mysqli_fetch_array($dt))
                                         {
                                             ++$counter;
-                                            $items[] = $result['item'];
-                                            $result = "<tr><td>" . $result['item'] . "</td><td>"  . $result['quantity'] . "</td>";
-                                            echo $result;
+                                            $item = $result['item'];
+                                            $row = "<tr><td style='text-align: center;'>" . $result['item'] . 
+                                                        "</td><td style='text-align: center;'>"  . $result['quantity'] . "</td>" . "<td>" .
+                                                        '<a href="a_inventory_delete.php?item=' . $result['item'] . '">' . 
+                                                        '<i class="far fa-trash-alt">' . '</i>' . '</td>' . '</tr>';
+                                            echo $row;
                                         }
                                     ?>
                                 </tbody>
                             </table>
-                        </div>
+                        </div></form>
                     </div>
                 </div>  
             
