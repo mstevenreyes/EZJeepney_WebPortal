@@ -104,6 +104,13 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
+                        <li class="sidebar-item pt-2">
+                            <a class="waves-effect waves-dark sidebar-link" href="a_comp_revenue"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-chart-column fa-lg"></i>
+                                <span class="hide-menu">Cooperative Revenue</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item  pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_daily_report"
                                 aria-expanded="false">
