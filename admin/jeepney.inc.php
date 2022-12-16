@@ -1,14 +1,14 @@
 <?php
 
-    function addJeepney($conn, $plate_num, $route){
+    function addJeepney($conn, $plate_num, $route, $DI){
 
-        $sql = "INSERT INTO tb_jeepney VALUES (?, ?)";
+        $sql = "INSERT INTO tb_jeepney VALUES (?, ?, ?)";
         $stmt = mysqli_stmt_init($conn); // prepare connection
             if(!mysqli_stmt_prepare($stmt, $sql)){
                 header('location: a_jeepney.php?error=stmtfailed');
                 exit();
             }
-        mysqli_stmt_bind_param($stmt, "ss", $plate_num, $route); // bind variables
+        mysqli_stmt_bind_param($stmt, "sss", $plate_num, $route, $DI); // bind variables
         mysqli_stmt_execute($stmt); // execute connection
         header('location: a_jeepney.php?success');
     }
@@ -32,15 +32,16 @@
             exit();
         }
         else{
-            addJeepney($conn, $plate_num, $route);
+            addJeepney($conn, $plate_num, $route, $DI);
         }
     }
 
     if(isset($_POST['submit'])){
         $plate_num = $_POST['plateNum'];
         $route = $_POST['Route'];
+        $DI = $_POST['DateIssued'];
 
         require '../dbh.inc.php';
-        JExists($conn, $plate_num, $route);
+        JExists($conn, $plate_num, $route, $DI);
     }    
 ?>

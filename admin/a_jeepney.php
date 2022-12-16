@@ -95,6 +95,14 @@
                                                 ?>
                                             </select>
                                     </div>
+                                    <thead>
+                                        <tr><th class="border-top-0" style="width:350px; margin-left: -25px">Date Acquired</th>
+                                        <th class="border-top-0">
+                                            <input placeholder="<?php echo $DI ?>" class="deduction_details datepicker" type="text" 
+                                                onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                id="DateIssued" name="DateIssued" />
+                                            </th></tr>
+                                    </thead>
                                     </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">

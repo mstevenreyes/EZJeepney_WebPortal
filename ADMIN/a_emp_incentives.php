@@ -222,11 +222,11 @@
                             <!-- DEDUCTIONS TABLE -->
                             <table class="deductions_table deduction_details">
                                 <thead>
-                                    <th class="border-top-0" style="width:350px;">Reason of Report</th>
+                                    <th class="border-top-0" style="width:350px;">Recognition Given</th>
                                     <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Recognition"></th></tr>
                                 </thead>
                                 <thead>
-                                    <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
+                                    <tr><th class="border-top-0" style="width:350px;">Amount</th>
                                     <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
                                 </thead>
                             </table>
@@ -240,7 +240,7 @@
                                             </noscript></th></tr>
                                 </thead>
                                 <thead>
-                                    <tr><th class="border-top-0">Date Fixed</th>
+                                    <tr><th class="border-top-0">Date Given</th>
                                     <th class="border-top-0">
                                         <input placeholder="<?php echo $dateFixed?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
                                             <noscript>
@@ -318,7 +318,7 @@
                                     <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Recognition"></th></tr>
                                 </thead>
                                 <thead>
-                                    <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
+                                    <tr><th class="border-top-0" style="width:350px;">Amount</th>
                                     <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
                                 </thead>
                             </table>
@@ -332,7 +332,7 @@
                                             </noscript></th></tr>
                                 </thead>
                                 <thead>
-                                    <tr><th class="border-top-0">Date Fixed</th>
+                                    <tr><th class="border-top-0">Date Given</th>
                                     <th class="border-top-0">
                                         <input placeholder="<?php echo $dateFixed?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
                                             <noscript>
@@ -420,7 +420,7 @@
                                     <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Recognition"></th></tr>
                                 </thead>
                                 <thead>
-                                    <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
+                                    <tr><th class="border-top-0" style="width:350px;">Amount</th>
                                     <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
                                 </thead>
                             </table>
@@ -434,7 +434,7 @@
                                             </noscript></th></tr>
                                 </thead>
                                 <thead>
-                                    <tr><th class="border-top-0">Date Fixed</th>
+                                    <tr><th class="border-top-0">Date Given</th>
                                     <th class="border-top-0">
                                         <input placeholder="<?php echo $dateFixed?>" class="deduction_details" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="vec_Fdate" name="vec_Fdate" />
                                             <noscript>
