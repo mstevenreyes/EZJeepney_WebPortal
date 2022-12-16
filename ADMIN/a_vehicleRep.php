@@ -120,34 +120,25 @@
                         <div class="white-box">
                             <h3 class="box-title">Maintenance Schedule</h3> <br>
                             <div class="table-responsive">
-                                <table class="table text-nowrap">
-                                    <thead>
+                            <table class="table text-nowrap">
+                            <thead>
                                         <tr>
+                                            <th class="border-top-0">Maintenance ID</th>
                                             <th class="border-top-0">Vehicle Plate Number</th>
-                                            <th class="border-top-0">Previous Maintenance</th>
                                             <th class="border-top-0">Upcoming Maintenance</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             require_once '../dbh.inc.php';  
-                                            $start = date('m/d/Y');
-                                            $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance WHERE reason = 'Maintenance' ORDER BY date_issued ASC";
-                                            $dt = mysqli_query($conn, $statement);
+                                            $statement = "SELECT plateNum, MAX(mtnID) as mtnID, sched FROM tb_maintenancesched GROUP by plateNum;";
 
+                                            $dt = mysqli_query($conn, $statement);
                                             while ($result = mysqli_fetch_array($dt)){
 
-                                                if(strtotime($result['date_issued'])  > 0 && strtotime($result['date_fixed'])  > 0){
-                                                    $status = "Fixed";
-                                                }
-                                                else{
-                                                    $status = "On-going";
-                                                }
-
-                                                $result = "<tr><td>"  . $result['plate_number'] . "</td>" .
-                                                "<td>"  . date("F d, Y", strtotime($result['date_issued'])) . "</td>" .
-                                                "<td>" . $status . "</td>";
+                                                $result = "<tr><td>"  . $result['mtnID'] . "</td>" . 
+                                                "<td>"  . $result['plateNum'] . "</td>" .
+                                                "<td>" . date("F d, Y", strtotime($result['sched'])) . "</td>";
                                                 echo $result;
                                             }
                                         ?>
