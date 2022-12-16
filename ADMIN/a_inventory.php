@@ -73,8 +73,6 @@
                                             <th class="border-top-0">Plate Number:</th>
                                             <th class="border-top-0">Date Acquired:</th>
                                             <th class="border-top-0">Jeepney Route:</th>
-                                            <th class="border-top-0">Status:</th>
-                                            <th class="border-top-0">Scheduled Maintenance:</th>
                                             <th class="border-top-0">Delete Record:</th>
                                         </tr>
                                     </thead>
@@ -82,31 +80,19 @@
                                         <!-- GET VEHICLES LIST DATA FROM DB -->
                                         <?php
                                             require_once '../dbh.inc.php';  
-                                            $statement = "SELECT tbm.plate_number, tbm.date_issued, tbm.date_fixed, tbj.jeepney_route 
-                                                            FROM tb_maintenance tbm JOIN tb_jeepney tbj ON tbm.plate_number = tbj.plate_number";
+                                            $statement = "SELECT tbj.plate_number, tbm.date_issued, tbm.date_fixed, tbj.jeepney_route, tbj.date_acquired
+                                                            FROM tb_jeepney tbj LEFT JOIN tb_maintenance tbm  ON tbm.plate_number = tbj.plate_number
+                                                            GROUP BY tbj.plate_number";
                                             $dt = mysqli_query($conn, $statement);
                                             while ($result = mysqli_fetch_array($dt)){
 
                                                 // To check if date_acquired and date_issued is null, defuault is 1-11967 //
                                                 $date_acquired = empty($result['date_acquired']) ? "" : date("F d, Y", strtotime($result['date_acquired']));
-                                                $sched = empty($result['date_issued']) ? "" : date("F d, Y", strtotime($result['date_issued']));
-
-                                                if(empty($result['date_issued']) && empty($result['date_fixed'])){
-                                                    $status = "No Data";
-                                                } 
-                                                else if(empty($result['date_issued']) || empty($result['date_fixed'])){
-                                                    $status = "Maintenance";
-                                                }
-                                                else{
-                                                    $status = "Functioning";
-                                                }
 
                                                 $result = "<tr><td>"  . $result['plate_number'] . "</td>".
                                                 "<td>"  . $date_acquired . "</td>" .
                                                 "<td>"  . $result['jeepney_route'] . "</td>" .
-                                                "<td>"  . $status . "</td>" .
-                                                "<td>"  . $sched . "</td>" . "<td>" .
-                                                '<a href="a_inventory_vec_delete.php?plate_num=' . $result['plate_number'] . '">' . 
+                                                "<td>"  . '<a href="a_inventory_vec_delete.php?plate_num=' . $result['plate_number'] . '">' . 
                                                 '<i class="far fa-trash-alt">' . '</i>' . '</td>' . '</tr>';
                                                 // "<td>"  . $result['time_in'] . "</td>" .
                                                 // "<td>"  . $result['time_out'] . "</td></tr>";

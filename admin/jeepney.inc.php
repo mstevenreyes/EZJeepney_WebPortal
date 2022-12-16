@@ -39,9 +39,9 @@
     if(isset($_POST['submit'])){
         $plate_num = $_POST['plateNum'];
         $route = $_POST['Route'];
-        $DI = $_POST['DateIssued'];
+        $DI = $_POST['jDA'];
 
         require '../dbh.inc.php';
-        JExists($conn, $plate_num, $route, $DI);
+        JExists($conn, $plate_num, $route);
     }    
 ?>

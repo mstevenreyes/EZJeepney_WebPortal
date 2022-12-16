@@ -94,21 +94,22 @@
                                                      }
                                                 ?>
                                             </select>
-                                    </div>
-                                    <thead>
-                                        <tr><th class="border-top-0" style="width:350px; margin-left: -25px">Date Acquired</th>
-                                        <th class="border-top-0">
-                                            <input placeholder="<?php echo $DI ?>" class="deduction_details datepicker" type="text" 
-                                                onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                id="DateIssued" name="DateIssued" />
-                                            </th></tr>
-                                    </thead>
-                                    </div>
+                                    </div><br>
                                     <div class="form-group mb-4">
-                                        <div class="col-sm-12">
-                                            <button type='submit' name="submit" class="btn btn-success" value="Add Jeepney">Add Jeepney</button>
+                                        <div class="col-sm-12">Date Acquired<br>
+                                            <div class="col-sm-12 border-bottom">
+                                            <input placeholder="Pick Date" class="border-0 form-control datepicker border-bottom" type="text" 
+                                                style="width:300px; height: 30px"
+                                                onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                id="jDA" name="jDA" required/>
+                                            </div>
                                         </div>
                                     </div>
+                                    
+                                    
+                                    <button type='submit' name="submit" class="btn send-form btn-success" value="Add Jeepney">Add Jeepney</button>
+
+
                                 </form>
                             </div>
                         </div>
