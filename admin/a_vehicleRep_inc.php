@@ -49,19 +49,30 @@
             $varEDate = $result['date_fixed'];
         }
 
+        $sql = "SELECT MAX(mtnID), date_fixed FROM tb_maintenance WHERE plate_number = '$plateNum' AND (date_fixed = 0 AND reason = 'Maintenance');";
+        $run = mysqli_query($conn, $sql);
 
-        if($DF == NULL && $varSDate != NULL){
-            addRecord($conn, $DI, $plateNum, $deets, $reason, $MaintenanceCost);
+        while($result = mysqli_fetch_assoc($run)){
+            $count = $result['date_fixed'];
         }
-        else if($varEDate == NULL && $varSDate == $DI){
-            addFixedDate($conn, $DI, $DF, $plateNum);
-        }
-        else if($varEDate == NULL && $varSDate == NULL){
-            insert($conn, $DI, $DF, $plateNum, $deets, $reason, $MaintenanceCost);
+        
+        if($count > 0){
+            header('location: a_vehicleRep.php?error');
         }
         else{
+            if($DF == NULL && $varSDate != NULL){
+                addRecord($conn, $DI, $plateNum, $deets, $reason, $MaintenanceCost);
+            }
+            else if($varEDate == NULL && $varSDate == $DI){
+                addFixedDate($conn, $DI, $DF, $plateNum);
+            }
+            else if($varEDate == NULL && $varSDate == NULL){
+                insert($conn, $DI, $DF, $plateNum, $deets, $reason, $MaintenanceCost);
+            }
+            else{
+            }
+            header('location: a_vehicleRep.php');
         }
-        header('location: a_vehicleRep.php');
 
     }
 

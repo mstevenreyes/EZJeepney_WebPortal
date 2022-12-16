@@ -43,7 +43,7 @@
             $sql_run = mysqli_query($conn, $sql);
         }
 
-        if(isset($_POST['vecMC'])){
+        if(isset($_POST['vecMC']) && $_POST['vecMC'] > 0 ){
             $maintenanceCost = $_POST['vecMC'];
 
             $sql = "UPDATE tb_maintenance SET maintenance_cost = '$maintenanceCost' WHERE mtnID = '$ID'";

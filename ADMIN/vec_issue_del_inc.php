@@ -16,16 +16,16 @@
         if(!mysqli_stmt_execute($stmt))
         {
             // echo "ERROR: " . mysqli_error($conn);
-            header('location: vec_Issue.php?error=delete-salary-report-failed');
+            header('location: a_vehicleRep.php?error=delete-salary-report-failed');
             exit();
         }
         if(mysqli_stmt_affected_rows($stmt) > 0)
         {
-            header('location: vec_Issue.php?status=delete-success');
+            header('location: a_vehicleRep.php?status=delete-success');
         }else{
             echo mysqli_error($conn);
             exit();
-            header('location:vec_Issue.php?status=delete-failed');
+            header('location:a_vehicleRep.php?status=delete-failed');
         }
     }
   

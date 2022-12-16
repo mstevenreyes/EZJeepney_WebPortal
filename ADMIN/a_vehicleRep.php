@@ -80,7 +80,7 @@
                                             require_once '../dbh.inc.php';  
                                             $start = date('m/d/Y');
                                             $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $statement = "SELECT * FROM tb_maintenance ORDER BY date_issued ASC";
                                             $dt = mysqli_query($conn, $statement);
 
                                             while ($result = mysqli_fetch_array($dt)){
@@ -133,7 +133,7 @@
                                             require_once '../dbh.inc.php';  
                                             $start = date('m/d/Y');
                                             $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance WHERE reason = 'Maintenance'";
+                                            $statement = "SELECT * FROM tb_maintenance WHERE reason = 'Maintenance' ORDER BY date_issued ASC";
                                             $dt = mysqli_query($conn, $statement);
 
                                             while ($result = mysqli_fetch_array($dt)){
