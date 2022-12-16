@@ -204,7 +204,7 @@
                             <div class="col-sm-12">
                                 <div class="white-box">
                                     <div style="text-align:center">
-                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF </h3>
+                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF <span id="edit-date-range"></span> </h3>
                                         <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                                     </div>
                                     <div class="payslip-details">

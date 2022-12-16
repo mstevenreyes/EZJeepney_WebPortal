@@ -65,4 +65,22 @@ switch($command){
         $sql = "DELETE FROM tb_payroll_report WHERE salary_id = '$salId'";
         $query = mysqli_query($conn, $sql);
         break;
+    case "update-payroll":
+        $updateData = json_decode($_POST['updateData'], true);
+        $daysWorked =  $updateData['edit-days-worked'];
+        $basePay = $updateData['edit-basic-pay'];
+        $grossPay = $updateData['edit-gross-pay'];
+        $pagibig = $updateData['edit-pag-ibig'];
+        $philhealth = $updateData['edit-philhealth'];
+        $sss =$updateData['edit-sss'];
+        $sql = "UPDATE tb_payroll_report SET days_worked = ?, basic_pay = ?, grosspay = ?, pagibig = ?, philhealth = ?, sss = ?, netpay = ? WHERE salary_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "ERROR: " . mysqli_error($conn);
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "iiiiiiis", $daysWorked, $basePay, $grossPay, $pagibig, $philhealth, $sss, $netPay, $salId);
+        mysqli_stmt_execute($stmt);
+        
+        break;
 }

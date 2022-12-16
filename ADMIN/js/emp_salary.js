@@ -124,4 +124,8 @@ $(document).ready(function () {
             });
         }
     });
+    // Update Payroll Button
+    $('#update-payroll').click(function(){
+        console.log("TEST");
+    });
 });
