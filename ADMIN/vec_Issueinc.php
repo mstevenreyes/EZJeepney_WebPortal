@@ -14,7 +14,7 @@
 
             $sql = "UPDATE tb_maintenance SET date_issued = '$DI' WHERE mtnID = '$ID'";
             $sql_run = mysqli_query($conn, $sql);
-            
+            header('location: vec_Issue.php?mtnID='.$ID);
         }
 
         if(isset($_POST['vec_Fdate'])){
@@ -22,6 +22,7 @@
 
             $sql = "UPDATE tb_maintenance SET date_fixed = '$DF' WHERE mtnID = '$ID'";
             $sql_run = mysqli_query($conn, $sql);
+            header('location: vec_Issue.php?mtnID='.$ID);
         }
     }
 
@@ -34,6 +35,7 @@
 
              $sql = "UPDATE tb_maintenance SET description = '$details' WHERE mtnID = '$ID'";
              $sql_run = mysqli_query($conn, $sql);
+             header('location: vec_Issue.php?mtnID='.$ID);
         }
 
         if(isset($_POST['vec_reason'])){
@@ -41,13 +43,15 @@
 
             $sql = "UPDATE tb_maintenance SET reason = '$reason' WHERE mtnID = '$ID'";
             $sql_run = mysqli_query($conn, $sql);
+            header('location: vec_Issue.php?mtnID='.$ID);
         }
 
-        if(isset($_POST['vecMC']) && $_POST['vecMC'] > 0 ){
+        if(isset($_POST['vecMC'])){
             $maintenanceCost = $_POST['vecMC'];
 
             $sql = "UPDATE tb_maintenance SET maintenance_cost = '$maintenanceCost' WHERE mtnID = '$ID'";
             $sql_run = mysqli_query($conn, $sql);
+            header('location: vec_Issue.php?mtnID='.$ID);
         }
     }
     

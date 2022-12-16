@@ -11,9 +11,10 @@
         mysqli_stmt_bind_param($stmt, "sss", $plate_num, $route, $DI); // bind variables
         mysqli_stmt_execute($stmt); // execute connection
         header('location: a_jeepney.php?success');
+        echo $DI;
     }
 
-    function JExists($conn, $plate_num, $route){
+    function JExists($conn, $plate_num, $route, $DI){
 
         $sql = 'SELECT * FROM tb_jeepney WHERE plate_number = ?;';
         $stmt = mysqli_stmt_init($conn);
@@ -42,6 +43,6 @@
         $DI = $_POST['jDA'];
 
         require '../dbh.inc.php';
-        JExists($conn, $plate_num, $route);
+        JExists($conn, $plate_num, $route, $DI);
     }    
 ?>
