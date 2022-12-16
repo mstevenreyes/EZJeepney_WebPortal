@@ -17,6 +17,21 @@
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
+
+        // FETCH MTN ID FOR TB_MAINTENANCESCHED
+        $query = "SELECT mtnID FROM tb_maintenance WHERE date_issued = '$DI' AND date_fixed = '$DF' AND plate_number = '$plateNum' AND reason ='$reason';";
+        $run = mysqli_query($conn, $query);
+
+        while ($result = mysqli_fetch_array($run)){
+            $newID = $result['mtnID'];
+        }
+        
+        $sched = date("Y-m-d", strtotime($newID. "+1 month"));
+
+        $sql = "INSERT INTO tb_maintenancesched VALUES ('$mtnID', '$plateNum', $sched)";
+        $sql_run = mysqli_query($conn, $sql);
+
+        header('location: vec_Issue.php?mtnID='.$ID);
     }
 
     //insert date fixed on existing record 

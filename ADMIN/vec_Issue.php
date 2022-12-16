@@ -324,7 +324,7 @@
                                                     </thead>
                                                     <thead>
                                                         <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
-                                                        <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
+                                                        <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount" required></th></tr>
                                                     </thead>
                                                 </table>
                                                 <button class="vcesend-form" type='submit' name='esubmit'>Submit Form</button>

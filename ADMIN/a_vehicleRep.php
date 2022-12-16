@@ -124,8 +124,8 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Vehicle Plate Number</th>
-                                            <th class="border-top-0">Schedule of Maintenance</th>
-                                            <th class="border-top-0">Vehicle Status</th>
+                                            <th class="border-top-0">Previous Maintenance</th>
+                                            <th class="border-top-0">Upcoming Maintenance</th>
                                         </tr>
                                     </thead>
                                     <tbody>
