@@ -80,7 +80,11 @@
                                             <td><?php echo $result['grosspay'] ?></td>
                                             <td><?php echo $result['deduction'] ?></td>
                                             <td><?php echo $result['netpay'] ?></td>
-                                            <td>-</td>
+                                            <td>
+                                                <button class="view-report"><i class="fa-solid fa-eye"></i></button>
+                                                <button class="edit-report"><i class="fa-solid fa-pen-to-square"></i></button>
+                                                <button class="delete-report"><i class="fa-solid fa-trash"></i></button>
+                                            </td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -122,7 +126,171 @@
                     </div>
                 </div>
                 <!-- ============================================================= -->
-                
+                <!-- ====================== VIEW PAYROLL POPUP==================== -->
+                <div class="form-popup" id="view-payroll-popup">
+                    <div class="container form-wrapper">
+                        <button class="btn close-form" id="close-view-report">Close</button>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="white-box">
+                                    <div style="text-align:center">
+                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF [INSERT MONTH HERE]</h3>
+                                        <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
+                                    </div>
+                                    <div class="payslip-details">
+                                        <div class="company-details" style="text-align:center">
+                                            <h3 class="box-title">Majetsco Cooperative</h3>
+                                            <img src="images/majetsco-logo.png" alt="" style="width: 100px;">
+                                            <h4  class="box-title">29 Gov. Pascual Ave</h4 >
+                                            <h4 class="box-title">Malabon, 1470 Metro Manila</h4 >
+                                        </div>
+                                        <div class="employee-details">
+                                        
+                                    
+                                        </div>
+                                        <div class="salary-details">
+                                            <div class="earning-details">
+                                                <h3>Earnings</h3>
+                                                <div class="earning-details-child">
+                                                    <p>Days Worked</p>
+                                                    <p class="amount" ></p>
+                                                </div>
+                                                <div class="earning-details-child">
+                                                    <p>Daily Wage</p>
+                                                    <p class="amount" name="bSalary"></p>
+                                                </div>
+                                                <div class="earning-details-child">
+                                                    <p>Gross Pay</p>
+                                                    <p class="amount"></p>
+                                                </div>
+                                                <div class="earning-details-child">
+                                                    <p>Total Deductions: </p>
+                                                    <p class="amount">-</p>
+                                                </div>
+                                                <div class="earning-details-child" style="font-weight: bold;">
+                                                    <p>Net Pay</p>
+                                                    <p class="amount">₱ </p>
+                                                </div>
+                                            </div>
+                                            <div class="deduction-details">
+                                                <h3>Deductions</h3>
+                                                    <div class="earning-details-child">
+                                                        <p>Pag-ibig</p>
+                                                        <p class="amount"></p>
+                                                    </div>
+                                                    <div class="earning-details-child">
+                                                        <p>Philhealth</p>
+                                                        <p class="amount"></p>
+                                                    </div>
+                                                    <div class="earning-details-child">
+                                                        <p>SSS</p>
+                                                        <p class="amount"></p>
+                                                    </div>
+                                                    <div class="earning-details-child">
+                                                        <p>Canteen Fees</p>
+                                                        <p class="amount" name="cFees"></p>
+                                                    </div>
+
+                                                
+
+                                                    <div class="earning-details-child" name="Dname">
+                                                        <p></p>
+                                                        <p class="amount" name="deduct"></p>
+                                                    </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- ============================================================= -->
+                <!-- ====================== EDIT PAYROLL POPUP==================== -->
+                <div class="form-popup" id="edit-payroll-popup">
+                    <div class="container form-wrapper">
+                        <button class="btn close-form" id="close-edit-report">Close</button>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="white-box">
+                                    <div style="text-align:center">
+                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF [INSERT MONTH HERE]</h3>
+                                        <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
+                                    </div>
+                                    <div class="payslip-details">
+                                        <div class="company-details" style="text-align:center">
+                                            <h3 class="box-title">Majetsco Cooperative</h3>
+                                            <img src="images/majetsco-logo.png" alt="" style="width: 100px;">
+                                            <h4  class="box-title">29 Gov. Pascual Ave</h4 >
+                                            <h4 class="box-title">Malabon, 1470 Metro Manila</h4 >
+                                        </div>
+                                        <div class="employee-details">
+                                        
+                                    
+                                        </div>
+                                        <div class="salary-details">
+                                            <div class="earning-details">
+                                                <h3>Earnings</h3>
+                                                <div class="earning-details-child">
+                                                    <p>Days Worked</p>
+                                                    <p class="amount" ></p>
+                                                </div>
+                                                <div class="earning-details-child">
+                                                    <p>Daily Wage</p>
+                                                    <p class="amount" name="bSalary"></p>
+                                                </div>
+                                                <div class="earning-details-child">
+                                                    <p>Gross Pay</p>
+                                                    <p class="amount"></p>
+                                                </div>
+                                                <div class="earning-details-child">
+                                                    <p>Total Deductions: </p>
+                                                    <p class="amount">-</p>
+                                                </div>
+                                                <div class="earning-details-child" style="font-weight: bold;">
+                                                    <p>Net Pay</p>
+                                                    <p class="amount">₱ </p>
+                                                </div>
+                                            </div>
+                                            <div class="deduction-details">
+                                                <h3>Deductions</h3>
+                                                    <div class="earning-details-child">
+                                                        <p>Pag-ibig</p>
+                                                        <p class="amount"></p>
+                                                    </div>
+                                                    <div class="earning-details-child">
+                                                        <p>Philhealth</p>
+                                                        <p class="amount"></p>
+                                                    </div>
+                                                    <div class="earning-details-child">
+                                                        <p>SSS</p>
+                                                        <p class="amount"></p>
+                                                    </div>
+                                                    <div class="earning-details-child">
+                                                        <p>Canteen Fees</p>
+                                                        <p class="amount" name="cFees"></p>
+                                                    </div>
+
+                                                
+
+                                                    <div class="earning-details-child" name="Dname">
+                                                        <p></p>
+                                                        <p class="amount" name="deduct"></p>
+                                                    </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
             </div>

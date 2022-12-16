@@ -1,6 +1,7 @@
+
 $(document).ready(function () {
-    $('#schedule-table').DataTable({
-        ajax: data,
+    var table = $('#schedule-table').DataTable({
+        // ajax: data,
         "pageLength" : 10,
         scrollX: true,
         columnDefs: [
@@ -44,6 +45,51 @@ $(document).ready(function () {
 
         }
     });
+    
+    // For View Popup
+    $('.view-report').click(function(){
+        $('#view-payroll-popup').hide(100).fadeIn(300);
+    });
+    $('#close-view-report').click(function(){
+        $('#view-payroll-popup').show(100).fadeOut(300);
+    });
+    //For Edit Popup
+    $('.edit-report').click(function(){
+        $('#edit-payroll-popup').hide(100).fadeIn(300);
+    });
+    $('#close-edit-report').click(function(){
+        $('#edit-payroll-popup').show(100).fadeOut(300);
+    });
+    // =================
+    var empId, salId, daysWorked;
+    $('#schedule-table tbody').on( 'click', 'tr', function () {
+        var data = table.row(this).data();
+        empId = data[1];
+        salId = data[0];
+    });
+
+    $('.delete-report').click(function(){
+        var textVal = $(this).closest('tr').find('td:nth-child(1)').text();
+    
+       
+        // $(this).closest('tr').find('td').text();
+        console.log(textVal);
+    //     each(function() {
+    //         item = $(this).text(); 
+    //         console.log(item);
+    //    });
+    confirm('Confirm Deletion of ' + textVal  + '?');
+    });
+
+    function salID(){
+       
+    }
+     
+       
+
+    
+   
+   
     // $('#generate-payroll').click(function(){
     //     console.log('working')
     // });
