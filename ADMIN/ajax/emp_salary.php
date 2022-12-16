@@ -23,24 +23,31 @@ switch($command){
         mysqli_stmt_bind_param($stmt, "ss", $dateStart, $dateEnd);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+        // Generation of Payrolls + computation
         while($row = mysqli_fetch_array($result)){
             $empId = $row['emp_id'];
             $daysWorked = $row['days_worked'];
             $basePay = $data['empType'] == 'driver' ? 900 : 550;
             $grossPay = $row['days_worked'] * $basePay;
+            $pagibig = 150;
+            $philhealth = 150;
+            $sss = 150;
+            $totalDeduction = $pagibig + $sss + $philhealth;
             // if($taxContributtions){
                 
             // }
-            $deduction = 450;
-            $netPay = $grossPay - $deduction;
-            $sql = "INSERT INTO tb_payroll_report(emp_id, days_worked, grosspay, deduction, netpay) VALUES(?, ?, ?, ?, ?)";
+            $netPay = $grossPay - $totalDeduction;
+            $sql = "INSERT INTO tb_payroll_report(emp_id, days_worked, basic_pay, grosspay, sss, pagibig, philhealth, deduction, netpay) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt2 = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt2, $sql)){
                 echo "ERROR: " . mysqli_stmt_error($stmt2);
                 exit();
             }
-            mysqli_stmt_bind_param($stmt2, "siiii", $empId, $daysWorked, $grossPay, $deduction, $netPay);
-            mysqli_stmt_execute($stmt2);
+            mysqli_stmt_bind_param($stmt2, "siiiiiiii", $empId, $daysWorked, $basePay, $grossPay, $sss, $pagibig, $philhealth, $totalDeduction, $netPay);
+            if(!mysqli_stmt_execute($stmt2)){
+                echo "ERROR: " . mysqli_stmt_error($stmt2);
+                exit();
+            }
         }
         break;
     case "get-payroll":

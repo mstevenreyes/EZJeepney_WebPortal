@@ -35,10 +35,8 @@ $(document).ready(function () {
                     if(response.split(' ')[0] == "ERROR:"){
                         alert(response);
                     }else{
-                        alert(response);
-                        // console.log(response);
-                        // alert("Payroll Generated.");
-                        // location.reload();
+                        alert("Succesful. Payroll Generated.");
+                        location.reload();
                     }
                 }
             });
@@ -58,14 +56,15 @@ $(document).ready(function () {
             data: "command=get-payroll&salary-id=" + salId  
         }).done(function(result) { 
             var myJson = JSON.parse(result)     
-            console.log(myJson);         
+            console.log(result);         
             $('#view-days-worked').text(myJson[0]['days_worked']);
-            // $('#view-daily-wage').text(myJson[0]['daily_wage']);
+            $('#view-basic-pay').text(myJson[0]['basic_pay']);
             $('#view-gross-pay').text(myJson[0]['grosspay']);
             $('#view-pag-ibig').text(myJson[0]['pagibig']);
             $('#view-philhealth').text(myJson[0]['philhealth']);
             $('#view-sss').text(myJson[0]['sss']);
             $('#view-net-pay').text( "\u20B1" + myJson[0]['netpay']);
+            $('#view-emp-id').text(myJson[0]['emp_id'])
             console.log(myJson[0]['deduction']);
 
         });

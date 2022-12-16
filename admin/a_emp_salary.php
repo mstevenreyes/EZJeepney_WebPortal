@@ -138,11 +138,12 @@
                                         <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                                     </div>
                                     <div class="payslip-details">
-                                        <div class="company-details" style="text-align:center">
-                                            <h3 class="box-title">Majetsco Cooperative</h3>
+                                        <div class="company-details">
+                                            <p class="box-title">Majetsco Cooperative</p>
                                             <img src="images/majetsco-logo.png" alt="" style="width: 100px;">
-                                            <h4  class="box-title">29 Gov. Pascual Ave</h4 >
-                                            <h4 class="box-title">Malabon, 1470 Metro Manila</h4 >
+                                            <p class="box-title">29 Gov. Pascual Ave</p >
+                                            <p class="box-title">Malabon, 1470 Metro Manila</p >
+                                            <strong><p id="view-emp-id"></p></strong>
                                         </div>
                                         <div class="employee-details">
                                         
