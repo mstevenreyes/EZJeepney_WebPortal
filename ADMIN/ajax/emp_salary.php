@@ -41,12 +41,12 @@ switch($command){
             $sql = "INSERT INTO tb_payroll_report(emp_id, payroll_date_start, payroll_date_end, days_worked, basic_pay, grosspay, sss, pagibig, philhealth, deduction, netpay) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt2 = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt2, $sql)){
-                echo "ERROR: " . mysqli_stmt_error($stmt2);
+                echo "ERROR: Prepare" . mysqli_stmt_error($stmt2);
                 exit();
             }
             mysqli_stmt_bind_param($stmt2, "sssiiiiiiii", $empId, $dateStart, $dateEnd, $daysWorked, $basePay, $grossPay, $sss, $pagibig, $philhealth, $totalDeduction, $netPay);
             if(!mysqli_stmt_execute($stmt2)){
-                echo "ERROR: " . mysqli_stmt_error($stmt2);
+                echo "ERROR: Execute" . mysqli_stmt_error($stmt2);
                 exit();
             }
         }
@@ -72,6 +72,7 @@ switch($command){
         $grossPay = $updateData['edit-gross-pay'];
         $pagibig = $updateData['edit-pag-ibig'];
         $philhealth = $updateData['edit-philhealth'];
+        $netPay = $updateData['edit-net-pay'];
         $sss =$updateData['edit-sss'];
         $sql = "UPDATE tb_payroll_report SET days_worked = ?, basic_pay = ?, grosspay = ?, pagibig = ?, philhealth = ?, sss = ?, netpay = ? WHERE salary_id = ?";
         $stmt = mysqli_stmt_init($conn);
@@ -80,7 +81,11 @@ switch($command){
             exit();
         }
         mysqli_stmt_bind_param($stmt, "iiiiiiis", $daysWorked, $basePay, $grossPay, $pagibig, $philhealth, $sss, $netPay, $salId);
-        mysqli_stmt_execute($stmt);
+        if(!mysqli_stmt_execute($stmt)){
+            echo "ERROR: " . mysqli_error($conn);
+            exit();
+        }
+        echo "Success!";
         
         break;
 }

@@ -134,7 +134,7 @@
                             <div class="col-sm-12">
                                 <div class="white-box">
                                     <div style="text-align:center">
-                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF </h3>
+                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF <span id="view-date-range"></span></h3>
                                         <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                                     </div>
                                     <div class="payslip-details">
@@ -215,51 +215,47 @@
                                             <h4 class="box-title">Malabon, 1470 Metro Manila</h4 >
                                         </div>
                                         <div class="employee-details">
-                                        
-                                    
                                         </div>
-                                        <div class="salary-details">
-                                            <div class="earning-details">
-                                                <h3>Earnings</h3>
-                                                <div class="earning-details-child">
-                                                    <p>Days Worked</p>
-                                                    <input type="text" class="amount edit earnings" id="edit-days-worked">
-                                                </div>
-                                                <div class="earning-details-child">
-                                                    <p>Basic Pay</p>
-                                                    <input type="text" class="amount edit earnings" name="edit-basic-pay" id="edit-basic-pay">
-                                                </div>
-                                                <div class="earning-details-child">
-                                                    <p>Gross Pay</p>
-                                                    <input type="text" class="amount edit" name="edit-gross-pay" id="edit-gross-pay" disabled>
-                                                </div>
-                        
-                                               
-                                            </div>
-                                            <div class="deduction-details">
-                                                <h3>Deductions</h3>
+                                        <form action="" method="POST" id="edit-form">
+                                            <div class="salary-details">
+                                                <div class="earning-details">
+                                                    <h3>Earnings</h3>
                                                     <div class="earning-details-child">
-                                                        <p>Pag-ibig</p>
-                                                        <input type="text" class="amount edit" name="edit-pag-ibig" id="edit-pag-ibig">
+                                                        <p>Days Worked</p>
+                                                        <input type="text" class="amount edit earnings" name="edit-days-worked" id="edit-days-worked">
                                                     </div>
                                                     <div class="earning-details-child">
-                                                        <p>Philhealth</p>
-                                                        <input type="text" class="amount edit" name="edit-philhealth" id="edit-philhealth">
+                                                        <p>Basic Pay</p>
+                                                        <input type="text" class="amount edit earnings" name="edit-basic-pay" id="edit-basic-pay">
                                                     </div>
                                                     <div class="earning-details-child">
-                                                        <p>SSS</p>
-                                                        <input type="text" class="amount edit" name="edit-sss" id="edit-sss">
+                                                        <p>Gross Pay</p>
+                                                        <input type="text" class="amount edit" name="edit-gross-pay" id="edit-gross-pay" readonly>
                                                     </div>
-                                                    <div class="earning-details-child" style="font-weight: bold;">
-                                                    <p>Net Pay</p>
-                                                    <input type="text" class="amount edit" id="edit-net-pay" disabled>
                                                 </div>
-                                            </div>
-                                            
+                                                    <div class="deduction-details">
+                                                        <h3>Deductions</h3>
+                                                            <div class="earning-details-child">
+                                                                <p>Pag-ibig</p>
+                                                                <input type="text" class="amount edit" name="edit-pag-ibig" id="edit-pag-ibig">
+                                                            </div>
+                                                            <div class="earning-details-child">
+                                                                <p>Philhealth</p>
+                                                                <input type="text" class="amount edit" name="edit-philhealth" id="edit-philhealth">
+                                                            </div>
+                                                            <div class="earning-details-child">
+                                                                <p>SSS</p>
+                                                                <input type="text" class="amount edit" name="edit-sss" id="edit-sss">
+                                                            </div>
+                                                            <div class="earning-details-child" style="font-weight: bold;">
+                                                            <p>Net Pay</p>
+                                                            <input type="text" class="amount edit" name="edit-net-pay" id="edit-net-pay" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button type="button" class="btn send-form update-payroll" id="update-payroll">Update</button>
                                         </div>
-                                        <button type="button" class="btn send-form" id="update-payroll">Update</button>
-                                    </div>
-                            
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -125,7 +125,41 @@ $(document).ready(function () {
         }
     });
     // Update Payroll Button
-    $('#update-payroll').click(function(){
-        console.log("TEST");
+    $('.update-payroll').click(function(){
+        var confirmUpdate = confirm("Confirm update of " + salId + "?");
+        // console.log(salId);
+        if(confirmUpdate){
+            let form = document.querySelector('#edit-form');
+            //get all field data
+            //returns a FormData object
+            let data = new FormData(form);
+            let obj = serialize(data);
+            console.log(obj);
+            $.ajax({
+                type: "POST",
+                url: "ajax/emp_salary.php",
+                data: {updateData: JSON.stringify(obj), command: "update-payroll", 'salary-id': salId}
+            }).done(function(result) { 
+                if(result.split(" ")[0] != "ERROR:"){
+                    alert("Updated Succesfully.");
+                    console.log(result);
+                    // location.reload();
+                }
+            });
+        }
     });
+    function serialize (data) {
+        let obj = {};
+        for (let [key, value] of data) {
+            if (obj[key] !== undefined) {
+                if (!Array.isArray(obj[key])) {
+                    obj[key] = [obj[key]];
+                }
+                obj[key].push(value);
+            } else {
+                obj[key] = value;
+            }
+        }
+        return obj;
+    }
 });
