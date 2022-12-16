@@ -852,7 +852,15 @@ input[type=text]:focus{
     height: 30px;
     margin-top: 5px;
   }
-
+  .view-report:hover{
+    background-color: rgba(29, 153, 75, 0.5);
+  }
+  .edit-report:hover{
+    background-color: rgba(29, 31, 153, 0.5);
+  }
+  .delete-report:hover{
+    background-color: rgba(153, 29, 29, 0.737);
+  }
   #project_filter{
     display: inline-block;
     float: right;

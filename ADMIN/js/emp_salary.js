@@ -2,7 +2,7 @@
 $(document).ready(function () {
     var table = $('#schedule-table').DataTable({
         // ajax: data,
-        "pageLength" : 10,
+        "pageLength" : 25,
         scrollX: true,
         columnDefs: [
             { "width": "200px", targets: "_all" },
@@ -48,6 +48,7 @@ $(document).ready(function () {
     var salId;
     // For View Popup
     $('.view-report').click(function(){
+        console.log("WORKING");
         $('#view-payroll-popup').hide(100).fadeIn(300);
         salId = $(this).closest('tr').find('td:nth-child(1)').text();
         // Queries salary id to get other details
@@ -83,16 +84,27 @@ $(document).ready(function () {
             var myJson = JSON.parse(result)     
             console.log(myJson);         
             $('#edit-payroll-popup').hide(100).fadeIn(300);
-            $('#edit-days-worked').text(myJson[0]['days_worked']);
-            // $('#view-daily-wage').text(myJson[0]['daily_wage']);
-            $('#edit-gross-pay').val(myJson[0]['grosspay']);
-            $('#edit-pag-ibig').text(myJson[0]['pagibig']);
-            $('#edit-philhealth').text(myJson[0]['philhealth']);
-            $('#edit-sss').text(myJson[0]['sss']);
-            $('#edit-net-pay').text( "\u20B1" + myJson[0]['netpay']);
+            $('#edit-days-worked').val(myJson[0]['days_worked']);
+            $('#edit-basic-pay').val(myJson[0]['basic_pay']);
+            $('#edit-gross-pay').val(myJson[0]['grosspay'])
+            $('#edit-pag-ibig').val(myJson[0]['pagibig']);
+            $('#edit-philhealth').val(myJson[0]['philhealth']);
+            $('#edit-sss').val(myJson[0]['sss']);
+            $('#edit-net-pay').val(myJson[0]['netpay']);
         });
         
     });
+    // Change Gross Pay during edit input event - Calculation of Payroll
+    $('.amount.edit').on("propertychange change keyup input paste", function(event){
+        console.log();
+        var grossPay = $('#edit-days-worked').val() * $('#edit-basic-pay').val();
+        var netpay = grossPay - $('#edit-philhealth').val() - $('#edit-sss').val() - $('#edit-pag-ibig').val();
+        console.log(netpay);
+        $('#edit-gross-pay').val(grossPay);
+        $('#edit-net-pay').val(netpay);
+    });
+    // ============
+    // Close Payroll
     $('#close-edit-report').click(function(){
         $('#edit-payroll-popup').show(100).fadeOut(300);
     });
@@ -101,6 +113,16 @@ $(document).ready(function () {
     // Delete Report Button
     $('.delete-report').click(function(){
         salId = $(this).closest('tr').find('td:nth-child(1)').text();
-         confirm('Confirm Deletion of ' + salId  + '?');
+        var confirmDel = confirm('Confirm Deletion of ' + salId  + '?');
+        if(confirmDel){
+            $.ajax({
+                type: "POST",
+                url: "ajax/emp_salary.php",
+                data: "command=delete-payroll&salary-id=" + salId  
+            }).done(function(result) { 
+                alert("Deleted Succesfully");
+                location.reload();
+            });
+        }
     });
 });

@@ -156,8 +156,8 @@
                                                     <p class="amount" id="view-days-worked"></p>
                                                 </div>
                                                 <div class="earning-details-child">
-                                                    <p>Daily Wage</p>
-                                                    <p class="amount" id="view-daily-wage"></p>
+                                                    <p>Basic Pay</p>
+                                                    <p class="amount" id="view-basic-pay"></p>
                                                 </div>
                                                 <div class="earning-details-child">
                                                     <p>Gross Pay</p>
@@ -222,44 +222,41 @@
                                                 <h3>Earnings</h3>
                                                 <div class="earning-details-child">
                                                     <p>Days Worked</p>
-                                                    <input type="text" class="amount edit" id="edit-days-worked">
+                                                    <input type="text" class="amount edit earnings" id="edit-days-worked">
                                                 </div>
                                                 <div class="earning-details-child">
                                                     <p>Basic Pay</p>
-                                                    <input type="text" class="amount edit" name="edit-basic-pay">
+                                                    <input type="text" class="amount edit earnings" name="edit-basic-pay" id="edit-basic-pay">
                                                 </div>
                                                 <div class="earning-details-child">
                                                     <p>Gross Pay</p>
                                                     <input type="text" class="amount edit" name="edit-gross-pay" id="edit-gross-pay" disabled>
                                                 </div>
-                                                <div class="earning-details-child">
-                                                    <p>Total Deductions: </p>
-                                                    <p class="amount edit">-</p>
-                                                </div>
+                        
                                                
                                             </div>
                                             <div class="deduction-details">
                                                 <h3>Deductions</h3>
                                                     <div class="earning-details-child">
                                                         <p>Pag-ibig</p>
-                                                        <input type="text" class="amount edit" name="edit-pag-ibig">
+                                                        <input type="text" class="amount edit" name="edit-pag-ibig" id="edit-pag-ibig">
                                                     </div>
                                                     <div class="earning-details-child">
                                                         <p>Philhealth</p>
-                                                        <input type="text" class="amount edit" name="edit-philhealth">
+                                                        <input type="text" class="amount edit" name="edit-philhealth" id="edit-philhealth">
                                                     </div>
                                                     <div class="earning-details-child">
                                                         <p>SSS</p>
-                                                        <input type="text" class="amount edit" name="edit-sss">
+                                                        <input type="text" class="amount edit" name="edit-sss" id="edit-sss">
                                                     </div>
                                                     <div class="earning-details-child" style="font-weight: bold;">
                                                     <p>Net Pay</p>
-                                                    <p class="amount edit" id="edit-net-pay">₱ </p>
+                                                    <input type="text" class="amount edit" id="edit-net-pay" disabled>
                                                 </div>
                                             </div>
                                             
                                         </div>
-                                        
+                                        <button type="button" class="btn send-form" id="update-payroll">Update</button>
                                     </div>
                             
                                 </div>

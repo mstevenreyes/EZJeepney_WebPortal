@@ -13,6 +13,7 @@ switch($command){
         $dateArr = explode(" - ", $data['range']);
         $dateStart = $dateArr[0];
         $dateEnd = $dateArr[1];
+        // Getting days worked
         $sql = "SELECT emp_id, COUNT(*) days_worked FROM  tb_attendance_sheet WHERE attendance_date BETWEEN ? AND ? GROUP BY emp_id;";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -25,7 +26,11 @@ switch($command){
         while($row = mysqli_fetch_array($result)){
             $empId = $row['emp_id'];
             $daysWorked = $row['days_worked'];
-            $grossPay = $row['days_worked'] * 900;
+            $basePay = $data['empType'] == 'driver' ? 900 : 550;
+            $grossPay = $row['days_worked'] * $basePay;
+            // if($taxContributtions){
+                
+            // }
             $deduction = 450;
             $netPay = $grossPay - $deduction;
             $sql = "INSERT INTO tb_payroll_report(emp_id, days_worked, grosspay, deduction, netpay) VALUES(?, ?, ?, ?, ?)";
@@ -47,5 +52,9 @@ switch($command){
         }
         echo json_encode($salArr);
 
+        break;
+    case "delete-payroll":
+        $sql = "DELETE FROM tb_payroll_report WHERE salary_id = '$salId'";
+        $query = mysqli_query($conn, $sql);
         break;
 }
