@@ -13,8 +13,9 @@ switch($command){
         $dateArr = explode(" - ", $data['range']);
         $dateStart = $dateArr[0];
         $dateEnd = $dateArr[1];
+        $prefix = $data['empType'] == "driver" ? "DR" : "PAO";
         // Getting days worked
-        $sql = "SELECT emp_id, COUNT(*) days_worked FROM  tb_attendance_sheet WHERE attendance_date BETWEEN ? AND ? GROUP BY emp_id;";
+        $sql = "SELECT emp_id, COUNT(*) days_worked FROM  tb_attendance_sheet WHERE (attendance_date BETWEEN ? AND ?) AND emp_id LIKE '$prefix%' GROUP BY emp_id;";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "ERROR: " . mysqli_error($conn);
@@ -37,13 +38,13 @@ switch($command){
                 
             // }
             $netPay = $grossPay - $totalDeduction;
-            $sql = "INSERT INTO tb_payroll_report(emp_id, days_worked, basic_pay, grosspay, sss, pagibig, philhealth, deduction, netpay) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO tb_payroll_report(emp_id, payroll_date_start, payroll_date_end, days_worked, basic_pay, grosspay, sss, pagibig, philhealth, deduction, netpay) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt2 = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt2, $sql)){
                 echo "ERROR: " . mysqli_stmt_error($stmt2);
                 exit();
             }
-            mysqli_stmt_bind_param($stmt2, "siiiiiiii", $empId, $daysWorked, $basePay, $grossPay, $sss, $pagibig, $philhealth, $totalDeduction, $netPay);
+            mysqli_stmt_bind_param($stmt2, "sssiiiiiiii", $empId, $dateStart, $dateEnd, $daysWorked, $basePay, $grossPay, $sss, $pagibig, $philhealth, $totalDeduction, $netPay);
             if(!mysqli_stmt_execute($stmt2)){
                 echo "ERROR: " . mysqli_stmt_error($stmt2);
                 exit();
