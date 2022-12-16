@@ -1,15 +1,18 @@
 <?php
 include '../../dbh.inc.php';
-$data = json_decode($_POST['data'], true);
+$data = isset($_POST['data']) ? json_decode($_POST['data'], true) : 0;
 // print_r($data);
+$salId = isset($_POST['salary-id']) ? $_POST['salary-id'] : 0;
 $command = isset($_POST['command']) ? $_POST['command'] : 0;
-$dateArr = explode(" - ", $data['range']);
-$dateStart = $dateArr[0];
-$dateEnd = $dateArr[1];
+
+
 // echo $dateStart;
 
 switch($command){
     case "calculate-payroll":
+        $dateArr = explode(" - ", $data['range']);
+        $dateStart = $dateArr[0];
+        $dateEnd = $dateArr[1];
         $sql = "SELECT emp_id, COUNT(*) days_worked FROM  tb_attendance_sheet WHERE attendance_date BETWEEN ? AND ? GROUP BY emp_id;";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -34,5 +37,15 @@ switch($command){
             mysqli_stmt_bind_param($stmt2, "siiii", $empId, $daysWorked, $grossPay, $deduction, $netPay);
             mysqli_stmt_execute($stmt2);
         }
+        break;
+    case "get-payroll":
+        $sql = "SELECT * FROM tb_payroll_report WHERE salary_id = '$salId'";
+        $query = mysqli_query($conn, $sql);
+        $salArr = array();
+        while($result = mysqli_fetch_assoc($query)){
+            $salArr[] = $result;
+        }
+        echo json_encode($salArr);
+
         break;
 }

@@ -11,7 +11,7 @@ $(document).ready(function(){
                 data: "get=all-employee",
                 async: false
             }).responseText);
-            console.log('empty');
+       
             let html = [];
             for(var i = 0 ; i < employeeList.length ; i++){
                 empType = employeeList[i]['emp_id'].slice(0, 2) == 'DR' ? 'DRIVER' : 'PAO';

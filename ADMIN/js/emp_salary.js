@@ -45,52 +45,62 @@ $(document).ready(function () {
 
         }
     });
-    
+    var salId;
     // For View Popup
     $('.view-report').click(function(){
         $('#view-payroll-popup').hide(100).fadeIn(300);
+        salId = $(this).closest('tr').find('td:nth-child(1)').text();
+        // Queries salary id to get other details
+        $.ajax({
+            type: "POST",
+            url: "ajax/emp_salary.php",
+            data: "command=get-payroll&salary-id=" + salId  
+        }).done(function(result) { 
+            var myJson = JSON.parse(result)     
+            console.log(myJson);         
+            $('#view-days-worked').text(myJson[0]['days_worked']);
+            // $('#view-daily-wage').text(myJson[0]['daily_wage']);
+            $('#view-gross-pay').text(myJson[0]['grosspay']);
+            $('#view-pag-ibig').text(myJson[0]['pagibig']);
+            $('#view-philhealth').text(myJson[0]['philhealth']);
+            $('#view-sss').text(myJson[0]['sss']);
+            $('#view-net-pay').text( "\u20B1" + myJson[0]['netpay']);
+            console.log(myJson[0]['deduction']);
+
+        });
     });
     $('#close-view-report').click(function(){
         $('#view-payroll-popup').show(100).fadeOut(300);
     });
     //For Edit Popup
     $('.edit-report').click(function(){
-        $('#edit-payroll-popup').hide(100).fadeIn(300);
+        salId = $(this).closest('tr').find('td:nth-child(1)').text();
+        $.ajax({
+            type: "POST",
+            url: "ajax/emp_salary.php",
+            data: "command=get-payroll&salary-id=" + salId  
+        }).done(function(result) { 
+            var myJson = JSON.parse(result)     
+            console.log(myJson);         
+            $('#edit-payroll-popup').hide(100).fadeIn(300);
+            $('#edit-days-worked').text(myJson[0]['days_worked']);
+            // $('#view-daily-wage').text(myJson[0]['daily_wage']);
+            $('#edit-gross-pay').val(myJson[0]['grosspay']);
+            $('#edit-pag-ibig').text(myJson[0]['pagibig']);
+            $('#edit-philhealth').text(myJson[0]['philhealth']);
+            $('#edit-sss').text(myJson[0]['sss']);
+            $('#edit-net-pay').text( "\u20B1" + myJson[0]['netpay']);
+        });
+        
     });
     $('#close-edit-report').click(function(){
         $('#edit-payroll-popup').show(100).fadeOut(300);
     });
     // =================
-    var empId, salId, daysWorked;
-    $('#schedule-table tbody').on( 'click', 'tr', function () {
-        var data = table.row(this).data();
-        empId = data[1];
-        salId = data[0];
-    });
 
+    // Delete Report Button
     $('.delete-report').click(function(){
-        var textVal = $(this).closest('tr').find('td:nth-child(1)').text();
-    
-       
-        // $(this).closest('tr').find('td').text();
-        console.log(textVal);
-    //     each(function() {
-    //         item = $(this).text(); 
-    //         console.log(item);
-    //    });
-    confirm('Confirm Deletion of ' + textVal  + '?');
+        salId = $(this).closest('tr').find('td:nth-child(1)').text();
+         confirm('Confirm Deletion of ' + salId  + '?');
     });
-
-    function salID(){
-       
-    }
-     
-       
-
-    
-   
-   
-    // $('#generate-payroll').click(function(){
-    //     console.log('working')
-    // });
 });

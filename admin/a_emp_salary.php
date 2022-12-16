@@ -129,12 +129,12 @@
                 <!-- ====================== VIEW PAYROLL POPUP==================== -->
                 <div class="form-popup" id="view-payroll-popup">
                     <div class="container form-wrapper">
-                        <button class="btn close-form" id="close-view-report">Close</button>
+                        <button class="btn close-form" id="close-view-report"><i class="fa-solid fa-xmark"></i></button>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="white-box">
                                     <div style="text-align:center">
-                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF [INSERT MONTH HERE]</h3>
+                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF </h3>
                                         <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                                     </div>
                                     <div class="payslip-details">
@@ -153,49 +153,35 @@
                                                 <h3>Earnings</h3>
                                                 <div class="earning-details-child">
                                                     <p>Days Worked</p>
-                                                    <p class="amount" ></p>
+                                                    <p class="amount" id="view-days-worked"></p>
                                                 </div>
                                                 <div class="earning-details-child">
                                                     <p>Daily Wage</p>
-                                                    <p class="amount" name="bSalary"></p>
+                                                    <p class="amount" id="view-daily-wage"></p>
                                                 </div>
                                                 <div class="earning-details-child">
                                                     <p>Gross Pay</p>
-                                                    <p class="amount"></p>
+                                                    <p class="amount" id="view-gross-pay"></p>
                                                 </div>
-                                                <div class="earning-details-child">
-                                                    <p>Total Deductions: </p>
-                                                    <p class="amount">-</p>
-                                                </div>
-                                                <div class="earning-details-child" style="font-weight: bold;">
-                                                    <p>Net Pay</p>
-                                                    <p class="amount">₱ </p>
-                                                </div>
+                                       
                                             </div>
                                             <div class="deduction-details">
                                                 <h3>Deductions</h3>
                                                     <div class="earning-details-child">
                                                         <p>Pag-ibig</p>
-                                                        <p class="amount"></p>
+                                                        <p class="amount" id="view-pag-ibig"></p>
                                                     </div>
                                                     <div class="earning-details-child">
                                                         <p>Philhealth</p>
-                                                        <p class="amount"></p>
+                                                        <p class="amount" id="view-philhealth"></p>
                                                     </div>
                                                     <div class="earning-details-child">
                                                         <p>SSS</p>
-                                                        <p class="amount"></p>
+                                                        <p class="amount" id="view-sss"></p>
                                                     </div>
-                                                    <div class="earning-details-child">
-                                                        <p>Canteen Fees</p>
-                                                        <p class="amount" name="cFees"></p>
-                                                    </div>
-
-                                                
-
-                                                    <div class="earning-details-child" name="Dname">
-                                                        <p></p>
-                                                        <p class="amount" name="deduct"></p>
+                                                    <div class="earning-details-child" style="font-weight: bold;">
+                                                        <p>Net Pay</p>
+                                                        <p class="amount" id="view-net-pay">₱ </p>
                                                     </div>
                                             </div>
                                             
@@ -217,7 +203,7 @@
                             <div class="col-sm-12">
                                 <div class="white-box">
                                     <div style="text-align:center">
-                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF [INSERT MONTH HERE]</h3>
+                                        <h3 class="box-title">PAYSLIP FOR THE WEEK OF </h3>
                                         <!-- <button class="btn-add-driver btn open-form" style="margin-left: auto;bottom: 50px;">Add Schedule</button> -->
                                     </div>
                                     <div class="payslip-details">
@@ -236,50 +222,40 @@
                                                 <h3>Earnings</h3>
                                                 <div class="earning-details-child">
                                                     <p>Days Worked</p>
-                                                    <p class="amount" ></p>
+                                                    <input type="text" class="amount edit" id="edit-days-worked">
                                                 </div>
                                                 <div class="earning-details-child">
-                                                    <p>Daily Wage</p>
-                                                    <p class="amount" name="bSalary"></p>
+                                                    <p>Basic Pay</p>
+                                                    <input type="text" class="amount edit" name="edit-basic-pay">
                                                 </div>
                                                 <div class="earning-details-child">
                                                     <p>Gross Pay</p>
-                                                    <p class="amount"></p>
+                                                    <input type="text" class="amount edit" name="edit-gross-pay" id="edit-gross-pay" disabled>
                                                 </div>
                                                 <div class="earning-details-child">
                                                     <p>Total Deductions: </p>
-                                                    <p class="amount">-</p>
+                                                    <p class="amount edit">-</p>
                                                 </div>
-                                                <div class="earning-details-child" style="font-weight: bold;">
-                                                    <p>Net Pay</p>
-                                                    <p class="amount">₱ </p>
-                                                </div>
+                                               
                                             </div>
                                             <div class="deduction-details">
                                                 <h3>Deductions</h3>
                                                     <div class="earning-details-child">
                                                         <p>Pag-ibig</p>
-                                                        <p class="amount"></p>
+                                                        <input type="text" class="amount edit" name="edit-pag-ibig">
                                                     </div>
                                                     <div class="earning-details-child">
                                                         <p>Philhealth</p>
-                                                        <p class="amount"></p>
+                                                        <input type="text" class="amount edit" name="edit-philhealth">
                                                     </div>
                                                     <div class="earning-details-child">
                                                         <p>SSS</p>
-                                                        <p class="amount"></p>
+                                                        <input type="text" class="amount edit" name="edit-sss">
                                                     </div>
-                                                    <div class="earning-details-child">
-                                                        <p>Canteen Fees</p>
-                                                        <p class="amount" name="cFees"></p>
-                                                    </div>
-
-                                                
-
-                                                    <div class="earning-details-child" name="Dname">
-                                                        <p></p>
-                                                        <p class="amount" name="deduct"></p>
-                                                    </div>
+                                                    <div class="earning-details-child" style="font-weight: bold;">
+                                                    <p>Net Pay</p>
+                                                    <p class="amount edit" id="edit-net-pay">₱ </p>
+                                                </div>
                                             </div>
                                             
                                         </div>
@@ -330,12 +306,7 @@
     <script src="js/custom.js"></script>
     <!-- Timepicker JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    <!-- CSS For Date Range Picker and Datepicker-->     
+    <!-- Custom JS-->     
     <script src="js/emp_salary.js"></script>
-                            
-
-    
-
-
 </body>
 </html>
