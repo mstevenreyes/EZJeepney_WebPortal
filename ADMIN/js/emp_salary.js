@@ -49,23 +49,24 @@ $(document).ready(function () {
         console.log("WORKING");
         $('#view-payroll-popup').hide(100).fadeIn(300);
         salId = $(this).closest('tr').find('td:nth-child(1)').text();
-        var dateStart = new Date(myJson[0]['payroll_date_start']).toLocaleDateString('en-EN', {
-                    month: 'long',
-                    day: 'numeric'
-            });   
-        var dateEnd = new Date(myJson[0]['payroll_date_end']).toLocaleDateString('en-EN', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });   
+ 
         // Queries salary id to get other details
         $.ajax({
             type: "POST",
             url: "ajax/emp_salary.php",
             data: "command=get-payroll&salary-id=" + salId  
         }).done(function(result) { 
-            var myJson = JSON.parse(result)     
+            var myJson = JSON.parse(result);  
             console.log(result);         
+            var dateStart = new Date(myJson[0]['payroll_date_start']).toLocaleDateString('en-EN', {
+                month: 'long',
+                day: 'numeric'
+                });   
+            var dateEnd = new Date(myJson[0]['payroll_date_end']).toLocaleDateString('en-EN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });   
             $('#view-days-worked').text(myJson[0]['days_worked']);
             $('#view-basic-pay').text(myJson[0]['basic_pay']);
             $('#view-gross-pay').text(myJson[0]['grosspay']);
@@ -90,8 +91,17 @@ $(document).ready(function () {
             url: "ajax/emp_salary.php",
             data: "command=get-payroll&salary-id=" + salId  
         }).done(function(result) { 
-            var myJson = JSON.parse(result)     
+            var myJson = JSON.parse(result);
             console.log(myJson);         
+            var dateStart = new Date(myJson[0]['payroll_date_start']).toLocaleDateString('en-EN', {
+                month: 'long',
+                day: 'numeric'
+                });   
+            var dateEnd = new Date(myJson[0]['payroll_date_end']).toLocaleDateString('en-EN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });   
             $('#edit-payroll-popup').hide(100).fadeIn(300);
             $('#edit-days-worked').val(myJson[0]['days_worked']);
             $('#edit-basic-pay').val(myJson[0]['basic_pay']);
@@ -99,6 +109,7 @@ $(document).ready(function () {
             $('#edit-pag-ibig').val(myJson[0]['pagibig']);
             $('#edit-philhealth').val(myJson[0]['philhealth']);
             $('#edit-sss').val(myJson[0]['sss']);
+            $('#edit-date-range').text( dateStart + " - " + dateEnd);
             $('#edit-net-pay').val(myJson[0]['netpay']);
         });
         
