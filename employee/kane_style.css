@@ -30,16 +30,69 @@
     display:flex;
     border: .5px solid white;
   }
+  thead{
+    margin-top: 30px;
+  }
+  thead tr{
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: black 2px solid;
+  }
+  #schedule-table{
+    min-height: 200px;
+  }
+  tbody tr{
+    padding: .65 .4rem;
+    text-align: center;
+  }
+  #schedule-table_length, #schedule-table_filter{
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+  #schedule-table_filter{
+    float: right;
+  }
 
-  
+  .form-popup,
+.success-message, .payrol-popup {
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, .5);
+}
+.form-popup .form-wrapper{
+    top: 2em;
+    max-width: 700px;
+    border-radius: 5px;
+    background: white;
+    padding: 50px;
+    padding-top: 50px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+} 
+.box-title{
+  text-align: left;
+}
+#close-view-report{
+  font-size: 18px;
+  background-color: white;
+  outline: none;
+  border: none;
+}
+
   .amount{
     margin-left: auto !important;
   }
 
-  
-  .box-title{
-    text-align: right;
-  }
+
 
   #area-chart,
   #line-chart,

@@ -892,7 +892,7 @@ input[type=text]:focus{
   /* ======== FOR a_dashboard.php ============== */
 
   .box-title{
-    /* text-align: right; */
+    /* text-align: left; */
   }
 
   #area-chart,

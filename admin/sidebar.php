@@ -119,13 +119,6 @@
                             </a>
                         </li>
                         <li class="sidebar-item  pt-2">
-                            <a class="waves-effect waves-dark sidebar-link" href="a_emp_incentives"
-                                aria-expanded="false">
-                                <i class="fa-solid 	fas fa-award"></i>
-                                <span class="hide-menu">Employee Recognition</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="a_scheduling"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-calendar-week"></i>

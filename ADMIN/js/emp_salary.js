@@ -49,6 +49,15 @@ $(document).ready(function () {
         console.log("WORKING");
         $('#view-payroll-popup').hide(100).fadeIn(300);
         salId = $(this).closest('tr').find('td:nth-child(1)').text();
+        var dateStart = new Date(myJson[0]['payroll_date_start']).toLocaleDateString('en-EN', {
+                    month: 'long',
+                    day: 'numeric'
+            });   
+        var dateEnd = new Date(myJson[0]['payroll_date_end']).toLocaleDateString('en-EN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });   
         // Queries salary id to get other details
         $.ajax({
             type: "POST",
@@ -65,6 +74,7 @@ $(document).ready(function () {
             $('#view-sss').text(myJson[0]['sss']);
             $('#view-net-pay').text( "\u20B1" + myJson[0]['netpay']);
             $('#view-emp-id').text(myJson[0]['emp_id'])
+            $('#view-date-range').text( dateStart + " - " + dateEnd);
             console.log(myJson[0]['deduction']);
 
         });
