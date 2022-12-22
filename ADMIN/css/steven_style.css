@@ -894,7 +894,9 @@ input[type=text]:focus{
   .box-title{
     /* text-align: left; */
   }
-
+  .top-workers{
+    width: max-content;
+  }
   #area-chart,
   #line-chart,
   #bar-chart,

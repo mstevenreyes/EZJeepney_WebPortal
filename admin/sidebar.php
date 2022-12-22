@@ -168,7 +168,6 @@
                             </a>
                         </li>
                     </ul>
-                    <script src="js/pages/sidebar.js"></script>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>

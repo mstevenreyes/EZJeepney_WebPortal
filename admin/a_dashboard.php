@@ -219,7 +219,33 @@
                         </div>
                     </div>
                 </div> -->
-                
+                <!-- <div class="row">
+                    <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 ">
+                        <div class="white-box top-workers">
+                          <h4 style="text-align: center;">Top Employees (Work Hours)</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0">Employee</th>
+                                        <th class="border-top-0">Hours Worked</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                    // $sql = "SELECT * FROM view_top_worker_hours";
+                                    // $query = mysqli_query($conn, $sql);
+                                    // while($result = mysqli_fetch_array($query)){
+                                    ?>
+                                    <tr>
+                                        <td ><?php //echo $result['emp_id'] ?><td>
+                                        <td ><?php //echo $result['hours_worked'] ?><td>
+                                    </tr>
+                                    <?php //} ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->
@@ -258,6 +284,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- CUSTOM JS -->
     <script src="js/pages/dashboard1.js"></script>
+    <script src="js/pages/notification.js"></script>
     <!--chartis chart-->
     <!-- <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script> -->
