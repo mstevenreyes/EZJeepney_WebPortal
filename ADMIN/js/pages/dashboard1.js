@@ -134,4 +134,18 @@ $(function () {
     revenueConfig.element = 'bar-chart';
     Morris.Bar(revenueConfig);
     // console.log(revenueData);
+    // For showing dashboard popups, present details
+    $('#present-drivers').click(function(){
+        $('#view-present-driver').show();
+    })
+    $('.close-form').click(function(){
+        $('.form-popup').hide();
+    })
+    $('#present-paos').click(function(){
+        $('#view-present-pao').show();
+    })
+    $('#jeepneys-on-route').click(function(){
+        console.log("WORK");
+        $('#view-jeepneys-on-route').show();
+    })
 });

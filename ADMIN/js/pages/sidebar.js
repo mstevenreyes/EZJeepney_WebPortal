@@ -1,28 +1,32 @@
 let timeTicker = document.getElementById('time-ticker');
-
+// Updates Date Timer
 function time() {
     var d = new Date().toLocaleTimeString();
     timeTicker.textContent = d
   }
+// Updates Clock every 1 second
+setInterval(time,1000);
+var modal = document.getElementById("popup-notification");
+var btn = document.getElementById("notification-button");
+var span = document.getElementsByClassName("close")[0];
 
-  setInterval(time,1000);
-  var modal = document.getElementById("notification");
-  var btn = document.getElementById("notification-button");
-  var span = document.getElementsByClassName("close")[0];
-
-  btn.onclick = function() {
+btn.onclick = function() {
+  if(modal.style.display == "block"){
+    modal.style.display = "none";
+  }else{
     modal.style.display = "block";
   }
+}
 
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+// btn.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }
 
 // $('#notification-button').click(function(){
 //   let notifModal = document.getElementById('popup-notification');

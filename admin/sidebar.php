@@ -79,7 +79,7 @@
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- Notification Pop-up -->
-        <div class="popup-notification" id="notification">
+        <div class="popup-notification" id="popup-notification">
             <div class="close-notif">
                     <span class="close">&times;</span>
             </div>
@@ -172,6 +172,10 @@
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
+                        <!--Menu sidebar -->
+            <script src="js/pages/sidebar.js"></script>
+            <script src="js/notification.js"></script>
+
         </aside>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
