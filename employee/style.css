@@ -301,7 +301,13 @@ main{
   /*end of ribbon*/
 
 
+.compinfo-container p{
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
 .detail{
+    margin-bottom: 20px;
     grid-area: detail;
     overflow-x: auto;
 }
@@ -359,8 +365,23 @@ div.info.leave{
 }
 
 .details{
+    
     font-size: 20px;
 }
+
+.input-details{
+    width: 50%;
+}
+
+.schedule-details{
+    display: flex;
+    justify-content: center;
+}
+.schedule-details h3{
+    text-align: center;
+    padding: 10px 50px;
+}
+
 
 .detail-header{
     display: grid;
@@ -447,12 +468,20 @@ div.info.leave{
 }
 
 .compform{
-    display: grid;
+    display: flex;
     gap: 2rem;
     
 }
 
-
+.compform img{
+    display: inline-block;
+    border:2px solid #201f2b;
+    width: 200px;
+    object-fit: cover;
+    margin-left: 50px;
+    margin-right: auto;
+    border-radius: 200px;
+}
 .editbutton{
     background-color: #0099cc;
     border: none;

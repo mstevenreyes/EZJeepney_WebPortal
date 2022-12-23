@@ -7,7 +7,7 @@
     $empID = $_SESSION['emp-id'];
 
     //query for employee details like name, birthdays, etc.
-    $sql = "SELECT emp_birthday, emp_address, emp_gender, emp_surname, emp_firstname FROM tb_employee WHERE emp_id = ?";
+    $sql = "SELECT * FROM tb_employee WHERE emp_id = ?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql))
     {

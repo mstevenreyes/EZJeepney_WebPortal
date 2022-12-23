@@ -49,7 +49,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 employee-profile-label">
-                        <h3 class="page-title">Employee Profile - Majetsco</h3>
+                        <h3 class="page-title">Employee Profile</h3>
                     </div> 
                     <div class="edit-profile-container">
                         <button class="btn edit-profile-btn open-form">Edit Profile</button>
@@ -75,18 +75,26 @@
                             </div>   
                             <div class="profile-container" style="margin: 50px 0px 0px 30px;flex:2;">
                                 <h3><?php echo $result['emp_surname'] . ', ' . $result['emp_firstname']; ?></h3>
-                                <h5><?php if(substr($result['emp_id'], 0, 2) == "DR"){
-                                    echo "Jeepney Driver";
-                                }else{
-                                    echo "Public Assistance Officer";
-                                } ?></h3>
                                 <h5><?php echo $result['emp_id'];?></h5>
+                                <h5><?php echo $empType = substr($result['emp_id'], 0, 2) == "DR" ?  "Jeepney Driver" : "Public Assistance Officer"; ?></h3>
+                                <h5><?php echo $result['emp_status']; ?> Employee</h5>
+                                <h5>Date Hired: <?php echo date("F d, Y", strtotime($result['date_hired'])); ?></h5>
                             </div>
                             <div class="profile-container" style="margin-top: 50px; flex:2;">
                                 <h5>Phone: <?php echo $result['emp_phone_number'] ?> </h5>
-                                <h5>Birthday: <?php echo $result['emp_birthday']; ?></h5>
+                                <h5>Birthday: <?php echo date('F d, Y', strtotime($result['emp_birthday'])); ?></h5>
                                 <h5>Address: <?php echo $result['emp_address']; ?></h5>
                                 <h5>Gender: <?php echo $result['emp_gender']; ?></h5>
+                                <br>
+                                <h5><?php 
+                                        $empId = $result['emp_id'];
+                                        $sql = "SELECT * FROM tb_fixed_schedule WHERE emp_id = '$empId'";
+                                        $query = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_array($query);
+                                        echo "Work Days: " . $row['work_days']; 
+                                    ?>
+                                </h5>
+                                <h5>Work Hours: <?php echo date('h:i A', strtotime($row['shift_start'])) . " - " . date('h:i A', strtotime($row['shift_end'])); ?></h5>
                             </div>
                         </div>
                     </div>

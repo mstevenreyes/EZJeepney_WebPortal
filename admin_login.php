@@ -22,13 +22,13 @@
         <div class='icon'>
           <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
         </div>
-        <input name="username" placeholder='Username' type='text' autocomplete="off">
+        <input name="username" placeholder='Username' type='text' value="superadmin" autocomplete="off">
       </div>
       <div class='login_fields__password'>
         <div class='icon'>
           <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
         </div>
-        <input name="password" placeholder='Password' type='password'>
+        <input name="password" placeholder='Password' value="superadmin123" type='password'>
       </div>
       <div class='login_fields__submit'>
         <input type='submit' name="submit" value='Log In'>
