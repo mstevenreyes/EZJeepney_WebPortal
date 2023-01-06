@@ -267,7 +267,62 @@ body .login_fields__submit input:hover {
   transition-duration: 0.2s;
 }
 
+body .get-code-wrapper{
+  display: flex;
+}
+body .get-code-wrapper button{
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 14px;
+  color: #afb1be;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+body .get-code-wrapper button:hover{
+  color: #2a92d8;
+  cursor: pointer;
+}
+.form-popup{
+    display: flex;
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, .5);
+    color: #d7d7d7;
+}
+.form-popup .form-wrapper{
 
+    top: 2em;
+    max-width: 700px;
+    border-radius: 5px;
+    background: rgba(5, 5, 60, 0.767);
+    padding: 50px;
+    padding-top: 50px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.close-button {
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  cursor: pointer;
+  padding: 5px 15px;
+  background-color: #0f1236;
+  border: 2px solid #0f1236;
+  color: #ffffff;
+  font-size: 12px;
+  margin-bottom: 20px;
+  transition: .3s;
+}
 body .login_fields__submit button {
   border-radius: 50px;
   background: transparent;
@@ -279,8 +334,8 @@ body .login_fields__submit button {
   font-size: 20px;
   transition-property: background, color;
   transition-duration: 0.2s;
-  width: 200px;
-  margin-top: 50px;
+  width: 180px;
+  margin-top: 30px;
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;

@@ -30,12 +30,28 @@
       </div>
       <div class='login_fields__submit'>
         <button type='button' name="submit" id="otp-submit">Submit</button>
-        <div class='forgot'>
-          <!-- <a href='#'>Forgotten password?</a> -->
-        </div>
+      </div>
+      <div class="get-code-wrapper">
+          <button type="button" id="get-code">How to get code?</button>
       </div>
     </form>
   </div>
+</div>
+<!-- FORM POPUP -->
+  <div class="form-popup" id="view-present-driver">
+    <div class="container form-wrapper add-report-container">
+        <button class="btn close-button" id="close-form">Close</button>
+          <div class="row">
+            Step 1: Download Microsoft Authenticator in the App Store.
+            <p><img src="images/otp-step-1.jpg" alt="otp-step-1" width="200px"></p>
+          </div>
+          <div class="row">
+            Step 2: Open the app, and click add > Scan QR Code > Scan the QR.
+            <p><img src="images/qr-code.png" alt="qr-code" width="200px"></p>
+          </div>
+        </div>
+    </div>
+            <!-- ============================================================= -->
   <!-- All Jquery -->
   <script src="https://code.jquery.com/jquery-3.6.0.js" ></script> 
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -69,6 +85,14 @@
                 alert("Incorrect OTP code.");                
             }
         });
+    });
+    $(document).ready(function(){
+      $('#get-code').click(function(){
+        $('.form-popup').show();
+      });
+      $('.close-button').click(function(){
+        $('.form-popup').hide();
+      });
     });
 </script>
 
