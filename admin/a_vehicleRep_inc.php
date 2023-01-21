@@ -3,8 +3,8 @@
     require '../dbh.inc.php';
 
     $plateNum = $_POST['plateNumber'];
-    $deets = $_POST['details'];
-    $reason = $_POST['reason'];
+    $deets = $_POST['details']; 
+    $reason = $_POST['reason']; /*  Maintenance/Defective Part/s    */
     $MaintenanceCost = $_POST['MaintenanceCost'];
     $DI = $_POST['DateIssued'];
     $DF = $_POST['DateFixed'];
@@ -26,12 +26,18 @@
             $nDI = $result['date_issued'];
             $nDF = $result['date_fixed'];
 
-            $sched = date("Y-m-d", strtotime($nDF. '+1 month'));
+            $sched = date("Y-m-d", strtotime($nDF. '+1 month'));     
         }
-        
+
+        if($nDF == NULL){
+            $sql = "INSERT INTO tb_maintenancesched (mtnID, plateNum) VALUES ('$nID', '$plateNum')";
+            $sql_run = mysqli_query($conn, $sql);
+        }
+        else{
             $sql = "INSERT INTO tb_maintenancesched VALUES ('$nID', '$plateNum', '$sched')";
             $sql_run = mysqli_query($conn, $sql);
-
+        }
+        
         header('location: vec_Issue.php?mtnID='.$ID);
     }
 

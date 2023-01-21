@@ -136,9 +136,17 @@
                                             $dt = mysqli_query($conn, $statement);
                                             while ($result = mysqli_fetch_array($dt)){
 
+                                                
+                                                if(strtotime($result['sched'])  > 0){
+                                                    $schedule = date("F d, Y", strtotime($result['sched']));
+                                                }
+                                                else{
+                                                    $schedule = "Undergoing maintenance";
+                                                }
+
                                                 $result = "<tr><td>"  . $result['mtnID'] . "</td>" . 
                                                 "<td>"  . $result['plateNum'] . "</td>" .
-                                                "<td>" . date("F d, Y", strtotime($result['sched'])) . "</td>";
+                                                "<td>" . $schedule . "</td>";
                                                 echo $result;
                                             }
                                         ?>
