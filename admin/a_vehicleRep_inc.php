@@ -25,16 +25,12 @@
             $nID = $result['mtnID'];
             $nDI = $result['date_issued'];
             $nDF = $result['date_fixed'];
-        }
 
-        if(!= NULL){
-
+            $sched = date("Y-m-d", strtotime($nDF. '+1 month'));
         }
         
-        $sched = date("Y-m-d", strtotime($newID. "+1 month"));
-
-        $sql = "INSERT INTO tb_maintenancesched VALUES ('$newID', '$plateNum', $sched)";
-        $sql_run = mysqli_query($conn, $sql);
+            $sql = "INSERT INTO tb_maintenancesched VALUES ('$nID', '$plateNum', '$sched')";
+            $sql_run = mysqli_query($conn, $sql);
 
         header('location: vec_Issue.php?mtnID='.$ID);
     }
