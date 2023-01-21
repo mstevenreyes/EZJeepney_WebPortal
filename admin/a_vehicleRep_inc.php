@@ -44,8 +44,31 @@
     //insert date fixed on existing record 
     function addFixedDate($conn, $DI, $DF, $plateNum){
 
+        // set date fixed on an existing record
         $sql = "UPDATE tb_maintenance SET date_fixed = '$DF' WHERE date_issued = '$DI' AND plate_number = '$plateNum'";
         $sql_run = mysqli_query($conn, $sql);
+
+        // get the mtnID where you have recently set a date fixed of an existing record
+        $queryID = "SELECT mtnID FROM tb_maintenance WHERE date_issued = '$DI' AND date_fixed = '$DF' AND plate_number = '$plateNum';";
+        $sql_run = mysqli_query($conn, $sql);
+        while ($result = mysqli_fetch_array($run)){
+            $mID = $result['mtnID'];
+        }
+
+        // fetching desired record ursing the mtnID gathered from the previous queries
+        $query = "SELECT description FROM tb_maintenance WHERE mtnID = '$mID';";
+        $run = mysqli_query($conn, $query);
+
+        while ($result = mysqli_fetch_array($run)){
+            $reason = $result['reason'];
+        }
+
+        if ($reason == "Maintenance"){
+            $sched = date("Y-m-d", strtotime($DF. '+1 month'));  
+            $sql = "UPDATE tb_maintenancesched SET sched = '$sched' WHERE mtnID = '$mID';";
+            $sql_run = mysqli_query($conn, $sql);
+        }
+        
     }
 
     //insert a new record w/o fixed date
