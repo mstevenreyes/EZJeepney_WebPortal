@@ -251,7 +251,7 @@
                                             require_once '../dbh.inc.php';
                                             $start = date('m/d/Y');
                                             $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance";
+                                            $statement = "SELECT * FROM tb_maintenance WHERE mtnID = '$ID'";
                                             $dt = mysqli_query($conn, $statement);
 
                                             while ($result = mysqli_fetch_array($dt)){
@@ -324,7 +324,7 @@
                                                     </thead>
                                                     <thead>
                                                         <tr><th class="border-top-0" style="width:350px;">Maintenance Cost</th>
-                                                        <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount" required></th></tr>
+                                                        <th><input type="text" class="deduction_details" name="vecMC" id="vecMC" style="width:350px; margin-left: -25px" placeholder="Amount"></th></tr>
                                                     </thead>
                                                 </table>
                                                 <button class="vcesend-form" type='submit' name='esubmit'>Submit Form</button>
@@ -429,7 +429,7 @@
             });
             $('.vceclose-form').click(function() {
                 $('.vceform-popup').hide();
-    
+                location.reload();   
             });
         });
         
@@ -440,7 +440,6 @@
             });
             $('.delclose-form').click(function() {
                 $('.delform-popup').hide();
-    
             });
 
             $('#noBtn').click(function() {

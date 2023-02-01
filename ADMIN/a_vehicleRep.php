@@ -157,7 +157,7 @@
                                 <div class="form-group mb-4">
                                     <div class="col-sm-12">Start Date<br>
                                         <div class="col-sm-12 border-bottom">
-                                            <input class="datepicker" type="text" name="StartDate" id="StartDate" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required> 
+                                            <input class="datepicker" type="text" name="StartDate" id="StartDate" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'> 
                                             <noscript>
                                                 <input type="submit" value="submit">
                                             </noscript>
