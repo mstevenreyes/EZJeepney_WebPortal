@@ -152,7 +152,7 @@
                 <div class="col-lg-8 col-xlg-9 col-md-12">
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Maintenance Expense</h3>
+                            <h3 class="box-title">Total Maintenance Expense</h3></br>
                             <thead>
                                 <div class="form-group mb-4">
                                     <div class="col-sm-12">Start Date<br>
@@ -178,12 +178,12 @@
                                         </div>
                                     </div>
                                 </thead>
-                                <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <ul class="list-inline two-part d-flex align-items-center mb-0"></br></br>
                                     <li class="ms-auto counter text-danger">
-                                        ₱ <span class="counter text-danger" id ="maintenance_cost"><input type="text" style = "width: 145px; height: 30px;" readonly></span>
+                                        Total: ₱ <span class="counter text-danger" id ="maintenance_cost"><input type="text" style = "width: 70px; height: 30px; border: 0px none;" readonly></span>
                                     </li>
                                 </ul>
-                            </div>
+                            </div></br>
                             <button type="button" class="btn send-form" id="generate-total-expense" name="generate-total-expense">Generate</button>
                         </div>
                     </div>
