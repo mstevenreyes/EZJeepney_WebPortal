@@ -150,39 +150,10 @@
                 </div>
                 <form action = "a_vehicleRep_inc.php" method="POST" id="vhRep">
                 <div class="col-lg-8 col-xlg-9 col-md-12">
-                        <div class="col-lg-4 col-md-12">
-                            <div class="white-box analytics-info">
-                                <h3 class="box-title">Total Maintenance Expense</h3>
-                                <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                     <?php
-                                        // require_once '../dbh.inc.php';  
-                                        // $statement = "SELECT maintenance_cost FROM tb_maintenance;";
-                                        // $dt = mysqli_query($conn, $statement);
-                                       
-                                        // while ($result = mysqli_fetch_array($dt)){
-                                        //     $submitbtn = ['generate-payroll'];
-                                        //     $DI = $result['date_issued'];
-                                        //     $DF = $result['date_fixed'];
-                                        //     $dateIssued = date("F d, Y", strtotime($DI));
-                                        //     $maintenance_cost += $result['maintenance_cost']; 
-                                        
-                                        // if(isset($submitbtn)){
-                                        //     if(strtotime($result['date_issued']) > 0 && strtotime($result['date_fixed']) > 0){
-                                        //         $maintenance_cost += $result['maintenance_cost']; 
-                                        // }
-                                        // }
-
-                                        
-                                        // }
-                                    ?>
-                                <li class="ms-auto"><span class="counter text-danger" id ="maintenance_cost">₱ <input type="text" style = "width: 145px; height: 23px;" readonly></span></li>
-                                <?php
-                                    
-
-                                ?>
-                                </ul>
-                                <div class="col-sm-12 border-bottom">
-                                <thead>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Maintenance Expense</h3>
+                            <thead>
                                 <div class="form-group mb-4">
                                     <div class="col-sm-12">Start Date<br>
                                         <div class="col-sm-12 border-bottom">
@@ -193,25 +164,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                </thead>
-                                </div>
-                                <div class="col-sm-12 border-bottom">
+                            </thead>
+                            <div class="col-sm-12 ">
                                 <thead>
-                                <div class="form-group mb-4">
-                                    <div class="col-sm-12">End Date<br>
-                                        <div class="col-sm-12 border-bottom">
-                                            <input class="text" type="text" name="EndDate" id="EndDate" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'?>
-                                                <noscript>
-                                                    <input type="submit" value="submit">
-                                                </noscript>
+                                    <div class="form-group mb-4">
+                                        <div class="col-sm-12">End Date<br>
+                                            <div class="col-sm-12 border-bottom">
+                                                <input class="text" type="text" name="EndDate" id="EndDate" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'?>
+                                                    <noscript>
+                                                        <input type="submit" value="submit">
+                                                    </noscript>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </thead>
-                                </div>
-                                <button type="button" class="btn send-form" id="generate-total-expense" name="generate-total-expense">Generate</button>
+                                <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                    <li class="ms-auto counter text-danger">
+                                        ₱ <span class="counter text-danger" id ="maintenance_cost"><input type="text" style = "width: 145px; height: 30px;" readonly></span>
+                                    </li>
+                                </ul>
                             </div>
+                            <button type="button" class="btn send-form" id="generate-total-expense" name="generate-total-expense">Generate</button>
                         </div>
+                    </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="white-box"> 
@@ -219,7 +194,7 @@
 
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Issued<br>
-                                <div class="col-sm-12 border-bottom">
+                                <div class="col-sm-12">
                                     <input class="datepicker" type="text" name="DateIssued" id="DateIssued" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()' required> 
                                     <noscript>
                                         <input type="submit" value="submit">
@@ -269,7 +244,7 @@
                         </div>
                         <div class="form-group mb-4">
                             <div class="col-sm-12">Date Fixed<br>
-                                <div class="col-sm-12 border-bottom">
+                                <div class="col-sm-12">
                                     <input class="text" type="text" name="DateFixed" id="DateFixed" value="" value="<?= date('Y-m-d'); ?>" oninput='chooseDate.submit()'?>
                                         <noscript>
                                             <input type="submit" value="submit">
