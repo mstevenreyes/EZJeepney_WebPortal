@@ -101,12 +101,10 @@ $(document).ready(function(){
             url: "ajax/daily_report.php",
             data: {mydata: JSON.stringify(obj), command: 'add-report'},
             success: function(response){
-                if(response != "SUCCESS"){
-                    alert("Invalid Employee ID or Data.");
-                    // alert(response);
-                }else{
-                    // alert("Report Submitted.");
+                if(response.split(' ')[0] == "ERROR:"){
                     alert(response);
+                }else{
+                    alert("Report Submitted.");
                     location.reload();
                 }
             }

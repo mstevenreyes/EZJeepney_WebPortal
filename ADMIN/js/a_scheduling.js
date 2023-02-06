@@ -20,6 +20,7 @@
     //
     $('.open-add-form').click(function() {
         $('#add-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+   
     }),
     $('#close-add-form').click(function() {
         $('#add-form-popup').show(100).fadeOut(300); 
@@ -27,6 +28,8 @@
     
     $('.open-edit-form').click(function() {
         $('#edit-form-popup').hide(100).fadeIn(300); // SHOWS POPUP FORM
+        
+   
     }),
     $('#close-edit-form').click(function() {
         $('#edit-form-popup').show(100).fadeOut(300); 
@@ -70,7 +73,7 @@
         var plateNumPos = data.search("Unit:");
         var driverId = data.substr(driverIdPos, 8);
         var paoId = data.substr(paoIdPos, 9);
-        var batchId = $(this).find(".schedule-details").attr('id');
+        var batchId = data.substr(batchIdPos, 13);
         var plateNumber = data.substr(plateNumPos + 6, 10);
         var scheduleDatePos = data.search("Date:");
         var scheduleDate = data.substr(scheduleDatePos + 6, 10);

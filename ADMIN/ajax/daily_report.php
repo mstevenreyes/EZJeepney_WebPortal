@@ -11,7 +11,7 @@
             $sql = "INSERT INTO tb_daily_report(emp_id, report_date) VALUES (?, ?);";
             $stmt = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt, $sql)){
-                echo "ERROR: ";
+                echo "ERROR:";
                 exit();
             }
             mysqli_stmt_bind_param($stmt, "ss", $data['emp-id'], $data['report-date']);

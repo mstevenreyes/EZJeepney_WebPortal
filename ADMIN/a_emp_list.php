@@ -73,7 +73,7 @@
                   
                 </div>
                 <!-- FORM POP-UP -->
-                <div class="form-popup" >
+                <div class="form-popup">
                     <div class="container form-wrapper" style="border-radius: 10px;">
                         <button class="btn close-form">Close</button>
                         <form action="inc.insert_employee.php" method="POST" enctype="multipart/form-data">
@@ -121,9 +121,12 @@
                                     <label for="email">Contact Number</label>
                                     <input type="text" class="form-control" id="contact-number" name="contact-number" required>
                                 </div>
+                                <div class="form-group col-md-12">
+                                    <label for="something">Address</label>
+                                    <textarea name="address" class="form-control" id="address"></textarea>
+                                </div>
                                 <div class="form-group col-sm-12" style="border-top: black 1px dashed;padding-top: 20px;">
-                                    <h2 style="text-align: center;"><strong>Emergency Contacts</strong></h2>
-                                    <h4><strong>Primary</strong></h4>
+                                    <h3><strong>Emergency Contact</strong></h3>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="primary-contact-name">Name</label>
@@ -137,28 +140,8 @@
                                     <label for="primary-contact-phone">Phone Number</label>
                                     <input type="text" class="form-control" name="primary-contact-phone" id="primary-contact-phone" required>
                                 </div>
-                                <div class="form-group col-sm-12">
-                                    <h4><strong>Secondary</strong></h4>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="secondary-contact-name">Name</label>
-                                    <input type="text" class="form-control" name="secondary-contact-name" id="secondary-contact-name" required>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="secondary-contact-relationship">Relationship</label>
-                                    <input type="text" class="form-control" name="secondary-contact-relationship" id="secondary-contact-relationship" required>
-                                </div>
-                                <div class="form-group col-sm-12">
-                                    <label for="secondary-contact-phone">Phone Number</label>
-                                    <input type="text" class="form-control" name="secondary-contact-phone" id="secondary-contact-phone" required>
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="something">Address</label>
-                                    <textarea name="address" class="form-control" id="address"></textarea>
-                                </div>
-                            </div>
+                          
                             <div class="form-check">
                                 <label>
                                 </label>

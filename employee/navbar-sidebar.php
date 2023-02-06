@@ -4,6 +4,9 @@
     include '../dbh.inc.php';
 
     session_start();
+    if(!isset( $_SESSION['emp-id'])){
+        header('location: ../index?invalid-access');
+    }
     $empID = $_SESSION['emp-id'];
 
     //query for employee details like name, birthdays, etc.
@@ -70,7 +73,7 @@
             <span class="fa fa-bus"></span>
                 <p>View Assigned Jeepney</p>
         </div></a>
-        <a href="../index.php"><div class="sidebar-menu">
+        <a href="logout.php"><div class="sidebar-menu">
             <span class="fa fa-sign-out"></span>
                 <p>Logout</p>
         </div></a>
