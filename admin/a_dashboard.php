@@ -247,126 +247,13 @@
                     </div>
                 </div> -->
             <!-- ===================== PRESENT DRIVER POP-UP =========================== -->
-            <div class="form-popup" id="view-present-driver">
-                    <div class="container form-wrapper add-report-container">
-                        <button class="btn close-form" id="close-add-form">Close</button>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <h2 class="form-title" >Present Driver(s):</h2>
-                                </div>
-                               
-                                <div class="form-group col-sm-12">
-                                    <div class="table-responsive">
-                                        <table class="table text-nowrap" id="present-driver-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Driver Name</th>
-                                                    <th>Time-in</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    $sql = "SELECT tba.emp_id, emp_firstname, emp_surname, time_in FROM tb_attendance_sheet tba LEFT JOIN tb_employee tbe ON tba.emp_id = tbe.emp_id WHERE tba.emp_id LIKE 'DR%' AND attendance_date = CURDATE()";
-                                                    $query = mysqli_query($conn, $sql);
-                                                    $i = 1;
-                                                    while($result = mysqli_fetch_array($query)){
-                                                ?>
-                                                <tr>
-                                                    <td><?php echo $i . ". " . $result['emp_firstname'] . " " . $result['emp_surname'] . " (" . $result['emp_id'] . ")"; ?></td>
-                                                    <td><?php echo date('h:m A', strtotime($result['time_in'])); ?></td>
-                                                </tr>
-                                                <?php $i++; } ?>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+           
             <!-- ============================================================= -->
             <!-- ===================== PRESENT PAO POP-UP =========================== -->
-              <div class="form-popup" id="view-present-pao">
-                    <div class="container form-wrapper add-report-container">
-                        <button class="btn close-form" id="close-add-form">Close</button>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <h2 class="form-title" >Present PAO(S):</h2>
-                                </div>
-                               
-                                <div class="form-group col-sm-12">
-                                    <div class="table-responsive">
-                                        <table class="table text-nowrap" id="present-driver-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>PAO Name</th>
-                                                    <th>Time-in</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    $sql = "SELECT tba.emp_id, emp_firstname, emp_surname, time_in FROM tb_attendance_sheet tba LEFT JOIN tb_employee tbe ON tba.emp_id = tbe.emp_id WHERE tba.emp_id LIKE 'PAO%' AND attendance_date = CURDATE()";
-                                                    $query = mysqli_query($conn, $sql);
-                                                    $i = 1;
-                                                    while($result = mysqli_fetch_array($query)){
-                                                ?>
-                                                <tr>
-                                                    <td><?php echo $i . ". " . $result['emp_firstname'] . " " . $result['emp_surname'] . " (" . $result['emp_id'] . ")"; ?></td>
-                                                    <td><?php echo date('h:m A', strtotime($result['time_in'])); ?></td>
-                                                </tr>
-                                                <?php $i++; } ?>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             
             <!-- ============================================================= -->
              <!-- ===================== PRESENT JEEPNEY ON ROUTE POP-UP =========================== -->
-             <div class="form-popup" id="view-jeepneys-on-route">
-                    <div class="container form-wrapper add-report-container">
-                        <button class="btn close-form" id="close-add-form">Close</button>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <h2 class="form-title" >Jeepney(S):</h2>
-                                </div>
-                               
-                                <div class="form-group col-sm-12">
-                                    <div class="table-responsive">
-                                        <table class="table text-nowrap" id="present-driver-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Jeepney Plate Number</th>
-                                                    <th>Driver</th>
-                                                    <th>PAO</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    $sql = "SELECT DISTINCT plate_number, driver_id, pao_id FROM `tb_attendance_sheet` tba INNER JOIN tb_schedule_sheet tbs ON tba.emp_id = tbs.driver_id AND tba.attendance_date = tbs.schedule_date WHERE tba.attendance_date = CURDATE();";
-                                                    $query = mysqli_query($conn, $sql);
-                                                    $i = 1;
-                                                    while($result = mysqli_fetch_array($query)){
-                                                ?>
-                                                <tr>
-                                                        <td><?php echo  $result['plate_number']; ?></td>
-                                                        <td><?php echo $result['driver_id']; ?></td>
-                                                        <td><?php echo $result['pao_id']; ?></td>
-                                                </tr>
-                                                <?php $i++; } ?>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             
             <!-- ============================================================= -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
@@ -404,7 +291,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- CUSTOM JS -->
-    <script src="js/pages/dashboard1.js"></script>
+    <!-- <script src="js/pages/dashboard1.js"></script> -->
     <!--chartis chart-->
     <!-- <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script> -->

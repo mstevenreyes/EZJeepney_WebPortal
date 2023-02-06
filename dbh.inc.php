@@ -1,7 +1,7 @@
 <?php
 // This code is for database connection
 
-$serverName = "127.0.0.1:3306";
+$serverName = "localhost:3306";
 $dBUsername = "root";
 $dBPassword = "";
 $dBName = "majetsco";

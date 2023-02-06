@@ -40,18 +40,32 @@
         // FORMS NEW EMPLOYEE ID
         $empID = $prefix . "-" . str_pad(intval(substr($result2, -5, 5)) + 1, 5, "0", STR_PAD_LEFT);
         // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
-        $sql = "INSERT INTO tb_employee VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO tb_employee( emp_id, emp_type, date_hired, emp_pword, emp_phone_number, emp_surname, emp_firstname, emp_address, emp_gender, emp_birthday, emp_primary_name, emp_primary_relationship, emp_primary_phone, emp_secondary_name, emp_secondary_relationship, emp_secondary_phone ) VALUES (?, ?, CURDATE(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
-            echo "ERROR: " . mysqli_error($conn);
-            // header('location: a_emp_list.php?error=employee-add-stmt-failed');
+            // echo "ERROR: " . mysqli_error($conn);
+            header('location: a_emp_list.php?error=employee-add-stmt-failed');
             exit();
         }
         mysqli_stmt_bind_param($stmt, "sssssssssssssss", $empID, $empType, $empPassword, $empContactNumber , $empSurname, $empFirstname, $address, $gender, $birthDate, $primaryContactName, $primaryContactRelationship, $primaryContactPhone
     , $secondaryContactName, $secondaryContactRelationship, $secondaryContactPhone);
         if(!mysqli_stmt_execute($stmt)){
-            echo "ERROR: " . mysqli_error($conn);
+            // echo "ERROR: " . mysqli_error($conn);
             header('location: a_emp_list.php?error=employee-add-failed');
+            exit();
+        }
+        // INSERTS DEFAULT WORKING HOURS
+        $sql = "INSERT INTO tb_fixed_schedule (emp_id) VALUES (?)";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            // echo "ERROR: " . mysqli_error($conn);
+            header('location: a_emp_list.php?error=employee-add-stmt-failed');
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "s", $empID);
+        if(!mysqli_stmt_execute($stmt)){
+            // echo "ERROR: " . mysqli_error($conn);
+            header('location: a_emp_list.php?error=employee-working-hours-failed');
             exit();
         }
         // RENAMING IMAGE

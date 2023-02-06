@@ -174,7 +174,7 @@
             <!-- End Sidebar scroll-->
                         <!--Menu sidebar -->
             <script src="js/pages/sidebar.js"></script>
-            <script src="js/notification.js"></script>
+            <!-- <script src="js/notification.js"></script> -->
 
         </aside>
         <!-- ============================================================== -->

@@ -151,7 +151,7 @@
                                                             
                                                         }else
                                                         { 
-                                                            echo '<button class="schedule-details open-edit-form">' . date('h:i:s A', strtotime($row['shift_start']))  
+                                                            echo '<button class="schedule-details open-edit-form" id="' . $row['batch_id'] .  '">' . date('h:i:s A', strtotime($row['shift_start']))  
                                                             . ' - ' . date('h:i:s A', strtotime($row['shift_end'])) . '<br>' . $row['driver_id'] . ' / ' . $row['pao_id'] .  '<br>Jeep Unit: ' 
                                                             . $row['plate_number'] . '<br>Batch ID: ' . $row['batch_id'] . '<p style="display:none;">Schedule Date: ' . $row['schedule_date'] . '</p>' . '</button>'; 
                                                         }                                                

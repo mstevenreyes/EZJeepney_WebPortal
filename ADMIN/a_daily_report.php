@@ -144,7 +144,7 @@
                                 <label>
                                 </label>
                             </div>
-                            <button type="submit" class="btn send-form submit-report" name="submit-report" id="submit-report">Submit</button>
+                            <button type="button" class="btn send-form submit-report" name="submit-report" id="submit-report">Submit</button>
                         </form> 
                     </div>
                 </div>
