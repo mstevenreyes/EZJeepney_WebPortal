@@ -76,7 +76,8 @@
                                     <tbody>
                                     <?php
                                         include '../dbh.inc.php';  
-                                        $statement = "SELECT  * FROM view_daily_report;";
+                                        $coop = $_SESSION['admin-coop'];
+                                        $statement = "SELECT  * FROM view_daily_report WHERE daily_report_coop='$coop';";
                                         $dt = mysqli_query($conn, $statement);
                                         while ($result = mysqli_fetch_array($dt)){
                                             $earnings = isset($result['earnings']) ? $result['earnings'] : 0;

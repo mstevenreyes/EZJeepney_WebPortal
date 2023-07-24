@@ -33,8 +33,9 @@
     <?php
             include 'sidebar.php';
             include '../dbh.inc.php';
-            $sql = "SELECT * FROM tb_employee";
-            $stmt = mysqli_query($conn, $sql);
+            $adminCoop = $_SESSION['admin-coop'];
+            // $sql = "SELECT * FROM tb_employee WHERE admin_coop = $adminCoop";
+            // $stmt = mysqli_query($conn, $sql);
     ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -49,6 +50,7 @@
                     <div class="employee-btns-header">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <h3 class="page-title">Employee List</h3>
+                            <h3 style="display:none" id="admin-coop" ><?= $_SESSION['admin-coop']; ?></h3>
                         </div>
                         <label for="search-employee">Search Employee</label>
                         <input class="form-control" type="text" name="search-employee" id="search-employee">

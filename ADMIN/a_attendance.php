@@ -76,9 +76,10 @@
                                     <tbody>
                                     <?php
                                         require_once '../dbh.inc.php';  
-                                        $statement = "SELECT att.emp_id, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
+                                        $coop = $_SESSION['admin-coop'];
+                                        $statement = "SELECT att.emp_id, emp.emp_coop, emp.emp_type, emp.emp_surname, emp.emp_firstname , att.time_in, att.time_out, att.attendance_date
                                         FROM `tb_attendance_sheet` as att
-                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_type='driver';";
+                                        INNER JOIN `tb_employee` as emp WHERE att.emp_id = emp.emp_id AND emp.emp_coop='$coop';";
                                         $dt = mysqli_query($conn, $statement);
                                         while ($result = mysqli_fetch_array($dt)){
                                             $result = "<tr><td>"  . date('F d , Y', strtotime($result['attendance_date'])) . "</td>" .

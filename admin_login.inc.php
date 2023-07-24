@@ -36,6 +36,7 @@ function loginFaculty($conn, $username, $pwd){
         session_start();
         $_SESSION['admin-id'] = $uidExists['admin_id'];
         $_SESSION['admin-pword'] = $uidExists['admin_pword'];
+        $_SESSION['admin-coop'] = $uidExists['admin_coop'];
         header('location: ./security_check.php');
         exit();
     }else{

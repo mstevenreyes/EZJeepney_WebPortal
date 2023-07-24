@@ -62,12 +62,12 @@
                 <!-- Row -->
                 <div class="row">
                     <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-12">
+                    <!-- <div class="col-lg-4 col-xlg-3 col-md-12">
                         <div class="white-box">
                             <div class="user-bg" style="height: max-content;"> <img alt="user" src="plugins/images/large/orig_bg.jpg">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Column -->
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">

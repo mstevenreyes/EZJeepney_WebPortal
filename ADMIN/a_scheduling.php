@@ -110,7 +110,8 @@
                                     <tbody>
                                         <?php 
                                             include '../dbh.inc.php';
-                                            $sql = "SELECT * FROM tb_employee";
+                                            $coop = $_SESSION['admin-coop'];
+                                            $sql = "SELECT * FROM tb_employee WHERE emp_coop='$coop'";
                                             $query = mysqli_query($conn, $sql);
                                             while($result = mysqli_fetch_array($query)){
                                         ?>

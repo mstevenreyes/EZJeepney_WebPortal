@@ -2,7 +2,10 @@
         // Script to check if user is logged in using session variables
         session_start();
         if(!isset($_SESSION['admin-id'])){
-            header('location: ../index.php?invalid');
+            header('location: ../index.php?error=invalid-admin-id');
+        }
+        if(!isset($_SESSION['admin-coop'])){
+            header('location: ../index.php?error=invalid-admin-coop');
         }
         date_default_timezone_set('Asia/Taipei');
 ?>

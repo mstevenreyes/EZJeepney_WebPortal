@@ -33,12 +33,13 @@
     <?php
         include 'sidebar.php';
         include '../dbh.inc.php';
+        $coop = $_SESSION['admin-coop'];
         // query for present details
-        $sql = "SELECT COUNT(emp_id) AS present_driver FROM tb_attendance_sheet WHERE attendance_date = CURDATE() AND emp_id LIKE 'DR%';";
+        $sql = "SELECT COUNT(*) AS present_driver FROM tb_attendance_sheet tba LEFT JOIN tb_employee tbe ON tba.emp_id = tbe.emp_id WHERE tbe.emp_coop = '$coop' AND attendance_date = CURDATE() AND  tba.emp_id LIKE 'DR%';";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
         $presentDrivers = $result['present_driver'];
-        $sql = "SELECT COUNT(emp_id) AS present_pao FROM tb_attendance_sheet WHERE attendance_date = CURDATE() AND emp_id LIKE 'PAO%';";
+        $sql = "SELECT COUNT(*) AS present_pao FROM tb_attendance_sheet tba LEFT JOIN tb_employee tbe ON tba.emp_id = tbe.emp_id WHERE tbe.emp_coop = '$coop' AND attendance_date = CURDATE() AND  tba.emp_id LIKE 'PAO%';";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query);
         $presentPaos = $result['present_pao'];
@@ -57,7 +58,8 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" style="display: flex;">
-                        <h3 class="page-title">Good day, Admin!</h3>                    </div>
+                        <h3 class="page-title">Good day, <?php echo $_SESSION['admin-id'] ?>!</h3>                    </div>
+                        <h3 id="coop" style="display:none"><?= $coop; ?></h3>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">

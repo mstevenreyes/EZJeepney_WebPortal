@@ -69,7 +69,8 @@
                                     <tbody>
                                        <?php
                                             include '../dbh.inc.php';
-                                            $sql = "SELECT * FROM tb_payroll_report";
+                                            $coop = $_SESSION['admin-coop'];
+                                            $sql = "SELECT * FROM tb_payroll_report WHERE payroll_coop='$coop'";
                                             $query = mysqli_query($conn, $sql);
                                             while($result = mysqli_fetch_array($query)){
                                        ?>

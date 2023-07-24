@@ -80,8 +80,9 @@
                                         <!-- GET VEHICLES LIST DATA FROM DB -->
                                         <?php
                                             require_once '../dbh.inc.php';  
+                                            $coop = $_SESSION['admin-coop'];
                                             $statement = "SELECT tbj.plate_number, tbm.date_issued, tbm.date_fixed, tbj.jeepney_route, tbj.date_acquired
-                                                            FROM tb_jeepney tbj LEFT JOIN tb_maintenance tbm  ON tbm.plate_number = tbj.plate_number
+                                                            FROM tb_jeepney tbj LEFT JOIN tb_maintenance tbm ON tbm.plate_number = tbj.plate_number WHERE tbj.jeepney_coop = '$coop'
                                                             GROUP BY tbj.plate_number";
                                             $dt = mysqli_query($conn, $statement);
                                             while ($result = mysqli_fetch_array($dt)){
@@ -131,7 +132,7 @@
                                         $counter = 0;
 
                                         require_once '../dbh.inc.php'; 
-                                        $statement = "SELECT item, quantity FROM tb_inventory";
+                                        $statement = "SELECT item, quantity FROM tb_inventory WHERE inventory_coop = '$coop'";
                                         $dt = mysqli_query($conn, $statement);
 
                                         while ($result = mysqli_fetch_array($dt))

@@ -80,7 +80,8 @@
                                             require_once '../dbh.inc.php';  
                                             $start = date('m/d/Y');
                                             $end = date('m/d/Y');
-                                            $statement = "SELECT * FROM tb_maintenance ORDER BY date_issued ASC";
+                                            $coop = $_SESSION['admin-coop'];
+                                            $statement = "SELECT * FROM tb_maintenance WHERE mtn_coop = '$coop' ORDER BY date_issued ASC";
                                             $dt = mysqli_query($conn, $statement);
 
                                             while ($result = mysqli_fetch_array($dt)){
@@ -131,7 +132,8 @@
                                     <tbody>
                                         <?php
                                             require_once '../dbh.inc.php';  
-                                            $statement = "SELECT plateNum, MAX(mtnID) as mtnID, sched FROM tb_maintenancesched GROUP by plateNum;";
+                                            $coop = $_SESSION['admin-coop'];
+                                            $statement = "SELECT plateNum, MAX(mtnID) as mtnID, sched FROM tb_maintenancesched WHERE mtnsched_coop = '$coop' GROUP by plateNum;";
 
                                             $dt = mysqli_query($conn, $statement);
                                             while ($result = mysqli_fetch_array($dt)){

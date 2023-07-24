@@ -32,6 +32,7 @@
       </div>
       <div class='login_fields__submit'>
         <input type='submit' name="submit" value='Log In'>
+        <a href="signup.php"><button class="btn btn-danger my-0" type="button">Sign up</button></a>
         <div class='forgot'>
           <!-- <a href='#'>Forgotten password?</a> -->
         </div>

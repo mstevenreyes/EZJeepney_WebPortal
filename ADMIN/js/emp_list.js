@@ -1,14 +1,14 @@
 
 $(document).ready(function(){
     console.log("ready!");
-  
+    var coop = $("#admin-coop").text();
     $('#search-employee').on('input',function(e){
         var empID = $(this).val();
         if(empID == ""){
             employeeList = $.parseJSON($.ajax({
                 type: "POST",
                 url: "ajax/emp_list.php",
-                data: "get=all-employee",
+                data: "get=all-employee&coop=" + coop,
                 async: false
             }).responseText);
        
@@ -23,10 +23,11 @@ $(document).ready(function(){
                 document.getElementById('emp-row').innerHTML = html.join('');
             }
         }else{
+            console.log(coop);
             var employeeList = $.parseJSON($.ajax({
                 type: "POST",
                 url: "ajax/emp_list.php",
-                data: "get=employee-search&emp-id=" +  empID,
+                data: "get=employee-search&emp-id=" +  empID + "&coop=" + coop,
                 async: false
             }).responseText);
             let html = [];
@@ -47,10 +48,9 @@ $(document).ready(function(){
          employeeList = $.parseJSON($.ajax({
                 type: "POST",
                 url: "ajax/emp_list.php",
-                data: "get=all-employee",
+                data: "get=all-employee&coop=" + coop,
                 async: false
             }).responseText);
-            console.log('empty');
             let html = [];
             for(var i = 0 ; i < employeeList.length ; i++){
                 empType = employeeList[i]['emp_id'].slice(0, 2) == 'DR' ? 'DRIVER' : 'PAO';

@@ -13,9 +13,6 @@
     $primaryContactName = $_POST['primary-contact-name'];
     $primaryContactRelationship = $_POST['primary-contact-relationship'];
     $primaryContactPhone = $_POST['primary-contact-phone'];
-    $secondaryContactName = $_POST['secondary-contact-name'];
-    $secondaryContactRelationship = $_POST['secondary-contact-relationship'];
-    $secondaryContactPhone = $_POST['secondary-contact-phone'];
     $empID = "";
     $submitBtn = $_POST['submit'];
     $tablename = "tb_employee";
@@ -40,7 +37,7 @@
         // FORMS NEW EMPLOYEE ID
         $empID = $prefix . "-" . str_pad(intval(substr($result2, -5, 5)) + 1, 5, "0", STR_PAD_LEFT);
         // INSERTS UNIQUE EMPLOYEE ID WITH THE DETAILS OF THE EMPLOYEE
-        $sql = "INSERT INTO tb_employee VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO tb_employee(emp_id, emp_type, emp_pword, emp_phone_number, emp_surname, emp_firstname, emp_address, emp_gender, emp_birthday, emp_primary_name, emp_primary_relationship, emp_primary_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "ERROR: " . mysqli_error($conn);
